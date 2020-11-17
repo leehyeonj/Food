@@ -12,25 +12,23 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class TodayFoodController implements Initializable{
+public class MorningController implements Initializable{
 
-	@FXML private Button ateFoodPick;
+	@FXML private Button btnOk;
 	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ateFoodPick.setOnAction(e->btnFoodAdd(e));
+		btnOk.setOnAction(e->btnFoodAdd(e));
 		
 	}
 	
 	public void btnFoodAdd(ActionEvent event) {
 		try {
-			//이 버튼을 누르는 onAction을 btnFoodAdd라고 설정했음
-			//getResource에 들어가는 "morning.fxml"이 옮겨갈! 페이지임
-			//morningFood버튼을 누르면 그 페이지가 나오는 것임
-			Parent foodPicker = FXMLLoader.load(getClass().getResource("morning.fxml"));
-			Scene scene = new Scene(foodPicker);
-			Stage primaryStage= (Stage)ateFoodPick.getScene().getWindow();
+			//확인버튼을 누르면 다시 todayFood화면으로 돌아감
+			Parent checkOk = FXMLLoader.load(getClass().getResource("todayFood.fxml"));
+			Scene scene = new Scene(checkOk);
+			Stage primaryStage= (Stage)btnOk.getScene().getWindow();
 			primaryStage.setScene(scene);
 		} catch (Exception e2) {}
 	}

@@ -92,10 +92,10 @@
       </VBox>
       <VBox layoutX="58.0" layoutY="368.0" prefHeight="190.0" prefWidth="391.0">
          <children>
-            <Button fx:id="morningFood" mnemonicParsing="false" prefHeight="51.0" prefWidth="391.0" text="아침" onAction="#btnFoodAdd" />
-            <Button fx:id="lunchFood" mnemonicParsing="false" prefHeight="51.0" prefWidth="391.0" text="점심" onAction="#btnFoodAdd" />
-            <Button fx:id="dinnerFood" mnemonicParsing="false" prefHeight="51.0" prefWidth="391.0" text="저녁" onAction="#btnFoodAdd" />
-            <Button fx:id="snackFood" mnemonicParsing="false" prefHeight="51.0" prefWidth="391.0" text="간식" onAction="#btnFoodAdd" />
+            <Button fx:id="ateFoodPick" mnemonicParsing="false" prefHeight="51.0" prefWidth="391.0" text="아침" onAction="#btnFoodAdd" />
+            <Button fx:id="ateFoodPick" mnemonicParsing="false" prefHeight="51.0" prefWidth="391.0" text="점심" onAction="#btnFoodAdd" />
+            <Button fx:id="ateFoodPick" mnemonicParsing="false" prefHeight="51.0" prefWidth="391.0" text="저녁" onAction="#btnFoodAdd" />
+            <Button fx:id="ateFoodPick" mnemonicParsing="false" prefHeight="51.0" prefWidth="391.0" text="간식" onAction="#btnFoodAdd" />
          </children>
       </VBox>
    </children>
