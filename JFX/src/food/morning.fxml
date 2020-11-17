@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Label layoutX="46.0" layoutY="39.0" text="아침에 먹은 것을 선택해주세요">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <HBox layoutX="46.0" layoutY="84.0" prefHeight="41.0" prefWidth="410.0">
+         <children>
+            <TextField prefHeight="46.0" prefWidth="315.0" />
+            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="97.0" text="검색" />
+         </children>
+      </HBox>
+      <VBox layoutX="134.0" layoutY="338.0" prefHeight="200.0" prefWidth="232.0">
+         <children>
+            <HBox prefHeight="26.0" prefWidth="232.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="248.0" text="미역국">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="26.0" prefWidth="232.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="248.0" text="미역국">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="26.0" prefWidth="232.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="248.0" text="미역국">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="26.0" prefWidth="232.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="248.0" text="미역국">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="26.0" prefWidth="232.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="248.0" text="미역국">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Label layoutX="200.0" layoutY="294.0" text="나의 아침">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="208.0" layoutY="593.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="96.0" text="확인" />
+   </children>
+</AnchorPane>
