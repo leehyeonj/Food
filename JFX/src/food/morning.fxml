@@ -17,7 +17,7 @@
       <HBox layoutX="46.0" layoutY="84.0" prefHeight="41.0" prefWidth="410.0">
          <children>
             <TextField prefHeight="46.0" prefWidth="315.0" />
-            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="97.0" text="검색" />
+            <Button fx:id="btnSearch" mnemonicParsing="false" prefHeight="44.0" prefWidth="97.0" text="검색" onAction="#handelBtnSearch"/>
          </children>
       </HBox>
       <VBox layoutX="134.0" layoutY="338.0" prefHeight="200.0" prefWidth="232.0">

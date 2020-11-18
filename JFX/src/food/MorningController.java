@@ -1,5 +1,6 @@
 package food;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -10,12 +11,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MorningController implements Initializable{
 
 	@FXML private Button btnOk;
-	
+	@FXML private Button btnSearch;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -33,4 +35,16 @@ public class MorningController implements Initializable{
 		} catch (Exception e2) {}
 	}
 
+	public void handelBtnSearch(ActionEvent event) {
+		FXMLLoader another = new FXMLLoader(getClass().getResource("search.fxml") );
+		try {
+		   AnchorPane PickPage = (AnchorPane) another.load();
+		   // 다른창 띄우는 작업 .... 2
+		   Scene anotherScene = new Scene( PickPage );
+		   Stage stage = new  Stage();
+		   stage.setScene(anotherScene);
+		   stage.show();
+		   // 다른창 띄우는 작업 .... 2 끝.
+		} catch (IOException e) {}
+	}
 }
