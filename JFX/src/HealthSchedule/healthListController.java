@@ -26,7 +26,7 @@ public class healthListController implements Initializable {
 		   goBack.setOnAction(e->btngoBack(e));
 		   food.setOnAction(e->btnfood(e));
 		   chart.setOnAction(e->btnchart(e));
-//		   HT.setOnAction(e->btnHT(e));
+		   HT.setOnAction(e->btnHT(e));
 		   home.setOnAction(e->btnhome(e));
  
 	   }
@@ -59,14 +59,14 @@ public class healthListController implements Initializable {
 		  } catch (Exception e) {}
 	   }
 	   
-//	   public void btnHT(ActionEvent event) {
-//		   try {
-//		     Parent hometranning = FXMLLoader.load(getClass().getResource("ÆÄÀÏ¸í.fxml"));
-//		     Scene scene = new Scene(hometranning);
-//		     Stage primaryStage= (Stage)HT.getScene().getWindow();
-//		     primaryStage.setScene(scene);
-//		  } catch (Exception e) {}
-//	   }
+	   public void btnHT(ActionEvent event) {
+		   try {
+		     Parent hometranning = FXMLLoader.load(getClass().getResource("homet.fxml"));
+		     Scene scene = new Scene(hometranning);
+		     Stage primaryStage= (Stage)HT.getScene().getWindow();
+		     primaryStage.setScene(scene);
+		  } catch (Exception e) {}
+	   }
 //	   
 	   public void btnhome(ActionEvent event) {
 		   try {

@@ -65,7 +65,7 @@ public class TodayFoodController implements Initializable{
 	   
 	   public void btnHT(ActionEvent event) {
 		   try {
-		     Parent hometranning = FXMLLoader.load(getClass().getResource("ÆÄÀÏ¸í.fxml"));
+		     Parent hometranning = FXMLLoader.load(getClass().getResource("homet.fxml"));
 		     Scene scene = new Scene(hometranning);
 		     Stage primaryStage= (Stage)HT.getScene().getWindow();
 		     primaryStage.setScene(scene);
