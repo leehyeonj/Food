@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="150.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" 
+xmlns="http://javafx.com/javafx/8" fx:controller="HealthSchedule.controller.Food_search_controller">
+   <children>
+      <Label layoutX="103.0" layoutY="50.0" text="바나나" />
+      <Label layoutX="158.0" layoutY="50.0" text="를 추가하시겠습니까?" />
+      <HBox layoutX="80.0" layoutY="102.0" prefHeight="33.0" prefWidth="253.0">
+         <children>
+            <Button fx:id="btnPickOk" layoutX="-10.0" prefHeight="28.0" prefWidth="98.0" text="확인" onAction="#handlebtnPickOk">
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnPickCancel" prefHeight="28.0" prefWidth="98.0" text="취소" onAction="#handlebtnPickCancel"/>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
