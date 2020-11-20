@@ -7,7 +7,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="food.MorningController">
+<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" 
+xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.MorningController">
    <children>
       <Label layoutX="46.0" layoutY="39.0" text="아침에 먹은 것을 선택해주세요">
          <font>

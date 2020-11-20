@@ -12,38 +12,24 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class TodayFoodController implements Initializable{
+public class MaintestController implements Initializable{
 
-   @FXML private Button ateFoodPick;
-   @FXML private Button food;	//식단관리버튼
-   @FXML private Button chart;	//체중관리버튼
-   @FXML private Button HT;		//홈트영상버튼
-   @FXML private Button home;	//홈버튼
-	
-   MaintestController main = new MaintestController();
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-	   ateFoodPick.setOnAction(e->btnFoodAdd(e));
-		
-	   food.setOnAction(e->btnfood(e));
-	   chart.setOnAction(e->btnchart(e));
-	   HT.setOnAction(e->btnHT(e));
-	   home.setOnAction(e->btnhome(e));
+	  
+	   @FXML private Button food;	//식단관리버튼
+	   @FXML private Button chart;	//체중관리버튼
+	   @FXML private Button HT;		//홈트영상버튼
+	   @FXML private Button home;	//홈버튼
+	   
+	   
+	   @Override
+	   public void initialize(URL location, ResourceBundle resources) {
+		   food.setOnAction(e->btnfood(e));
+		   chart.setOnAction(e->btnchart(e));
+		   HT.setOnAction(e->btnHT(e));
+		   home.setOnAction(e->btnhome(e));
 
-	}
-	
-	public void btnFoodAdd(ActionEvent event) {
-		try {
-			//이 버튼을 누르는 onAction을 btnFoodAdd라고 설정했음
-			//getResource에 들어가는 "morning.fxml"이 옮겨갈! 페이지임
-			//morningFood버튼을 누르면 그 페이지가 나오는 것임
-			Parent foodPicker = FXMLLoader.load(getClass().getResource("morning.fxml"));
-			Scene scene = new Scene(foodPicker);
-			Stage primaryStage= (Stage)ateFoodPick.getScene().getWindow();
-			primaryStage.setScene(scene);
-		} catch (Exception e2) {}
-	}
-
+	   }
+	   
 	   //식단관리
 	   public void btnfood(ActionEvent event) {
 		   try {

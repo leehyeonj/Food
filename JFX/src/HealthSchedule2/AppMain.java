@@ -1,4 +1,4 @@
-package HealthSchedule;
+package HealthSchedule2;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,11 +10,12 @@ public class AppMain extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setTitle("AppMain");
-		Parent root = FXMLLoader.load(getClass().getResource("maintest.fxml"));
-		Scene scene = new Scene(root);
+		
+		Parent parent = FXMLLoader.load(getClass().getResource("maintest.fxml"));
+		Scene scene = new Scene(parent);
+		
+		primaryStage.setTitle("test");
 		primaryStage.setScene(scene);
-	
 		primaryStage.show();
 		
 	}
@@ -22,5 +23,4 @@ public class AppMain extends Application{
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
 }

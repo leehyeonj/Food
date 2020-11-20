@@ -6,7 +6,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="150.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="food.SearchController">
+<AnchorPane prefHeight="150.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" 
+xmlns="http://javafx.com/javafx/8" fx:controller="HealthSchedule.SearchController">
    <children>
       <Label layoutX="103.0" layoutY="50.0" text="바나나" />
       <Label layoutX="158.0" layoutY="50.0" text="를 추가하시겠습니까?" />
