@@ -1,4 +1,4 @@
-package food;
+package HealthSchedule;
 
 import java.io.IOException;
 import java.net.URL;

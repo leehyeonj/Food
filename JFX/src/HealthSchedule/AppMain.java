@@ -1,4 +1,4 @@
-package food;
+package HealthSchedule;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

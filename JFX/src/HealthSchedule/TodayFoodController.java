@@ -1,4 +1,4 @@
-package food;
+package HealthSchedule;
 
 import java.net.URL;
 import java.util.ResourceBundle;
