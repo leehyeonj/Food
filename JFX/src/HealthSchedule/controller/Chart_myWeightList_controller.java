@@ -19,6 +19,7 @@ public class Chart_myWeightList_controller implements Initializable {
 	   @FXML private Button chart;	//체중관리버튼
 	   @FXML private Button HT;		//홈트영상버튼
 	   @FXML private Button home;	//홈버튼
+	   @FXML private Button weightsave;	//체중저장버튼
 	   
 	   
 	   @Override
