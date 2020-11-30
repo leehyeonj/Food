@@ -23,7 +23,7 @@ public static AppMain app;
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("AppMain");
-		Parent root = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/main.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/LoginPage.fxml"));
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 	
