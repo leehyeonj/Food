@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class AppMain extends Application{
 	
@@ -23,10 +24,10 @@ public static AppMain app;
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("AppMain");
-		Parent root = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/LoginPage.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/main.fxml"));
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
-	
+		primaryStage.initStyle(StageStyle.UNDECORATED);
 		primaryStage.show();
 		
 	}

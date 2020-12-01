@@ -8,20 +8,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 //평소에 하던 것처럼 Initializable를 상속받지 않는다
 public class MainController extends MasterController{
-
+	@FXML
+	private StackPane pane;
 	  
 	   @FXML private Button food;	//식단관리버튼
 	   @FXML private Button chart;	//체중관리버튼
@@ -35,6 +35,7 @@ public class MainController extends MasterController{
 	   @FXML private GridPane gridCalendar;	//달력표
 		
 	   private YearMonth currentYM; //현재의 년월을 저장하는 변수
+	   LocalDate date;
 	   
 	   //GridPane의 행과 열에 집어넣기 위해 선언
 	   private List<DayController> dayList;
@@ -42,21 +43,25 @@ public class MainController extends MasterController{
 	   
 	   @FXML 
 	   public void initialize() {
-		   
+		   stageDragableMoveWindow();
 		   //버튼액션
-		   food.setOnAction(e->btnfood(e));
-		   chart.setOnAction(e->btnchart(e));
-		   HT.setOnAction(e->btnHT(e));
-		   home.setOnAction(e->btnhome(e));
+//		   food.setOnAction(e->btnfood(e));
+//		   chart.setOnAction(e->btnchart(e));
+//		   HT.setOnAction(e->btnHT(e));
+//		   home.setOnAction(e->btnhome(e));
 		   
+		  
 		   //달력
 		   dayList = new ArrayList<>();
 		   //달력(GridPane)에 반복문을 사용해 행과 열마다 날짜를 입력
 		   for(int i = 0; i < 5; i++) { //달력의 행
 			   for(int j = 0; j < 7; j++) { //달력의 열
+//				  if(lblDay.getText().equals(date.getDayOfMonth().toString())) {
+//					  
+//				  }
 				   FXMLLoader loader = new FXMLLoader();
 				   loader.setLocation(getClass().getResource("/HealthSchedule/resources/calendarDayLayout.fxml"));
-				   System.out.printf("j : %d번째 그리기 성공\n", j);
+//				   System.out.printf("j : %d번째 그리기 성공\n", j);
 				   try {
 					   AnchorPane ap = loader.load();
 					   gridCalendar.add(ap, j, i);
@@ -71,12 +76,14 @@ public class MainController extends MasterController{
 			   }	//이중for
 		   }	//for
 		   
+		   
+		   
 		   //중앙상단 오늘 요일 표시
-		   String[] engDay = {"SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"};
-		   String[] korDay = {"일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"};
+		   String[] engDay = {"JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"};
+//		   String[] korDay = {"1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"};
 		   
 		   for(int i = 0; i < engDay.length; i++) {
-			   dayOfWeek.put(engDay[i], korDay[i]); 	//put(String key, String value)
+			   dayOfWeek.put(engDay[i], engDay[i]); 	//put(String key, String value)
 		   }
 			
 		   loadMonthData(YearMonth.now());
@@ -100,9 +107,9 @@ public class MainController extends MasterController{
 	   
 	   //중앙상단 오늘 날짜
 	   public void setToday(LocalDate date) {
-		   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+		   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy");
 		   lblDate.setText(date.format(dtf));
-		   lblDay.setText(dayOfWeek.get(date.getDayOfWeek().toString()));
+		   lblDay.setText(dayOfWeek.get(date.getMonth().toString()));
 	   }
 		
 	   //중앙상단 오늘 요일
@@ -128,39 +135,103 @@ public class MainController extends MasterController{
 	   }
 	   
 	   //식단관리
-	   public void btnfood(ActionEvent event) {
-		   try {
-		     Parent foodList = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/food_mainpage.fxml"));
-		     Scene scene = new Scene(foodList);
-		     Stage primaryStage= (Stage)food.getScene().getWindow();
-		     primaryStage.setScene(scene);
-		  } catch (Exception e) {}
+//	   public void btnfood(ActionEvent event) {
+//		   try {
+//		     Parent foodList = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/food_mainpage.fxml"));
+//		     Scene scene = new Scene(foodList);
+//		     Stage primaryStage= (Stage)food.getScene().getWindow();
+//		     primaryStage.setScene(scene);
+//		  } catch (Exception e) {}
+//	   }
+//	   
+//	   public void btnchart(ActionEvent event) {
+//		   try {
+//		     Parent healthChart = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/chart_mainpage.fxml"));
+//		     Scene scene = new Scene(healthChart);
+//		     Stage primaryStage= (Stage)chart.getScene().getWindow();
+//		     primaryStage.setScene(scene);
+//		  } catch (Exception e) {}
+//	   }
+//	   
+//	   public void btnHT(ActionEvent event) {
+//		   try {
+//		     Parent hometranning = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/homet_mainpage.fxml"));
+//		     Scene scene = new Scene(hometranning);
+//		     Stage primaryStage= (Stage)HT.getScene().getWindow();
+//		     primaryStage.setScene(scene);
+//		  } catch (Exception e) {}
+//	   }
+//	   
+//	   public void btnhome(ActionEvent event) {
+//		   try {
+//		     Parent Home = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/main.fxml"));
+//		     Scene scene = new Scene(Home);
+//		     Stage primaryStage= (Stage)home.getScene().getWindow();
+//		     primaryStage.setScene(scene);
+//		  } catch (Exception e) {}
+//	   }
+	   
+	   //////////////////////////
+	   private double xOffset = 0;
+	   private double yOffset = 0;
+	   private Stage stage = null;
+
+	   private void stageDragableMoveWindow() {
+		   pane.setOnMousePressed((event) -> {
+		   xOffset = event.getSceneX();
+		   yOffset = event.getSceneY();
+		   });
+		   pane.setOnMouseDragged((event) -> {
+		   // Launcher.stage.setX(event.getScreenX() - xOffset);
+		   // Launcher.stage.setY(event.getScreenY() - yOffset);
+		   // Launcher.stage.setOpacity(0.8f); // 창 투명화
+		   stage = (Stage) pane.getScene().getWindow();
+		   stage.setX(event.getScreenX() - xOffset);
+		   stage.setY(event.getScreenY() - yOffset);
+		   stage.setOpacity(0.8f); // 창 투명화
+		   });
+		   pane.setOnDragDone((event) -> {
+		   // Launcher.stage.setOpacity(1.0f);
+		   stage = (Stage) pane.getScene().getWindow();
+		   stage.setOpacity(1.0f);
+		   });
+		   pane.setOnMouseReleased((event) -> {
+		   // Launcher.stage.setOpacity(1.0f);
+		   stage = (Stage) pane.getScene().getWindow();
+		   stage.setOpacity(1.0f);
+		   });
+	   }
+
+	   @FXML
+	   private void actionMinWindow(MouseEvent event) {
+	   // Launcher.stage.setIconified(true);
+	   stage = (Stage) pane.getScene().getWindow();
+	   stage.setIconified(true);
+	   }
+	   @FXML
+	   private void actionMaxWindow(MouseEvent event) {
+	   // Launcher.stage.setFullScreen(true);
+	   // if (Launcher.stage.isMaximized()) {
+	   // Launcher.stage.setMaximized(false);
+	   // } else {
+	   // Launcher.stage.setMaximized(true);
+	   // }
+	   stage = (Stage) pane.getScene().getWindow();
+	   if (stage.isMaximized()) {
+	   stage.setMaximized(false);
+	   } else {
+	   stage.setMaximized(true);
+	   }
 	   }
 	   
-	   public void btnchart(ActionEvent event) {
-		   try {
-		     Parent healthChart = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/chart_mainpage.fxml"));
-		     Scene scene = new Scene(healthChart);
-		     Stage primaryStage= (Stage)chart.getScene().getWindow();
-		     primaryStage.setScene(scene);
-		  } catch (Exception e) {}
+	   @FXML
+	   private void actionCloseWindow(MouseEvent event) {
+	   System.exit(0);
 	   }
-	   
-	   public void btnHT(ActionEvent event) {
-		   try {
-		     Parent hometranning = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/homet_mainpage.fxml"));
-		     Scene scene = new Scene(hometranning);
-		     Stage primaryStage= (Stage)HT.getScene().getWindow();
-		     primaryStage.setScene(scene);
-		  } catch (Exception e) {}
-	   }
-	   
-	   public void btnhome(ActionEvent event) {
-		   try {
-		     Parent Home = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/main.fxml"));
-		     Scene scene = new Scene(Home);
-		     Stage primaryStage= (Stage)home.getScene().getWindow();
-		     primaryStage.setScene(scene);
-		  } catch (Exception e) {}
-	   }
+
+
+	
+	  
+		
+	 
 }
