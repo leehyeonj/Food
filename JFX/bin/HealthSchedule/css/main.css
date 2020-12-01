@@ -1,17 +1,24 @@
 #btnPrev{
 	-fx-background-color: linear-gradient(to left, #a7d676, #85cbcc );
 	-fx-background-radius: 100;
+	-fx-background-color: #85CBCC  ;
+	-fx-background-color: #A7D676;
 }
 #btnNext{
 	-fx-background-radius: 100;
 	-fx-background-color: linear-gradient(to left, #a7d676, #85cbcc );
+	-fx-background-color: #85CBCC  ;
+	-fx-background-color: #A7D676;
 	
 }
 .toplabel{
-	-fx-background-color: #8794C0;
+
+	-fx-background-color: linear-gradient(to bottom right, #A7D676 , #85CBCC );
 }
 #topBar{
-	-fx-background-color: linear-gradient(to left,#6c8cbf, #a7d676, #85cbcc,#5aa7a7 );
+	-fx-background-color: linear-gradient(to left, #A7D676 , #85CBCC );
+	-fx-background-color: #85CBCC  ;
+	-fx-background-color: #A7D676;
 }
 #lblDay{
 	-fx-font-size: 14pt;
@@ -30,3 +37,10 @@
 	-fx-font-size: 20pt;
 	-fx-font-family: "Typo_Hongikingan L"; 
 }
+
+/*#pane{
+	-fx-background-color: #CDB3D4 ;
+}
+#calendarDay{
+	-fx-background-color: #ffffff ;
+} */

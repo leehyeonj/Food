@@ -1,5 +1,6 @@
 package HealthSchedule.controller;
 
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
@@ -7,9 +8,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -19,7 +27,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 //평소에 하던 것처럼 Initializable를 상속받지 않는다
-public class MainController extends MasterController{
+public class MainController extends MasterController implements Initializable{
 	@FXML
 	private StackPane pane;
 	  
@@ -32,8 +40,15 @@ public class MainController extends MasterController{
 	   @FXML private Label lblDate;
 	   @FXML private Label lblDay;
 	   @FXML private Label lblMonth;
+	   @FXML private Label monthText;
 		
+	   @FXML private JFXHamburger hamburger;
+	   @FXML private JFXDrawer drawer;
+	   
 	   @FXML private GridPane gridCalendar;	//달력표
+	   
+	   
+	   
 		
 	   private YearMonth currentYM; //현재의 년월을 저장하는 변수
 	   LocalDate date;
@@ -42,53 +57,71 @@ public class MainController extends MasterController{
 	   private List<DayController> dayList;
 	   private Map<String, String> dayOfWeek = new HashMap<>();
 	   
+		@Override
+		public void initialize(URL arg0, ResourceBundle arg1) {
+			   stageDragableMoveWindow();
+			   //버튼액션
+//			   food.setOnAction(e->btnfood(e));
+//			   chart.setOnAction(e->btnchart(e));
+//			   HT.setOnAction(e->btnHT(e));
+//			   home.setOnAction(e->btnhome(e));
+			   
+			   //햄버거 버튼
+			   HamburgerBackArrowBasicTransition burger = new HamburgerBackArrowBasicTransition(hamburger);
+			   System.out.println("1");
+			   burger.setRate(-1);
+			   hamburger.addEventHandler(MouseEvent.MOUSE_CLICKED, (e)->{
+				   burger.setRate(burger.getRate()*-1);
+				   burger.play();
+			   });
+			   
+			   
+			   
+			   
+			  
+			   //달력
+			   dayList = new ArrayList<>();
+			   //달력(GridPane)에 반복문을 사용해 행과 열마다 날짜를 입력
+			   for(int i = 0; i < 5; i++) { //달력의 행
+				   for(int j = 0; j < 7; j++) { //달력의 열
+//					  if(lblDay.getText().equals(date.getDayOfMonth().toString())) {
+//						  
+//					  }
+					   FXMLLoader loader = new FXMLLoader();
+					   loader.setLocation(getClass().getResource("/HealthSchedule/resources/calendarDayLayout.fxml"));
+//					   System.out.printf("j : %d번째 그리기 성공\n", j);
+					   try {
+						   AnchorPane ap = loader.load();
+						   gridCalendar.add(ap, j, i);
+						   DayController dc = loader.getController();
+						   dc.setRoot(ap);
+						   dayList.add(dc);
+						   //System.out.println("1");
+					   } catch (Exception e) {
+						   e.printStackTrace();
+						   System.out.printf("j : %d, i : %d 번째 그리는 중 오류 발생\n", j, i);
+					   }
+				   }	//이중for
+			   }	//for
+			   
+			   
+			   
+			   //중앙상단 오늘 요일 표시
+			   String[] engDay = {"JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"};
+//			   String[] korDay = {"1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"};
+			   
+			   for(int i = 0; i < engDay.length; i++) {
+				   dayOfWeek.put(engDay[i], engDay[i]); 	//put(String key, String value)
+			   }
+				
+			   loadMonthData(YearMonth.now());
+			   setToday(LocalDate.now());
+			
+		}
+
 	   @FXML 
 	   public void initialize() {
-		   stageDragableMoveWindow();
-		   //버튼액션
-//		   food.setOnAction(e->btnfood(e));
-//		   chart.setOnAction(e->btnchart(e));
-//		   HT.setOnAction(e->btnHT(e));
-//		   home.setOnAction(e->btnhome(e));
-		   
-		  
-		   //달력
-		   dayList = new ArrayList<>();
-		   //달력(GridPane)에 반복문을 사용해 행과 열마다 날짜를 입력
-		   for(int i = 0; i < 5; i++) { //달력의 행
-			   for(int j = 0; j < 7; j++) { //달력의 열
-//				  if(lblDay.getText().equals(date.getDayOfMonth().toString())) {
-//					  
-//				  }
-				   FXMLLoader loader = new FXMLLoader();
-				   loader.setLocation(getClass().getResource("/HealthSchedule/resources/calendarDayLayout.fxml"));
-//				   System.out.printf("j : %d번째 그리기 성공\n", j);
-				   try {
-					   AnchorPane ap = loader.load();
-					   gridCalendar.add(ap, j, i);
-					   DayController dc = loader.getController();
-					   dc.setRoot(ap);
-					   dayList.add(dc);
-					   //System.out.println("1");
-				   } catch (Exception e) {
-					   e.printStackTrace();
-					   System.out.printf("j : %d, i : %d 번째 그리는 중 오류 발생\n", j, i);
-				   }
-			   }	//이중for
-		   }	//for
-		   
-		   
-		   
-		   //중앙상단 오늘 요일 표시
-		   String[] engDay = {"JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"};
-//		   String[] korDay = {"1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"};
-		   
-		   for(int i = 0; i < engDay.length; i++) {
-			   dayOfWeek.put(engDay[i], engDay[i]); 	//put(String key, String value)
-		   }
-			
-		   loadMonthData(YearMonth.now());
-		   setToday(LocalDate.now());
+
 	   }
 	   
 	   //한달 뺀 달력을 로드
@@ -109,8 +142,10 @@ public class MainController extends MasterController{
 	   //중앙상단 오늘 날짜
 	   public void setToday(LocalDate date) {
 		   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy");
+		   DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("MM");
 		   lblDate.setText(date.format(dtf));
 		   lblMonth.setText(dayOfWeek.get(date.getMonth().toString()));
+		   monthText.setText(date.format(dtf2));
 	   }
 		
 	   //중앙상단 오늘 요일
@@ -229,6 +264,7 @@ public class MainController extends MasterController{
 	   private void actionCloseWindow(MouseEvent event) {
 	   System.exit(0);
 	   }
+
 
 
 	

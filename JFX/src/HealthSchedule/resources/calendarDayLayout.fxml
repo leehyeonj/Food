@@ -20,7 +20,7 @@
                <children>
                   <ImageView fitHeight="22.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-					<Image url="@images/free-icon-soup-894864.png" />
+					<Image url="@images/vegetable.png" />
 						</image>
                   </ImageView>
                  
@@ -35,7 +35,7 @@
                <children>
                  <ImageView fitHeight="22.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-					<Image url="@images/free-icon-soup-894864.png" />
+					<Image url="@images/dumbbells.png" />
 						</image>
                   </ImageView>
                   <Label alignment="CENTER" prefHeight="29.0" prefWidth="67.0" text="3000" />
@@ -49,7 +49,7 @@
                <children>
                  <ImageView fitHeight="22.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-					<Image url="@images/free-icon-soup-894864.png" />
+					<Image url="@images/weighing-machine.png" />
 						</image>
                   </ImageView>
                   <Label alignment="CENTER" prefHeight="29.0" prefWidth="67.0" text="50.0" />
