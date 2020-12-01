@@ -1,0 +1,15 @@
+#btnPrev{
+	-fx-background-color: linear-gradient(to left, #a7d676, #85cbcc );
+	-fx-background-radius: 100;
+}
+#btnNext{
+	-fx-background-radius: 100;
+	-fx-background-color: linear-gradient(to left, #a7d676, #85cbcc );
+	
+}
+.toplabel{
+	-fx-background-color: #8794C0;
+}
+#topBar{
+	-fx-background-color: linear-gradient(to left,#6c8cbf, #a7d676, #85cbcc,#5aa7a7 );
+}

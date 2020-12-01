@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" 
+xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.Homet_mainpage_controller">
+   <children>
+      <Label alignment="CENTER" contentDisplay="TOP" layoutX="137.0" layoutY="54.0" text="맞춤 홈트 영상">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="134.0" layoutY="106.0" prefHeight="460.0" prefWidth="230.0">
+         <children>
+            <ImageView fx:id="human" fitHeight="460.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="fullBody" layoutX="168.0" layoutY="14.0" mnemonicParsing="false" text="전신" />
+            <Button fx:id="upperBody" layoutX="91.0" layoutY="89.0" mnemonicParsing="false" text="상체" />
+            <Button fx:id="abs" layoutX="91.0" layoutY="196.0" mnemonicParsing="false" text="복부" />
+            <Button fx:id="lowerBody" layoutX="91.0" layoutY="311.0" mnemonicParsing="false" text="하체" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="594.0" prefHeight="100.0" prefWidth="500.0">
+         <children>
+            <HBox layoutY="6.0" prefHeight="100.0" prefWidth="500.0">
+               <children>
+                  <Button fx:id="home" prefHeight="125.0" prefWidth="125.0" text="홈" onAction="#btnhome"/>
+                  <Button fx:id="food" prefHeight="125.0" prefWidth="125.0" text="식단" onAction="#btnfood"/>
+                  <Button fx:id="chart" prefHeight="125.0" prefWidth="125.0" text="내 몸" onAction="#btnchart"/>
+                  <Button fx:id="HT" layoutX="490.0" prefHeight="125.0" prefWidth="125.0" text="운동" onAction="#btnHT"/>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

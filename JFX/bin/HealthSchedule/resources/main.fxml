@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="pane" prefHeight="900.0" prefWidth="1300.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.MainController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane fx:id="topBar" prefHeight="39.0" prefWidth="1300.0" >
+               <children>
+                  <Label layoutX="1277.0" layoutY="11.0" onMouseClicked="#actionCloseWindow" text="X" textFill="#e7e9ee" />
+            
+                  <Label layoutX="1232.0" layoutY="-1.0" onMouseClicked="#actionMinWindow" prefHeight="18.0" prefWidth="13.0" text="_" textFill="#e7e9ee">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+            <VBox prefHeight="583.0" prefWidth="790.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="74.0" prefWidth="167.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label fx:id="lblDate" alignment="CENTER" prefHeight="23.0" prefWidth="107.0" text="2018.09.27">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblDay" alignment="CENTER" prefHeight="23.0" prefWidth="107.0" text="화요일">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Label text="12">
+                           <font>
+                              <Font name="Arial" size="47.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="50.0" prefWidth="1100.0">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #879#a7d6764C0;" text="SUN" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="1.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #8794C0;" styleClass="toplabel" text="MON" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="1.0" right="1.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" styleClass="toplabel" text="TUE" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="1.0" right="1.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" styleClass="toplabel" text="WED" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="1.0" right="1.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" styleClass="toplabel" text="THU" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="1.0" right="1.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" styleClass="toplabel" text="FRI" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="1.0" right="1.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" styleClass="toplabel" text="SAT" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="1.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <GridPane fx:id="gridCalendar" gridLinesVisible="true" prefHeight="585.0" prefWidth="1100.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </GridPane>
+               </children>
+            </VBox>
+            <JFXButton fx:id="btnPrev" buttonType="RAISED" layoutX="35.0" layoutY="410.0" onAction="#prevMonth" prefHeight="45.0" prefWidth="45.0" ripplerFill="#e7e9ee" text="&lt;" textFill="WHITE" />
+            <JFXButton fx:id="btnNext" buttonType="RAISED" layoutX="1226.0" layoutY="410.0" onAction="#nextMonth" prefHeight="45.0" prefWidth="45.0" ripplerFill="#e7e9ee" text="&gt;" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

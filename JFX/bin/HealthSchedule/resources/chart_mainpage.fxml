@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" 
+			fx:controller="HealthSchedule.controller.Chart_mainpage_controller">
+   <children>
+      <Label layoutX="178.0" layoutY="14.0" text="체중관리">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <VBox layoutX="3.0" layoutY="63.0" prefHeight="522.0" prefWidth="472.0">
+         <children>
+            <AnchorPane prefHeight="436.0" prefWidth="219.0">
+               <children>
+                  <LineChart fx:id="linechart" layoutX="-6.0" layoutY="-12.0" prefHeight="358.0" prefWidth="494.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+                  <Label layoutX="168.0" layoutY="388.0" text="일일 체중기록">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="healthLog" layoutX="62.0" layoutY="451.0" prefHeight="50.0" prefWidth="50.0" text="기록" />
+                  <Label layoutX="208.0" layoutY="466.0" text="목표체중">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="challenge2" layoutX="320.0" layoutY="455.0" prefHeight="42.0" prefWidth="117.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <HBox layoutX="18.0" layoutY="601.0" prefHeight="85.0" prefWidth="472.0">
+         <children>
+            <Button fx:id="food" prefHeight="85.0" prefWidth="117.0" text="식단기록" />
+            <Button fx:id="chart" prefHeight="85.0" prefWidth="117.0" text="체중기록" />
+            <Button fx:id="home" prefHeight="85.0" prefWidth="117.0" text="Home" />
+            <Button fx:id="HT" prefHeight="85.0" prefWidth="117.0" text="홈트영상" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
