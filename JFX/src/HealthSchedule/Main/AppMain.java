@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -23,7 +24,15 @@ public static AppMain app;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setTitle("AppMain");
+		//폰트 안깨지게 하는 코드
+		System.setProperty("prism.lcdtext", "false");
+		//폰트 불러오기
+		Font.loadFont(getClass().getResourceAsStream("/HealthSchedule/css/Typo_HongikinganL.ttf"), 10);
+		//폰트 패밀리 이름 알아내기
+//		String fontFamily = "";
+//		fontFamily = Font.loadFont(getClass().getResource("/HealthSchedule/css/Typo_HongikinganL.ttf").toString(), 16).getFamily(); 
+//		System.out.println(fontFamily);
+		
 		Parent root = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/main.fxml"));
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);

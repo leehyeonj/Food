@@ -18,11 +18,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="pane" prefHeight="900.0" prefWidth="1300.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.MainController">
+<StackPane fx:id="pane" prefHeight="900.0" prefWidth="1300.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.MainController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <AnchorPane fx:id="topBar" prefHeight="39.0" prefWidth="1300.0" >
+            <AnchorPane fx:id="topBar" prefHeight="39.0" prefWidth="1300.0">
                <children>
                   <Label layoutX="1277.0" layoutY="11.0" onMouseClicked="#actionCloseWindow" text="X" textFill="#e7e9ee" />
             
@@ -34,40 +34,34 @@
                </children></AnchorPane>
             <VBox prefHeight="583.0" prefWidth="790.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="74.0" prefWidth="167.0">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label fx:id="lblDate" alignment="CENTER" prefHeight="23.0" prefWidth="107.0" text="2018.09.27">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="lblDay" alignment="CENTER" prefHeight="23.0" prefWidth="107.0" text="화요일">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <Label text="12">
+                        <Label fx:id="lblDate" alignment="CENTER" layoutX="497.0" layoutY="58.0" prefHeight="23.0" prefWidth="107.0" text="2018.09.27">
                            <font>
-                              <Font name="Arial" size="47.0" />
+                              <Font size="15.0" />
                            </font>
                         </Label>
+                        <Label fx:id="lblMonth" alignment="CENTER" layoutX="417.0" layoutY="89.0" prefHeight="28.0" prefWidth="200.0" text="DECEMBER">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="monthText" layoutX="617.0" layoutY="52.0" text="12">
+                          
+                        </Label>
                      </children>
-                  </HBox>
+                  </AnchorPane>
                   <HBox prefHeight="50.0" prefWidth="1100.0">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
                      <children>
-                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #879#a7d6764C0;" text="SUN" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0"  styleClass="toplabel" text="SUN" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="1.0" />
                            </HBox.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #8794C0;" styleClass="toplabel" text="MON" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0"  styleClass="toplabel" text="MON" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="1.0" right="1.0" />
                            </HBox.margin>

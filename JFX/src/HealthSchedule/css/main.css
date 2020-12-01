@@ -13,3 +13,20 @@
 #topBar{
 	-fx-background-color: linear-gradient(to left,#6c8cbf, #a7d676, #85cbcc,#5aa7a7 );
 }
+#lblDay{
+	-fx-font-size: 14pt;
+
+}
+#monthText{
+	-fx-font-size: 55pt;
+	-fx-font-family: "System"; 
+}
+#lblMonth{
+	-fx-font-size: 25pt;
+	-fx-font-family: "Typo_Hongikingan L"; 
+	
+	}
+#lblDate{
+	-fx-font-size: 20pt;
+	-fx-font-family: "Typo_Hongikingan L"; 
+}

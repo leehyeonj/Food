@@ -31,6 +31,7 @@ public class MainController extends MasterController{
 	   @FXML private Button btnNext;	//이번달
 	   @FXML private Label lblDate;
 	   @FXML private Label lblDay;
+	   @FXML private Label lblMonth;
 		
 	   @FXML private GridPane gridCalendar;	//달력표
 		
@@ -109,7 +110,7 @@ public class MainController extends MasterController{
 	   public void setToday(LocalDate date) {
 		   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy");
 		   lblDate.setText(date.format(dtf));
-		   lblDay.setText(dayOfWeek.get(date.getMonth().toString()));
+		   lblMonth.setText(dayOfWeek.get(date.getMonth().toString()));
 	   }
 		
 	   //중앙상단 오늘 요일
