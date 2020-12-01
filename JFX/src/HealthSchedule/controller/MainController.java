@@ -1,5 +1,6 @@
 package HealthSchedule.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -12,8 +13,7 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
-import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
-
+import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,13 +23,13 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 //평소에 하던 것처럼 Initializable를 상속받지 않는다
 public class MainController extends MasterController implements Initializable{
 	@FXML
-	private StackPane pane;
+	private AnchorPane pane;
 	  
 	   @FXML private Button food;	//식단관리버튼
 	   @FXML private Button chart;	//체중관리버튼
@@ -59,23 +59,38 @@ public class MainController extends MasterController implements Initializable{
 	   
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
-			   stageDragableMoveWindow();
+			//stage 조정
+			  stageDragableMoveWindow();
+			   
+		   //햄버거 버튼
+			try {
+				VBox vbox = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/mainDrawer.fxml"));
+				drawer.setSidePane(vbox);
+				  
+				   HamburgerSlideCloseTransition burger = new HamburgerSlideCloseTransition(hamburger);
+//					   HamburgerBackArrowBasicTransition burger = new HamburgerBackArrowBasicTransition(hamburger);
+				   System.out.println("1");
+				   burger.setRate(-1);
+				   hamburger.addEventHandler(MouseEvent.MOUSE_CLICKED, (e)->{
+					   burger.setRate(burger.getRate()*-1);
+					   burger.play();
+					   
+					   if(drawer.isOpened()) {
+						   drawer.close();
+					   }
+					   else {
+						   drawer.open();
+					   }
+				   });
+			} catch (IOException e1) {}
+			
+			   
+			 
 			   //버튼액션
 //			   food.setOnAction(e->btnfood(e));
 //			   chart.setOnAction(e->btnchart(e));
 //			   HT.setOnAction(e->btnHT(e));
 //			   home.setOnAction(e->btnhome(e));
-			   
-			   //햄버거 버튼
-			   HamburgerBackArrowBasicTransition burger = new HamburgerBackArrowBasicTransition(hamburger);
-			   System.out.println("1");
-			   burger.setRate(-1);
-			   hamburger.addEventHandler(MouseEvent.MOUSE_CLICKED, (e)->{
-				   burger.setRate(burger.getRate()*-1);
-				   burger.play();
-			   });
-			   
-			   
 			   
 			   
 			  
@@ -118,11 +133,6 @@ public class MainController extends MasterController implements Initializable{
 			   setToday(LocalDate.now());
 			
 		}
-
-	   @FXML 
-	   public void initialize() {
-
-	   }
 	   
 	   //한달 뺀 달력을 로드
 	   public void prevMonth() {
@@ -212,6 +222,7 @@ public class MainController extends MasterController implements Initializable{
 	   private double yOffset = 0;
 	   private Stage stage = null;
 
+	   //화면 움직일때 투명으로 변하게 하기
 	   private void stageDragableMoveWindow() {
 		   pane.setOnMousePressed((event) -> {
 		   xOffset = event.getSceneX();
@@ -238,28 +249,31 @@ public class MainController extends MasterController implements Initializable{
 		   });
 	   }
 
+	   //화면 숨기기
 	   @FXML
 	   private void actionMinWindow(MouseEvent event) {
 	   // Launcher.stage.setIconified(true);
 	   stage = (Stage) pane.getScene().getWindow();
 	   stage.setIconified(true);
 	   }
-	   @FXML
-	   private void actionMaxWindow(MouseEvent event) {
-	   // Launcher.stage.setFullScreen(true);
-	   // if (Launcher.stage.isMaximized()) {
-	   // Launcher.stage.setMaximized(false);
-	   // } else {
-	   // Launcher.stage.setMaximized(true);
-	   // }
-	   stage = (Stage) pane.getScene().getWindow();
-	   if (stage.isMaximized()) {
-	   stage.setMaximized(false);
-	   } else {
-	   stage.setMaximized(true);
-	   }
-	   }
+	   //전체 화면으로
+//	   @FXML
+//	   private void actionMaxWindow(MouseEvent event) {
+//	   // Launcher.stage.setFullScreen(true);
+//	   // if (Launcher.stage.isMaximized()) {
+//	   // Launcher.stage.setMaximized(false);
+//	   // } else {
+//	   // Launcher.stage.setMaximized(true);
+//	   // }
+//	   stage = (Stage) pane.getScene().getWindow();
+//	   if (stage.isMaximized()) {
+//	   stage.setMaximized(false);
+//	   } else {
+//	   stage.setMaximized(true);
+//	   }
+//	   }
 	   
+	   //화면 끄기
 	   @FXML
 	   private void actionCloseWindow(MouseEvent event) {
 	   System.exit(0);
