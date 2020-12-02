@@ -105,7 +105,7 @@ public class Main_everydayRecord_controller implements Initializable{
 	   private void pageMove(MouseEvent event) {
 			try {
 				//음식 이름을 클릭하면 넘어간다.
-				Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/food_addMyDiet.fxml"));
+				Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/food_breakfast.fxml"));
 				Scene scene = new Scene(checkOk);
 				Stage primaryStage= (Stage)breakfast.getScene().getWindow();
 				primaryStage.setScene(scene);
@@ -116,7 +116,7 @@ public class Main_everydayRecord_controller implements Initializable{
 	   private void currentWeight(MouseEvent event) {
 			try {
 				//현재 몸무게를 클릭하면 넘어간다.
-				Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/food_search.fxml"));
+				Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/chart_mainpage.fxml"));
 				Scene scene = new Scene(checkOk);
 				Stage primaryStage= (Stage)breakfast.getScene().getWindow();
 				primaryStage.setScene(scene);
@@ -126,7 +126,7 @@ public class Main_everydayRecord_controller implements Initializable{
 	   private void goalWeight(MouseEvent event) {
 			try {
 				//목표 몸무게를 클릭하면 넘어간다.
-				Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/food_search.fxml"));
+				Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/chart_mainpage.fxml"));
 				Scene scene = new Scene(checkOk);
 				Stage primaryStage= (Stage)breakfast.getScene().getWindow();
 				primaryStage.setScene(scene);

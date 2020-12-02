@@ -84,17 +84,4 @@
 	-fx-font-size: 25pt;
 	-fx-font-family:  "Typo_Hongikingan L"; 
 }
-.dayNameLabel{
-	-fx-text-fill: white;
-	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 10, 0 , 5 , 2);
-	-fx-font-size: 25pt;
-	-fx-font-family:  "Typo_Hongikingan L"; 
-}
-.fooddiet{
-	-fx-font-size: 15pt;
-	-fx-font-family:  "Typo_Hongikingan L"; 
-	-fx-text-fill: #33539E ;
-}
-.fooddiet:hover{
-	-fx-text-fill: red ;
-}
+
