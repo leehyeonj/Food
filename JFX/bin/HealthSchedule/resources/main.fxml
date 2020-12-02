@@ -24,13 +24,20 @@
          <children>
             <AnchorPane fx:id="topBar" prefHeight="39.0" prefWidth="1300.0">
                <children>
-                  <Label layoutX="1277.0" layoutY="11.0" onMouseClicked="#actionCloseWindow" text="X" textFill="#e7e9ee" />
-            
-                  <Label layoutX="1251.0" layoutY="-1.0" onMouseClicked="#actionMinWindow" prefHeight="18.0" prefWidth="13.0" text="_" textFill="#e7e9ee">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
+                  <AnchorPane layoutX="1265.0" layoutY="4.0" prefHeight="32.0" prefWidth="23.0" styleClass="window">
+                     <children>
+                        <Label alignment="CENTER" onMouseClicked="#actionCloseWindow" prefHeight="32.0" prefWidth="23.0" text="X" textFill="#e7e9ee" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="1242.0" layoutY="4.0" prefHeight="32.0" prefWidth="23.0" styleClass="window">
+                     <children>
+                  
+                              <Label alignment="CENTER" layoutX="4.0" layoutY="1.0" onMouseClicked="#actionMinWindow" prefHeight="18.0" prefWidth="15.0" text="-" textFill="#e7e9ee">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
                </children></AnchorPane>
             <VBox prefHeight="833.0" prefWidth="1100.0" AnchorPane.bottomAnchor="-319.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
                <children>
@@ -71,27 +78,27 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" styleClass="toplabel" text="TUE" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" styleClass="toplabel" text="TUE">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" styleClass="toplabel" text="WED" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" styleClass="toplabel" text="WED">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" styleClass="toplabel" text="THU" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" styleClass="toplabel" text="THU">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" styleClass="toplabel" text="FRI" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" styleClass="toplabel" text="FRI">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" styleClass="toplabel" text="SAT" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="160.0" styleClass="toplabel" text="SAT">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>

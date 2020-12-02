@@ -1,50 +1,38 @@
 #btnPrev{
-	-fx-background-color: linear-gradient(to left, #a7d676, #85cbcc );
-	-fx-background-radius: 100;
-	-fx-background-color: #85CBCC  ;
-	-fx-background-color: #A7D676;
-	-fx-background-color: linear-gradient(to right bottom, #A5CAD2  , #FF7B89  );
-	-fx-background-color: linear-gradient(to right bottom, #E2D36B   , #96D7C6  );
-			-fx-background-color: linear-gradient(to right bottom, #6C8CBF   , #5AA7A7  );
-			-fx-background-color: linear-gradient(to right bottom, #D0C8B6  , #E2D3CD );
-						-fx-background-color: linear-gradient(to right bottom, #D6A3DC  , #F7DB70 );
-					-fx-background-color: #33539E  ;
+	-fx-background-color: #33539E  ;
+	-fx-background-radius: 100px;
+}
+#btnPrev:hover{
+	-fx-background-color: linear-gradient(to right, #BFB8DA  , #E8B7D4);
 }
 
 #btnNext{
-	-fx-background-radius: 100;
-	-fx-background-color: linear-gradient(to left, #a7d676, #85cbcc );
-	-fx-background-color: #85CBCC  ;
-	-fx-background-color: #A7D676;
-	-fx-background-color: linear-gradient(to right bottom, #A5CAD2  , #FF7B89  );
-	-fx-background-color: linear-gradient(to right bottom, #E2D36B   , #96D7C6  );
-			-fx-background-color: linear-gradient(to right bottom, #D6A3DC  , #F7DB70 );
-			-fx-background-color: #33539E  ;
+
+	-fx-background-color: #33539E  ;
+	-fx-background-radius: 100px;
+}
+#btnNext:hover{
+	-fx-background-color: linear-gradient(to right,#BFB8DA  , #E8B7D4);
 }
 
-.toplabel{
 
-	-fx-background-color: linear-gradient(to bottom right, #F3DBCF  , #E5C1CD );
-	-fx-background-color: linear-gradient(to right bottom, #6C8CBF   , #5AA7A7  );
-	-fx-background-color: linear-gradient(to right bottom, #D0C8B6  , #E2D3CD );
-	-fx-background-color: linear-gradient(to right bottom, #D6A3DC  , #F7DB70 );
+.toplabel{
 	-fx-background-color: #33539E  ;
 	-fx-border-color:#7FACD6;
 	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 10, 0 , 5 , 2);
+	-fx-text-fill: white;
+	-fx-font-size: 11pt;
+	-fx-font-weight: bold;
 }
 
 #topBar{
-	-fx-background-color: linear-gradient(to left, #A7D676 , #85CBCC );
-	-fx-background-color: #85CBCC  ;
-	-fx-background-color: #A7D676;
-		-fx-background-color: #5A6794 ; 
-		-fx-background-color: linear-gradient(to right bottom, #A5CAD2  , #FF7B89  );
-		-fx-background-color: linear-gradient(to right bottom, #6C8CBF   , #5AA7A7  );
-		-fx-background-color: linear-gradient(to right bottom, #D0C8B6  , #E2D3CD );
-					-fx-background-color: linear-gradient(to right, #7FACD6 , #BFB8DA);
+
+	-fx-background-color: linear-gradient(to right, #7FACD6 , #BFB8DA);
 }
 #lblDay{
-	-fx-font-size: 14pt;
+	-fx-font-size: 10pt;
+	-fx-font-family: "Arial Black"; 
+	-fx-text-fill: #4c4d4f;
 
 }
 #monthText{
@@ -62,23 +50,27 @@
 }
 
 #pane{
-	-fx-background-color: #CDB3D4 ;
-	-fx-background-color: #5A6794; 
-	-fx-background-color: linear-gradient(to right, #A5CAD2  , #FF7B89  );
-	-fx-background-color: linear-gradient(to right bottom, #E2D36B   , #96D7C6  );
-	-fx-background-color: linear-gradient(to right bottom, #6C8CBF   , #5AA7A7  );
-	-fx-background-color: linear-gradient(to right bottom, #D0C8B6  , #E2D3CD );
-				-fx-background-color: linear-gradient(to right bottom, #D6A3DC  , #F7DB70 );
-				-fx-background-color: linear-gradient(to right , #7FACD6 , #BFB8DA);
+	-fx-background-color: linear-gradient(to right , #7FACD6 , #BFB8DA);
 }
 #calendarDay{
 	-fx-background-color: #ffffff ;
 	-fx-border-color: #7FACD6;
 } 
 .monthFont{
-	 -fx-text-fill: white;
+	-fx-text-fill: white;
 	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 10, 0 , 5 , 2);
 }
 #gridCalendar{
 	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 10, 0 , 5 , 2);
+}
+.daydeco{
+	-fx-background-color: linear-gradient(to right , #7FACD6 , #BFB8DA);
+	-fx-background-color: #e1ebf7 ;
+	-fx-background-radius: 100px; 
+}
+#calendarDay:hover{
+	-fx-background-color: #e1ebf7 ;
+}
+.window:hover{
+	-fx-background-color:  #e1ebf7 ;
 }

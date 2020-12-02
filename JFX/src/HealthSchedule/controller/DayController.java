@@ -40,6 +40,7 @@ public class DayController extends MasterController{
 		isFocused = false;
 		getRoot().getStyleClass().remove("active");
 	}
+	//페이지 이동
 	 @FXML
 	   private void pageMove(MouseEvent event) {
 			try {
@@ -50,5 +51,6 @@ public class DayController extends MasterController{
 				primaryStage.setScene(scene);
 			} catch (Exception e2) {}
 	   }
+	
 	
 }

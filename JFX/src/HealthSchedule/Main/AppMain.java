@@ -27,7 +27,7 @@ public static AppMain app;
 		//폰트 안깨지게 하는 코드
 		System.setProperty("prism.lcdtext", "false");
 		//폰트 불러오기
-		Font.loadFont(getClass().getResourceAsStream("/HealthSchedule/css/Typo_HongikinganL.ttf"), 10);
+		Font.loadFont(getClass().getResourceAsStream("/HealthSchedule/css/Typo_HongikinganL.ttf"), 11);
 		//폰트 패밀리 이름 알아내기
 //		String fontFamily = "";
 //		fontFamily = Font.loadFont(getClass().getResource("/HealthSchedule/css/Typo_HongikinganL.ttf").toString(), 16).getFamily(); 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import impl.org.controlsfx.skin.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
@@ -10,11 +11,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="calendarDay" onMouseClicked="#pageMove" prefHeight="120.0" prefWidth="140.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.DayController">
+<AnchorPane fx:id="calendarDay" onMouseClicked="#pageMove"  prefHeight="120.0" prefWidth="140.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.DayController">
    <children>
-      <Label fx:id="lblDay" alignment="CENTER" layoutX="-4.0" layoutY="-3.0" prefHeight="34.0" prefWidth="37.0" text="19" AnchorPane.leftAnchor="-4.0" AnchorPane.topAnchor="-3.0">
-      </Label>
-      <VBox layoutY="31.0" prefHeight="75.0" prefWidth="140.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="0.0">
+      <VBox layoutX="18.0" layoutY="30.0" prefHeight="75.0" prefWidth="117.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="5.0">
          <children>
             <HBox prefHeight="85.0" prefWidth="127.0">
                <children>
@@ -64,5 +63,13 @@
             <Insets left="10.0" right="10.0" />
          </padding>
       </VBox>
+      <AnchorPane layoutX="6.0" layoutY="6.0" prefHeight="22.0" prefWidth="22.0" styleClass="daydeco">
+         <children>
+            <Label fx:id="lblDay" alignment="CENTER" prefHeight="27.0" prefWidth="28.0" text="19">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font></Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
