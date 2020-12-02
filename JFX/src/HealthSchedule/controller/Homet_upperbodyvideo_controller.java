@@ -65,7 +65,7 @@ public class Homet_upperbodyvideo_controller implements Initializable {
 	   }
 	   
 	   //하체 영상3 로 이동
-	   public void btnfull_youtube3(ActionEvent event) {
+	   public void btnupper_youtube3(ActionEvent event) {
 		   WebView mywebView = new WebView();
 		   WebEngine engine = mywebView.getEngine();
 			
