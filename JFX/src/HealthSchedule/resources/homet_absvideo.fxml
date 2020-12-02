@@ -1,12 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.Homet_absVideo_controller">
    <children>
-      <AnchorPane prefHeight="700.0" prefWidth="500.0" />
+      <AnchorPane layoutX="22.0" layoutY="104.0" prefHeight="486.0" prefWidth="457.0">
+         <children>
+            <Button fx:id="lower_youtube1" onAction="#btnabs_youtube1" prefHeight="150.0" prefWidth="230.0" text="Button" />
+            <Button fx:id="lower_youtube2" layoutY="169.0" onAction="#btnabs_youtube2" prefHeight="150.0" prefWidth="230.0" text="Button" />
+            <Button fx:id="lower_youtube3" layoutY="337.0" onAction="#btnabs_youtube3" prefHeight="150.0" prefWidth="230.0" text="Button" />
+            <TextField layoutX="250.0" text="복근1" />
+            <TextField layoutX="250.0" layoutY="169.0" text="복근2" />
+            <TextField layoutX="250.0" layoutY="337.0" text="복근3" />
+            
+         </children>
+      </AnchorPane>
+      <Label layoutX="208.0" layoutY="43.0" text="복근">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutY="594.0" prefHeight="100.0" prefWidth="500.0">
+         <children>
+            <HBox layoutY="6.0" prefHeight="100.0" prefWidth="500.0">
+               <children>
+                  <Button prefHeight="125.0" prefWidth="125.0" text="홈" />
+                  <Button prefHeight="125.0" prefWidth="125.0" text="식단" />
+                  <Button prefHeight="125.0" prefWidth="125.0" text="내 몸" />
+                  <Button layoutX="490.0" prefHeight="125.0" prefWidth="125.0" text="운동" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <Button fx:id="goBack" layoutX="32.0" layoutY="43.0" mnemonicParsing="false" text="뒤로가기" />
    </children>
 </AnchorPane>
