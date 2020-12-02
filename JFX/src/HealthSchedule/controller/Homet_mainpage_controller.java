@@ -38,9 +38,9 @@ public class Homet_mainpage_controller implements Initializable{
 		HT.setOnAction(e->btnHT(e));
 		
 		fullBody.setOnAction(e->btnfullBody(e)); 
-//		upperBody.setOnAction(e->btnhomet(e));
-//		abs.setOnAction(e->btnhomet(e));
-//		lowerBody.setOnAction(e->btnhomet(e));
+		upperBody.setOnAction(e->btnupperBody(e));
+		abs.setOnAction(e->btnabs(e));
+		lowerBody.setOnAction(e->btnlowerBody(e));
 	}
 	
 	//체중으로 이동
@@ -96,4 +96,38 @@ public class Homet_mainpage_controller implements Initializable{
 			
 		} catch (Exception e2) {}
 	}
+	
+	//상체운동 페이지로 넘어감
+	public void btnupperBody(ActionEvent e) {
+		try {
+			Parent part = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/homet_fullbodyvideo.fxml"));
+			Scene scene = new Scene(part);
+			Stage primaryStage = (Stage)fullBody.getScene().getWindow();
+			primaryStage.setScene(scene);
+			
+		} catch (Exception e2) {}
+	}
+	
+	//복부운동 페이지로 넘어감
+	public void btnabs(ActionEvent e) {
+		try {
+			Parent part = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/homet_fullbodyvideo.fxml"));
+			Scene scene = new Scene(part);
+			Stage primaryStage = (Stage)fullBody.getScene().getWindow();
+			primaryStage.setScene(scene);
+			
+		} catch (Exception e2) {}
+	}		
+
+	//하체운동 페이지로 넘어감
+	public void btnlowerBody(ActionEvent e) {
+		try {
+			Parent part = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/homet_fullbodyvideo.fxml"));
+			Scene scene = new Scene(part);
+			Stage primaryStage = (Stage)fullBody.getScene().getWindow();
+			primaryStage.setScene(scene);
+			
+		} catch (Exception e2) {}
+	}	
+	
 }
