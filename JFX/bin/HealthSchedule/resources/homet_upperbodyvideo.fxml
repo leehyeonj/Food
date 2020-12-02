@@ -6,19 +6,21 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.ImageView?>
 
-<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.Homet_upperbodyVideo_controller">
+<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="HealthSchedule.controller.Homet_upperbodyVideo_controller">
    <children>
       <AnchorPane layoutX="22.0" layoutY="104.0" prefHeight="486.0" prefWidth="457.0">
          <children>
-            <Button fx:id="lower_youtube1" onAction="#btnupper_youtube1" prefHeight="150.0" prefWidth="230.0" text="Button" />
-            <Button fx:id="lower_youtube2" layoutY="169.0" onAction="#btnupper_youtube2" prefHeight="150.0" prefWidth="230.0" text="Button" />
-            <Button fx:id="lower_youtube3" layoutY="337.0" onAction="#btnupper_youtube3" prefHeight="150.0" prefWidth="230.0" text="Button" />
+            <Button fx:id="upper_youtube1" onAction="#btnupper_youtube1" prefHeight="150.0" prefWidth="230.0" text="Button" />
+            <Button fx:id="upper_youtube2" onAction="#btnupper_youtube2" layoutY="169.0" prefHeight="150.0" prefWidth="230.0" text="Button" />
+            <Button fx:id="upper_youtube3" onAction="#btnupper_youtube3" layoutY="337.0" prefHeight="150.0" prefWidth="230.0" text="Button" />
             
             <TextField layoutX="250.0" text="상체1" />
             <TextField layoutX="250.0" layoutY="169.0" text="상체2" />
             <TextField layoutX="250.0" layoutY="337.0" text="상체3" />
-            
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="250.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
       <Label layoutX="208.0" layoutY="43.0" text="상체">
@@ -33,7 +35,7 @@
                   <Button prefHeight="125.0" prefWidth="125.0" text="홈" />
                   <Button prefHeight="125.0" prefWidth="125.0" text="식단" />
                   <Button prefHeight="125.0" prefWidth="125.0" text="내 몸" />
-                  <Button layoutX="490.0" prefHeight="125.0" prefWidth="125.0" text="운동" />
+                  <Button layoutX="490.0" mnemonicParsing="false" prefHeight="125.0" prefWidth="125.0" text="운동" />
                </children>
             </HBox>
          </children>

@@ -11,7 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
+//import javafx.scene.image.ImageView;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -22,6 +22,7 @@ public class Homet_fullbodyVideo_controller implements Initializable {
 	   @FXML private Button full_youtube1; //영상1로 가는 버튼
 	   @FXML private Button full_youtube2; //영상2로 가는 버튼
 	   @FXML private Button full_youtube3; //영상3로 가는 버튼
+	   //@FXML private ImageView star; //별모양 이미지
 	   
 	   @Override
 	   public void initialize(URL location, ResourceBundle resources) {

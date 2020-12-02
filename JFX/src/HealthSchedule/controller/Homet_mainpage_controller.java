@@ -31,7 +31,7 @@ public class Homet_mainpage_controller implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//fullBody.setOnAction(e->btnfullBody(e));
+		
 		home.setOnAction(e->btnhome(e)); 
 		food.setOnAction(e->btnfood(e));
 		chart.setOnAction(e->btnchart(e));
@@ -66,12 +66,12 @@ public class Homet_mainpage_controller implements Initializable{
 	//식단으로 이동
 	public void btnfood(ActionEvent e) {
 		
-			try {
-			     Parent healthChart = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/food_mainpage.fxml"));
-			     Scene scene = new Scene(healthChart);
-			     Stage primaryStage= (Stage)food.getScene().getWindow();
-			     primaryStage.setScene(scene);
-			  } catch (Exception e2) {}
+		try {
+			 Parent healthChart = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/food_mainpage.fxml"));
+			 Scene scene = new Scene(healthChart);
+			 Stage primaryStage= (Stage)food.getScene().getWindow();
+			 primaryStage.setScene(scene);
+			} catch (Exception e2) {}
 		}
 	
 	
@@ -100,9 +100,9 @@ public class Homet_mainpage_controller implements Initializable{
 	//상체운동 페이지로 넘어감
 	public void btnupperBody(ActionEvent e) {
 		try {
-			Parent part = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/homet_fullbodyvideo.fxml"));
+			Parent part = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/homet_upperBodyvideo.fxml"));
 			Scene scene = new Scene(part);
-			Stage primaryStage = (Stage)fullBody.getScene().getWindow();
+			Stage primaryStage = (Stage)upperBody.getScene().getWindow();
 			primaryStage.setScene(scene);
 			
 		} catch (Exception e2) {}
@@ -111,7 +111,7 @@ public class Homet_mainpage_controller implements Initializable{
 	//복부운동 페이지로 넘어감
 	public void btnabs(ActionEvent e) {
 		try {
-			Parent part = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/homet_fullbodyvideo.fxml"));
+			Parent part = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/homet_absvideo.fxml"));
 			Scene scene = new Scene(part);
 			Stage primaryStage = (Stage)fullBody.getScene().getWindow();
 			primaryStage.setScene(scene);
@@ -122,7 +122,7 @@ public class Homet_mainpage_controller implements Initializable{
 	//하체운동 페이지로 넘어감
 	public void btnlowerBody(ActionEvent e) {
 		try {
-			Parent part = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/homet_fullbodyvideo.fxml"));
+			Parent part = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/homet_lowerbodyvideo.fxml"));
 			Scene scene = new Scene(part);
 			Stage primaryStage = (Stage)fullBody.getScene().getWindow();
 			primaryStage.setScene(scene);
