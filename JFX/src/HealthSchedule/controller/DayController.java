@@ -40,12 +40,13 @@ public class DayController extends MasterController{
 		isFocused = false;
 		getRoot().getStyleClass().remove("active");
 	}
+	
 	//페이지 이동
 	 @FXML
 	   private void pageMove(MouseEvent event) {
 			try {
-				//확인버튼을 누르면 다시 todayFood화면으로 돌아감
-				Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/food_mainpage.fxml"));
+				//달력중 한 날짜를 클릭하면 main_everydayRecord페이지로 넘어감
+				Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/main_everydayRecord.fxml"));
 				Scene scene = new Scene(checkOk);
 				Stage primaryStage= (Stage)calendarDay.getScene().getWindow();
 				primaryStage.setScene(scene);

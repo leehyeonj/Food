@@ -18,26 +18,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" prefHeight="950.0" prefWidth="1300.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.MainController">
+<AnchorPane fx:id="pane" prefHeight="950.0" prefWidth="1300.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" 
+xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.MainController">
    <children>
       <AnchorPane prefHeight="950.0" prefWidth="1300.0">
          <children>
             <AnchorPane fx:id="topBar" prefHeight="39.0" prefWidth="1300.0">
                <children>
-                  <AnchorPane layoutX="1265.0" layoutY="4.0" prefHeight="32.0" prefWidth="23.0" styleClass="window">
-                     <children>
-                        <Label alignment="CENTER" onMouseClicked="#actionCloseWindow" prefHeight="32.0" prefWidth="23.0" text="X" textFill="#e7e9ee" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="1242.0" layoutY="4.0" prefHeight="32.0" prefWidth="23.0" styleClass="window">
-                     <children>
-                  
-                              <Label alignment="CENTER" layoutX="4.0" layoutY="1.0" onMouseClicked="#actionMinWindow" prefHeight="18.0" prefWidth="15.0" text="-" textFill="#e7e9ee">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Label>
-                     </children></AnchorPane>
+            
+                  <Label alignment="CENTER" layoutX="1242.0" layoutY="4.0" onMouseClicked="#actionMinWindow" prefHeight="18.0" prefWidth="15.0" styleClass="window" text="-" textFill="#e7e9ee">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="1265.0" layoutY="4.0" onMouseClicked="#actionCloseWindow" prefHeight="32.0" prefWidth="23.0" styleClass="window" text="X" textFill="#e7e9ee" />
                </children></AnchorPane>
             <VBox prefHeight="833.0" prefWidth="1100.0" AnchorPane.bottomAnchor="-319.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
                <children>

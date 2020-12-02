@@ -46,7 +46,7 @@ public class MainController extends MasterController implements Initializable{
 	   @FXML private JFXDrawer drawer;
 	   
 	   @FXML private GridPane gridCalendar;	//달력표
-	   
+	 
 	   
 	   
 		
@@ -60,7 +60,7 @@ public class MainController extends MasterController implements Initializable{
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			//stage 조정
-			  stageDragableMoveWindow();
+			stageDragableMoveWindow();
 			   
 		   //햄버거 버튼
 			try {
@@ -180,42 +180,6 @@ public class MainController extends MasterController implements Initializable{
 		   }
 	   }
 	   
-	   //식단관리
-//	   public void btnfood(ActionEvent event) {
-//		   try {
-//		     Parent foodList = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/food_mainpage.fxml"));
-//		     Scene scene = new Scene(foodList);
-//		     Stage primaryStage= (Stage)food.getScene().getWindow();
-//		     primaryStage.setScene(scene);
-//		  } catch (Exception e) {}
-//	   }
-//	   
-//	   public void btnchart(ActionEvent event) {
-//		   try {
-//		     Parent healthChart = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/chart_mainpage.fxml"));
-//		     Scene scene = new Scene(healthChart);
-//		     Stage primaryStage= (Stage)chart.getScene().getWindow();
-//		     primaryStage.setScene(scene);
-//		  } catch (Exception e) {}
-//	   }
-//	   
-//	   public void btnHT(ActionEvent event) {
-//		   try {
-//		     Parent hometranning = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/homet_mainpage.fxml"));
-//		     Scene scene = new Scene(hometranning);
-//		     Stage primaryStage= (Stage)HT.getScene().getWindow();
-//		     primaryStage.setScene(scene);
-//		  } catch (Exception e) {}
-//	   }
-//	   
-//	   public void btnhome(ActionEvent event) {
-//		   try {
-//		     Parent Home = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/main.fxml"));
-//		     Scene scene = new Scene(Home);
-//		     Stage primaryStage= (Stage)home.getScene().getWindow();
-//		     primaryStage.setScene(scene);
-//		  } catch (Exception e) {}
-//	   }
 	   
 	   //////////////////////////
 	   private double xOffset = 0;

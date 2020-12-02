@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="pane" prefHeight="900.0" prefWidth="650.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" 
+xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <VBox prefHeight="900.0" prefWidth="650.0">
+         <children>
+            <Label prefHeight="168.0" prefWidth="650.0" text="오늘 먹은 아침은?" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXTextArea labelFloat="true" prefHeight="165.0" prefWidth="547.0" promptText="이름을 입력해주세요"  />
+                  <JFXButton prefHeight="91.0" prefWidth="84.0" text="찾기" />
+               </children>
+            </HBox>
+            <AnchorPane prefHeight="364.0" prefWidth="590.0" style="-fx-background-color: white;">
+               <VBox.margin>
+                  <Insets left="30.0" right="30.0" top="50.0" />
+               </VBox.margin>
+            </AnchorPane>
+            <HBox prefHeight="80.0" prefWidth="650.0">
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+               <children>
+                  <Label alignment="CENTER" prefHeight="89.0" prefWidth="343.0" text="500" />
+                  <Label alignment="CENTER" prefHeight="89.0" prefWidth="343.0" text="500" />
+               </children>
+            </HBox>
+            <JFXButton prefHeight="104.0" prefWidth="470.0" text="등록">
+               <VBox.margin>
+                  <Insets left="100.0" />
+               </VBox.margin>
+            </JFXButton>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
