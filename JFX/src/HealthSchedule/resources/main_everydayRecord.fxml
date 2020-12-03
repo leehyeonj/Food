@@ -231,22 +231,26 @@
                                                       <Image url="@images/body.png" />
                                                    </image>
                                                 </ImageView>
-                                                <JFXButton ripplerFill="RED" text="복부" textFill="WHITE" StackPane.alignment="CENTER">
-                                                   <StackPane.margin>
-                                                      <Insets bottom="100.0" />
-                                                   </StackPane.margin></JFXButton>
-                                                <JFXButton ripplerFill="RED" text="하체" textFill="WHITE" StackPane.alignment="CENTER">
-                                                   <StackPane.margin>
-                                                      <Insets right="60.0" top="120.0" />
-                                                   </StackPane.margin></JFXButton>
-                                                <JFXButton ripplerFill="RED" text="상체" textFill="WHITE" StackPane.alignment="TOP_CENTER">
-                                                   <StackPane.margin>
-                                                      <Insets left="90.0" top="150.0" />
-                                                   </StackPane.margin></JFXButton>
-                                                <JFXButton ripplerFill="RED" text="전신" textFill="WHITE" StackPane.alignment="TOP_CENTER">
+                                                <Button mnemonicParsing="false" text="전신" StackPane.alignment="TOP_CENTER">
                                                    <StackPane.margin>
                                                       <Insets top="50.0" />
-                                                   </StackPane.margin></JFXButton>
+                                                   </StackPane.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="복부" StackPane.alignment="CENTER">
+                                                   <StackPane.margin>
+                                                      <Insets bottom="100.0" />
+                                                   </StackPane.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="하체">
+                                                   <StackPane.margin>
+                                                      <Insets right="70.0" top="100.0" />
+                                                   </StackPane.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="상체" StackPane.alignment="TOP_CENTER">
+                                                   <StackPane.margin>
+                                                      <Insets left="90.0" top="150.0" />
+                                                   </StackPane.margin>
+                                                </Button>
                                              </children>
                                           </StackPane>
                                           <VBox prefHeight="551.0" prefWidth="715.0" style="-fx-background-color: white;" />
