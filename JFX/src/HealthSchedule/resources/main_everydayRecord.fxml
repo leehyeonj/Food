@@ -231,26 +231,15 @@
                                                       <Image url="@images/body.png" />
                                                    </image>
                                                 </ImageView>
-                                                <Button mnemonicParsing="false" text="전신" StackPane.alignment="TOP_CENTER">
-                                                   <StackPane.margin>
-                                                      <Insets top="50.0" />
-                                                   </StackPane.margin>
-                                                </Button>
-                                                <Button mnemonicParsing="false" text="복부" StackPane.alignment="CENTER">
-                                                   <StackPane.margin>
-                                                      <Insets bottom="100.0" />
-                                                   </StackPane.margin>
-                                                </Button>
-                                                <Button mnemonicParsing="false" text="하체">
-                                                   <StackPane.margin>
-                                                      <Insets right="70.0" top="100.0" />
-                                                   </StackPane.margin>
-                                                </Button>
-                                                <Button mnemonicParsing="false" text="상체" StackPane.alignment="TOP_CENTER">
-                                                   <StackPane.margin>
-                                                      <Insets left="90.0" top="150.0" />
-                                                   </StackPane.margin>
-                                                </Button>
+                                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                   <children>
+                                                      <JFXButton fx:id="abs" layoutX="146.0" layoutY="206.0" onAction="#absEx" styleClass="bodyButton" text="복부" textFill="WHITE" />
+                                                      <JFXButton fx:id="upperbody" layoutX="194.0" layoutY="132.0" onAction="#upperbodyEx" styleClass="bodyButton" text="상체" textFill="WHITE" />
+                                                      <JFXButton fx:id="lowerbody" layoutX="114.0" layoutY="319.0" onAction="#lowerbodyEx" styleClass="bodyButton" text="하체" textFill="WHITE" />
+                                                      <JFXButton fx:id="fullbody" layoutX="146.0" layoutY="43.0" onAction="#fullbodyEx" styleClass="bodyButton" text="전신" textFill="WHITE" />
+                                                   </children>
+                                                </AnchorPane>
+                                             
                                              </children>
                                           </StackPane>
                                           <VBox prefHeight="551.0" prefWidth="715.0" style="-fx-background-color: white;" />
