@@ -1,5 +1,9 @@
 package HealthSchedule.controller;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,18 +39,15 @@ public class Homet_fullbodyVideo_controller implements Initializable {
   
 	   //전신 영상1 로 이동
 	   public void btnfull_youtube1(ActionEvent event) {
-		   WebView mywebView = new WebView();
-		   WebEngine engine = mywebView.getEngine();
-			
-		   Button full_youtube1 = new Button("전신운동1");
-		   full_youtube1.setOnAction(new EventHandler<ActionEvent>() {
-				
-			   @Override
-			   public void handle(ActionEvent event) {
-				   engine.load("https://www.youtube.com/watch?v=VVn5IUM8sms");
-					
-				}
-		   }); 
+	
+		   try {
+		         Desktop.getDesktop().browse(new URI("http://www.youtube.com/"));
+		         }
+		      catch (IOException e) {
+		         e.printStackTrace(); }
+		         catch (URISyntaxException e) { 
+		            e.printStackTrace();
+		            }
 	   }
 	   
 	   //전신 영상2 로 이동
