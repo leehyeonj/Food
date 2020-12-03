@@ -1,8 +1,18 @@
 .tab{
-	-fx-background-color: #33539E;
-	
+	-fx-background-color: -fx-primary;
+	-fx-background-color: #33539E ;
 	-fx-text-fill: black;
-	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 10, 0 , 5 , 2);
+	/*-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 10, 0 , 5 , 2);*/
+	-fx-background-radius:100px;
+	-fx-pref-width: 35;
+	-fx-pref-height:35;
+	
+}
+.tab-header-background{
+	/*-fx-primary ≈ı∏Ì */
+	-fx-background-color: -fx-primary; 
+	-fx-background-color: #33539E ;
+		-fx-background-color: -fx-primary; 
 }
 .dayNameLabel{
 	-fx-text-fill: #3a3d3b;
@@ -34,4 +44,14 @@
 }
 .weight:hover{
 	-fx-text-fill: #A5678E;
+}
+#todayDietAnchorpane{
+	-fx-background-color:-fx-primary; 
+}
+.dietStackpane{
+	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 5, 0 , 5 , 5);
+	
+}
+.bodyimage{
+	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 5, 0 , 5 , 5);
 }

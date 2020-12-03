@@ -1,6 +1,8 @@
 #btnPrev{
 	-fx-background-color: #33539E  ;
 	-fx-background-radius: 100px;
+	-fx-background-color: #7FACD6  ;
+	
 }
 #btnPrev:hover{
 	-fx-background-color: linear-gradient(to right, #BFB8DA  , #E8B7D4);
@@ -10,6 +12,7 @@
 
 	-fx-background-color: #33539E  ;
 	-fx-background-radius: 100px;
+	-fx-background-color: #BFB8DA ;
 }
 #btnNext:hover{
 	-fx-background-color: linear-gradient(to right,#BFB8DA  , #E8B7D4);

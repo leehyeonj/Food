@@ -38,345 +38,224 @@
                   <Label fx:id="todayDayOfWeek" layoutX="576.0" layoutY="100.0" styleClass="monthFont" text="TUESDAY" />
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="530.0" prefWidth="1300.0" style="-fx-background-color: WHITE;">
+            <AnchorPane prefHeight="530.0" prefWidth="1300.0">
                <VBox.margin>
                   <Insets left="110.0" right="110.0" />
                </VBox.margin>
                <children>
-                  <JFXTabPane layoutY="-36.0" prefHeight="585.0" prefWidth="1080.0">
+                  <JFXTabPane fx:id="todayDietAnchorpane" layoutY="-9.0" prefHeight="585.0" prefWidth="1080.0">
                      <tabs>
-                        <Tab text="오늘의 식단">
+                        <Tab>
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <AnchorPane fx:id="todayDietAnchorpane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <VBox layoutX="95.0" layoutY="33.0" prefHeight="489.0" prefWidth="891.0">
+                                    <HBox prefHeight="439.0" prefWidth="1020.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
                                        <children>
-                                          <HBox prefHeight="50.0" prefWidth="891.0" styleClass="hboxs">
+                                          <StackPane prefHeight="439.0" prefWidth="275.0" styleClass="dietStackpane">
                                              <children>
-                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                <VBox opacity="0.96" prefHeight="341.0" prefWidth="246.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                                                   <StackPane.margin>
+                                                      <Insets left="10.0" right="10.0" top="80.0" />
+                                                   </StackPane.margin>
                                                    <children>
-                                                      <ImageView fitHeight="68.0" fitWidth="65.0" onMouseClicked="#pageMove" pickOnBounds="true" preserveRatio="true">
-                                                      <image>
-      															<Image url="@images/free-icon-breakfast-2612118.png" />
-      														</image>
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="dayNameLabel" text="breakfast">
                                                          <VBox.margin>
-                                                            <Insets left="15.0" top="5.0" />
+                                                            <Insets top="20.0" />
                                                          </VBox.margin>
-      								                 	 </ImageView>
-                                                      <Label alignment="CENTER" prefHeight="25.0" prefWidth="238.0" styleClass="dayNameLabel" text="breakfast">
-                                                         <VBox.margin>
-                                                            <Insets bottom="5.0" />
-                                                         </VBox.margin></Label>
+                                                      </Label>
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <HBox prefHeight="46.0" prefWidth="235.0">
+                                                         <children>
+                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="303.0" text="300" />
+                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="Kcal" />
+                                                         </children>
+                                                      </HBox>
                                                    </children>
                                                 </VBox>
-                                                <Label fx:id="breakfast" alignment="CENTER" onMouseClicked="#pageMove" prefHeight="76.0" prefWidth="550.0" styleClass="fooddiet" text="바나나 /김치찌개">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin></Label>
-                                                <Label alignment="CENTER" prefHeight="76.0" prefWidth="130.0" styleClass="dayKcal" text="10000">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin></Label>
-                                                <Label alignment="CENTER" prefHeight="76.0" prefWidth="125.0" text="Kcal">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin></Label>
+                                                <ImageView fitHeight="111.0" fitWidth="120.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
+                                                   <image>
+                                                      <Image url="@images/free-icon-breakfast-2612118.png" />
+                                                   </image>
+                                                   <StackPane.margin>
+                                                      <Insets />
+                                                   </StackPane.margin>
+                                                </ImageView>
                                              </children>
-                                             <VBox.margin>
-                                                <Insets bottom="1.0" />
-                                             </VBox.margin></HBox>
-                                          <HBox prefHeight="417.0" prefWidth="891.0" styleClass="hboxs">
+                                          </StackPane>
+                                          <StackPane prefHeight="439.0" prefWidth="275.0" styleClass="dietStackpane">
                                              <children>
-                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                <VBox opacity="0.96" prefHeight="341.0" prefWidth="246.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                                                    <children>
-                                                      <ImageView fitHeight="68.0" fitWidth="65.0" onMouseClicked="#pageMove" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@images/free-icon-vegan-food-894901.png" />
-                                                         </image>
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="dayNameLabel" text="lunch">
                                                          <VBox.margin>
-                                                            <Insets left="15.0" top="5.0" />
+                                                            <Insets top="20.0" />
                                                          </VBox.margin>
-                                                      </ImageView>
-                                                      <Label alignment="CENTER" prefHeight="25.0" prefWidth="238.0" styleClass="dayNameLabel" text="lunch">
-                                                         <VBox.margin>
-                                                            <Insets bottom="5.0" />
-                                                         </VBox.margin></Label>
+                                                      </Label>
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <HBox prefHeight="46.0" prefWidth="235.0">
+                                                         <children>
+                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="303.0" text="300" />
+                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="Kcal" />
+                                                         </children>
+                                                      </HBox>
                                                    </children>
+                                                   <StackPane.margin>
+                                                      <Insets left="10.0" right="10.0" top="80.0" />
+                                                   </StackPane.margin>
                                                 </VBox>
-                                                <Label alignment="CENTER" onMouseClicked="#pageMove" prefHeight="76.0" prefWidth="550.0" styleClass="fooddiet" text="바나나 /김치찌개">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin></Label>
-                                                <Label alignment="CENTER" prefHeight="76.0" prefWidth="130.0" styleClass="dayKcal" text="10000">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin></Label>
-                                                <Label alignment="CENTER" prefHeight="76.0" prefWidth="125.0" text="Kcal">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin></Label>
+                                                <ImageView fitHeight="111.0" fitWidth="120.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
+                                                   <image>
+                                                      <Image url="@images/free-icon-vegan-food-894889.png" />
+                                                   </image>
+                                                   <StackPane.margin>
+                                                      <Insets />
+                                                   </StackPane.margin>
+                                                </ImageView>
                                              </children>
-                                             <VBox.margin>
-                                                <Insets bottom="1.0" />
-                                             </VBox.margin></HBox>
-                                          <HBox prefHeight="417.0" prefWidth="891.0" styleClass="hboxs">
+                                          </StackPane>
+                                          <StackPane prefHeight="439.0" prefWidth="275.0" styleClass="dietStackpane">
                                              <children>
-                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                <VBox opacity="0.96" prefHeight="341.0" prefWidth="246.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                                                    <children>
-                                                      <ImageView fitHeight="68.0" fitWidth="65.0" onMouseClicked="#pageMove" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@images/free-icon-vegan-food-894889.png" />
-                                                         </image>
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="dayNameLabel" text="snack">
                                                          <VBox.margin>
-                                                            <Insets left="15.0" top="5.0" />
+                                                            <Insets top="20.0" />
                                                          </VBox.margin>
-                                                      </ImageView>
-                                                      <Label alignment="CENTER" prefHeight="25.0" prefWidth="238.0" styleClass="dayNameLabel" text="dinner">
-                                                         <VBox.margin>
-                                                            <Insets bottom="5.0" />
-                                                         </VBox.margin></Label>
+                                                      </Label>
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <HBox prefHeight="46.0" prefWidth="235.0">
+                                                         <children>
+                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="303.0" text="300" />
+                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="Kcal" />
+                                                         </children>
+                                                      </HBox>
                                                    </children>
+                                                   <StackPane.margin>
+                                                      <Insets left="10.0" right="10.0" top="80.0" />
+                                                   </StackPane.margin>
                                                 </VBox>
-                                                <Label alignment="CENTER" onMouseClicked="#pageMove" prefHeight="76.0" prefWidth="550.0" styleClass="fooddiet" text="바나나 /김치찌개">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin></Label>
-                                                <Label alignment="CENTER" prefHeight="76.0" prefWidth="130.0" styleClass="dayKcal" text="10000">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin></Label>
-                                                <Label alignment="CENTER" prefHeight="76.0" prefWidth="125.0" text="Kcal">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin></Label>
+                                                <ImageView fitHeight="111.0" fitWidth="120.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
+                                                   <image>
+                                                      <Image url="@images/free-icon-biscuit-2612109.png" />
+                                                   </image>
+                                                   <StackPane.margin>
+                                                      <Insets />
+                                                   </StackPane.margin>
+                                                </ImageView>
                                              </children>
-                                             <VBox.margin>
-                                                <Insets bottom="1.0" />
-                                             </VBox.margin></HBox>
-                                          <HBox prefHeight="417.0" prefWidth="891.0" styleClass="hboxs">
+                                          </StackPane>
+                                          <StackPane prefHeight="439.0" prefWidth="275.0" styleClass="dietStackpane">
                                              <children>
-                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                <VBox opacity="0.96" prefHeight="341.0" prefWidth="246.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                                                    <children>
-                                                      <ImageView fitHeight="68.0" fitWidth="65.0" onMouseClicked="#pageMove" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@images/free-icon-biscuit-2612109.png" />
-                                                         </image>
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="dayNameLabel" text="dinner">
                                                          <VBox.margin>
-                                                            <Insets left="15.0" top="5.0" />
+                                                            <Insets top="20.0" />
                                                          </VBox.margin>
-                                                      </ImageView>
-                                                      <Label alignment="CENTER" prefHeight="25.0" prefWidth="238.0" styleClass="dayNameLabel" text="snack">
-                                                         <VBox.margin>
-                                                            <Insets bottom="5.0" />
-                                                         </VBox.margin></Label>
+                                                      </Label>
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
+                                                      <HBox prefHeight="46.0" prefWidth="235.0">
+                                                         <children>
+                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="303.0" text="300" />
+                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="Kcal" />
+                                                         </children>
+                                                      </HBox>
                                                    </children>
+                                                   <StackPane.margin>
+                                                      <Insets left="10.0" right="10.0" top="80.0" />
+                                                   </StackPane.margin>
                                                 </VBox>
-                                                <Label alignment="CENTER" onMouseClicked="#pageMove" prefHeight="76.0" prefWidth="550.0" styleClass="fooddiet" text="바나나 /김치찌개">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin></Label>
-                                                <Label alignment="CENTER" prefHeight="76.0" prefWidth="130.0" styleClass="dayKcal" text="10000">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin></Label>
-                                                <Label alignment="CENTER" prefHeight="76.0" prefWidth="125.0" text="Kcal">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin></Label>
+                                                <ImageView fitHeight="111.0" fitWidth="120.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
+                                                   <image>
+                                                      <Image url="@images/free-icon-vegan-food-894901.png" />
+                                                   </image>
+                                                   <StackPane.margin>
+                                                      <Insets />
+                                                   </StackPane.margin>
+                                                </ImageView>
                                              </children>
-                                             <VBox.margin>
-                                                <Insets bottom="1.0" />
-                                             </VBox.margin>
-                                          </HBox>
-                                          <HBox prefHeight="52.0" prefWidth="891.0">
-                                             <children>
-                                                <Label alignment="CENTER" prefHeight="39.0" prefWidth="237.0" text="총칼로리">
-                                                   <font>
-                                                      <Font size="35.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label alignment="CENTER" prefHeight="35.0" prefWidth="412.0" text="10000" />
-                                                <Label alignment="CENTER_RIGHT" prefHeight="76.0" prefWidth="203.0" text="Kcal" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets top="30.0" />
-                                             </VBox.margin>
-                                          </HBox>
+                                          </StackPane>
                                        </children>
-                                    </VBox>
+                                    </HBox>
+                                    <HBox layoutX="314.0" layoutY="482.0" prefHeight="53.0" prefWidth="453.0">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="56.0" prefWidth="142.0" text="총 칼로리">
+                                             <font>
+                                                <Font size="25.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" prefHeight="53.0" prefWidth="204.0" text="3000">
+                                             <font>
+                                                <Font size="25.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" prefHeight="56.0" prefWidth="142.0" text="Kcal">
+                                             <font>
+                                                <Font size="25.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
                                  </children></AnchorPane>
                           </content>
                         </Tab>
-                        <Tab text="오늘 한 운동">
+                        <Tab>
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="todayDietAnchorpane">
                                  <children>
-                                    <VBox layoutX="95.0" layoutY="42.0" prefHeight="438.0" prefWidth="891.0">
+                                    <HBox prefHeight="551.0" prefWidth="1080.0">
                                        <children>
-                                          <HBox prefHeight="417.0" prefWidth="891.0" styleClass="hboxs">
+                                          <StackPane prefHeight="526.0" prefWidth="339.0">
+                                             <HBox.margin>
+                                                <Insets left="25.0" />
+                                             </HBox.margin>
                                              <children>
-                                                <VBox prefHeight="200.0" prefWidth="100.0">
-                                                   <children>
-                                                      <ImageView fitHeight="68.0" fitWidth="65.0" onMouseClicked="#pageMove" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@images/yoga.png" />
-                                                         </image>
-                                                         <VBox.margin>
-                                                            <Insets left="15.0" top="5.0" />
-                                                         </VBox.margin>
-                                                      </ImageView>
-                                                      <Label alignment="CENTER" prefHeight="25.0" prefWidth="238.0" styleClass="dayNameLabel" text="전신운동">
-                                                         <VBox.margin>
-                                                            <Insets bottom="5.0" />
-                                                         </VBox.margin>
-                                                      </Label>
-                                                   </children>
-                                                </VBox>
-                                                <Label alignment="CENTER" onMouseClicked="#pageMove" prefHeight="76.0" prefWidth="550.0" styleClass="fooddiet" text="강하나 전신 스트레칭">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" prefHeight="76.0" prefWidth="130.0" styleClass="dayKcal" text="10000">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" prefHeight="76.0" prefWidth="125.0" text="분">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
+                                                <ImageView fitHeight="515.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true" styleClass="bodyimage">
+                                                   <image>
+                                                      <Image url="@images/body.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <JFXButton ripplerFill="RED" text="복부" textFill="WHITE" StackPane.alignment="CENTER">
+                                                   <StackPane.margin>
+                                                      <Insets bottom="100.0" />
+                                                   </StackPane.margin></JFXButton>
+                                                <JFXButton ripplerFill="RED" text="하체" textFill="WHITE" StackPane.alignment="CENTER">
+                                                   <StackPane.margin>
+                                                      <Insets right="60.0" top="120.0" />
+                                                   </StackPane.margin></JFXButton>
+                                                <JFXButton ripplerFill="RED" text="상체" textFill="WHITE" StackPane.alignment="TOP_CENTER">
+                                                   <StackPane.margin>
+                                                      <Insets left="90.0" top="150.0" />
+                                                   </StackPane.margin></JFXButton>
+                                                <JFXButton ripplerFill="RED" text="전신" textFill="WHITE" StackPane.alignment="TOP_CENTER">
+                                                   <StackPane.margin>
+                                                      <Insets top="50.0" />
+                                                   </StackPane.margin></JFXButton>
                                              </children>
-                                          </HBox>
-                                          <HBox prefHeight="417.0" prefWidth="891.0" styleClass="hboxs">
-                                             <children>
-                                                <VBox prefHeight="200.0" prefWidth="100.0">
-                                                   <children>
-                                                      <ImageView fitHeight="68.0" fitWidth="65.0" onMouseClicked="#pageMove" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@images/strong.png" />
-                                                         </image>
-                                                         <VBox.margin>
-                                                            <Insets left="15.0" top="5.0" />
-                                                         </VBox.margin>
-                                                      </ImageView>
-                                                      <Label alignment="CENTER" prefHeight="25.0" prefWidth="238.0" styleClass="dayNameLabel" text="상체 운동">
-                                                         <VBox.margin>
-                                                            <Insets bottom="5.0" />
-                                                         </VBox.margin>
-                                                      </Label>
-                                                   </children>
-                                                </VBox>
-                                                <Label alignment="CENTER" onMouseClicked="#pageMove" prefHeight="76.0" prefWidth="550.0" styleClass="fooddiet" text="강하나 전신 스트레칭">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" prefHeight="76.0" prefWidth="130.0" styleClass="dayKcal" text="10000">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" prefHeight="76.0" prefWidth="125.0" text="분">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox prefHeight="417.0" prefWidth="891.0" styleClass="hboxs">
-                                             <children>
-                                                <VBox prefHeight="200.0" prefWidth="100.0">
-                                                   <children>
-                                                      <ImageView fitHeight="68.0" fitWidth="65.0" onMouseClicked="#pageMove" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@images/abs.png" />
-                                                         </image>
-                                                         <VBox.margin>
-                                                            <Insets left="15.0" top="5.0" />
-                                                         </VBox.margin>
-                                                      </ImageView>
-                                                      <Label alignment="CENTER" prefHeight="25.0" prefWidth="238.0" styleClass="dayNameLabel" text="복부 운동">
-                                                         <VBox.margin>
-                                                            <Insets bottom="5.0" />
-                                                         </VBox.margin>
-                                                      </Label>
-                                                   </children>
-                                                </VBox>
-                                                <Label alignment="CENTER" onMouseClicked="#pageMove" prefHeight="76.0" prefWidth="550.0" styleClass="fooddiet" text="강하나 전신 스트레칭">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" prefHeight="76.0" prefWidth="130.0" styleClass="dayKcal" text="10000">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" prefHeight="76.0" prefWidth="125.0" text="분">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox prefHeight="50.0" prefWidth="891.0" styleClass="hboxs">
-                                             <children>
-                                                <VBox prefHeight="200.0" prefWidth="100.0">
-                                                   <children>
-                                                      <ImageView fitHeight="68.0" fitWidth="65.0" onMouseClicked="#pageMove" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@images/squat.png" />
-                                                         </image>
-                                                         <VBox.margin>
-                                                            <Insets left="15.0" top="5.0" />
-                                                         </VBox.margin>
-                                                      </ImageView>
-                                                      <Label alignment="CENTER" prefHeight="25.0" prefWidth="238.0" styleClass="dayNameLabel" text="하체 운동">
-                                                         <VBox.margin>
-                                                            <Insets bottom="5.0" />
-                                                         </VBox.margin>
-                                                      </Label>
-                                                   </children>
-                                                </VBox>
-                                                <Label fx:id="breakfast1" alignment="CENTER" onMouseClicked="#pageMove" prefHeight="76.0" prefWidth="550.0" styleClass="fooddiet" text="강하나 전신 스트레칭">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" prefHeight="76.0" prefWidth="130.0" styleClass="dayKcal" text="10000">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <Label alignment="CENTER" prefHeight="76.0" prefWidth="125.0" text="분">
-                                                   <HBox.margin>
-                                                      <Insets top="10.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox prefHeight="52.0" prefWidth="891.0">
-                                             <children>
-                                                <Label alignment="CENTER" prefHeight="39.0" prefWidth="237.0" text="총 운동시간">
-                                                   <font>
-                                                      <Font size="35.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label alignment="CENTER" prefHeight="35.0" prefWidth="412.0" text="10000" />
-                                                <Label alignment="CENTER_RIGHT" prefHeight="76.0" prefWidth="203.0" text="분" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets top="30.0" />
-                                             </VBox.margin>
-                                          </HBox>
+                                          </StackPane>
+                                          <VBox prefHeight="551.0" prefWidth="715.0" style="-fx-background-color: white;" />
                                        </children>
-                                    </VBox>
+                                    </HBox>
                                  </children></AnchorPane>
                           </content>
                         </Tab>
-                        <Tab text="오늘의 몸">
+                        <Tab>
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -413,11 +292,6 @@
                                       </yAxis>
                                     </LineChart>
                                  </children></AnchorPane>
-                          </content>
-                        </Tab>
-                        <Tab disable="true" text="                                                                                                                                                  ">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                           </content>
                         </Tab>
                      </tabs>
