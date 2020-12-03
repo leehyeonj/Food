@@ -9,8 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="HealthSchedule.controller.Homet_mainpage_controller">
+<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.Homet_mainpage_controller">
    <children>
       <Label alignment="CENTER" contentDisplay="TOP" layoutX="137.0" layoutY="54.0" text="맞춤 홈트 영상">
          <font>

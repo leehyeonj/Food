@@ -237,6 +237,7 @@
                                                       <JFXButton fx:id="upperbody" layoutX="194.0" layoutY="132.0" onAction="#upperbodyEx" styleClass="bodyButton" text="상체" textFill="WHITE" />
                                                       <JFXButton fx:id="lowerbody" layoutX="114.0" layoutY="319.0" onAction="#lowerbodyEx" styleClass="bodyButton" text="하체" textFill="WHITE" />
                                                       <JFXButton fx:id="fullbody" layoutX="146.0" layoutY="43.0" onAction="#fullbodyEx" styleClass="bodyButton" text="전신" textFill="WHITE" />
+                                                   	  <JFXButton fx:id="yoga" layoutX="40.0" layoutY="43.0" onAction="#yogaEx" styleClass="yogaButton" text="스트레칭" textFill="WHITE" />
                                                    </children>
                                                 </AnchorPane>
                                              

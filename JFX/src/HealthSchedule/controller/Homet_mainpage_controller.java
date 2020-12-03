@@ -1,9 +1,14 @@
 package HealthSchedule.controller;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -88,46 +93,65 @@ public class Homet_mainpage_controller implements Initializable{
 
 	//전신운동 페이지로 넘어감
 	public void btnfullBody(ActionEvent e) {
-		try {
-			Parent part = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/homet_fullbodyvideo.fxml"));
-			Scene scene = new Scene(part);
-			Stage primaryStage = (Stage)fullBody.getScene().getWindow();
-			primaryStage.setScene(scene);
+		Button fullBody = new Button("전신");
+		fullBody.setOnAction(new EventHandler<ActionEvent>() {
 			
-		} catch (Exception e2) {}
+			public void handle(ActionEvent event) {
+				try {
+			         Desktop.getDesktop().browse(new URI("http://www.youtube.com/results?search_query=전신운동"));
+			         }
+			      catch (IOException e) {
+			         e.printStackTrace(); }
+			         catch (URISyntaxException e) { 
+			            e.printStackTrace();
+			            }
+				}
+		});
 	}
+		
+//		try {
+//			Parent part = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/homet_fullbodyvideo.fxml"));
+//			Scene scene = new Scene(part);
+//			Stage primaryStage = (Stage)fullBody.getScene().getWindow();
+//			primaryStage.setScene(scene);
+//			
+//		} catch (Exception e2) {}
+	
 	
 	//상체운동 페이지로 넘어감
-	public void btnupperBody(ActionEvent e) {
-		try {
-			Parent part = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/homet_upperBodyvideo.fxml"));
-			Scene scene = new Scene(part);
-			Stage primaryStage = (Stage)upperBody.getScene().getWindow();
-			primaryStage.setScene(scene);
-			
-		} catch (Exception e2) {}
+	public void btnupperBody(ActionEvent upperStream) {
+		 try {
+	         Desktop.getDesktop().browse(new URI("http://www.youtube.com/results?search_query=상체운동"));
+	         }
+	      catch (IOException e) {
+	         e.printStackTrace(); }
+	         catch (URISyntaxException e) { 
+	            e.printStackTrace();
+	            }
 	}
 	
 	//복부운동 페이지로 넘어감
-	public void btnabs(ActionEvent e) {
-		try {
-			Parent part = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/homet_absvideo.fxml"));
-			Scene scene = new Scene(part);
-			Stage primaryStage = (Stage)fullBody.getScene().getWindow();
-			primaryStage.setScene(scene);
-			
-		} catch (Exception e2) {}
+	public void btnabs(ActionEvent absStream) {
+		 try {
+	         Desktop.getDesktop().browse(new URI("http://www.youtube.com/results?search_query=복부운동"));
+	         }
+	      catch (IOException e) {
+	         e.printStackTrace(); }
+	         catch (URISyntaxException e) { 
+	            e.printStackTrace();
+	            }
 	}		
 
 	//하체운동 페이지로 넘어감
-	public void btnlowerBody(ActionEvent e) {
-		try {
-			Parent part = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/homet_lowerbodyvideo.fxml"));
-			Scene scene = new Scene(part);
-			Stage primaryStage = (Stage)fullBody.getScene().getWindow();
-			primaryStage.setScene(scene);
-			
-		} catch (Exception e2) {}
+	public void btnlowerBody(ActionEvent lowerStream) {
+		 try {
+	         Desktop.getDesktop().browse(new URI("http://www.youtube.com/results?search_query=하체운동"));
+	         }
+	      catch (IOException e) {
+	         e.printStackTrace(); }
+	         catch (URISyntaxException e) { 
+	            e.printStackTrace();
+	            }
 	}	
 	
 }
