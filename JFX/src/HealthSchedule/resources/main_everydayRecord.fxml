@@ -200,7 +200,7 @@
                                                 <Font size="25.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="CENTER" prefHeight="53.0" prefWidth="204.0" text="3000">
+                                          <Label alignment="CENTER" prefHeight="53.0" prefWidth="204.0" styleClass="todaykcal" text="3000">
                                              <font>
                                                 <Font size="25.0" />
                                              </font>
@@ -243,7 +243,158 @@
                                              
                                              </children>
                                           </StackPane>
-                                          <VBox prefHeight="551.0" prefWidth="715.0" style="-fx-background-color: white;" />
+                                          <VBox prefHeight="551.0" prefWidth="715.0">
+                                             <children>
+                                                <AnchorPane maxHeight="60.0" minWidth="0.0" prefHeight="60.0" prefWidth="719.0">
+                                                   <children>
+                                                      <StackPane prefHeight="100.0" prefWidth="715.0" AnchorPane.rightAnchor="4.0">
+                                                         <children>
+                                                            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: RED; -fx-background-radius: 25;">
+                                                               <children>
+                                                                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="625.0" text="심으뜸 어떠저고 저쩌고" />
+                                                                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="160.0" text="50" />
+                                                                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="198.0" text="분" />
+                                                               </children>
+                                                               <StackPane.margin>
+                                                                  <Insets bottom="7.0" left="70.0" right="5.0" top="7.0" />
+                                                               </StackPane.margin>
+                                                            </HBox>
+                                                            <AnchorPane prefHeight="0.0" prefWidth="620.0">
+                                                               <children>
+                                                                  <AnchorPane layoutY="10.0" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: WHITE; -fx-background-radius: 100;" AnchorPane.leftAnchor="0.0">
+                                                                     <children>
+                                                                        <Label layoutX="26.0" layoutY="31.0" text="전신" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </children>
+                                                      </StackPane>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="715.0">
+                                                   <children>
+                                                      <StackPane prefHeight="100.0" prefWidth="715.0" AnchorPane.rightAnchor="4.0">
+                                                         <children>
+                                                            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: RED; -fx-background-radius: 25;">
+                                                               <children>
+                                                                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="625.0" text="심으뜸 어떠저고 저쩌고" />
+                                                                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="160.0" text="50" />
+                                                                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="198.0" text="분" />
+                                                               </children>
+                                                               <StackPane.margin>
+                                                                  <Insets bottom="7.0" left="70.0" right="5.0" top="7.0" />
+                                                               </StackPane.margin>
+                                                            </HBox>
+                                                            <AnchorPane prefHeight="95.0" prefWidth="715.0">
+                                                               <children>
+                                                                  <AnchorPane layoutY="10.0" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: WHITE; -fx-background-radius: 100;" AnchorPane.leftAnchor="0.0">
+                                                                     <children>
+                                                                        <Label layoutX="26.0" layoutY="31.0" text="전신" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </children>
+                                                      </StackPane>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="715.0">
+                                                   <children>
+                                                      <StackPane prefHeight="100.0" prefWidth="715.0" AnchorPane.rightAnchor="4.0">
+                                                         <children>
+                                                            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: RED; -fx-background-radius: 25;">
+                                                               <children>
+                                                                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="625.0" text="심으뜸 어떠저고 저쩌고" />
+                                                                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="160.0" text="50" />
+                                                                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="198.0" text="분" />
+                                                               </children>
+                                                               <StackPane.margin>
+                                                                  <Insets bottom="7.0" left="70.0" right="5.0" top="7.0" />
+                                                               </StackPane.margin>
+                                                            </HBox>
+                                                            <AnchorPane prefHeight="0.0" prefWidth="620.0">
+                                                               <children>
+                                                                  <AnchorPane layoutY="10.0" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: WHITE; -fx-background-radius: 100;" AnchorPane.leftAnchor="0.0">
+                                                                     <children>
+                                                                        <Label layoutX="26.0" layoutY="31.0" text="전신" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </children>
+                                                      </StackPane>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="715.0">
+                                                   <children>
+                                                      <StackPane prefHeight="100.0" prefWidth="715.0" AnchorPane.rightAnchor="4.0">
+                                                         <children>
+                                                            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: RED; -fx-background-radius: 25;">
+                                                               <children>
+                                                                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="625.0" text="심으뜸 어떠저고 저쩌고" />
+                                                                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="160.0" text="50" />
+                                                                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="198.0" text="분" />
+                                                               </children>
+                                                               <StackPane.margin>
+                                                                  <Insets bottom="7.0" left="70.0" right="5.0" top="7.0" />
+                                                               </StackPane.margin>
+                                                            </HBox>
+                                                            <AnchorPane prefHeight="0.0" prefWidth="620.0">
+                                                               <children>
+                                                                  <AnchorPane layoutY="10.0" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: WHITE; -fx-background-radius: 100;" AnchorPane.leftAnchor="0.0">
+                                                                     <children>
+                                                                        <Label layoutX="26.0" layoutY="31.0" text="전신" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </children>
+                                                      </StackPane>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="100.0" prefWidth="715.0">
+                                                   <children>
+                                                      <StackPane prefHeight="100.0" prefWidth="715.0" AnchorPane.rightAnchor="4.0">
+                                                         <children>
+                                                            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: RED; -fx-background-radius: 25;">
+                                                               <children>
+                                                                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="625.0" text="심으뜸 어떠저고 저쩌고" />
+                                                                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="160.0" text="50" />
+                                                                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="198.0" text="분" />
+                                                               </children>
+                                                               <StackPane.margin>
+                                                                  <Insets bottom="7.0" left="70.0" right="5.0" top="7.0" />
+                                                               </StackPane.margin>
+                                                            </HBox>
+                                                            <AnchorPane prefHeight="0.0" prefWidth="620.0">
+                                                               <children>
+                                                                  <AnchorPane layoutY="10.0" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: WHITE; -fx-background-radius: 100;" AnchorPane.leftAnchor="0.0">
+                                                                     <children>
+                                                                        <Label layoutX="26.0" layoutY="31.0" text="전신" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </children>
+                                                      </StackPane>
+                                                   </children>
+                                                </AnchorPane>
+                                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                   <children>
+                                                      <HBox layoutX="115.0" prefHeight="49.0" prefWidth="592.0">
+                                                         <children>
+                                                            <Label alignment="CENTER" prefHeight="62.0" prefWidth="142.0" styleClass="todaykcal" text="총 운동시간" />
+                                                            <Label alignment="CENTER" prefHeight="49.0" prefWidth="443.0" styleClass="todaykcal" text="00:00:00" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </AnchorPane>
+                                             </children>
+                                          </VBox>
                                        </children>
                                     </HBox>
                                  </children></AnchorPane>
