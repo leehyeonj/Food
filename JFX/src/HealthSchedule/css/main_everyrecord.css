@@ -55,3 +55,9 @@
 .bodyimage{
 	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 5, 0 , 5 , 5);
 }
+.todaykcal{
+	-fx-text-fill: white;
+	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 5, 0 , 5 , 5);
+	-fx-font-family:  "SeoulNamsan EB"; 
+	-fx-font-size: 15pt;
+}
