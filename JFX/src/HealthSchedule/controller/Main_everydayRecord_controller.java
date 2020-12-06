@@ -15,28 +15,27 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
-
-import net.halowd.saveImg.SaveImg;
-
-import java.io.File;
-import java.io.IOException;
+//import java.awt.Image;
+////import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
+//import java.sql.Connection;
+//import java.sql.DriverManager;
+//import java.sql.PreparedStatement;
+//import java.sql.SQLException;
+//
+//import javax.swing.*;
+//import javax.swing.filechooser.FileNameExtensionFilter;
+//
+//
+//import net.halowd.saveImg.SaveImg;
+//
+//import java.io.File;
+//import java.io.IOException;
 
 
 public class Main_everydayRecord_controller implements Initializable{
@@ -170,85 +169,85 @@ public class Main_everydayRecord_controller implements Initializable{
       
       
       
-      //사진가져오기 버튼
-      public void actionPerformed(ActionEvent e){
-          JFileChooser fileChooser = new JFileChooser();
-          fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-          FileNameExtensionFilter filter = new FileNameExtensionFilter("*.IMAGE", "jpg","gif","png", "jpeg");
-          fileChooser.addChoosableFileFilter(filter);
-          int result = fileChooser.showSaveDialog(null);
-          if(result == JFileChooser.APPROVE_OPTION){
-              File selectedFile = fileChooser.getSelectedFile();
-              String path = selectedFile.getAbsolutePath();
-              fileName = selectedFile.getName();
-              url=path;
-              urlToString=selectedFile.toURI().toString();
-              label.setIcon(ResizeImage(path));
-              s = path;
-               }
-          else if(result == JFileChooser.CANCEL_OPTION){
-              System.out.println("No Data");
-          }
-      }
-     });
-      
-      
-      
-      //사진저장 버튼
-      public void savePhoto(ActionEvent e){
-
-    	SaveImg saveImg = new SaveImg();
-
-        String file = urlToString;
-        String path = "C:\\HealthSchedule\\test\\src\\images";
- 	   
- 	   final String USERNAME = "root";   //DB 접속시 ID
- 	   final String PASSWORD = "1234";	 //DB 접속시 패스워드
- 	   final String URL = "jdbc:mysql://localhost:3306/iddb";
- 	    
- 	    try {
-             System.out.println("생성자");
-             Class.forName("com.mysql.jdbc.Driver"); 
-             conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-             System.out.println("드라이버 로딩 성공!!");
-         } catch (Exception e2) {
-             e2.printStackTrace();
-             System.out.println("드라이버 로드 실패!!");
-         }
- 	   
- 	    String sql = "insert into test values(?);";
-     	PreparedStatement pstmt = null;
-         try {
-             pstmt = conn.prepareStatement(sql);
-             String url = "C:\\HealthSchedule\\test\\src\\images\\" + fileName;
-             pstmt.setString(1, url);
-
-             int result = pstmt.executeUpdate();
-             if(result == 1) {
-             	System.out.println("사진 추가 성공!");
-             	try {
-            			int result2 = saveImg.saveImgFromUrl(file, path);
-            			if (result2 == 1) {
-            				System.out.println("저장된경로 : " + saveImg.getPath());
-            				System.out.println("저장된파일이름 : " + saveImg.getSavedFileName());
-            			}
-
-            		} catch (IOException e6) {
-            			e6.printStackTrace();
-            		}
-             }           
-         } catch (SQLException e3) {            
-         	System.out.println("사진 추가 실패!");
-             e3.printStackTrace();
-         } finally {
-             try {
-                 if (pstmt != null && !pstmt.isClosed())
-                     pstmt.close();
-             } catch (SQLException e4) {                
-                 e4.printStackTrace();
-             }
-         }
- 	  }
+//      //사진가져오기 버튼
+//      public void actionPerformed(ActionEvent e){
+//          JFileChooser fileChooser = new JFileChooser();
+//          fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+//          FileNameExtensionFilter filter = new FileNameExtensionFilter("*.IMAGE", "jpg","gif","png", "jpeg");
+//          fileChooser.addChoosableFileFilter(filter);
+//          int result = fileChooser.showSaveDialog(null);
+//          if(result == JFileChooser.APPROVE_OPTION){
+//              File selectedFile = fileChooser.getSelectedFile();
+//              String path = selectedFile.getAbsolutePath();
+//              fileName = selectedFile.getName();
+//              url=path;
+//              urlToString=selectedFile.toURI().toString();
+//              label.setIcon(ResizeImage(path));
+//              s = path;
+//               }
+//          else if(result == JFileChooser.CANCEL_OPTION){
+//              System.out.println("No Data");
+//          }
+//      }
+//     });
+//      
+//      
+//      
+//      //사진저장 버튼
+//      public void savePhoto(ActionEvent e){
+//
+//    	SaveImg saveImg = new SaveImg();
+//
+//        String file = urlToString;
+//        String path = "C:\\HealthSchedule\\test\\src\\images";
+// 	   
+// 	   final String USERNAME = "root";   //DB 접속시 ID
+// 	   final String PASSWORD = "1234";	 //DB 접속시 패스워드
+// 	   final String URL = "jdbc:mysql://localhost:3306/iddb";
+// 	    
+// 	    try {
+//             System.out.println("생성자");
+//             Class.forName("com.mysql.jdbc.Driver"); 
+//             conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+//             System.out.println("드라이버 로딩 성공!!");
+//         } catch (Exception e2) {
+//             e2.printStackTrace();
+//             System.out.println("드라이버 로드 실패!!");
+//         }
+// 	   
+// 	    String sql = "insert into test values(?);";
+//     	PreparedStatement pstmt = null;
+//         try {
+//             pstmt = conn.prepareStatement(sql);
+//             String url = "C:\\HealthSchedule\\test\\src\\images\\" + fileName;
+//             pstmt.setString(1, url);
+//
+//             int result = pstmt.executeUpdate();
+//             if(result == 1) {
+//             	System.out.println("사진 추가 성공!");
+//             	try {
+//            			int result2 = saveImg.saveImgFromUrl(file, path);
+//            			if (result2 == 1) {
+//            				System.out.println("저장된경로 : " + saveImg.getPath());
+//            				System.out.println("저장된파일이름 : " + saveImg.getSavedFileName());
+//            			}
+//
+//            		} catch (IOException e6) {
+//            			e6.printStackTrace();
+//            		}
+//             }           
+//         } catch (SQLException e3) {            
+//         	System.out.println("사진 추가 실패!");
+//             e3.printStackTrace();
+//         } finally {
+//             try {
+//                 if (pstmt != null && !pstmt.isClosed())
+//                     pstmt.close();
+//             } catch (SQLException e4) {                
+//                 e4.printStackTrace();
+//             }
+//         }
+// 	  }
    
       
       
