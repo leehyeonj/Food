@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="home" prefHeight="200.0" prefWidth="800.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+
+<AnchorPane fx:id="home" prefHeight="200.0" prefWidth="800.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/8" 
+xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.RoutinesController">
+   <children>
+      <JFXButton fx:id="plusbtn" buttonType="RAISED" layoutX="376.0" layoutY="86.0"  ripplerFill="#030000" text="plus" />
+   </children>
+</AnchorPane>
