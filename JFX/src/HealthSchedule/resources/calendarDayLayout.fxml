@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="calendarDay" onMouseClicked="#pageMove"  prefHeight="120.0" prefWidth="140.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.DayController">
+<AnchorPane fx:id="calendarDay" onMouseClicked="#pageMove" prefHeight="120.0" prefWidth="140.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.DayController">
    <children>
       <VBox layoutX="18.0" layoutY="30.0" prefHeight="75.0" prefWidth="117.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="5.0">
          <children>
@@ -72,4 +72,8 @@
          </children>
       </AnchorPane>
    </children>
+   <styleClass>
+      <String fx:value="bordercolor-skyblue" />
+      <String fx:value="backcolor-white" />
+   </styleClass>
 </AnchorPane>

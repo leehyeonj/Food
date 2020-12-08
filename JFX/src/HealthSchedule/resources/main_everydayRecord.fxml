@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" prefHeight="950.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.Main_everydayRecord_controller">
+<AnchorPane fx:id="pane" prefHeight="950.0" prefWidth="1300.0" styleClass="gradient-main" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.Main_everydayRecord_controller">
    <children>
       <AnchorPane prefHeight="39.0" prefWidth="1300.0">
          <children>
@@ -34,8 +34,18 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="todayDate" layoutX="555.0" layoutY="60.0" styleClass="monthFont" text="2020.12.02" />
-                  <Label fx:id="todayDayOfWeek" layoutX="576.0" layoutY="100.0" styleClass="monthFont" text="TUESDAY" />
+                  <Label fx:id="todayDate" layoutX="555.0" layoutY="60.0" text="2020.12.02">
+                     <styleClass>
+                        <String fx:value="textfill-white" />
+                        <String fx:value="fontsize25" />
+                        <String fx:value="dropshadow" />
+                     </styleClass></Label>
+                  <Label fx:id="todayDayOfWeek" layoutX="576.0" layoutY="100.0" text="TUESDAY">
+                     <styleClass>
+                        <String fx:value="dropshadow" />
+                        <String fx:value="textfill-white" />
+                        <String fx:value="fontsize25" />
+                     </styleClass></Label>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="530.0" prefWidth="1300.0">
@@ -43,7 +53,7 @@
                   <Insets left="110.0" right="110.0" />
                </VBox.margin>
                <children>
-                  <JFXTabPane fx:id="todayDietAnchorpane" layoutY="-9.0" prefHeight="585.0" prefWidth="1080.0">
+                  <JFXTabPane fx:id="todayDietAnchorpane" layoutY="-9.0" prefHeight="585.0" prefWidth="1080.0" styleClass="backcolor-transparent">
                      <tabs>
                         <Tab>
                           <content>
@@ -51,17 +61,23 @@
                                  <children>
                                     <HBox prefHeight="439.0" prefWidth="1020.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
                                        <children>
-                                          <StackPane prefHeight="439.0" prefWidth="275.0" styleClass="dietStackpane">
+                                          <StackPane prefHeight="439.0" prefWidth="275.0" styleClass="dropshadow2">
                                              <children>
                                                 <VBox opacity="0.96" prefHeight="341.0" prefWidth="246.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                                                    <StackPane.margin>
                                                       <Insets left="10.0" right="10.0" top="80.0" />
                                                    </StackPane.margin>
                                                    <children>
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="dayNameLabel" text="breakfast">
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="breakfast">
                                                          <VBox.margin>
                                                             <Insets top="20.0" />
                                                          </VBox.margin>
+                                                         <styleClass>
+                                                            <String fx:value="fontsize13" />
+                                                            <String fx:value="textfill-blue" />
+                                                            <String fx:value="fontshadow" />
+                                                            <String fx:value="fontTypoHongikingan" />
+                                                         </styleClass>
                                                       </Label>
                                                       <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
                                                       <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
@@ -86,14 +102,20 @@
                                                 </ImageView>
                                              </children>
                                           </StackPane>
-                                          <StackPane prefHeight="439.0" prefWidth="275.0" styleClass="dietStackpane">
+                                          <StackPane prefHeight="439.0" prefWidth="275.0" styleClass="dropshadow2">
                                              <children>
                                                 <VBox opacity="0.96" prefHeight="341.0" prefWidth="246.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                                                    <children>
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="dayNameLabel" text="lunch">
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="lunch">
                                                          <VBox.margin>
                                                             <Insets top="20.0" />
                                                          </VBox.margin>
+                                                         <styleClass>
+                                                            <String fx:value="fontsize13" />
+                                                            <String fx:value="textfill-blue" />
+                                                            <String fx:value="fontshadow" />
+                                                            <String fx:value="fontTypoHongikingan" />
+                                                         </styleClass>
                                                       </Label>
                                                       <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
                                                       <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
@@ -121,14 +143,20 @@
                                                 </ImageView>
                                              </children>
                                           </StackPane>
-                                          <StackPane prefHeight="439.0" prefWidth="275.0" styleClass="dietStackpane">
+                                          <StackPane prefHeight="439.0" prefWidth="275.0" styleClass="dropshadow2">
                                              <children>
                                                 <VBox opacity="0.96" prefHeight="341.0" prefWidth="246.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                                                    <children>
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="dayNameLabel" text="snack">
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="snack">
                                                          <VBox.margin>
                                                             <Insets top="20.0" />
                                                          </VBox.margin>
+                                                         <styleClass>
+                                                            <String fx:value="fontsize13" />
+                                                            <String fx:value="textfill-blue" />
+                                                            <String fx:value="fontshadow" />
+                                                            <String fx:value="fontTypoHongikingan" />
+                                                         </styleClass>
                                                       </Label>
                                                       <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
                                                       <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
@@ -156,14 +184,20 @@
                                                 </ImageView>
                                              </children>
                                           </StackPane>
-                                          <StackPane prefHeight="439.0" prefWidth="275.0" styleClass="dietStackpane">
+                                          <StackPane prefHeight="439.0" prefWidth="275.0" styleClass="dropshadow2">
                                              <children>
                                                 <VBox opacity="0.96" prefHeight="341.0" prefWidth="246.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                                                    <children>
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="dayNameLabel" text="dinner">
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="dinner">
                                                          <VBox.margin>
                                                             <Insets top="20.0" />
                                                          </VBox.margin>
+                                                         <styleClass>
+                                                            <String fx:value="fontsize13" />
+                                                            <String fx:value="textfill-blue" />
+                                                            <String fx:value="fontshadow" />
+                                                            <String fx:value="fontTypoHongikingan" />
+                                                         </styleClass>
                                                       </Label>
                                                       <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
                                                       <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
@@ -226,7 +260,7 @@
                                                 <Insets left="25.0" />
                                              </HBox.margin>
                                              <children>
-                                                <ImageView fitHeight="515.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true" styleClass="bodyimage">
+                                                <ImageView fitHeight="515.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true" styleClass="dropshadow2">
                                                    <image>
                                                       <Image url="@images/body.png" />
                                                    </image>
@@ -448,9 +482,9 @@
                   <Insets left="110.0" right="110.0" top="20.0" />
                </VBox.margin>
                <children>
-                  <JFXButton buttonType="RAISED" prefHeight="100.0" prefWidth="384.0" ripplerFill="#ff1515" text="음식 추가하기" />
-                  <JFXButton buttonType="RAISED" prefHeight="100.0" prefWidth="374.0" ripplerFill="#f82222" text="운동하러가기" />
-                  <JFXButton buttonType="RAISED" prefHeight="100.0" prefWidth="355.0" ripplerFill="#ff0606" text="나의 사진 모아보기" />
+                  <JFXButton buttonType="RAISED" prefHeight="100.0" prefWidth="384.0" ripplerFill="#ff1515" text="메모" />
+                  <JFXButton buttonType="RAISED" prefHeight="100.0" prefWidth="374.0" ripplerFill="#f82222" text="운동 루틴 만들기" />
+                  <JFXButton buttonType="RAISED" prefHeight="100.0" prefWidth="355.0" ripplerFill="#ff0606" text="내 사진 비교" />
                </children>
             </HBox>
          </children>

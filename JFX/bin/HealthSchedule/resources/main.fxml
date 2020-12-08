@@ -18,8 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" prefHeight="950.0" prefWidth="1300.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" 
-xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.MainController">
+<AnchorPane fx:id="pane" prefHeight="950.0" prefWidth="1300.0" styleClass="gradient-main" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.MainController">
    <children>
       <AnchorPane prefHeight="950.0" prefWidth="1300.0">
          <children>
@@ -35,26 +34,45 @@ xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.Mai
                </children></AnchorPane>
             <VBox prefHeight="833.0" prefWidth="1100.0" AnchorPane.bottomAnchor="-319.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
                <children>
-                  <AnchorPane prefHeight="131.0" prefWidth="990.0">
+                  <AnchorPane prefHeight="139.0" prefWidth="1100.0">
                      <children>
-                        <Label fx:id="monthText" layoutX="588.0" layoutY="14.0" prefHeight="114.0" prefWidth="93.0" styleClass="monthFont" text="12">
+                        <Label fx:id="monthText" layoutX="588.0" layoutY="20.0" prefHeight="114.0" prefWidth="93.0" text="12">
                            <font>
                               <Font size="30.0" />
-                           </font></Label>
+                           </font>
+                           <styleClass>
+                              <String fx:value="dropshadow" />
+                              <String fx:value="textfill-white" />
+                              <String fx:value="fontSystem" />
+                              <String fx:value="fontsize55" />
+                           </styleClass></Label>
                         <VBox layoutX="317.0" layoutY="37.0" prefHeight="80.0" prefWidth="271.0">
                            <children>
-                              <Label fx:id="lblDate" alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="362.0" styleClass="monthFont" text="2020">
+                              <Label fx:id="lblDate" alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="362.0" text="2020">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
+                                 <styleClass>
+                                    <String fx:value="fontTypoHongikingan" />
+                                    <String fx:value="dropshadow" />
+                                    <String fx:value="textfill-white" />
+                                    <String fx:value="fontsize25" />
+                                 </styleClass>
                               </Label>
-                              <Label fx:id="lblMonth" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="324.0" styleClass="monthFont" text="DECEMBER">
+                              <Label fx:id="lblMonth" alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="324.0" text="DECEMBER">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
+                                 <styleClass>
+                                    <String fx:value="dropshadow" />
+                                    <String fx:value="textfill-white" />
+                                    <String fx:value="fontTypoHongikingan" />
+                                    <String fx:value="fontsize25" />
+                                 </styleClass>
                               </Label>
                            </children>
                         </VBox>
+                        <JFXButton buttonType="RAISED" layoutX="1010.0" layoutY="103.0" ripplerFill="#ff0505" style="-fx-background-color: WHITE;" text="D-DAY" />
                      </children>
                   </AnchorPane>
                   <HBox prefHeight="50.0" prefWidth="1100.0">
@@ -99,7 +117,7 @@ xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.Mai
                         </Label>
                      </children>
                   </HBox>
-                  <GridPane fx:id="gridCalendar" gridLinesVisible="true" prefHeight="585.0" prefWidth="1100.0">
+                  <GridPane fx:id="gridCalendar" gridLinesVisible="true" prefHeight="585.0" prefWidth="1100.0" styleClass="dropshadow">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -122,8 +140,16 @@ xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.Mai
                   </GridPane>
                </children>
             </VBox>
-            <JFXButton fx:id="btnPrev" buttonType="RAISED" layoutX="34.0" layoutY="519.0" onAction="#prevMonth" prefHeight="45.0" prefWidth="45.0" ripplerFill="#e7e9ee" text="&lt;" textFill="WHITE" />
-            <JFXButton fx:id="btnNext" buttonType="RAISED" layoutX="1221.0" layoutY="519.0" onAction="#nextMonth" prefHeight="45.0" prefWidth="45.0" ripplerFill="#e7e9ee" text="&gt;" textFill="WHITE" />
+            <JFXButton fx:id="btnPrev" buttonType="RAISED" layoutX="34.0" layoutY="519.0" onAction="#prevMonth" prefHeight="45.0" prefWidth="45.0" ripplerFill="#e7e9ee" text="&lt;" textFill="WHITE">
+               <styleClass>
+                  <String fx:value="radius100" />
+                  <String fx:value="backcolor-skyblue" />
+               </styleClass></JFXButton>
+            <JFXButton fx:id="btnNext" buttonType="RAISED" layoutX="1221.0" layoutY="519.0" onAction="#nextMonth" prefHeight="45.0" prefWidth="45.0" ripplerFill="#e7e9ee" text="&gt;" textFill="WHITE">
+               <styleClass>
+                  <String fx:value="backcolor-purple" />
+                  <String fx:value="radius100" />
+               </styleClass></JFXButton>
             <JFXHamburger fx:id="hamburger" layoutX="34.0" layoutY="59.0" />
          </children>
       </AnchorPane>

@@ -1,19 +1,72 @@
-#btnPrev{
-	-fx-background-color: #33539E  ;
-	-fx-background-radius: 100px;
-	-fx-background-color: #7FACD6  ;
-	
+/*백그라운드 */
+
+.gradient-main{
+	-fx-background-color: linear-gradient(to right , #7FACD6 , #BFB8DA);
 }
+.dropshadow{
+	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 10, 0 , 5 , 2);
+}
+.dropshadow2{
+	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 5, 0 , 5 , 5);
+}
+
+.backcolor-blue{
+	-fx-background-color: #33539E  ;
+}
+.backcolor-skyblue{
+	-fx-background-color: #7FACD6  ;
+}
+.backcolor-purple{
+	-fx-background-color: #BFB8DA ;
+}
+.backcolor-white{
+	-fx-background-color: #ffffff ;
+}
+.backcolor-transparent{
+	 -fx-background-color: rgba(0,0,0,0);
+}
+.bordercolor-skyblue{
+	-fx-border-color: #7FACD6;
+}
+
+/* font */
+.fontsize25{
+	-fx-font-size: 25pt;
+}
+.fontsize55{
+	-fx-font-size: 55pt;
+}
+.fontsize13{
+	-fx-font-size: 13pt;
+}
+.fontTypoHongikingan{
+	-fx-font-family: "Typo_Hongikingan L"; 
+}
+.fontSystem{
+	-fx-font-family: "System"; 
+}
+.textfill-white{
+	-fx-text-fill: white;	
+}
+.textfill-blue{
+	-fx-text-fill: #33539E;	
+}
+.fontshadow{
+	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 5, 0 , 1 , 1);
+}
+
+/*////////////////////////////// */
+
+.radius100{
+	-fx-background-radius: 100px;
+}
+
+
 #btnPrev:hover{
 	-fx-background-color: linear-gradient(to right, #BFB8DA  , #E8B7D4);
 }
 
-#btnNext{
 
-	-fx-background-color: #33539E  ;
-	-fx-background-radius: 100px;
-	-fx-background-color: #BFB8DA ;
-}
 #btnNext:hover{
 	-fx-background-color: linear-gradient(to right,#BFB8DA  , #E8B7D4);
 }
@@ -28,49 +81,19 @@
 	-fx-font-weight: bold;
 }
 
-#topBar{
-
-	-fx-background-color: linear-gradient(to right, #7FACD6 , #BFB8DA);
-}
 #lblDay{
 	-fx-font-size: 10pt;
 	-fx-font-family: "Arial Black"; 
 	-fx-text-fill: #4c4d4f;
 
 }
-#monthText{
-	-fx-font-size: 55pt;
-	-fx-font-family: "System"; 
-}
-#lblMonth{
-	-fx-font-size: 25pt;
-	-fx-font-family: "Typo_Hongikingan L"; 
-	
-	}
-#lblDate{
-	-fx-font-size: 20pt;
-	-fx-font-family: "Typo_Hongikingan L"; 
-}
 
-#pane{
-	-fx-background-color: linear-gradient(to right , #7FACD6 , #BFB8DA);
-}
-#calendarDay{
-	-fx-background-color: #ffffff ;
-	-fx-border-color: #7FACD6;
-} 
-.monthFont{
-	-fx-text-fill: white;
-	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 10, 0 , 5 , 2);
-}
-#gridCalendar{
-	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 10, 0 , 5 , 2);
-}
 .daydeco{
 	-fx-background-color: linear-gradient(to right , #7FACD6 , #BFB8DA);
 	-fx-background-color: #e1ebf7 ;
 	-fx-background-radius: 100px; 
 }
+
 #calendarDay:hover{
 	-fx-background-color: #e1ebf7 ;
 }
@@ -80,11 +103,6 @@
 .window{
 	-fx-text-fill: #e7e9ee;
 }
-.tabpane{
-	-fx-background-color: #33539E  ;
-}
-.monthFont{
-	-fx-font-size: 25pt;
-	-fx-font-family:  "Typo_Hongikingan L"; 
-}
+
+
 
