@@ -51,6 +51,7 @@ public class Main_everydayRecord_controller implements Initializable{
    @FXML private JFXButton abs;//복부 버튼
    @FXML private JFXButton lowerbody;//하체 버튼
    @FXML private JFXButton yoga; //요가버튼
+   @FXML private JFXButton makeRoutine; //요가버튼
    
    
    @Override
@@ -315,5 +316,16 @@ public class Main_everydayRecord_controller implements Initializable{
                  }   
      }
       
+      
+      //운동루틴 만들기버튼
+      public void makeRountinebtn(ActionEvent event) {
+    	  try {
+              //뒤로 가기 버튼을 누르면 뒤로감
+              Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/makeRoutine.fxml"));
+              Scene scene = new Scene(checkOk);
+              Stage primaryStage= (Stage)makeRoutine.getScene().getWindow();
+              primaryStage.setScene(scene);
+           } catch (Exception e2) {}
+      }
    
 }
