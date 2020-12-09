@@ -32,8 +32,12 @@ public class SignUpController implements Initializable{
     
 	private Connection conn;    //DB 目池记(楷搬) 按眉
     private static final String USERNAME = "root";   //DB 立加矫 ID
-    private static final String PASSWORD = "1234";	 //DB 立加矫 菩胶况靛
-    private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//荤侩磊林家/db林家
+//    private static final String PASSWORD = "1234";	 //DB 立加矫 菩胶况靛
+//    private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//荤侩磊林家/db林家
+    
+    //泅林
+    private static final String PASSWORD = "DOALd1120f1gG";	 //DB 立加矫 菩胶况靛
+    private static String URL = "jdbc:mysql://localhost:3305/calendardb";	//dbms
     
     //积己磊
     public SignUpController() {

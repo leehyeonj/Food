@@ -9,6 +9,6 @@
 <AnchorPane fx:id="home" prefHeight="200.0" prefWidth="800.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/8" 
 xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.RoutinesController">
    <children>
-      <JFXButton fx:id="plusbtn" buttonType="RAISED" layoutX="376.0" layoutY="86.0"  ripplerFill="#030000" text="plus" />
+      <JFXButton fx:id="plusbtn" onAction="#plusaction" buttonType="RAISED" layoutX="376.0" layoutY="86.0"  ripplerFill="#030000" text="plus" />
    </children>
 </AnchorPane>

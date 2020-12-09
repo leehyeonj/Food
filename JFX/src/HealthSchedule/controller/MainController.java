@@ -23,11 +23,12 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 //평소에 하던 것처럼 Initializable를 상속받지 않는다
-public class MainController extends MasterController implements Initializable{
+public class MainController implements Initializable{
 	@FXML
 	private AnchorPane pane;
 	  
@@ -47,6 +48,16 @@ public class MainController extends MasterController implements Initializable{
 	   
 	   @FXML private GridPane gridCalendar;	//달력표
 	 
+	   
+	   private Pane root; //가장 위쪽의 루트 저장
+
+		public Pane getRoot() {
+			return root;
+		}
+
+		public void setRoot(Pane root) {
+			this.root = root;
+		}
 	   
 	   
 		
@@ -148,16 +159,21 @@ public class MainController extends MasterController implements Initializable{
 		   LocalDate firstDay = LocalDate.of(currentYM.getYear(), currentYM.getMonthValue(), 1);
 		   setToday(firstDay);	//달력을 넘기면 1일로 변경
 	   }
-	   
+	   static String year;
+	   static String month;
 	   //중앙상단 오늘 날짜
 	   public void setToday(LocalDate date) {
 		   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy");
 		   DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("MM");
 		   lblDate.setText(date.format(dtf));
+		   year = date.format(dtf);
+		   month = date.format(dtf2);
 		   lblMonth.setText(dayOfWeek.get(date.getMonth().toString()));
 		   monthText.setText(date.format(dtf2));
 	   }
 		
+	   
+	  
 	   //중앙상단 오늘 요일
 	   public void loadMonthData(YearMonth ym) {
 		   LocalDate calendarDate = LocalDate.of(ym.getYear(), ym.getMonthValue(), 1); //해당 년월의 1일을 가져온다.
@@ -220,22 +236,7 @@ public class MainController extends MasterController implements Initializable{
 	   stage = (Stage) pane.getScene().getWindow();
 	   stage.setIconified(true);
 	   }
-	   //전체 화면으로
-//	   @FXML
-//	   private void actionMaxWindow(MouseEvent event) {
-//	   // Launcher.stage.setFullScreen(true);
-//	   // if (Launcher.stage.isMaximized()) {
-//	   // Launcher.stage.setMaximized(false);
-//	   // } else {
-//	   // Launcher.stage.setMaximized(true);
-//	   // }
-//	   stage = (Stage) pane.getScene().getWindow();
-//	   if (stage.isMaximized()) {
-//	   stage.setMaximized(false);
-//	   } else {
-//	   stage.setMaximized(true);
-//	   }
-//	   }
+
 	   
 	   //화면 끄기
 	   @FXML

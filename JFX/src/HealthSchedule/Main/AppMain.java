@@ -34,10 +34,10 @@ public static AppMain app;
 //		fontFamily = Font.loadFont(getClass().getResource("/HealthSchedule/css/Typo_HongikinganL.ttf").toString(), 16).getFamily(); 
 //		System.out.println(fontFamily);
 		
-		Parent root = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/main.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/LoginPage.fxml"));
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
-		primaryStage.initStyle(StageStyle.UNDECORATED);
+//		primaryStage.initStyle(StageStyle.UNDECORATED);
 		primaryStage.show();
 		
 	}

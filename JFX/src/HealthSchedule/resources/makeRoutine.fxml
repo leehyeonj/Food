@@ -6,12 +6,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="holderpane" prefHeight="950.0" prefWidth="1300.0" styleClass="gradient-main" stylesheets="@../css/main.css" 
-xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.MakeRoutineController">
+<AnchorPane fx:id="holderpane" prefHeight="950.0" prefWidth="1300.0" styleClass="gradient-main" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.MakeRoutineController">
    <children>
       <ScrollPane fx:id="scroll" layoutX="150.0" layoutY="129.0" prefHeight="800.0" prefWidth="1000.0">
          <content>
-            <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
+            <GridPane fx:id="grid" prefHeight="9.0" prefWidth="0.0">
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>

@@ -3,6 +3,7 @@ package HealthSchedule.controller;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import HealthSchedule.Main.AppMain;
@@ -16,15 +17,31 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class DayController extends MasterController  implements Initializable{
+public class DayController extends MainController   implements Initializable{
 	@FXML private Label lblDay;		//일(day)
 //	@FXML private Label lblCount;	//일정카운트
 	@FXML private AnchorPane calendarDay ;
 	
+	static String dayOfMonth;
+	//날짜 
+	static String everyday = year + month + dayOfMonth;
+	
 	private LocalDate date;
 	private boolean isFocused = false;
+	
+	private Pane root; //가장 위쪽의 루트 저장
+
+	public Pane getRoot() {
+		return root;
+	}
+
+	public void setRoot(Pane root) {
+		this.root = root;
+	}
+	
 	
 	
 	@Override
@@ -65,6 +82,13 @@ public class DayController extends MasterController  implements Initializable{
 				Scene scene = new Scene(checkOk);
 				Stage primaryStage= (Stage)calendarDay.getScene().getWindow();
 				primaryStage.setScene(scene);
+				
+				 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd");
+				dayOfMonth = date.format(dtf);
+				
+				System.out.println(year + month + dayOfMonth);
+				
+				
 			} catch (Exception e2) {}
 	   }
 	

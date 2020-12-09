@@ -38,7 +38,7 @@ import javafx.stage.Stage;
 //import java.io.IOException;
 
 
-public class Main_everydayRecord_controller implements Initializable{
+public class Main_everydayRecord_controller extends DayController implements Initializable{
 
    @FXML private AnchorPane pane;
    @FXML private Label backLabel;
@@ -52,6 +52,7 @@ public class Main_everydayRecord_controller implements Initializable{
    @FXML private JFXButton lowerbody;//하체 버튼
    @FXML private JFXButton yoga; //요가버튼
    @FXML private JFXButton makeRoutine; //요가버튼
+   
    
    
    @Override
