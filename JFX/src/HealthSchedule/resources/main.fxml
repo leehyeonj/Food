@@ -72,7 +72,6 @@
                               </Label>
                            </children>
                         </VBox>
-                        <JFXButton buttonType="RAISED" layoutX="1010.0" layoutY="103.0" ripplerFill="#ff0505" style="-fx-background-color: WHITE;" text="D-DAY" />
                      </children>
                   </AnchorPane>
                   <HBox prefHeight="50.0" prefWidth="1100.0">

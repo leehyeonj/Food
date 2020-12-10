@@ -1,23 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.geometry.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.LoginController">
-		<children>
-			<AnchorPane prefHeight="500.0" prefWidth="500.0">
-  			 <children>
-   	 			<Label layoutX="171.0" layoutY="200.0" text="Id" />
-   	  			<Label layoutX="171.0" layoutY="240.0" text="Pw" />
-   	 			<TextField fx:id="id" layoutX="249.0" layoutY="198.0" />
-   	  			<PasswordField fx:id="password" layoutX="249.0" layoutY="236.0" />
-   	 			<Button fx:id="membersBtn" layoutX="171.0" layoutY="280.0" text="회원가입" />
-   	  			<Button fx:id="loginBtn" layoutX="266.0" layoutY="280.0" onAction="#loginAction" text="login" />
-   	  			<Button fx:id="exit" layoutX="339.0" layoutY="280.0" onAction="#exitbtn" text="exit" />
-   			</children>	
-	    </AnchorPane>  
-	</children>
+<AnchorPane fx:id="pane" prefHeight="950.0" prefWidth="1300.0" styleClass="login-gradient" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.LoginController2">
+   <children>
+      <BorderPane prefHeight="950.0" prefWidth="1300.0">
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox layoutX="475.0" layoutY="313.0" prefHeight="241.0" prefWidth="351.0">
+                     <children>
+                        <JFXTextField fx:id="emailTextField" labelFloat="true" prefHeight="40.0" prefWidth="258.0" promptText="email">
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding></JFXTextField>
+                        <Pane prefHeight="38.0" prefWidth="291.0" />
+                        <JFXPasswordField fx:id="passwordTextField" labelFloat="true" prefHeight="40.0" prefWidth="400.0" promptText="password">
+                           
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding></JFXPasswordField>
+                        <Pane prefHeight="38.0" prefWidth="291.0" />
+                        <HBox alignment="CENTER" prefHeight="34.0" prefWidth="351.0">
+                           <children>
+                              <JFXButton fx:id="loginBtn" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#loginAction" prefHeight="43.0" prefWidth="99.0" text="Login">
+                                 <styleClass>
+                                    <String fx:value="backcolor-blue" />
+                                    <String fx:value="textfill-white" />
+                                 </styleClass>
+                               
+                              </JFXButton>
+                              <Pane prefHeight="34.0" prefWidth="24.0" />
+                              <JFXButton fx:id="forgetpasswordBtn" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#findPassword" prefHeight="43.0" prefWidth="144.0" text="Forget Password">
+                                 <styleClass>
+                                    <String fx:value="backcolor-blue" />
+                                    <String fx:value="textfill-white" />
+                                 </styleClass>
+                              </JFXButton>
+                           </children>
+                          
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets left="30.0" right="30.0" top="20.0" />
+                     </padding>
+                  </VBox>
+                  <Label layoutX="603.0" layoutY="209.0" text="Hello!" textFill="#ebebeb">
+                     <styleClass>
+                        <String fx:value="dropshadow" />
+                        <String fx:value="fontSeoulNamsan" />
+                        <String fx:value="fontsize25" />
+                     </styleClass>
+                     <font>
+                        <Font size="47.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="signUpBtn" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="842.0" layoutY="377.0" onAction="#gotoSignup" prefHeight="44.0" prefWidth="43.0" text="&gt;">
+                     <styleClass>
+                        <String fx:value="backcolor-blue" />
+                        <String fx:value="radius100" />
+                        <String fx:value="textfill-white" />
+                     </styleClass>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <AnchorPane fx:id="topBar" prefHeight="39.0" prefWidth="1300.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" layoutX="1242.0" layoutY="4.0" onMouseClicked="#actionMinWindow" prefHeight="18.0" prefWidth="15.0" styleClass="window" text="-" textFill="#e7e9ee">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="1265.0" layoutY="4.0" onMouseClicked="#actionCloseWindow" prefHeight="32.0" prefWidth="23.0" styleClass="window" text="X" textFill="#e7e9ee" />
+               </children>
+            </AnchorPane>
+         </top>
+      </BorderPane>
+   </children>
 </AnchorPane>

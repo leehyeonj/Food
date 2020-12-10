@@ -37,7 +37,7 @@ public static AppMain app;
 		Parent root = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/LoginPage.fxml"));
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
-//		primaryStage.initStyle(StageStyle.UNDECORATED);
+		primaryStage.initStyle(StageStyle.UNDECORATED);
 		primaryStage.show();
 		
 	}

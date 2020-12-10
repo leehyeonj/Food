@@ -3,6 +3,9 @@
 .gradient-main{
 	-fx-background-color: linear-gradient(to right , #7FACD6 , #BFB8DA);
 }
+.login-gradient{
+	-fx-background-color: linear-gradient(to right bottom, #7FACD6 , #BFB8DA, #CDB3D4,#E7B7C8 );
+}
 .dropshadow{
 	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 10, 0 , 5 , 2);
 }
@@ -33,6 +36,9 @@
 .fontsize25{
 	-fx-font-size: 25pt;
 }
+.fontsize35{
+	-fx-font-size: 35pt;
+}
 .fontsize55{
 	-fx-font-size: 55pt;
 }
@@ -41,6 +47,12 @@
 }
 .fontTypoHongikingan{
 	-fx-font-family: "Typo_Hongikingan L"; 
+}
+.fontSegoeUIBlack{
+	-fx-font-family: "Segoe UI Black"; 
+}
+.fontSeoulNamsan{
+	-fx-font-family:  "SeoulNamsan EB"; 
 }
 .fontSystem{
 	-fx-font-family: "System"; 
@@ -104,5 +116,5 @@
 	-fx-text-fill: #e7e9ee;
 }
 
-
+/*/////////////////////////////////////////////////// */
 

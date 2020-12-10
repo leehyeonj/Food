@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class SignupDao {
+public class SignupDao2 {
 
 	
 	private Connection conn;    //DB 커넥션(연결) 객체
@@ -18,7 +18,7 @@ public class SignupDao {
 //private static final String PASSWORD = "1234";	 //DB 접속시 패스워드
 //private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//dbms
     
-   public SignupDao() {
+   public SignupDao2() {
 	   try {
        	//동적 객체를 만들어줌 
            Class.forName("com.mysql.jdbc.Driver"); 
@@ -32,16 +32,17 @@ public class SignupDao {
        
    }
    
-   public void signup(String email, String password, String passwordcheck) {
-	   String sql = "insert into calendar values(?,?,?)";
+   public void insertone(String id, String password) {
+	   String sql = "insert into calendar values(?,?,?,?)";
        
        PreparedStatement pstmt = null;
        try {
            pstmt = conn.prepareStatement(sql);
-           pstmt.setString(1, email);
+           pstmt.setString(1, id);
            pstmt.setString(2, password);
            pstmt.setString(3, null);
-         
+           pstmt.setString(4, null);
+          
            
            int result = pstmt.executeUpdate();
            if(result==1) {

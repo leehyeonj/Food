@@ -3,11 +3,16 @@ package HealthSchedule.controller;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SignupDao {
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.stage.Stage;
 
-	
+public class LoginDao {
 	private Connection conn;    //DB 커넥션(연결) 객체
     private static final String USERNAME = "root";   //DB 접속시 ID
     //현주
@@ -18,7 +23,7 @@ public class SignupDao {
 //private static final String PASSWORD = "1234";	 //DB 접속시 패스워드
 //private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//dbms
     
-   public SignupDao() {
+   public LoginDao() {
 	   try {
        	//동적 객체를 만들어줌 
            Class.forName("com.mysql.jdbc.Driver"); 
@@ -32,34 +37,9 @@ public class SignupDao {
        
    }
    
-   public void signup(String email, String password, String passwordcheck) {
-	   String sql = "insert into calendar values(?,?,?)";
-       
-       PreparedStatement pstmt = null;
-       try {
-           pstmt = conn.prepareStatement(sql);
-           pstmt.setString(1, email);
-           pstmt.setString(2, password);
-           pstmt.setString(3, null);
-         
-           
-           int result = pstmt.executeUpdate();
-           if(result==1) {
-               System.out.println("Board데이터 삽입 성공!");
-               
-           }
-           
-       } catch (Exception e) {
-           System.out.println("Board데이터 삽입 실패!");
-       }    finally {
-           try {
-               if(pstmt!=null && !pstmt.isClosed()) {
-                   pstmt.close();
-               }
-           } catch (Exception e2) {}
-       }
+   public void login(String id, String password) {
+	 
    }
         
         
-    
 }

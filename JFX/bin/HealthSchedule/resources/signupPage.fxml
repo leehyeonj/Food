@@ -1,23 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.control.*?>
 <?import javafx.geometry.*?>
 
-<AnchorPane fx:id="login" prefHeight="500.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.SignUpController">
-	<children>
-	  <Label id="subject" layoutX="226.0" layoutY="75.0" text="회원가입" />
-	  <Label layoutX="171.0" layoutY="179.0" text="Name" />
-	  <Label layoutX="171.0" layoutY="219.0" text="Id" />
-	  <Label layoutX="171.0" layoutY="259.0" text="Pwd" />
-	  <TextField fx:id="name" layoutX="249.0" layoutY="179.0" />
-	  <TextField fx:id="id" layoutX="249.0" layoutY="217.0" />
-	  <PasswordField fx:id="pwd" layoutX="249.0" layoutY="255.0" />
-	  <Button fx:id="membersBtn" layoutX="163.0" layoutY="338.0" text="회원가입" />
-	  <Button fx:id="cancelBtn" layoutX="331.0" layoutY="338.0" text="취소" />
-      <TextField fx:id="email" layoutX="249.0" layoutY="290.0" />
-      <Label layoutX="171.0" layoutY="294.0" text="E-mail" />	  
-	</children>
+<AnchorPane fx:id="pane" prefHeight="950.0" prefWidth="1300.0" styleClass="login-gradient" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.SignUpController">
+   <children>
+      <BorderPane layoutY="2.0" prefHeight="950.0" prefWidth="1300.0">
+         <top>
+            <AnchorPane fx:id="topBar" prefHeight="39.0" prefWidth="1300.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" layoutX="1242.0" layoutY="4.0" onMouseClicked="#actionMinWindow" prefHeight="18.0" prefWidth="15.0" styleClass="window" text="-" textFill="#e7e9ee">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="1265.0" layoutY="4.0" onMouseClicked="#actionCloseWindow" prefHeight="32.0" prefWidth="23.0" styleClass="window" text="X" textFill="#e7e9ee" />
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox layoutX="463.0" layoutY="323.0" prefHeight="344.0" prefWidth="447.0">
+                     <padding>
+                        <Insets left="30.0" right="30.0" top="20.0" />
+                     </padding>
+                     <children>
+                        <HBox prefHeight="45.0" prefWidth="368.0">
+                           <children>
+                              <Pane prefHeight="45.0" prefWidth="50.0" />
+                              <JFXTextField fx:id="emailTextField" labelFloat="true" prefHeight="45.0" prefWidth="247.0" promptText="email" />
+                              <Pane prefHeight="45.0" prefWidth="50.0" />
+                              <JFXButton fx:id="checkEmailBtn" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#emailCheck" prefHeight="55.0" prefWidth="88.0" ripplerFill="#dd5959" style="-fx-background-radius: 100;" styleClass="backcolor-blue" text=" ">
+                                 <graphic>
+                                    <Label alignment="CENTER" styleClass="textfill-white" text="check">
+                                       <font>
+                                          <Font name="Segoe UI Semibold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </graphic></JFXButton>
+                              <Pane prefHeight="45.0" prefWidth="50.0" />
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="24.0" prefWidth="387.0" />
+                        <HBox prefHeight="45.0" prefWidth="368.0">
+                           <children>
+                              <Pane prefHeight="45.0" prefWidth="50.0" />
+                              <JFXPasswordField fx:id="passwordTextField" labelFloat="true" prefHeight="45.0" prefWidth="247.0" promptText="password" />
+                              <Pane prefHeight="45.0" prefWidth="122.0" />
+                              <Pane prefHeight="45.0" prefWidth="50.0" />
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="24.0" prefWidth="387.0" />
+                        <HBox prefHeight="45.0" prefWidth="368.0">
+                           <children>
+                              <Pane prefHeight="45.0" prefWidth="50.0" />
+                              <JFXPasswordField fx:id="passwordcheckTextField" labelFloat="true" prefHeight="45.0" prefWidth="247.0" promptText="password" />
+                              <Pane prefHeight="45.0" prefWidth="50.0" />
+                              <JFXButton fx:id="signupBtn" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" prefHeight="55.0" prefWidth="88.0" ripplerFill="#dd5959" style="-fx-background-radius: 100;" styleClass="backcolor-blue" text=" ">
+                                 <graphic>
+                                    <Label alignment="CENTER" styleClass="textfill-white" text="sign up">
+                                       <font>
+                                          <Font name="Segoe UI Semibold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </graphic>
+                              </JFXButton>
+                              <Pane prefHeight="45.0" prefWidth="50.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Label layoutX="573.0" layoutY="193.0" text="Welcome!" textFill="#ebebeb">
+                     <font>
+                        <Font size="47.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="dropshadow" />
+                        <String fx:value="fontSeoulNamsan" />
+                        <String fx:value="fontsize25" />
+                     </styleClass>
+                  </Label>
+                  <JFXButton fx:id="loginBtn" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="398.0" layoutY="434.0" onAction="#gotoLogin" prefHeight="44.0" prefWidth="43.0" text="&lt;">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="backcolor-blue" />
+                        <String fx:value="radius100" />
+                        <String fx:value="textfill-white" />
+                     </styleClass>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
 </AnchorPane>
