@@ -3,11 +3,12 @@ package HealthSchedule.controller;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SignupDao {
 
-	
+	boolean emailexists;
 	private Connection conn;    //DB 커넥션(연결) 객체
     private static final String USERNAME = "root";   //DB 접속시 ID
     //현주
@@ -61,5 +62,20 @@ public class SignupDao {
    }
         
         
+   public void emailalreadyexist(String email) {
+	   //이메일이 존재하는지 확인
+	   String sql = "select * from calendar where email =?";
+	   PreparedStatement pstmt = null;
+	   try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, email);
+		ResultSet rs = pstmt.executeQuery();
+		if (rs.next()) {
+			emailexists = true;
+		}
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+   }
     
 }

@@ -57,8 +57,8 @@ public class FindPasswordController implements Initializable {
     @FXML
    public void sendMail(ActionEvent event) {
     	System.out.println("email check button clicked!");
-	    String user = "자기 gmail";; // 보내는 계정/ 네이버일 경우 네이버 계정, gmail경우 gmail 계정
-        String password = "자기 비번";   // 패스워드
+	    String user = "자기이메일";; // 보내는 계정/ 네이버일 경우 네이버 계정, gmail경우 gmail 계정
+        String password = "자기 비밀번호";   // 패스워드
         String fromname = "**My Health Diary**";
         //구글에서 보안 낮은 액세스 허용해야함 
         // SMTP 서버 정보를 설정한다.

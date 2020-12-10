@@ -103,8 +103,8 @@ public class SignUpController implements Initializable{
 	    public void emailCheck(ActionEvent actionevent) {
 	    	
 	    		System.out.println("email check button clicked!");
-	    	    String user = "자기 gmail";; // 보내는 계정/ 네이버일 경우 네이버 계정, gmail경우 gmail 계정
-	            String password = "자기 비번";   // 패스워드
+	    	    String user = "자기이메일";; // 보내는 계정/ 네이버일 경우 네이버 계정, gmail경우 gmail 계정
+	            String password = "자기 비밀번호";   // 패스워드
 	            String fromname = "**My Health Diary**";
 	            //구글에서 보안 낮은 액세스 허용해야함 
 	            // SMTP 서버 정보를 설정한다.
@@ -129,50 +129,59 @@ public class SignUpController implements Initializable{
 	            	 
 	            	//이메일 정규식 체크
 	            	 if(isValidEmail(recieveMail)) { //정규식에 맞다면
-		            		 try {
-		 		                MimeMessage message = new MimeMessage(session);
-			 		                try {
-			 							message.setFrom(new InternetAddress(user, fromname));
-			 						} catch (UnsupportedEncodingException e) {}
-	
-		 		                //수신자메일주소
-		 		                message.addRecipient(Message.RecipientType.TO, new InternetAddress(recieveMail)); 
-	
-		 		                // Subject
-		 		                message.setSubject("My Health Diary에서 사용자님의 이메일 인증을 원합니다."); //메일 제목을 입력
-	
-		 		                
-		 		                String mailmessage = "가입 해주셔서 감사합니다!"
-		 		                		+ "\n이메일 인증 번호는 " +verificationCode+  "입니다.";
-		 		                // Text
-		 		                message.setText(mailmessage);    //메일 내용을 입력
-	
-		 		                // send the message
-		 		                Transport.send(message); ////전송
-		 		                System.out.println("message sent successfully...");
-		 		                
-		 		               /////////////메일 성공시 팝업//////////////////
-		 		               FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/emailcheck.fxml") );
-				 		      		try {
-				 		      		   AnchorPane PickPage = (AnchorPane) another.load();
-				 		      		   // 다른창 띄우는 작업 .... 2
-				 		      		   Scene anotherScene = new Scene( PickPage );
-				 		      		   Stage stage = new  Stage();
-				 		      		   stage.initStyle(StageStyle.UNDECORATED);
-				 		      		   stage.setScene(anotherScene);
-				 		      		   stage.show();
-				 		      		   // 다른창 띄우는 작업 .... 2 끝.
-				 		      		} catch (IOException e) {
-				 		      			System.out.println("다른창 띄우기 오류");
-				 		      		}
-		 		                
-		 		            } catch (AddressException e) {
-		 		            	System.out.println("메세지 보내기 오류");
-		 		            	
-		 		            } catch (MessagingException e) {
-		 		                
-		 		                e.printStackTrace();
-		 		            }
+	            		 //이미 가입된 이메일이 아니라면
+	            		 SignupDao signupDao = new SignupDao();
+	            		 signupDao.emailalreadyexist(recieveMail); //이메일이 이미 있는지 없는지 확인한다.
+	            		 if (!signupDao.emailexists) {
+	            			 try {
+			 		                MimeMessage message = new MimeMessage(session);
+				 		                try {
+				 							message.setFrom(new InternetAddress(user, fromname));
+				 						} catch (UnsupportedEncodingException e) {}
+		
+			 		                //수신자메일주소
+			 		                message.addRecipient(Message.RecipientType.TO, new InternetAddress(recieveMail)); 
+		
+			 		                // Subject
+			 		                message.setSubject("My Health Diary에서 사용자님의 이메일 인증을 원합니다."); //메일 제목을 입력
+		
+			 		                
+			 		                String mailmessage = "가입 해주셔서 감사합니다!"
+			 		                		+ "\n이메일 인증 번호는 " +verificationCode+  "입니다.";
+			 		                // Text
+			 		                message.setText(mailmessage);    //메일 내용을 입력
+		
+			 		                // send the message
+			 		                Transport.send(message); ////전송
+			 		                System.out.println("message sent successfully...");
+			 		                
+			 		               /////////////메일 성공시 팝업//////////////////
+			 		               FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/emailcheck.fxml") );
+					 		      		try {
+					 		      		   AnchorPane PickPage = (AnchorPane) another.load();
+					 		      		   // 다른창 띄우는 작업 .... 2
+					 		      		   Scene anotherScene = new Scene( PickPage );
+					 		      		   Stage stage = new  Stage();
+					 		      		   stage.initStyle(StageStyle.UNDECORATED);
+					 		      		   stage.setScene(anotherScene);
+					 		      		   stage.show();
+					 		      		   // 다른창 띄우는 작업 .... 2 끝.
+					 		      		} catch (IOException e) {
+					 		      			System.out.println("다른창 띄우기 오류");
+					 		      		}
+			 		                
+			 		            } catch (AddressException e) {
+			 		            	System.out.println("메세지 보내기 오류");
+			 		            	
+			 		            } catch (MessagingException e) {
+			 		                
+			 		                e.printStackTrace();
+			 		            }
+						}
+	            		 else {
+							alarmTextLabel.setText("이미 가입된 메일입니다.");
+						}
+		            		
 	            	 	}
 	            	 else {
 	            		 alarmTextLabel.setText("이메일을 다시 입력해주세요");

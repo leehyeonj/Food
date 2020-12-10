@@ -1,6 +1,7 @@
 package HealthSchedule.controller;
 
 import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -23,9 +24,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import net.halowd.saveImg.SaveImg;
 
 //import java.awt.Image;
 ////import java.awt.event.ActionEvent;
@@ -51,7 +57,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    @FXML private Label backLabel;
    @FXML private Label breakfast;
    
-   @FXML private JFXButton uploadBtn;//사진업로드
+   
    
    @FXML private JFXButton fullbody;//전신 버튼
    @FXML private JFXButton upperbody;//전신 버튼
@@ -59,6 +65,9 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    @FXML private JFXButton lowerbody;//하체 버튼
    @FXML private JFXButton yoga; //요가버튼
    @FXML private JFXButton makeRoutine; //요가버튼
+   
+   @FXML private JFXButton uploadBtn;//사진업로드
+   @FXML private ImageView todayPhoto; //업로드 버튼 클릭 후 오늘사진 띄우는 이미지뷰
    
    //중섭
    @FXML private Label PieChart, WeightTime;	//부위별 운동비율차트, 운동시간
@@ -69,9 +78,13 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    //중섭
    private Connection conn;    //DB 커넥션(연결) 객체
    private static final String USERNAME = "root";   //DB 접속시 ID
-   private static final String PASSWORD = "1234";	 //DB 접속시 패스워드
-   private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//dbms
+//   private static final String PASSWORD = "1234";	 //DB 접속시 패스워드
+//   private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//dbms
    
+   
+   //현주
+   private static final String PASSWORD = "DOALd1120f1gG";	 //DB 접속시 패스워드
+   private static String URL = "jdbc:mysql://localhost:3305/calendardb";	//dbms
    public Main_everydayRecord_controller() {
 	  // connection객체를 생성해서 DB에 연결함.
 	  try {
@@ -595,6 +608,46 @@ public class Main_everydayRecord_controller extends DayController implements Ini
               Stage primaryStage= (Stage)makeRoutine.getScene().getWindow();
               primaryStage.setScene(scene);
            } catch (Exception e2) {}
+      }
+      
+    //사진업로드 버튼
+      public void uploadPhoto(ActionEvent event) {
+          try {
+            
+                FileChooser fc = new FileChooser();
+                  fc.setTitle("이미지 선택");
+                  fc.setInitialDirectory(new File("C:/"));
+                  ExtensionFilter imgType = new ExtensionFilter("image file", "*.jpg", "*.gif", "*.png");
+                  fc.getExtensionFilters().add(imgType);
+                  File selectedFile =  fc.showOpenDialog(null);
+                  
+                  if(selectedFile!=null) {
+                     //upload.setText(selectedFile.toURI().toString());
+                     SaveImg saveImg = new SaveImg();
+                   
+                     String file = selectedFile.toURI().toString();
+
+                     String path = "src/images";
+                     
+                   int result = saveImg.saveImgFromUrl(file, path);
+                   if (result == 1) {
+                      String savePath = saveImg.getPath();
+                      System.out.println("저장된경로 : " + savePath);
+                      String saveFileName = saveImg.getSavedFileName();
+                      System.out.println("저장된파일이름 : " + saveFileName);
+                      System.out.println((savePath+"/"+saveFileName));
+                      
+                      todayPhoto.setImage(new Image(getClass().getResource("../images/"+saveFileName).toString()));
+           
+                   
+                   }
+                  }
+                  
+                  
+             } catch (Exception e) {
+                e.printStackTrace();
+             }
+
       }
    
 }

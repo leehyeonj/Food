@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="poppane" prefHeight="200.0" prefWidth="370.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.EmailCheckController">
+<AnchorPane fx:id="poppane" prefHeight="200.0" prefWidth="370.0" styleClass="backcolor-blue" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.EmailCheckController">
    <children>
       <AnchorPane prefHeight="52.0" prefWidth="370.0">
          <children>
@@ -21,14 +21,24 @@
       </AnchorPane>
       <VBox alignment="TOP_CENTER" layoutY="53.0" prefHeight="117.0" prefWidth="370.0">
          <children>
-            <Label alignment="CENTER" text="인증번호를 입력해주세요" />
+            <Label alignment="CENTER" text="인증번호를 입력해주세요">
+               <styleClass>
+                  <String fx:value="textfill-white" />
+                  <String fx:value="fontSeoulNamsan" />
+               </styleClass></Label>
             <Pane prefHeight="38.0" prefWidth="370.0" />
             <HBox prefHeight="48.0" prefWidth="370.0">
                <children>
                   <Pane prefHeight="48.0" prefWidth="104.0" />
-                  <JFXTextField fx:id="codeTextField" labelFloat="true" prefHeight="48.0" prefWidth="227.0" promptText="인증번호" />
+                  <JFXTextField fx:id="codeTextField" focusColor="WHITE" labelFloat="true" prefHeight="48.0" prefWidth="227.0" promptText="인증번호" unFocusColor="#e16565" />
                   <Pane prefHeight="48.0" prefWidth="72.0" />
-                  <JFXButton fx:id="okbtn" onAction="#checkok" prefHeight="48.0" prefWidth="95.0" text="확인" />
+                  <JFXButton fx:id="okbtn" onAction="#checkok" prefHeight="48.0" prefWidth="95.0" text="확인">
+                     <styleClass>
+                        <String fx:value="textfill-blue" />
+                        <String fx:value="radius100" />
+                        <String fx:value="fontSeoulNamsan" />
+                        <String fx:value="backcolor-white" />
+                     </styleClass></JFXButton>
                   <Pane prefHeight="48.0" prefWidth="83.0" />
                </children>
             </HBox>
