@@ -3,6 +3,10 @@ package HealthSchedule.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -10,11 +14,37 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class PopupController implements Initializable{
-
+public class EmailCheckController extends SignUpController implements Initializable{
 	@FXML private Label closebtn;
 	@FXML private AnchorPane poppane;
-	
+	@FXML private JFXTextField codeTextField;
+    @FXML private JFXButton okbtn;
+
+	 
+
+
+    	//이메일 인증번호 확인
+	    @FXML
+	    public void checkok(ActionEvent event) {
+	    	if(codeTextField.getText().equals(String.valueOf(verificationCode))) {
+	    		check = true;
+	    	}
+	    	if(check) {
+	    		System.out.println("인증이 완료되었습니다.");
+	    		codeTextField.setText("인증 완료");
+//	    		Stage pop = (Stage)closebtn.getScene().getWindow();
+//	    		pop.close();
+	    	}
+	    	if (!check) {
+	    		System.out.println("인증 실패");
+	    		codeTextField.setText("인증 실패");
+			}
+	    	
+	    }
+	    
+	    
+	    
+	    
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		stageDragableMoveWindow();
@@ -57,5 +87,4 @@ public class PopupController implements Initializable{
 		   stage.setOpacity(1.0f);
 		   });
 	   }
-	   
 }

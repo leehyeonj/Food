@@ -22,6 +22,9 @@
 .backcolor-purple{
 	-fx-background-color: #BFB8DA ;
 }
+.backcolor-purple2{
+	-fx-background-color: #A5678E ;
+}
 .backcolor-white{
 	-fx-background-color: #ffffff ;
 }
@@ -117,4 +120,6 @@
 }
 
 /*/////////////////////////////////////////////////// */
-
+#poppane{
+		-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 10, 0 , 5 , 2);
+}

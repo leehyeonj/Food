@@ -40,7 +40,7 @@ public class SignupDao {
            pstmt = conn.prepareStatement(sql);
            pstmt.setString(1, email);
            pstmt.setString(2, password);
-           pstmt.setString(3, null);
+           pstmt.setString(3, passwordcheck);
          
            
            int result = pstmt.executeUpdate();

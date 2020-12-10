@@ -7,30 +7,28 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="200.0" prefWidth="370.0" styleClass="login-gradient" stylesheets="@../css/main.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
-fx:controller="HealthSchedule.controller.PopupController">
+<AnchorPane fx:id="poppane" prefHeight="200.0" prefWidth="370.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.PopupController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="370.0">
          <top>
             <AnchorPane prefHeight="52.0" prefWidth="370.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="topBar" prefHeight="33.0" prefWidth="370.0">
+                  <AnchorPane prefHeight="33.0" prefWidth="370.0">
                      <children>
-                        <Label alignment="CENTER" layoutX="345.0" layoutY="-2.0" onMouseClicked="#actionCloseWindow" prefHeight="32.0" prefWidth="23.0" styleClass="window" text="X" textFill="#e7e9ee" />
+                        <Label fx:id="closebtn" alignment="CENTER" layoutX="345.0" layoutY="-2.0" onMouseClicked="#actionCloseWindow" prefHeight="32.0" prefWidth="23.0" styleClass="window" text="X" textFill="#e7e9ee" />
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
          </top>
          <center>
-            <Label fx:id="popupmessage" alignment="CENTER" stylesheets="@../css/main.css" text="이메일이 도착했습니다." BorderPane.alignment="CENTER">
+            <Label alignment="CENTER" stylesheets="@../css/main.css" text="이메일을 다시 입력해주세요" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="50.0" />
                </BorderPane.margin>
                <styleClass>
-                  <String fx:value="fontSeoulNamsan" />
                   <String fx:value="fontsize13" />
+                  <String fx:value="fontTypoHongikingan" />
                </styleClass>
             </Label>
          </center>

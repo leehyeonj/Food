@@ -62,7 +62,7 @@
                               <Pane prefHeight="45.0" prefWidth="50.0" />
                               <JFXPasswordField fx:id="passwordcheckTextField" labelFloat="true" prefHeight="45.0" prefWidth="247.0" promptText="password" />
                               <Pane prefHeight="45.0" prefWidth="50.0" />
-                              <JFXButton fx:id="signupBtn" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" prefHeight="55.0" prefWidth="88.0" ripplerFill="#dd5959" style="-fx-background-radius: 100;" styleClass="backcolor-blue" text=" ">
+                              <JFXButton fx:id="signupBtn" onAction="#signupBtnHandle" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" prefHeight="55.0" prefWidth="88.0" ripplerFill="#dd5959" style="-fx-background-radius: 100;" styleClass="backcolor-blue" text=" ">
                                  <graphic>
                                     <Label alignment="CENTER" styleClass="textfill-white" text="sign up">
                                        <font>
