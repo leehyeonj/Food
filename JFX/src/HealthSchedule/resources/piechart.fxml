@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.PiechartController">
+   <children>
+      <PieChart fx:id="pieChart" title="등록한 운동시간" />
+      <Button layoutX="210.0" layoutY="468.0" mnemonicParsing="false" onAction="#ShowChartbtn" text="Load Chart" />
+      <HBox layoutX="9.0" layoutY="400.0" prefHeight="60.0" prefWidth="482.0">
+         <children>
+            <Label fx:id="full" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="120.0" text="전신" textAlignment="CENTER" textOverrun="CLIP" />
+            <Label fx:id="upper" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="120.0" text="상체" textAlignment="CENTER" textOverrun="CLIP" />
+            <Label fx:id="abs" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="120.0" text="복근" textAlignment="CENTER" textOverrun="CLIP" />
+            <Label fx:id="lower" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="120.0" text="하체" textAlignment="CENTER" textOverrun="CLIP" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
