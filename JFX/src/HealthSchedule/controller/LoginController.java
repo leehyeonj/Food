@@ -58,6 +58,9 @@ public class LoginController implements Initializable{
 						
 					} catch (Exception e) {}
 		    	}
+		    	else {
+		    		alarmLabel.setText("이메일과 비밀번호를 다시 확인해주세요");
+				}
 			}
 	    	else if(emailTextField.getText().isEmpty()){
 			
