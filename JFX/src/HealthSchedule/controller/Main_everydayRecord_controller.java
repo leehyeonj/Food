@@ -33,24 +33,6 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import net.halowd.saveImg.SaveImg;
 
-//import java.awt.Image;
-////import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
-//import java.sql.Connection;
-//import java.sql.DriverManager;
-//import java.sql.PreparedStatement;
-//import java.sql.SQLException;
-//
-//import javax.swing.*;
-//import javax.swing.filechooser.FileNameExtensionFilter;
-//
-//
-//import net.halowd.saveImg.SaveImg;
-//
-//import java.io.File;
-//import java.io.IOException;
-
-
 public class Main_everydayRecord_controller extends DayController implements Initializable{
 
    @FXML private AnchorPane pane;
