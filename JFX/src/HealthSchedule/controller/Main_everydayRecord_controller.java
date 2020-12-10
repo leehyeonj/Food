@@ -94,7 +94,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       //stage 조정
         stageDragableMoveWindow();
         
-      // 두번째 tab에 불러오기
+     // 두번째 tab에 불러오기
         try {
 			for(int i = 0; i< 5; i++) {
 				FXMLLoader fxmlLoader = new FXMLLoader();
