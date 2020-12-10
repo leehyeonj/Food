@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 public class LoginDao {
+	public boolean loginsuccess;
 	private Connection conn;    //DB 커넥션(연결) 객체
     private static final String USERNAME = "root";   //DB 접속시 ID
     //현주
@@ -28,7 +29,7 @@ public class LoginDao {
        	//동적 객체를 만들어줌 
            Class.forName("com.mysql.jdbc.Driver"); 
            conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-          System.out.println("드라이버 로딩 성공!!");
+          System.out.println("로그인 드라이버 로딩 성공!!");
            
        } catch (Exception e) {
            e.printStackTrace();
@@ -37,8 +38,53 @@ public class LoginDao {
        
    }
    
-   public void login(String id, String password) {
-	 
+   public void login(String email, String password) {
+	   String sql = "select * from calendar where email = ? and calendarPassword =?";
+       PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           pstmt.setString(1,email);
+           pstmt.setString(2,password);
+           ResultSet rs = pstmt.executeQuery();
+           if(rs.next()) {
+        	   System.out.println("로그인 성공");
+        	   loginsuccess = true;
+        	   
+           }
+           else {
+        	   System.out.println("로그인 실패");
+           }
+           
+           
+           
+       } catch (Exception e) {
+           System.out.println("select 메서드 예외발생");
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+               }
+           } catch (Exception e2) {}
+       }
+   }
+   
+   public String findpassword(String email) {
+	   String sql = "select calendarPassword from calendar where email=?";
+	   PreparedStatement pstmt = null;
+	   try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, email);
+		ResultSet rs = pstmt.executeQuery();
+		if (rs.next()) {
+			System.out.println("비밀번호 찾음");
+			return rs.getString("calendarPassword");
+		}else {
+			return "no";
+		}
+		
+	} catch (Exception e) {
+		return null;
+	}
    }
         
         

@@ -62,7 +62,7 @@
                               <Pane prefHeight="45.0" prefWidth="50.0" />
                               <JFXPasswordField fx:id="passwordcheckTextField" labelFloat="true" prefHeight="45.0" prefWidth="247.0" promptText="password" />
                               <Pane prefHeight="45.0" prefWidth="50.0" />
-                              <JFXButton fx:id="signupBtn" onAction="#signupBtnHandle" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" prefHeight="55.0" prefWidth="88.0" ripplerFill="#dd5959" style="-fx-background-radius: 100;" styleClass="backcolor-blue" text=" ">
+                              <JFXButton fx:id="signupBtn" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#signupBtnHandle" prefHeight="55.0" prefWidth="88.0" ripplerFill="#dd5959" style="-fx-background-radius: 100;" styleClass="backcolor-blue" text=" ">
                                  <graphic>
                                     <Label alignment="CENTER" styleClass="textfill-white" text="sign up">
                                        <font>
@@ -74,6 +74,12 @@
                               <Pane prefHeight="45.0" prefWidth="50.0" />
                            </children>
                         </HBox>
+                        <Pane prefHeight="24.0" prefWidth="387.0" />
+                        <Label fx:id="alarmTextLabel" alignment="CENTER" prefHeight="18.0" prefWidth="300.0" text=" ">
+                           <styleClass>
+                              <String fx:value="textfill-blue" />
+                              <String fx:value="fontSeoulNamsan" />
+                           </styleClass></Label>
                      </children>
                   </VBox>
                   <Label layoutX="573.0" layoutY="193.0" text="Welcome!" textFill="#ebebeb">

@@ -1,6 +1,6 @@
 package HealthSchedule.controller;
 
-import static javax.swing.JOptionPane.showMessageDialog;
+
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -54,7 +54,7 @@ public class SignUpController implements Initializable{
       @FXML private JFXPasswordField passwordTextField;
       @FXML private JFXPasswordField passwordcheckTextField;
       @FXML private JFXTextField emailTextField;
-      
+      @FXML private Label alarmTextLabel;
       
       
       private Stage primaryStage ;
@@ -103,8 +103,8 @@ public class SignUpController implements Initializable{
 	    public void emailCheck(ActionEvent actionevent) {
 	    	
 	    		System.out.println("email check button clicked!");
-	    	    String user = "lmhj11112@gmail.com";; // 보내는 계정/ 네이버일 경우 네이버 계정, gmail경우 gmail 계정
-	            String password = "자기 패스워드";   // 패스워드
+	    	    String user = "자기 gmail 이메일 ";; // 보내는 계정/ 네이버일 경우 네이버 계정, gmail경우 gmail 계정
+	            String password = "자기 비밀번호";   // 패스워드
 	            String fromname = "**My Health Diary**";
 	            //구글에서 보안 낮은 액세스 허용해야함 
 	            // SMTP 서버 정보를 설정한다.
@@ -175,43 +175,12 @@ public class SignUpController implements Initializable{
 		 		            }
 	            	 	}
 	            	 else {
-	            		
-						try { //
-						    /////////////이메일 정규식에 맞지 않는다면 뜨는 팝업//////////////////
-		 		               FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/popup.fxml") );
-				 		      		try {
-				 		      		   AnchorPane PickPage = (AnchorPane) another.load();
-				 		      		   // 다른창 띄우는 작업 .... 2
-				 		      		   Scene anotherScene = new Scene( PickPage );
-				 		      		   Stage stage = new  Stage();
-				 		      		   stage.initStyle(StageStyle.UNDECORATED);
-				 		      		   stage.setScene(anotherScene);
-				 		      		   stage.show();
-				 		      		   // 다른창 띄우는 작업 .... 2 끝.
-				 		      		} catch (IOException e) {
-				 		      			System.out.println("다른창 띄우기 오류");
-				 		      		}
-						} catch (Exception e) {}
+	            		 alarmTextLabel.setText("이메일을 다시 입력해주세요");
 					}
 	 	            
 	 	 
 	        	 }else { //emailTextField가 null일때 
-	        		 try {
-	        			 /////////////이메일을 아예 적지 않았을때 //////////////////
-	 		               FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/popup.fxml") );
-			 		      		try {
-			 		      		   AnchorPane PickPage = (AnchorPane) another.load();
-			 		      		   // 다른창 띄우는 작업 .... 2
-			 		      		   Scene anotherScene = new Scene( PickPage );
-			 		      		   Stage stage = new  Stage();
-			 		      		   stage.initStyle(StageStyle.UNDECORATED);
-			 		      		   stage.setScene(anotherScene);
-			 		      		   stage.show();
-			 		      		   // 다른창 띄우는 작업 .... 2 끝.
-			 		      		} catch (IOException e) {
-			 		      			System.out.println("다른창 띄우기 오류");
-			 		      		}
-						} catch (Exception e) {}
+	        		 alarmTextLabel.setText("이메일을 입력해주세요");
 	 	            }
 	               
 	        }
@@ -228,22 +197,39 @@ public class SignUpController implements Initializable{
 				  if(password.length()>=10) {
 					  if (password.equals(passwordcheck)) {
 							System.out.println("비밀번호가 잘 입력되었습니다.");
-							
+							alarmTextLabel.setText("회원가입이 완료되었습니다.");
 							SignupDao signupDao = new SignupDao();
 							signupDao.signup(emailTextField.getText(), password, passwordcheck);
+							
+							try {
+					    		
+						    	System.out.println("sign up btn clicked");
+					    		Parent parent = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/LoginPage.fxml"));
+								Scene scene = new Scene(parent);
+								Stage primaryStage= (Stage)signupBtn.getScene().getWindow();
+								primaryStage.setScene(scene);
+							
+								
+							} catch (Exception e) {}
 						}
+					  else {
+						  alarmTextLabel.setText("비밀번호가 다릅니다.");
+					}
 				  }
 				  else {
 					System.out.println("비밀번호를 10자 이상 입력해주세요");
+					alarmTextLabel.setText("비밀번호를 10자 이상 입력해주세요");
 				}
 				  
 			  }
 			  else {//password필드나 check필드가 비워져있다면 
 				  System.out.println("비밀번호를 입력해주세요");
+				  alarmTextLabel.setText("비밀번호를 입력해주세요");
 			  }
 		  }
 		  else {
 			  System.out.println("이메일 인증이 되지 않았습니다.");
+			  alarmTextLabel.setText("이메일 인증이 되지 않았습니다.");
 		  }
 		  
 		  
