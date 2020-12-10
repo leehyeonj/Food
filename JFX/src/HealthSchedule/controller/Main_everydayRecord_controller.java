@@ -18,16 +18,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -57,7 +61,10 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    @FXML private Label backLabel;
    @FXML private Label breakfast;
    
-   
+   @FXML private ScrollPane scroll;
+   @FXML private GridPane grid;
+   int column = 0;
+   int row = 1;
    
    @FXML private JFXButton fullbody;//전신 버튼
    @FXML private JFXButton upperbody;//전신 버튼
@@ -105,6 +112,34 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       //stage 조정
         stageDragableMoveWindow();
         
+      // 두번째 tab에 불러오기
+        try {
+			for(int i = 0; i< 5; i++) {
+				FXMLLoader fxmlLoader = new FXMLLoader();
+				fxmlLoader.setLocation(getClass().getResource("/HealthSchedule/resources/exercise_routine.fxml"));
+				AnchorPane anchorPane = fxmlLoader.load();
+				
+				if(column == 1) {
+					column = 0;
+					row++;
+				}
+				
+				grid.add(anchorPane, column++, row);
+				  //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+				
+				GridPane.setMargin(anchorPane, new Insets(10));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
         
       
    }

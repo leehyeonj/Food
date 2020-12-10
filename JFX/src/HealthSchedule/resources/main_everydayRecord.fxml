@@ -278,10 +278,14 @@
                                              </children>
                                           </StackPane>
                                           <Pane prefHeight="551.0" prefWidth="84.0" />
-                                          <ScrollPane prefHeight="551.0" prefWidth="680.0">
-                                            <content>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                                            </content>
+                                          <ScrollPane fx:id="scroll" prefHeight="551.0" prefWidth="680.0">
+                                             <content>
+                                                <GridPane fx:id="grid" prefHeight="5.0" prefWidth="0.0">
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                </GridPane>
+                                             </content>
                                           </ScrollPane>
                                        </children>
                                     </HBox>
@@ -293,7 +297,7 @@
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
                                     <ImageView fx:id="todayPhoto" fitHeight="360.0" fitWidth="264.0" layoutX="96.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" />
-                                    <JFXButton fx:id="uploadBtn" onAction="#uploadPhoto" layoutX="181.0" layoutY="448.0" text="사진 올리기" />
+                                    <JFXButton fx:id="uploadBtn" layoutX="181.0" layoutY="448.0" onAction="#uploadPhoto" text="사진 올리기" />
                                     <HBox layoutX="491.0" layoutY="289.0" prefHeight="66.0" prefWidth="481.0">
                                        <children>
                                           <Label prefHeight="67.0" prefWidth="141.0" text="현재 몸무게:" />
