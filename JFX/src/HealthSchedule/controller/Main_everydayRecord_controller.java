@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXScrollPane;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,9 +45,10 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    @FXML private Label breakfast;
    
    @FXML private ScrollPane scroll;
+//   @FXML private JFXScrollPane scroll;
    @FXML private GridPane grid;
-   int column = 0;
-   int row = 1;
+   static int column = 0;
+   static int row = 0;
    
    @FXML private JFXButton fullbody;//전신 버튼
    @FXML private JFXButton upperbody;//전신 버튼
@@ -96,35 +98,65 @@ public class Main_everydayRecord_controller extends DayController implements Ini
         
      // 두번째 tab에 불러오기
         try {
-			for(int i = 0; i< 5; i++) {
+			
 				FXMLLoader fxmlLoader = new FXMLLoader();
-				fxmlLoader.setLocation(getClass().getResource("/HealthSchedule/resources/exercise_routine.fxml"));
+				fxmlLoader.setLocation(getClass().getResource("/HealthSchedule/resources/routine_lowerbody.fxml"));
 				AnchorPane anchorPane = fxmlLoader.load();
+				grid.add(anchorPane, 0, 0);
+				gridpaneSet(anchorPane);
+			
+				FXMLLoader fxmlLoader2 = new FXMLLoader();
+				fxmlLoader2.setLocation(getClass().getResource("/HealthSchedule/resources/routine_stretch.fxml"));
+				AnchorPane anchorPane2 = fxmlLoader2.load();
+				grid.add(anchorPane2, 0, 1);
+				gridpaneSet(anchorPane2);
 				
-				if(column == 1) {
-					column = 0;
-					row++;
-				}
+				FXMLLoader fxmlLoader3 = new FXMLLoader();
+				fxmlLoader3.setLocation(getClass().getResource("/HealthSchedule/resources/routine_fullbody.fxml"));
+				AnchorPane anchorPane3 = fxmlLoader3.load();
+				grid.add(anchorPane3, 0, 2);
+				gridpaneSet(anchorPane3);
 				
-				grid.add(anchorPane, column++, row);
-				  //set grid width
-                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
-                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                grid.setMaxWidth(Region.USE_PREF_SIZE);
-
-                //set grid height
-                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
-                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                grid.setMaxHeight(Region.USE_PREF_SIZE);
+				FXMLLoader fxmlLoader4 = new FXMLLoader();
+				fxmlLoader4.setLocation(getClass().getResource("/HealthSchedule/resources/routine_upperbody.fxml"));
+				AnchorPane anchorPane4 = fxmlLoader4.load();
+				grid.add(anchorPane4, 0, 3);
+				gridpaneSet(anchorPane4);
 				
-				GridPane.setMargin(anchorPane, new Insets(10));
-			}
+				FXMLLoader fxmlLoader5 = new FXMLLoader();
+				fxmlLoader5.setLocation(getClass().getResource("/HealthSchedule/resources/routine_abs.fxml"));
+				AnchorPane anchorPane5 = fxmlLoader5.load();
+				grid.add(anchorPane5, 0, 4);
+				gridpaneSet(anchorPane5);
+				
+				
+				
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
         
       
    }
+   
+   	public void gridpaneSet(AnchorPane anchorPane) {
+//   		if(column == 1) {
+//			column = 0;
+//			row++;
+//		}
+//		     grid.add(anchorPane, column++, row);
+			  //set grid width
+		     grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+		     grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+		     grid.setMaxWidth(Region.USE_PREF_SIZE);
+		
+		     //set grid height
+		     grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+		     grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+		     grid.setMaxHeight(Region.USE_PREF_SIZE);
+			
+			GridPane.setMargin(anchorPane, new Insets(10));
+   	}
 
      //////////////////////////
       private double xOffset = 0;

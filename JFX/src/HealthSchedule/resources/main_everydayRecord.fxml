@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import java.net.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.image.*?>
@@ -101,6 +102,9 @@
                                                    </StackPane.margin>
                                                 </ImageView>
                                              </children>
+                                             <effect>
+                                                <InnerShadow choke="0.04" color="#bcb0b0" height="27.14" radius="17.68" width="45.58" />
+                                             </effect>
                                           </StackPane>
                                           <StackPane prefHeight="439.0" prefWidth="275.0" styleClass="dropshadow2">
                                              <children>
@@ -251,44 +255,21 @@
                         </Tab>
                         <Tab>
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="todayDietAnchorpane">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <HBox prefHeight="551.0" prefWidth="1080.0">
+                                    <VBox prefHeight="550.0" prefWidth="1080.0">
                                        <children>
-                                          <StackPane prefHeight="526.0" prefWidth="339.0">
-                                             <HBox.margin>
-                                                <Insets left="25.0" />
-                                             </HBox.margin>
-                                             <children>
-                                                <ImageView fitHeight="515.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true" styleClass="dropshadow2">
-                                                   <image>
-                                                      <Image url="@images/body.png" />
-                                                   </image>
-                                                </ImageView>
-                                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                   <children>
-                                                      <JFXButton fx:id="abs" layoutX="146.0" layoutY="206.0" onAction="#absEx" styleClass="bodyButton" text="복부" textFill="WHITE" />
-                                                      <JFXButton fx:id="upperbody" layoutX="194.0" layoutY="132.0" onAction="#upperbodyEx" styleClass="bodyButton" text="상체" textFill="WHITE" />
-                                                      <JFXButton fx:id="lowerbody" layoutX="114.0" layoutY="319.0" onAction="#lowerbodyEx" styleClass="bodyButton" text="하체" textFill="WHITE" />
-                                                      <JFXButton fx:id="fullbody" layoutX="146.0" layoutY="43.0" onAction="#fullbodyEx" styleClass="bodyButton" text="전신" textFill="WHITE" />
-                                                   	  <JFXButton fx:id="yoga" layoutX="40.0" layoutY="43.0" onAction="#yogaEx" styleClass="yogaButton" text="스트레칭" textFill="WHITE" />
-                                                   </children>
-                                                </AnchorPane>
-                                             
-                                             </children>
-                                          </StackPane>
-                                          <Pane prefHeight="551.0" prefWidth="84.0" />
-                                          <ScrollPane fx:id="scroll" prefHeight="551.0" prefWidth="680.0">
+                                          <ScrollPane fx:id="scroll" prefHeight="550.0" prefWidth="1062.0">
                                              <content>
-                                                <GridPane fx:id="grid" prefHeight="5.0" prefWidth="0.0">
-                                                  <rowConstraints>
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                  </rowConstraints>
+                                                <GridPane fx:id="grid">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
                                                 </GridPane>
                                              </content>
                                           </ScrollPane>
                                        </children>
-                                    </HBox>
+                                    </VBox>
                                  </children></AnchorPane>
                           </content>
                         </Tab>

@@ -277,152 +277,16 @@
                                              
                                              </children>
                                           </StackPane>
-                                          <VBox prefHeight="551.0" prefWidth="715.0">
-                                             <children>
-                                                <AnchorPane maxHeight="60.0" minWidth="0.0" prefHeight="60.0" prefWidth="719.0">
-                                                   <children>
-                                                      <AnchorPane prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: WHITE; -fx-background-radius: 100;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0">
-                                                         <children>
-                                                            <Label layoutX="26.0" layoutY="31.0" text="전신" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <HBox prefHeight="86.0" prefWidth="640.0" style="-fx-background-color: RED; -fx-background-radius: 25;" AnchorPane.leftAnchor="70.0">
-                                                         <children>
-                                                            <TextArea fx:id="FullbodyText" maxHeight="75.0" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="493.0" promptText="내용">
-                                                               <HBox.margin>
-                                                                  <Insets left="15.0" top="5.0" />
-                                                               </HBox.margin>
-                                                            </TextArea>
-                                                            <TextField fx:id="FullbodyTime" alignment="CENTER" prefHeight="75.0" prefWidth="58.0" promptText="time">
-                                                               <HBox.margin>
-                                                                  <Insets top="5.0" />
-                                                               </HBox.margin>
-                                                            </TextField>
-                                                            <Button fx:id="Fullbodysave" alignment="CENTER" mnemonicParsing="false" prefHeight="75.0" prefWidth="60.0" text="분(단위)">
-                                                               <HBox.margin>
-                                                                  <Insets top="5.0" />
-                                                               </HBox.margin>
-                                                            </Button>
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                   <VBox.margin>
-                                                      <Insets />
-                                                   </VBox.margin>
-                                                </AnchorPane>
-                                                <AnchorPane prefHeight="100.0" prefWidth="715.0">
-                                                   <children>
-                                                      <AnchorPane prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: WHITE; -fx-background-radius: 100;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0">
-                                                         <children>
-                                                            <Label layoutX="26.0" layoutY="31.0" text="상체" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <HBox prefHeight="86.0" prefWidth="640.0" style="-fx-background-color: RED; -fx-background-radius: 25;" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="6.0">
-                                                         <children>
-                                                            <TextArea fx:id="UpperbodyText" maxHeight="75.0" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="493.0" promptText="내용">
-                                                               <HBox.margin>
-                                                                  <Insets left="15.0" top="5.0" />
-                                                               </HBox.margin>
-                                                            </TextArea>
-                                                            <TextField fx:id="UpperbodyTime" alignment="CENTER" prefHeight="75.0" prefWidth="58.0" promptText="time">
-                                                               <HBox.margin>
-                                                                  <Insets top="5.0" />
-                                                               </HBox.margin>
-                                                            </TextField>
-                                                            <Button fx:id="Upperbodysave" alignment="CENTER" mnemonicParsing="false" prefHeight="75.0" prefWidth="60.0" text="분(단위)">
-                                                               <HBox.margin>
-                                                                  <Insets top="5.0" />
-                                                               </HBox.margin>
-                                                            </Button>
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                </AnchorPane>
-                                                <AnchorPane prefHeight="100.0" prefWidth="715.0">
-                                                   <children>
-                                                      <AnchorPane prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: WHITE; -fx-background-radius: 100;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0">
-                                                         <children>
-                                                            <Label layoutX="26.0" layoutY="31.0" text="복근" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <HBox prefHeight="86.0" prefWidth="640.0" style="-fx-background-color: RED; -fx-background-radius: 25;" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="5.0">
-                                                         <children>
-                                                            <TextArea fx:id="AbsText" maxHeight="75.0" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="493.0" promptText="내용">
-                                                               <HBox.margin>
-                                                                  <Insets left="15.0" top="5.0" />
-                                                               </HBox.margin>
-                                                            </TextArea>
-                                                            <TextField fx:id="AbsTime" alignment="CENTER" prefHeight="75.0" prefWidth="58.0" promptText="time">
-                                                               <HBox.margin>
-                                                                  <Insets top="5.0" />
-                                                               </HBox.margin>
-                                                            </TextField>
-                                                            <Button fx:id="Abssave" alignment="CENTER" mnemonicParsing="false" prefHeight="75.0" prefWidth="60.0" text="분(단위)">
-                                                               <HBox.margin>
-                                                                  <Insets top="5.0" />
-                                                               </HBox.margin>
-                                                            </Button>
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                </AnchorPane>
-                                                <AnchorPane prefHeight="100.0" prefWidth="715.0">
-                                                   <children>
-                                                      <AnchorPane prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: WHITE; -fx-background-radius: 100;" AnchorPane.topAnchor="10.0">
-                                                         <children>
-                                                            <Label layoutX="26.0" layoutY="31.0" text="하체" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <HBox prefHeight="86.0" prefWidth="640.0" style="-fx-background-color: RED; -fx-background-radius: 25;" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="5.0">
-                                                         <children>
-                                                            <TextArea fx:id="LowerbodyText" maxHeight="75.0" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="493.0" promptText="내용">
-                                                               <HBox.margin>
-                                                                  <Insets left="15.0" top="5.0" />
-                                                               </HBox.margin>
-                                                            </TextArea>
-                                                            <TextField fx:id="LowerbodyTime" alignment="CENTER" prefHeight="75.0" prefWidth="58.0" promptText="time">
-                                                               <HBox.margin>
-                                                                  <Insets top="5.0" />
-                                                               </HBox.margin>
-                                                            </TextField>
-                                                            <Button fx:id="Lowerbodysave" alignment="CENTER" mnemonicParsing="false" prefHeight="75.0" prefWidth="60.0" text="분(단위)">
-                                                               <HBox.margin>
-                                                                  <Insets top="5.0" />
-                                                               </HBox.margin>
-                                                            </Button>
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                </AnchorPane>
-                                                <AnchorPane prefHeight="100.0" prefWidth="715.0">
-                                                   <children>
-                                                      <AnchorPane prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: WHITE; -fx-background-radius: 100;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0">
-                                                         <children>
-                                                            <Label layoutX="26.0" layoutY="31.0" text="전신" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                      <HBox prefHeight="86.0" prefWidth="640.0" style="-fx-background-color: RED; -fx-background-radius: 25;" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="5.0">
-                                                         <children>
-                                                            <Label fx:id="PieChart" alignment="CENTER" prefHeight="100.0" prefWidth="625.0" text="부위별 운동 비율보기" />
-                                                            <Label alignment="CENTER" prefHeight="100.0" prefWidth="160.0" text="50" />
-                                                            <Label alignment="CENTER" prefHeight="100.0" prefWidth="198.0" text="분" />
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                </AnchorPane>
-                                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                   <children>
-                                                      <HBox layoutX="115.0" prefHeight="49.0" prefWidth="592.0">
-                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="62.0" prefWidth="142.0" styleClass="todaykcal" text="총 운동시간" />
-                                                            <Label fx:id="WeightTime" alignment="CENTER" prefHeight="49.0" prefWidth="443.0" styleClass="todaykcal" text="00:00:00" />
-                                                            <Button fx:id="piechart" mnemonicParsing="false" prefHeight="50.0" prefWidth="62.0" text="차트" />
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                </AnchorPane>
-                                             </children>
-                                          </VBox>
+                                          <Pane prefHeight="551.0" prefWidth="84.0" />
+                                          <ScrollPane fx:id="scroll" prefHeight="551.0" prefWidth="680.0">
+                                             <content>
+                                                <GridPane fx:id="grid" prefHeight="5.0" prefWidth="0.0">
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                </GridPane>
+                                             </content>
+                                          </ScrollPane>
                                        </children>
                                     </HBox>
                                  </children></AnchorPane>
@@ -432,8 +296,8 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fitHeight="360.0" fitWidth="264.0" layoutX="96.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" />
-                                    <JFXButton fx:id="uploadBtn" layoutX="181.0" layoutY="448.0" text="사진 올리기" />
+                                    <ImageView fx:id="todayPhoto" fitHeight="360.0" fitWidth="264.0" layoutX="96.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" />
+                                    <JFXButton fx:id="uploadBtn" layoutX="181.0" layoutY="448.0" onAction="#uploadPhoto" text="사진 올리기" />
                                     <HBox layoutX="491.0" layoutY="289.0" prefHeight="66.0" prefWidth="481.0">
                                        <children>
                                           <Label prefHeight="67.0" prefWidth="141.0" text="현재 몸무게:" />

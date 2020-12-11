@@ -43,3 +43,6 @@
 	-fx-font-size: 15pt;
 }
 
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
