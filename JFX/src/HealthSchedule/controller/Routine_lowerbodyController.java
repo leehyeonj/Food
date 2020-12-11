@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -14,12 +13,10 @@ import com.jfoenix.controls.JFXTextField;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -105,7 +102,7 @@ public class Routine_lowerbodyController  implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-	
+		Tooltip.install(lowerImage, new Tooltip("클릭하여 유튜브 영상 보러 가기"));
 		
 	}
 

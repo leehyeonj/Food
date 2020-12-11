@@ -259,6 +259,26 @@
                                  <children>
                                     <VBox prefHeight="550.0" prefWidth="1080.0">
                                        <children>
+                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="50.0" prefWidth="1074.0" text="총 운동 시간">
+                                                   <styleClass>
+                                                      <String fx:value="fontsize20" />
+                                                      <String fx:value="fontSeoulNamsan" />
+                                                      <String fx:value="textfill-white" />
+                                                      <String fx:value="dropshadow" />
+                                                   </styleClass>
+                                                </Label>
+                                                <Label fx:id="totalTime" alignment="CENTER" prefHeight="65.0" prefWidth="1080.0" text="00:00:00">
+                                                   <styleClass>
+                                                      <String fx:value="fontSeoulNamsan" />
+                                                      <String fx:value="fontsize25" />
+                                                      <String fx:value="textfill-white" />
+                                                      <String fx:value="dropshadow" />
+                                                   </styleClass>
+                                                </Label>
+                                             </children>
+                                          </HBox>
                                           <ScrollPane fx:id="scroll" prefHeight="550.0" prefWidth="1062.0">
                                              <content>
                                                 <GridPane fx:id="grid">

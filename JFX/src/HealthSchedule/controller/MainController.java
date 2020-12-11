@@ -48,6 +48,9 @@ public class MainController implements Initializable{
 	   
 	   @FXML private GridPane gridCalendar;	//달력표
 	 
+	   static String year;
+	   static String month;
+	   
 	   
 	   private Pane root; //가장 위쪽의 루트 저장
 
@@ -56,7 +59,7 @@ public class MainController implements Initializable{
 		}
 
 		public void setRoot(Pane root) {
-			this.root = root;
+			this.root = root ;
 		}
 	   
 	   
@@ -66,10 +69,14 @@ public class MainController implements Initializable{
 	   
 	   //GridPane의 행과 열에 집어넣기 위해 선언
 	   private List<DayController> dayList;
-	   private Map<String, String> dayOfWeek = new HashMap<>();
+	   private Map<String, String> monthOfYear = new HashMap<>();
 	   
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
+//			System.out.println("mainController initialize실행");
+//			  
+//			
+//			System.out.println("settoday호출");
 			//stage 조정
 			stageDragableMoveWindow();
 			   
@@ -137,11 +144,13 @@ public class MainController implements Initializable{
 //			   String[] korDay = {"1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"};
 			   
 			   for(int i = 0; i < engDay.length; i++) {
-				   dayOfWeek.put(engDay[i], engDay[i]); 	//put(String key, String value)
+				   monthOfYear.put(engDay[i], engDay[i]); 	//put(String key, String value)
 			   }
 				
 			   loadMonthData(YearMonth.now());
 			   setToday(LocalDate.now());
+//			   System.out.println("main: year :"+year);
+//			   System.out.println("main: year :"+month);
 			
 		}
 	   
@@ -159,23 +168,30 @@ public class MainController implements Initializable{
 		   LocalDate firstDay = LocalDate.of(currentYM.getYear(), currentYM.getMonthValue(), 1);
 		   setToday(firstDay);	//달력을 넘기면 1일로 변경
 	   }
-	   static String year;
-	   static String month;
-	   //중앙상단 오늘 날짜
+	   
+	   
+	   
+	 
+	   //중앙상단 날짜 세팅 현재 년도, 달
 	   public void setToday(LocalDate date) {
+//		   System.out.println("settoday실행");
 		   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy");
 		   DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("MM");
-		   lblDate.setText(date.format(dtf));
+		   lblDate.setText(date.format(dtf)); //2020
 		   year = date.format(dtf);
+//		   year = lblDate.getText();
 		   month = date.format(dtf2);
-		   lblMonth.setText(dayOfWeek.get(date.getMonth().toString()));
-		   monthText.setText(date.format(dtf2));
+//		   month = monthText.getText();
+		   lblMonth.setText(monthOfYear.get(date.getMonth().toString())); //december
+		   monthText.setText(date.format(dtf2));//12
+		   month = monthText.getText();
 	   }
 		
 	   
 	  
 	   //중앙상단 오늘 요일
 	   public void loadMonthData(YearMonth ym) {
+		   System.out.println("loadMonthData실행");
 		   LocalDate calendarDate = LocalDate.of(ym.getYear(), ym.getMonthValue(), 1); //해당 년월의 1일을 가져온다.
 		   while(!calendarDate.getDayOfWeek().toString().equals("SUNDAY")) { //일요일이 아닐때까지 하루씩 빼간다.
 			   calendarDate = calendarDate.minusDays(1); //하루씩 감소
@@ -190,6 +206,7 @@ public class MainController implements Initializable{
 		}
 		
 	   public void setClickData(LocalDate date) {
+		   System.out.println("setClickData실행");
 		   setToday(date); //날짜 설정하고
 		   for(DayController dc : dayList) {
 			   dc.outFocus(); //모든 DayController에서 "active"를 제거한다.

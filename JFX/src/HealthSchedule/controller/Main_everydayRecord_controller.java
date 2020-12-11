@@ -44,18 +44,23 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    @FXML private Label backLabel;
    @FXML private Label breakfast;
    
+   
+   @FXML private Label todayDate;//오늘 날짜
+   @FXML private Label todayDayOfWeek;//오늘 요일
+   
    @FXML private ScrollPane scroll;
 //   @FXML private JFXScrollPane scroll;
    @FXML private GridPane grid;
    static int column = 0;
    static int row = 0;
    
-   @FXML private JFXButton fullbody;//전신 버튼
-   @FXML private JFXButton upperbody;//전신 버튼
-   @FXML private JFXButton abs;//복부 버튼
-   @FXML private JFXButton lowerbody;//하체 버튼
-   @FXML private JFXButton yoga; //요가버튼
-   @FXML private JFXButton makeRoutine; //요가버튼
+   @FXML private Label totalTime;//총 운동시간
+   
+   @FXML private JFXButton makeRoutine; //없앨거임
+   
+   
+   
+   
    
    @FXML private JFXButton uploadBtn;//사진업로드
    @FXML private ImageView todayPhoto; //업로드 버튼 클릭 후 오늘사진 띄우는 이미지뷰
@@ -93,10 +98,11 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    
    @Override
    public void initialize(URL arg0, ResourceBundle arg1) {
+//	   System.out.println("maineverydayController initialize실행");
       //stage 조정
         stageDragableMoveWindow();
         
-     // 두번째 tab에 불러오기
+     // 두번째 tab에 운동 페이지 불러오기
         try {
 			
 				FXMLLoader fxmlLoader = new FXMLLoader();
@@ -136,7 +142,20 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 			// TODO: handle exception
 		}
         
+        
+        ////////// 날짜 세팅 /////////////
+        setTodayDate(year, month, dayOfMonth);
+//        System.out.println("record: year" + year);
+//        System.out.println("record: month" + month);
+//        System.out.println("record: dayOfMonth" + dayOfMonth);
+        todayDayOfWeek.setText(dayofWeek);
+//        System.out.println("record: dayofWeek " + dayofWeek);
+    
       
+   }
+   
+   public void setTodayDate(String year, String month, String dayOfMonth) {
+	   todayDate.setText(year+"."+month+"."+dayOfMonth);
    }
    
    	public void gridpaneSet(AnchorPane anchorPane) {
@@ -197,22 +216,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       stage = (Stage) pane.getScene().getWindow();
       stage.setIconified(true);
       }
-      //전체 화면으로
-//      @FXML
-//      private void actionMaxWindow(MouseEvent event) {
-//      // Launcher.stage.setFullScreen(true);
-//      // if (Launcher.stage.isMaximized()) {
-//      // Launcher.stage.setMaximized(false);
-//      // } else {
-//      // Launcher.stage.setMaximized(true);
-//      // }
-//      stage = (Stage) pane.getScene().getWindow();
-//      if (stage.isMaximized()) {
-//      stage.setMaximized(false);
-//      } else {
-//      stage.setMaximized(true);
-//      }
-//      }
+     
       
       //화면 끄기
       @FXML
@@ -230,6 +234,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
             primaryStage.setScene(scene);
          } catch (Exception e2) {}
       }
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       @FXML
       private void pageMove(MouseEvent event) {
@@ -587,66 +592,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       
       
       
-      //전신 버튼
-      public void fullbodyEx(ActionEvent event) {
-         try {
-            Desktop.getDesktop().browse(new URI("http://www.youtube.com/results?search_query=전신운동"));
-            }
-         catch (IOException e) {
-            e.printStackTrace(); }
-            catch (URISyntaxException e) { 
-               e.printStackTrace();
-               }
-      }
-      
-      //상체 버튼
-      public void upperbodyEx(ActionEvent event) {
-    	   try {
-               Desktop.getDesktop().browse(new URI("http://www.youtube.com/results?search_query=상체운동"));
-               }
-            catch (IOException e) {
-               e.printStackTrace(); }
-               catch (URISyntaxException e) { 
-                  e.printStackTrace();
-                  }
-      }
-      
-      //복부 버튼
-      public void absEx(ActionEvent event) {
-    	   try {
-               Desktop.getDesktop().browse(new URI("http://www.youtube.com/results?search_query=복부운동"));
-               }
-            catch (IOException e) {
-               e.printStackTrace(); }
-               catch (URISyntaxException e) { 
-                  e.printStackTrace();
-                  }
-      }
-      
-      //하체 버튼
-      public void lowerbodyEx(ActionEvent event) {
-    	   try {
-               Desktop.getDesktop().browse(new URI("http://www.youtube.com/results?search_query=하체운동"));
-               }
-            catch (IOException e) {
-               e.printStackTrace(); }
-               catch (URISyntaxException e) { 
-                  e.printStackTrace();
-                  }   
-      }
-      
-      //요가 버튼 
-      public void yogaEx(ActionEvent event) {
-   	   try {
-              Desktop.getDesktop().browse(new URI("http://www.youtube.com/results?search_query=스트레칭+및+요가"));
-              }
-           catch (IOException e) {
-              e.printStackTrace(); }
-              catch (URISyntaxException e) { 
-                 e.printStackTrace();
-                 }   
-     }
-      
+    
       
       //운동루틴 만들기버튼
       public void makeRountinebtn(ActionEvent event) {
@@ -659,6 +605,9 @@ public class Main_everydayRecord_controller extends DayController implements Ini
            } catch (Exception e2) {}
       }
       
+      
+      
+      /////////////////////////////////////////////////////////////////////////////////////
     //사진업로드 버튼
       public void uploadPhoto(ActionEvent event) {
           try {

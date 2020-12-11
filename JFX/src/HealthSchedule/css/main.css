@@ -30,6 +30,9 @@
 .backcolor-white{
 	-fx-background-color: #ffffff ;
 }
+.backcolor-pastelblue{
+	-fx-background-color:  #EAF4FE ;
+}
 .backcolor-transparent{
 	 -fx-background-color: rgba(0,0,0,0);
 }
@@ -40,6 +43,9 @@
 /* font */
 .fontsize25{
 	-fx-font-size: 25pt;
+}
+.fontsize20{
+	-fx-font-size: 20pt;
 }
 .fontsize35{
 	-fx-font-size: 35pt;
@@ -124,4 +130,12 @@
 /*/////////////////////////////////////////////////// */
 #poppane{
 		-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 10, 0 , 5 , 2);
+}
+
+
+#saveBtn:hover{
+	-fx-background-color:#C0DAFF ;
+}
+#timesave:hover{
+	-fx-background-color: #C0DAFF ;
 }
