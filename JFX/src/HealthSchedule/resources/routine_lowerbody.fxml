@@ -46,9 +46,7 @@
                               <String fx:value="textfill-white" />
                            </styleClass></JFXButton>
                         <JFXButton fx:id="timesave" buttonType="RAISED" onAction="#timesaveAction" prefHeight="28.0" prefWidth="86.0" ripplerFill="#e81919" text="time">
-                           <HBox.margin>
-                              <Insets left="2.0" />
-                           </HBox.margin>
+                          
                            <styleClass>
                               <String fx:value="backcolor-blue" />
                               <String fx:value="textfill-white" />
@@ -56,23 +54,17 @@
                      </children>
                   </HBox>
                   <Separator prefHeight="3.0" prefWidth="359.0">
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
+                     
                   </Separator>
                   <Label fx:id="alarmText" alignment="CENTER" prefHeight="26.0" prefWidth="420.0" text=" ">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
+                    
                      <styleClass>
                         <String fx:value="fontSeoulNamsan" />
                         <String fx:value="textfill-blue" />
                      </styleClass>
                   </Label>
                   <ScrollPane fx:id="scroll" prefHeight="107.0" prefWidth="420.0">
-                     <VBox.margin>
-                        <Insets bottom="20.0" top="5.0" />
-                     </VBox.margin>
+                 
                      <content>
                         <VBox fx:id="content" prefHeight="84.0" prefWidth="410.0" />
                      </content>

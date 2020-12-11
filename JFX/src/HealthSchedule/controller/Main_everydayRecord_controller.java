@@ -1,10 +1,6 @@
 package HealthSchedule.controller;
 
-import java.awt.Desktop;
 import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,7 +9,6 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXScrollPane;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,8 +40,8 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    @FXML private Label breakfast;
    
    
-   @FXML private Label todayDate;//¿À´Ã ³¯Â¥
-   @FXML private Label todayDayOfWeek;//¿À´Ã ¿äÀÏ
+   @FXML private Label todayDate;//ì˜¤ëŠ˜ ë‚ ì§œ
+   @FXML private Label todayDayOfWeek;//ì˜¤ëŠ˜ ìš”ì¼
    
    @FXML private ScrollPane scroll;
 //   @FXML private JFXScrollPane scroll;
@@ -54,43 +49,43 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    static int column = 0;
    static int row = 0;
    
-   @FXML private Label totalTime;//ÃÑ ¿îµ¿½Ã°£
+   @FXML private Label totalTime;//ì´ ìš´ë™ì‹œê°„
    
-   @FXML private JFXButton makeRoutine; //¾ø¾Ù°ÅÀÓ
-   
-   
+   @FXML private JFXButton makeRoutine; //ì—†ì•¨ê±°ì„
    
    
    
-   @FXML private JFXButton uploadBtn;//»çÁø¾÷·Îµå
-   @FXML private ImageView todayPhoto; //¾÷·Îµå ¹öÆ° Å¬¸¯ ÈÄ ¿À´Ã»çÁø ¶ç¿ì´Â ÀÌ¹ÌÁöºä
    
-   //Áß¼·
-   @FXML private Label PieChart, WeightTime;	//ºÎÀ§º° ¿îµ¿ºñÀ²Â÷Æ®, ¿îµ¿½Ã°£
+   
+   @FXML private JFXButton uploadBtn;//ì‚¬ì§„ì—…ë¡œë“œ
+   @FXML private ImageView todayPhoto; //ì—…ë¡œë“œ ë²„íŠ¼ í´ë¦­ í›„ ì˜¤ëŠ˜ì‚¬ì§„ ë„ìš°ëŠ” ì´ë¯¸ì§€ë·°
+   
+   //ì¤‘ì„­
+   @FXML private Label PieChart, WeightTime;	//ë¶€ìœ„ë³„ ìš´ë™ë¹„ìœ¨ì°¨íŠ¸, ìš´ë™ì‹œê°„
    @FXML private TextField FullbodyTime, UpperbodyTime, AbsTime, LowerbodyTime;
    @FXML private TextArea FullbodyText, UpperbodyText, AbsText, LowerbodyText;
    @FXML private Button Fullbodysave, Upperbodysave, Abssave, Lowerbodysave, piechart;
    
-   //Áß¼·
-   private Connection conn;    //DB Ä¿³Ø¼Ç(¿¬°á) °´Ã¼
-   private static final String USERNAME = "root";   //DB Á¢¼Ó½Ã ID
-//   private static final String PASSWORD = "1234";	 //DB Á¢¼Ó½Ã ÆĞ½º¿öµå
+   //ì¤‘ì„­
+   private Connection conn;    //DB ì»¤ë„¥ì…˜(ì—°ê²°) ê°ì²´
+   private static final String USERNAME = "root";   //DB ì ‘ì†ì‹œ ID
+//   private static final String PASSWORD = "1234";	 //DB ì ‘ì†ì‹œ íŒ¨ìŠ¤ì›Œë“œ
 //   private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//dbms
    
    
-   //ÇöÁÖ
-   private static final String PASSWORD = "DOALd1120f1gG";	 //DB Á¢¼Ó½Ã ÆĞ½º¿öµå
+   //í˜„ì£¼
+   private static final String PASSWORD = "DOALd1120f1gG";	 //DB ì ‘ì†ì‹œ íŒ¨ìŠ¤ì›Œë“œ
    private static String URL = "jdbc:mysql://localhost:3305/calendardb";	//dbms
    public Main_everydayRecord_controller() {
-	  // connection°´Ã¼¸¦ »ı¼ºÇØ¼­ DB¿¡ ¿¬°áÇÔ.
+	  // connectionê°ì²´ë¥¼ ìƒì„±í•´ì„œ DBì— ì—°ê²°í•¨.
 	  try {
-	  	  //µ¿Àû °´Ã¼¸¦ ¸¸µé¾îÁÜ 
+	  	  //ë™ì  ê°ì²´ë¥¼ ë§Œë“¤ì–´ì¤Œ 
 	      Class.forName("com.mysql.jdbc.Driver"); 
 	      conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-	      //System.out.println("µå¶óÀÌ¹ö ·Îµù ¼º°ø!!");
+	      //System.out.println("ë“œë¼ì´ë²„ ë¡œë”© ì„±ê³µ!!");
 	      
 	  } catch (Exception e) {
-	      //System.out.println("µå¶óÀÌ¹ö ·Îµå ½ÇÆĞ!!");
+	      //System.out.println("ë“œë¼ì´ë²„ ë¡œë“œ ì‹¤íŒ¨!!");
 	  }
    }
    
@@ -98,52 +93,65 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    
    @Override
    public void initialize(URL arg0, ResourceBundle arg1) {
-//	   System.out.println("maineverydayController initialize½ÇÇà");
-      //stage Á¶Á¤
+//	   System.out.println("maineverydayController initializeì‹¤í–‰");
+      //stage ì¡°ì •
         stageDragableMoveWindow();
         
-     // µÎ¹øÂ° tab¿¡ ¿îµ¿ ÆäÀÌÁö ºÒ·¯¿À±â
-        try {
-			
-				FXMLLoader fxmlLoader = new FXMLLoader();
+     // ë‘ë²ˆì§¸ tabì— ìš´ë™ í˜ì´ì§€ ë¶ˆëŸ¬ì˜¤ê¸°
+//        try {
+//			
+//				FXMLLoader fxmlLoader = new FXMLLoader();
+//				fxmlLoader.setLocation(getClass().getResource("/HealthSchedule/resources/routine_lowerbody.fxml"));
+//				AnchorPane anchorPane = fxmlLoader.load();
+//				grid.add(anchorPane, 0, 0);
+//				gridpaneSet(anchorPane);
+//			
+//				FXMLLoader fxmlLoader2 = new FXMLLoader();
+//				fxmlLoader2.setLocation(getClass().getResource("/HealthSchedule/resources/routine_stretch.fxml"));
+//				AnchorPane anchorPane2 = fxmlLoader2.load();
+//				grid.add(anchorPane2, 0, 1);
+//				gridpaneSet(anchorPane2);
+//				
+//				FXMLLoader fxmlLoader3 = new FXMLLoader();
+//				fxmlLoader3.setLocation(getClass().getResource("/HealthSchedule/resources/routine_fullbody2.fxml"));
+//				AnchorPane anchorPane3 = fxmlLoader3.load();
+//				grid.add(anchorPane3, 0, 2);
+//				gridpaneSet(anchorPane3);
+//				
+//				FXMLLoader fxmlLoader4 = new FXMLLoader();
+//				fxmlLoader4.setLocation(getClass().getResource("/HealthSchedule/resources/routine_upperbody2.fxml"));
+//				AnchorPane anchorPane4 = fxmlLoader4.load();
+//				grid.add(anchorPane4, 0, 3);
+//				gridpaneSet(anchorPane4);
+//				
+//				FXMLLoader fxmlLoader5 = new FXMLLoader();
+//				fxmlLoader5.setLocation(getClass().getResource("/HealthSchedule/resources/routine_abs2.fxml"));
+//				AnchorPane anchorPane5 = fxmlLoader5.load();
+//				grid.add(anchorPane5, 0, 4);
+//				gridpaneSet(anchorPane5);
+//				
+//				
+//				
+//			
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+        
+        for (int i = 0; i < 5; i++) {
+        	try {
+	        	FXMLLoader fxmlLoader = new FXMLLoader();
 				fxmlLoader.setLocation(getClass().getResource("/HealthSchedule/resources/routine_lowerbody.fxml"));
 				AnchorPane anchorPane = fxmlLoader.load();
-				grid.add(anchorPane, 0, 0);
+				grid.add(anchorPane, 0, i);
 				gridpaneSet(anchorPane);
-			
-				FXMLLoader fxmlLoader2 = new FXMLLoader();
-				fxmlLoader2.setLocation(getClass().getResource("/HealthSchedule/resources/routine_stretch.fxml"));
-				AnchorPane anchorPane2 = fxmlLoader2.load();
-				grid.add(anchorPane2, 0, 1);
-				gridpaneSet(anchorPane2);
-				
-				FXMLLoader fxmlLoader3 = new FXMLLoader();
-				fxmlLoader3.setLocation(getClass().getResource("/HealthSchedule/resources/routine_fullbody.fxml"));
-				AnchorPane anchorPane3 = fxmlLoader3.load();
-				grid.add(anchorPane3, 0, 2);
-				gridpaneSet(anchorPane3);
-				
-				FXMLLoader fxmlLoader4 = new FXMLLoader();
-				fxmlLoader4.setLocation(getClass().getResource("/HealthSchedule/resources/routine_upperbody.fxml"));
-				AnchorPane anchorPane4 = fxmlLoader4.load();
-				grid.add(anchorPane4, 0, 3);
-				gridpaneSet(anchorPane4);
-				
-				FXMLLoader fxmlLoader5 = new FXMLLoader();
-				fxmlLoader5.setLocation(getClass().getResource("/HealthSchedule/resources/routine_abs.fxml"));
-				AnchorPane anchorPane5 = fxmlLoader5.load();
-				grid.add(anchorPane5, 0, 4);
-				gridpaneSet(anchorPane5);
-				
-				
-				
-			
-		} catch (Exception e) {
-			// TODO: handle exception
+        	}
+        	catch (Exception e) {
+				// TODO: handle exception
+			}
 		}
         
         
-        ////////// ³¯Â¥ ¼¼ÆÃ /////////////
+        ////////// ë‚ ì§œ ì„¸íŒ… /////////////
         setTodayDate(year, month, dayOfMonth);
 //        System.out.println("record: year" + year);
 //        System.out.println("record: month" + month);
@@ -182,7 +190,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       private double yOffset = 0;
       private Stage stage = null;
 
-      //È­¸é ¿òÁ÷ÀÏ¶§ Åõ¸íÀ¸·Î º¯ÇÏ°Ô ÇÏ±â
+      //í™”ë©´ ì›€ì§ì¼ë•Œ íˆ¬ëª…ìœ¼ë¡œ ë³€í•˜ê²Œ í•˜ê¸°
       private void stageDragableMoveWindow() {
          pane.setOnMousePressed((event) -> {
          xOffset = event.getSceneX();
@@ -191,11 +199,11 @@ public class Main_everydayRecord_controller extends DayController implements Ini
          pane.setOnMouseDragged((event) -> {
          // Launcher.stage.setX(event.getScreenX() - xOffset);
          // Launcher.stage.setY(event.getScreenY() - yOffset);
-         // Launcher.stage.setOpacity(0.8f); // Ã¢ Åõ¸íÈ­
+         // Launcher.stage.setOpacity(0.8f); // ì°½ íˆ¬ëª…í™”
          stage = (Stage) pane.getScene().getWindow();
          stage.setX(event.getScreenX() - xOffset);
          stage.setY(event.getScreenY() - yOffset);
-         stage.setOpacity(0.8f); // Ã¢ Åõ¸íÈ­
+         stage.setOpacity(0.8f); // ì°½ íˆ¬ëª…í™”
          });
          pane.setOnDragDone((event) -> {
          // Launcher.stage.setOpacity(1.0f);
@@ -209,7 +217,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
          });
       }
 
-      //È­¸é ¼û±â±â
+      //í™”ë©´ ìˆ¨ê¸°ê¸°
       @FXML
       private void actionMinWindow(MouseEvent event) {
       // Launcher.stage.setIconified(true);
@@ -218,7 +226,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       }
      
       
-      //È­¸é ²ô±â
+      //í™”ë©´ ë„ê¸°
       @FXML
       private void actionCloseWindow(MouseEvent event) {
       System.exit(0);
@@ -227,7 +235,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       @FXML
       private void actionBackWindow(MouseEvent event) {
          try {
-            //µÚ·Î °¡±â ¹öÆ°À» ´©¸£¸é µÚ·Î°¨
+            //ë’¤ë¡œ ê°€ê¸° ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ë’¤ë¡œê°
             Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/main.fxml"));
             Scene scene = new Scene(checkOk);
             Stage primaryStage= (Stage)backLabel.getScene().getWindow();
@@ -239,7 +247,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       @FXML
       private void pageMove(MouseEvent event) {
          try {
-            //À½½Ä ÀÌ¸§À» Å¬¸¯ÇÏ¸é ³Ñ¾î°£´Ù.
+            //ìŒì‹ ì´ë¦„ì„ í´ë¦­í•˜ë©´ ë„˜ì–´ê°„ë‹¤.
             Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/food_breakfast.fxml"));
             Scene scene = new Scene(checkOk);
             Stage primaryStage= (Stage)breakfast.getScene().getWindow();
@@ -250,7 +258,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       @FXML
       private void currentWeight(MouseEvent event) {
          try {
-            //ÇöÀç ¸ö¹«°Ô¸¦ Å¬¸¯ÇÏ¸é ³Ñ¾î°£´Ù.
+            //í˜„ì¬ ëª¸ë¬´ê²Œë¥¼ í´ë¦­í•˜ë©´ ë„˜ì–´ê°„ë‹¤.
             Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/chart_mainpage.fxml"));
             Scene scene = new Scene(checkOk);
             Stage primaryStage= (Stage)breakfast.getScene().getWindow();
@@ -260,7 +268,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       @FXML
       private void goalWeight(MouseEvent event) {
          try {
-            //¸ñÇ¥ ¸ö¹«°Ô¸¦ Å¬¸¯ÇÏ¸é ³Ñ¾î°£´Ù.
+            //ëª©í‘œ ëª¸ë¬´ê²Œë¥¼ í´ë¦­í•˜ë©´ ë„˜ì–´ê°„ë‹¤.
             Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/chart_mainpage.fxml"));
             Scene scene = new Scene(checkOk);
             Stage primaryStage= (Stage)breakfast.getScene().getWindow();
@@ -270,7 +278,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       
       
       
-//      //»çÁø°¡Á®¿À±â ¹öÆ°
+//      //ì‚¬ì§„ê°€ì ¸ì˜¤ê¸° ë²„íŠ¼
 //      public void actionPerformed(ActionEvent e){
 //          JFileChooser fileChooser = new JFileChooser();
 //          fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
@@ -294,7 +302,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 //      
 //      
 //      
-//      //»çÁøÀúÀå ¹öÆ°
+//      //ì‚¬ì§„ì €ì¥ ë²„íŠ¼
 //      public void savePhoto(ActionEvent e){
 //
 //    	SaveImg saveImg = new SaveImg();
@@ -302,18 +310,18 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 //        String file = urlToString;
 //        String path = "C:\\HealthSchedule\\test\\src\\images";
 // 	   
-// 	   final String USERNAME = "root";   //DB Á¢¼Ó½Ã ID
-// 	   final String PASSWORD = "1234";	 //DB Á¢¼Ó½Ã ÆĞ½º¿öµå
+// 	   final String USERNAME = "root";   //DB ì ‘ì†ì‹œ ID
+// 	   final String PASSWORD = "1234";	 //DB ì ‘ì†ì‹œ íŒ¨ìŠ¤ì›Œë“œ
 // 	   final String URL = "jdbc:mysql://localhost:3306/iddb";
 // 	    
 // 	    try {
-//             System.out.println("»ı¼ºÀÚ");
+//             System.out.println("ìƒì„±ì");
 //             Class.forName("com.mysql.jdbc.Driver"); 
 //             conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-//             System.out.println("µå¶óÀÌ¹ö ·Îµù ¼º°ø!!");
+//             System.out.println("ë“œë¼ì´ë²„ ë¡œë”© ì„±ê³µ!!");
 //         } catch (Exception e2) {
 //             e2.printStackTrace();
-//             System.out.println("µå¶óÀÌ¹ö ·Îµå ½ÇÆĞ!!");
+//             System.out.println("ë“œë¼ì´ë²„ ë¡œë“œ ì‹¤íŒ¨!!");
 //         }
 // 	   
 // 	    String sql = "insert into test values(?);";
@@ -325,12 +333,12 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 //
 //             int result = pstmt.executeUpdate();
 //             if(result == 1) {
-//             	System.out.println("»çÁø Ãß°¡ ¼º°ø!");
+//             	System.out.println("ì‚¬ì§„ ì¶”ê°€ ì„±ê³µ!");
 //             	try {
 //            			int result2 = saveImg.saveImgFromUrl(file, path);
 //            			if (result2 == 1) {
-//            				System.out.println("ÀúÀåµÈ°æ·Î : " + saveImg.getPath());
-//            				System.out.println("ÀúÀåµÈÆÄÀÏÀÌ¸§ : " + saveImg.getSavedFileName());
+//            				System.out.println("ì €ì¥ëœê²½ë¡œ : " + saveImg.getPath());
+//            				System.out.println("ì €ì¥ëœíŒŒì¼ì´ë¦„ : " + saveImg.getSavedFileName());
 //            			}
 //
 //            		} catch (IOException e6) {
@@ -338,7 +346,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 //            		}
 //             }           
 //         } catch (SQLException e3) {            
-//         	System.out.println("»çÁø Ãß°¡ ½ÇÆĞ!");
+//         	System.out.println("ì‚¬ì§„ ì¶”ê°€ ì‹¤íŒ¨!");
 //             e3.printStackTrace();
 //         } finally {
 //             try {
@@ -350,20 +358,20 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 //         }
 // 	  }
    
-  	  //Áß¼·
-      //piechart¶ç¿ì±â
+  	  //ì¤‘ì„­
+      //piechartë„ìš°ê¸°
       public void PieChartbtn(ActionEvent e){
 		   try {
 			   FXMLLoader members = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/piechart.fxml"));
 			   Parent parent = (Parent)members.load();
 			   Stage stage = new Stage();
 			   stage.setScene(new Scene(parent));
-			   stage.setTitle("ºÎÀ§º° ¿îµ¿ ºñÀ²");
+			   stage.setTitle("ë¶€ìœ„ë³„ ìš´ë™ ë¹„ìœ¨");
 			   stage.show();
 			 } catch (Exception e2) {}  
       }	//ShowChartbtn
       
-      //Àü½Å¿îµ¿µ¥ÀÌÅÍ ÀúÀå
+      //ì „ì‹ ìš´ë™ë°ì´í„° ì €ì¥
       public void Fullbodysavebtn(ActionEvent event) {
      		String sql = "insert into Fullbody values(?,?,?)";
  		    String text = FullbodyText.getText();
@@ -376,10 +384,10 @@ public class Main_everydayRecord_controller extends DayController implements Ini
        			pstmt.setInt(3, time);
        			int result = pstmt.executeUpdate();
        			if(result==1) {
-       				System.out.println("Fullbodyµ¥ÀÌÅÍ »ğÀÔ ¼º°ø!");
+       				System.out.println("Fullbodyë°ì´í„° ì‚½ì… ì„±ê³µ!");
        			}
        		} catch (Exception e) {
-       			System.out.println("Fullbodyµ¥ÀÌÅÍ »ğÀÔ ½ÇÆĞ!");
+       			System.out.println("Fullbodyë°ì´í„° ì‚½ì… ì‹¤íŒ¨!");
        		}    finally {
        			try {
        				if(pstmt!=null && !pstmt.isClosed()) {
@@ -391,7 +399,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
        		WeightTime.setText(mec.Alltime());
       }
       
-      //»óÃ¼¿îµ¿µ¥ÀÌÅÍ ÀúÀå
+      //ìƒì²´ìš´ë™ë°ì´í„° ì €ì¥
       public void Upperbodysavebtn(ActionEvent event) {
      		String sql = "insert into Upperbody values(?,?,?)";
  		    String text = UpperbodyText.getText();
@@ -404,10 +412,10 @@ public class Main_everydayRecord_controller extends DayController implements Ini
        			pstmt.setInt(3, time);
        			int result = pstmt.executeUpdate();
        			if(result==1) {
-       				System.out.println("Upperbodyµ¥ÀÌÅÍ »ğÀÔ ¼º°ø!");
+       				System.out.println("Upperbodyë°ì´í„° ì‚½ì… ì„±ê³µ!");
        			}
        		} catch (Exception e) {
-       			System.out.println("Upperbodyµ¥ÀÌÅÍ »ğÀÔ ½ÇÆĞ!");
+       			System.out.println("Upperbodyë°ì´í„° ì‚½ì… ì‹¤íŒ¨!");
        		}    finally {
        			try {
        				if(pstmt!=null && !pstmt.isClosed()) {
@@ -419,7 +427,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
        		WeightTime.setText(mec.Alltime());
       }
       
-      //º¹±Ù¿îµ¿µ¥ÀÌÅÍ ÀúÀå
+      //ë³µê·¼ìš´ë™ë°ì´í„° ì €ì¥
       public void Abssavebtn(ActionEvent event) {
      		String sql = "insert into Abs values(?,?,?)";
  		    String text = AbsText.getText();
@@ -432,10 +440,10 @@ public class Main_everydayRecord_controller extends DayController implements Ini
        			pstmt.setInt(3, time);
        			int result = pstmt.executeUpdate();
        			if(result==1) {
-       				System.out.println("Absµ¥ÀÌÅÍ »ğÀÔ ¼º°ø!");
+       				System.out.println("Absë°ì´í„° ì‚½ì… ì„±ê³µ!");
        			}
        		} catch (Exception e) {
-       			System.out.println("Absµ¥ÀÌÅÍ »ğÀÔ ½ÇÆĞ!");
+       			System.out.println("Absë°ì´í„° ì‚½ì… ì‹¤íŒ¨!");
        		}    finally {
        			try {
        				if(pstmt!=null && !pstmt.isClosed()) {
@@ -447,7 +455,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
        		WeightTime.setText(mec.Alltime());
       }
       
-      //ÇÏÃ¼¿îµ¿µ¥ÀÌÅÍ ÀúÀå
+      //í•˜ì²´ìš´ë™ë°ì´í„° ì €ì¥
       public void Lowerbodysavebtn(ActionEvent event) {
      		String sql = "insert into Lowerbody values(?,?,?)";
  		    String text = AbsText.getText();
@@ -460,10 +468,10 @@ public class Main_everydayRecord_controller extends DayController implements Ini
        			pstmt.setInt(3, time);
        			int result = pstmt.executeUpdate();
        			if(result==1) {
-       				System.out.println("Lowerbodyµ¥ÀÌÅÍ »ğÀÔ ¼º°ø!");
+       				System.out.println("Lowerbodyë°ì´í„° ì‚½ì… ì„±ê³µ!");
        			}
        		} catch (Exception e) {
-       			System.out.println("Lowerbodyµ¥ÀÌÅÍ »ğÀÔ ½ÇÆĞ!");
+       			System.out.println("Lowerbodyë°ì´í„° ì‚½ì… ì‹¤íŒ¨!");
        		}    finally {
        			try {
        				if(pstmt!=null && !pstmt.isClosed()) {
@@ -475,7 +483,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
        		WeightTime.setText(mec.Alltime());
       }
       
-  	  //Àü½Å¿îµ¿ µî·ÏµÈ ÃÑ ½Ã°£ È£Ãâ
+  	  //ì „ì‹ ìš´ë™ ë“±ë¡ëœ ì´ ì‹œê°„ í˜¸ì¶œ
   	  public Integer FullBody(int fullbody) {
   		  String sql = "select sum(weightTime) from FullBody";
   		  PreparedStatement pstmt = null;
@@ -487,7 +495,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
   				  i = rs.getInt("sum(weightTime)");
   			  }
   		  } catch (Exception e) {
-  			  //System.out.println("Àü½Å¿îµ¿ ½Ã°£ È£Ãâ ½ÇÆĞ");
+  			  //System.out.println("ì „ì‹ ìš´ë™ ì‹œê°„ í˜¸ì¶œ ì‹¤íŒ¨");
   		  }finally {
   			  try {
   				  if(pstmt != null && !pstmt.isClosed()) {
@@ -498,7 +506,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
   		  return i;
   	  }
   	  
-  	  //»óÃ¼¿îµ¿ µî·ÏµÈ ÃÑ ½Ã°£ È£Ãâ
+  	  //ìƒì²´ìš´ë™ ë“±ë¡ëœ ì´ ì‹œê°„ í˜¸ì¶œ
   	  public Integer UpperBody(int upperbody) {
   		  String sql = "select sum(weightTime) from Upperbody";
   		  PreparedStatement pstmt = null;
@@ -510,7 +518,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
   				  i = rs.getInt("sum(weightTime)");
   			  }
   		  } catch (Exception e) {
-  			  //System.out.println("Àü½Å¿îµ¿ ½Ã°£ È£Ãâ ½ÇÆĞ");
+  			  //System.out.println("ì „ì‹ ìš´ë™ ì‹œê°„ í˜¸ì¶œ ì‹¤íŒ¨");
   		  }finally {
   			  try {
   				  if(pstmt != null && !pstmt.isClosed()) {
@@ -521,7 +529,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
   		  return i;
   	  }
   	  
-  	  //º¹±Ù¿îµ¿ µî·ÏµÈ ÃÑ ½Ã°£ È£Ãâ
+  	  //ë³µê·¼ìš´ë™ ë“±ë¡ëœ ì´ ì‹œê°„ í˜¸ì¶œ
   	  public Integer Abs(int abs) {
   		  String sql = "select sum(weightTime) from Abs";
   		  PreparedStatement pstmt = null;
@@ -533,7 +541,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
   				  i = rs.getInt("sum(weightTime)");
   			  }
   		  } catch (Exception e) {
-  			  //System.out.println("Àü½Å¿îµ¿ ½Ã°£ È£Ãâ ½ÇÆĞ");
+  			  //System.out.println("ì „ì‹ ìš´ë™ ì‹œê°„ í˜¸ì¶œ ì‹¤íŒ¨");
   		  }finally {
   			  try {
   				  if(pstmt != null && !pstmt.isClosed()) {
@@ -544,7 +552,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
   		  return i;
   	  }
   	  
-  	  //ÇÏÃ¼¿îµ¿ µî·ÏµÈ ÃÑ ½Ã°£ È£Ãâ
+  	  //í•˜ì²´ìš´ë™ ë“±ë¡ëœ ì´ ì‹œê°„ í˜¸ì¶œ
   	  public Integer Lowerbody(int lowerbody) {
   		  String sql = "select sum(weightTime) from Lowerbody";
   		  PreparedStatement pstmt = null;
@@ -556,7 +564,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
   				  i = rs.getInt("sum(weightTime)");
   			  }
   		  } catch (Exception e) {
-  			  //System.out.println("Àü½Å¿îµ¿ ½Ã°£ È£Ãâ ½ÇÆĞ");
+  			  //System.out.println("ì „ì‹ ìš´ë™ ì‹œê°„ í˜¸ì¶œ ì‹¤íŒ¨");
   		  }finally {
   			  try {
   				  if(pstmt != null && !pstmt.isClosed()) {
@@ -567,7 +575,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
   		  return i;
   	  }
       
-  	  //ÀüÃ¼ ¿îµ¿ÇÑ ½Ã°£ È£Ãâ	00:00:00
+  	  //ì „ì²´ ìš´ë™í•œ ì‹œê°„ í˜¸ì¶œ	00:00:00
   	  public String Alltime() {
   		  Main_everydayRecord_controller mec = new Main_everydayRecord_controller();
   		  int second = (int)Math.round(mec.FullBody(1)+mec.UpperBody(1)+mec.Abs(1)+mec.Lowerbody(1)) % 60;
@@ -575,18 +583,18 @@ public class Main_everydayRecord_controller extends DayController implements Ini
   		  int hour = (int)Math.round(mec.FullBody(1)+mec.UpperBody(1)+mec.Abs(1)+mec.Lowerbody(1)) / 60 / 60;
   		  String time = null;
   		  if(hour == 0) {
-  			   time = String.format("%02d½Ã°£%02dºĞ", minute, second);
+  			   time = String.format("%02dì‹œê°„%02dë¶„", minute, second);
   		  }else if(hour < 10) {
-  			   time = String.format("%1d½Ã°£%02dºĞ%02dÃÊ", hour, minute, second);
+  			   time = String.format("%1dì‹œê°„%02dë¶„%02dì´ˆ", hour, minute, second);
   		  }else if(hour < 100) {
-  			   time = String.format("%2d½Ã°£%02dºĞ%02ÃÊ", hour, minute, second);
+  			   time = String.format("%2dì‹œê°„%02dë¶„%02ì´ˆ", hour, minute, second);
   		  }else if(hour < 1000) {
-  			   time = String.format("%3d½Ã°£%02dºĞ%02dÃÊ", hour, minute, second);
+  			   time = String.format("%3dì‹œê°„%02dë¶„%02dì´ˆ", hour, minute, second);
   		  }
   		  return time;
   	  }
 
-  	  //¿©±â±îÁö Ãß°¡
+  	  //ì—¬ê¸°ê¹Œì§€ ì¶”ê°€
       
       
       
@@ -594,10 +602,10 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       
     
       
-      //¿îµ¿·çÆ¾ ¸¸µé±â¹öÆ°
+      //ìš´ë™ë£¨í‹´ ë§Œë“¤ê¸°ë²„íŠ¼
       public void makeRountinebtn(ActionEvent event) {
     	  try {
-              //µÚ·Î °¡±â ¹öÆ°À» ´©¸£¸é µÚ·Î°¨
+              //ë’¤ë¡œ ê°€ê¸° ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ë’¤ë¡œê°
               Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/makeRoutine.fxml"));
               Scene scene = new Scene(checkOk);
               Stage primaryStage= (Stage)makeRoutine.getScene().getWindow();
@@ -608,12 +616,12 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       
       
       /////////////////////////////////////////////////////////////////////////////////////
-    //»çÁø¾÷·Îµå ¹öÆ°
+    //ì‚¬ì§„ì—…ë¡œë“œ ë²„íŠ¼
       public void uploadPhoto(ActionEvent event) {
           try {
             
                 FileChooser fc = new FileChooser();
-                  fc.setTitle("ÀÌ¹ÌÁö ¼±ÅÃ");
+                  fc.setTitle("ì´ë¯¸ì§€ ì„ íƒ");
                   fc.setInitialDirectory(new File("C:/"));
                   ExtensionFilter imgType = new ExtensionFilter("image file", "*.jpg", "*.gif", "*.png");
                   fc.getExtensionFilters().add(imgType);
@@ -630,9 +638,9 @@ public class Main_everydayRecord_controller extends DayController implements Ini
                    int result = saveImg.saveImgFromUrl(file, path);
                    if (result == 1) {
                       String savePath = saveImg.getPath();
-                      System.out.println("ÀúÀåµÈ°æ·Î : " + savePath);
+                      System.out.println("ì €ì¥ëœê²½ë¡œ : " + savePath);
                       String saveFileName = saveImg.getSavedFileName();
-                      System.out.println("ÀúÀåµÈÆÄÀÏÀÌ¸§ : " + saveFileName);
+                      System.out.println("ì €ì¥ëœíŒŒì¼ì´ë¦„ : " + saveFileName);
                       System.out.println((savePath+"/"+saveFileName));
                       
                       todayPhoto.setImage(new Image(getClass().getResource("../images/"+saveFileName).toString()));
