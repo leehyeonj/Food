@@ -22,7 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Routine_lowerbodyController  implements Initializable{
+public class Routine_lowerbodyController extends Main_everydayRecord_controller implements Initializable{
 	@FXML private ImageView lowerImage;
 	@FXML private JFXTextField writeTextField;
     @FXML private JFXButton saveBtn;
@@ -43,19 +43,31 @@ public class Routine_lowerbodyController  implements Initializable{
     		System.out.println("good");
 	      
 	       	 AnchorPane anchorPane = new AnchorPane();
+	       	 System.out.println("안커페인 만들었음");
             
             Label label = new Label(videoname);
+            System.out.println("라벨 만들었음");
             AnchorPane.setLeftAnchor(label, 5.0);
             AnchorPane.setTopAnchor(label, 5.0);
          
             JFXButton button = new JFXButton("X");
+            System.out.println("버튼 만들었음");
             button.setStyle("-fx-background-color: #33539E; -fx-text-fill: white;");
-            button.setOnAction(evt -> content.getChildren().remove(anchorPane));
+            button.setOnAction(evt -> {
+            	content.getChildren().remove(anchorPane); //해당 안커페인 삭제
+            	RoutineDao routineDao = new RoutineDao();
+            	routineDao.deleteRoutine(everyday, "lowerbody", label.getText());
+            });
             AnchorPane.setRightAnchor(button, 5.0);
             AnchorPane.setTopAnchor(button, 5.0);
             AnchorPane.setBottomAnchor(button, 5.0);
             anchorPane.getChildren().addAll(label, button);
+            System.out.println("추가했음 만들었음");
             content.getChildren().add(anchorPane);
+            System.out.println("vbox에 생성됨 만들었음");
+            
+            RoutineDao routineDao = new RoutineDao();
+            routineDao.saveRoutine(everyday, "lowerbody", videoname);
 		}
     	else {
 			System.out.println("입력아직 안했습니다.");
@@ -103,6 +115,8 @@ public class Routine_lowerbodyController  implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		Tooltip.install(lowerImage, new Tooltip("클릭하여 유튜브 영상 보러 가기"));
+		System.out.println("routine컨트롤러: " + year + month+ dayOfMonth);
+		System.out.println(everyday);
 		
 	}
 

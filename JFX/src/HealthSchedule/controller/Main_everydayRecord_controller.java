@@ -66,29 +66,29 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    @FXML private TextArea FullbodyText, UpperbodyText, AbsText, LowerbodyText;
    @FXML private Button Fullbodysave, Upperbodysave, Abssave, Lowerbodysave, piechart;
    
-   //중섭
-   private Connection conn;    //DB 커넥션(연결) 객체
-   private static final String USERNAME = "root";   //DB 접속시 ID
-//   private static final String PASSWORD = "1234";	 //DB 접속시 패스워드
-//   private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//dbms
-   
-   
-   //현주
-   private static final String PASSWORD = "DOALd1120f1gG";	 //DB 접속시 패스워드
-   private static String URL = "jdbc:mysql://localhost:3305/calendardb";	//dbms
-   public Main_everydayRecord_controller() {
-	  // connection객체를 생성해서 DB에 연결함.
-	  try {
-	  	  //동적 객체를 만들어줌 
-	      Class.forName("com.mysql.jdbc.Driver"); 
-	      conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-	      //System.out.println("드라이버 로딩 성공!!");
-	      
-	  } catch (Exception e) {
-	      //System.out.println("드라이버 로드 실패!!");
-	  }
-   }
-   
+//   //중섭
+//   private Connection conn;    //DB 커넥션(연결) 객체
+//   private static final String USERNAME = "root";   //DB 접속시 ID
+////   private static final String PASSWORD = "1234";	 //DB 접속시 패스워드
+////   private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//dbms
+//   
+//   
+//   //현주
+//   private static final String PASSWORD = "DOALd1120f1gG";	 //DB 접속시 패스워드
+//   private static String URL = "jdbc:mysql://localhost:3305/calendardb";	//dbms
+//   public Main_everydayRecord_controller() {
+//	  // connection객체를 생성해서 DB에 연결함.
+//	  try {
+//	  	  //동적 객체를 만들어줌 
+//	      Class.forName("com.mysql.jdbc.Driver"); 
+//	      conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+//	      //System.out.println("드라이버 로딩 성공!!");
+//	      
+//	  } catch (Exception e) {
+//	      //System.out.println("드라이버 로드 실패!!");
+//	  }
+//   }
+//   
    
    
    @Override
@@ -358,243 +358,243 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 //         }
 // 	  }
    
-  	  //중섭
-      //piechart띄우기
-      public void PieChartbtn(ActionEvent e){
-		   try {
-			   FXMLLoader members = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/piechart.fxml"));
-			   Parent parent = (Parent)members.load();
-			   Stage stage = new Stage();
-			   stage.setScene(new Scene(parent));
-			   stage.setTitle("부위별 운동 비율");
-			   stage.show();
-			 } catch (Exception e2) {}  
-      }	//ShowChartbtn
-      
-      //전신운동데이터 저장
-      public void Fullbodysavebtn(ActionEvent event) {
-     		String sql = "insert into Fullbody values(?,?,?)";
- 		    String text = FullbodyText.getText();
- 		    int time = Integer.parseInt(FullbodyTime.getText());
-       		PreparedStatement pstmt = null;
-       		try {
-       			pstmt = conn.prepareStatement(sql);
-       			pstmt.setString(1, null);
-       			pstmt.setString(2, text);
-       			pstmt.setInt(3, time);
-       			int result = pstmt.executeUpdate();
-       			if(result==1) {
-       				System.out.println("Fullbody데이터 삽입 성공!");
-       			}
-       		} catch (Exception e) {
-       			System.out.println("Fullbody데이터 삽입 실패!");
-       		}    finally {
-       			try {
-       				if(pstmt!=null && !pstmt.isClosed()) {
-       					pstmt.close();
-       				}
-       			} catch (Exception e2) {}
-       		}
-       		Main_everydayRecord_controller mec = new Main_everydayRecord_controller();
-       		WeightTime.setText(mec.Alltime());
-      }
-      
-      //상체운동데이터 저장
-      public void Upperbodysavebtn(ActionEvent event) {
-     		String sql = "insert into Upperbody values(?,?,?)";
- 		    String text = UpperbodyText.getText();
- 		    int time = Integer.parseInt(UpperbodyTime.getText());
-       		PreparedStatement pstmt = null;
-       		try {
-       			pstmt = conn.prepareStatement(sql);
-       			pstmt.setString(1, null);
-       			pstmt.setString(2, text);
-       			pstmt.setInt(3, time);
-       			int result = pstmt.executeUpdate();
-       			if(result==1) {
-       				System.out.println("Upperbody데이터 삽입 성공!");
-       			}
-       		} catch (Exception e) {
-       			System.out.println("Upperbody데이터 삽입 실패!");
-       		}    finally {
-       			try {
-       				if(pstmt!=null && !pstmt.isClosed()) {
-       					pstmt.close();
-       				}
-       			} catch (Exception e2) {}
-       		}
-       		Main_everydayRecord_controller mec = new Main_everydayRecord_controller();
-       		WeightTime.setText(mec.Alltime());
-      }
-      
-      //복근운동데이터 저장
-      public void Abssavebtn(ActionEvent event) {
-     		String sql = "insert into Abs values(?,?,?)";
- 		    String text = AbsText.getText();
- 		    int time = Integer.parseInt(AbsTime.getText());
-       		PreparedStatement pstmt = null;
-       		try {
-       			pstmt = conn.prepareStatement(sql);
-       			pstmt.setString(1, null);
-       			pstmt.setString(2, text);
-       			pstmt.setInt(3, time);
-       			int result = pstmt.executeUpdate();
-       			if(result==1) {
-       				System.out.println("Abs데이터 삽입 성공!");
-       			}
-       		} catch (Exception e) {
-       			System.out.println("Abs데이터 삽입 실패!");
-       		}    finally {
-       			try {
-       				if(pstmt!=null && !pstmt.isClosed()) {
-       					pstmt.close();
-       				}
-       			} catch (Exception e2) {}
-       		}
-       		Main_everydayRecord_controller mec = new Main_everydayRecord_controller();
-       		WeightTime.setText(mec.Alltime());
-      }
-      
-      //하체운동데이터 저장
-      public void Lowerbodysavebtn(ActionEvent event) {
-     		String sql = "insert into Lowerbody values(?,?,?)";
- 		    String text = AbsText.getText();
- 		    int time = Integer.parseInt(AbsTime.getText());
-       		PreparedStatement pstmt = null;
-       		try {
-       			pstmt = conn.prepareStatement(sql);
-       			pstmt.setString(1, null);
-       			pstmt.setString(2, text);
-       			pstmt.setInt(3, time);
-       			int result = pstmt.executeUpdate();
-       			if(result==1) {
-       				System.out.println("Lowerbody데이터 삽입 성공!");
-       			}
-       		} catch (Exception e) {
-       			System.out.println("Lowerbody데이터 삽입 실패!");
-       		}    finally {
-       			try {
-       				if(pstmt!=null && !pstmt.isClosed()) {
-       					pstmt.close();
-       				}
-       			} catch (Exception e2) {}
-       		}
-       		Main_everydayRecord_controller mec = new Main_everydayRecord_controller();
-       		WeightTime.setText(mec.Alltime());
-      }
-      
-  	  //전신운동 등록된 총 시간 호출
-  	  public Integer FullBody(int fullbody) {
-  		  String sql = "select sum(weightTime) from FullBody";
-  		  PreparedStatement pstmt = null;
-  		  int i = 0;
-  		  try {
-  			  pstmt = conn.prepareStatement(sql);
-  			  ResultSet rs = pstmt.executeQuery();
-  			  if(rs.next()) {	
-  				  i = rs.getInt("sum(weightTime)");
-  			  }
-  		  } catch (Exception e) {
-  			  //System.out.println("전신운동 시간 호출 실패");
-  		  }finally {
-  			  try {
-  				  if(pstmt != null && !pstmt.isClosed()) {
-  					  pstmt.close();
-  				  }
-  			  } catch (Exception e2) {}
-  		  }
-  		  return i;
-  	  }
-  	  
-  	  //상체운동 등록된 총 시간 호출
-  	  public Integer UpperBody(int upperbody) {
-  		  String sql = "select sum(weightTime) from Upperbody";
-  		  PreparedStatement pstmt = null;
-  		  int i = 0;
-  		  try {
-  			  pstmt = conn.prepareStatement(sql);
-  			  ResultSet rs = pstmt.executeQuery();
-  			  if(rs.next()) {	
-  				  i = rs.getInt("sum(weightTime)");
-  			  }
-  		  } catch (Exception e) {
-  			  //System.out.println("전신운동 시간 호출 실패");
-  		  }finally {
-  			  try {
-  				  if(pstmt != null && !pstmt.isClosed()) {
-  					  pstmt.close();
-  				  }
-  			  } catch (Exception e2) {}
-  		  }
-  		  return i;
-  	  }
-  	  
-  	  //복근운동 등록된 총 시간 호출
-  	  public Integer Abs(int abs) {
-  		  String sql = "select sum(weightTime) from Abs";
-  		  PreparedStatement pstmt = null;
-  		  int i = 0;
-  		  try {
-  			  pstmt = conn.prepareStatement(sql);
-  			  ResultSet rs = pstmt.executeQuery();
-  			  if(rs.next()) {	
-  				  i = rs.getInt("sum(weightTime)");
-  			  }
-  		  } catch (Exception e) {
-  			  //System.out.println("전신운동 시간 호출 실패");
-  		  }finally {
-  			  try {
-  				  if(pstmt != null && !pstmt.isClosed()) {
-  					  pstmt.close();
-  				  }
-  			  } catch (Exception e2) {}
-  		  }
-  		  return i;
-  	  }
-  	  
-  	  //하체운동 등록된 총 시간 호출
-  	  public Integer Lowerbody(int lowerbody) {
-  		  String sql = "select sum(weightTime) from Lowerbody";
-  		  PreparedStatement pstmt = null;
-  		  int i = 0;
-  		  try {
-  			  pstmt = conn.prepareStatement(sql);
-  			  ResultSet rs = pstmt.executeQuery();
-  			  if(rs.next()) {	
-  				  i = rs.getInt("sum(weightTime)");
-  			  }
-  		  } catch (Exception e) {
-  			  //System.out.println("전신운동 시간 호출 실패");
-  		  }finally {
-  			  try {
-  				  if(pstmt != null && !pstmt.isClosed()) {
-  					  pstmt.close();
-  				  }
-  			  } catch (Exception e2) {}
-  		  }
-  		  return i;
-  	  }
-      
-  	  //전체 운동한 시간 호출	00:00:00
-  	  public String Alltime() {
-  		  Main_everydayRecord_controller mec = new Main_everydayRecord_controller();
-  		  int second = (int)Math.round(mec.FullBody(1)+mec.UpperBody(1)+mec.Abs(1)+mec.Lowerbody(1)) % 60;
-  		  int minute = (int)Math.round(mec.FullBody(1)+mec.UpperBody(1)+mec.Abs(1)+mec.Lowerbody(1)) / 60;
-  		  int hour = (int)Math.round(mec.FullBody(1)+mec.UpperBody(1)+mec.Abs(1)+mec.Lowerbody(1)) / 60 / 60;
-  		  String time = null;
-  		  if(hour == 0) {
-  			   time = String.format("%02d시간%02d분", minute, second);
-  		  }else if(hour < 10) {
-  			   time = String.format("%1d시간%02d분%02d초", hour, minute, second);
-  		  }else if(hour < 100) {
-  			   time = String.format("%2d시간%02d분%02초", hour, minute, second);
-  		  }else if(hour < 1000) {
-  			   time = String.format("%3d시간%02d분%02d초", hour, minute, second);
-  		  }
-  		  return time;
-  	  }
-
-  	  //여기까지 추가
+//  	  //중섭
+//      //piechart띄우기
+//      public void PieChartbtn(ActionEvent e){
+//		   try {
+//			   FXMLLoader members = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/piechart.fxml"));
+//			   Parent parent = (Parent)members.load();
+//			   Stage stage = new Stage();
+//			   stage.setScene(new Scene(parent));
+//			   stage.setTitle("부위별 운동 비율");
+//			   stage.show();
+//			 } catch (Exception e2) {}  
+//      }	//ShowChartbtn
+//      
+//      //전신운동데이터 저장
+//      public void Fullbodysavebtn(ActionEvent event) {
+//     		String sql = "insert into Fullbody values(?,?,?)";
+// 		    String text = FullbodyText.getText();
+// 		    int time = Integer.parseInt(FullbodyTime.getText());
+//       		PreparedStatement pstmt = null;
+//       		try {
+//       			pstmt = conn.prepareStatement(sql);
+//       			pstmt.setString(1, null);
+//       			pstmt.setString(2, text);
+//       			pstmt.setInt(3, time);
+//       			int result = pstmt.executeUpdate();
+//       			if(result==1) {
+//       				System.out.println("Fullbody데이터 삽입 성공!");
+//       			}
+//       		} catch (Exception e) {
+//       			System.out.println("Fullbody데이터 삽입 실패!");
+//       		}    finally {
+//       			try {
+//       				if(pstmt!=null && !pstmt.isClosed()) {
+//       					pstmt.close();
+//       				}
+//       			} catch (Exception e2) {}
+//       		}
+//       		Main_everydayRecord_controller mec = new Main_everydayRecord_controller();
+//       		WeightTime.setText(mec.Alltime());
+//      }
+//      
+//      //상체운동데이터 저장
+//      public void Upperbodysavebtn(ActionEvent event) {
+//     		String sql = "insert into Upperbody values(?,?,?)";
+// 		    String text = UpperbodyText.getText();
+// 		    int time = Integer.parseInt(UpperbodyTime.getText());
+//       		PreparedStatement pstmt = null;
+//       		try {
+//       			pstmt = conn.prepareStatement(sql);
+//       			pstmt.setString(1, null);
+//       			pstmt.setString(2, text);
+//       			pstmt.setInt(3, time);
+//       			int result = pstmt.executeUpdate();
+//       			if(result==1) {
+//       				System.out.println("Upperbody데이터 삽입 성공!");
+//       			}
+//       		} catch (Exception e) {
+//       			System.out.println("Upperbody데이터 삽입 실패!");
+//       		}    finally {
+//       			try {
+//       				if(pstmt!=null && !pstmt.isClosed()) {
+//       					pstmt.close();
+//       				}
+//       			} catch (Exception e2) {}
+//       		}
+//       		Main_everydayRecord_controller mec = new Main_everydayRecord_controller();
+//       		WeightTime.setText(mec.Alltime());
+//      }
+//      
+//      //복근운동데이터 저장
+//      public void Abssavebtn(ActionEvent event) {
+//     		String sql = "insert into Abs values(?,?,?)";
+// 		    String text = AbsText.getText();
+// 		    int time = Integer.parseInt(AbsTime.getText());
+//       		PreparedStatement pstmt = null;
+//       		try {
+//       			pstmt = conn.prepareStatement(sql);
+//       			pstmt.setString(1, null);
+//       			pstmt.setString(2, text);
+//       			pstmt.setInt(3, time);
+//       			int result = pstmt.executeUpdate();
+//       			if(result==1) {
+//       				System.out.println("Abs데이터 삽입 성공!");
+//       			}
+//       		} catch (Exception e) {
+//       			System.out.println("Abs데이터 삽입 실패!");
+//       		}    finally {
+//       			try {
+//       				if(pstmt!=null && !pstmt.isClosed()) {
+//       					pstmt.close();
+//       				}
+//       			} catch (Exception e2) {}
+//       		}
+//       		Main_everydayRecord_controller mec = new Main_everydayRecord_controller();
+//       		WeightTime.setText(mec.Alltime());
+//      }
+//      
+//      //하체운동데이터 저장
+//      public void Lowerbodysavebtn(ActionEvent event) {
+//     		String sql = "insert into Lowerbody values(?,?,?)";
+// 		    String text = AbsText.getText();
+// 		    int time = Integer.parseInt(AbsTime.getText());
+//       		PreparedStatement pstmt = null;
+//       		try {
+//       			pstmt = conn.prepareStatement(sql);
+//       			pstmt.setString(1, null);
+//       			pstmt.setString(2, text);
+//       			pstmt.setInt(3, time);
+//       			int result = pstmt.executeUpdate();
+//       			if(result==1) {
+//       				System.out.println("Lowerbody데이터 삽입 성공!");
+//       			}
+//       		} catch (Exception e) {
+//       			System.out.println("Lowerbody데이터 삽입 실패!");
+//       		}    finally {
+//       			try {
+//       				if(pstmt!=null && !pstmt.isClosed()) {
+//       					pstmt.close();
+//       				}
+//       			} catch (Exception e2) {}
+//       		}
+//       		Main_everydayRecord_controller mec = new Main_everydayRecord_controller();
+//       		WeightTime.setText(mec.Alltime());
+//      }
+//      
+//  	  //전신운동 등록된 총 시간 호출
+//  	  public Integer FullBody(int fullbody) {
+//  		  String sql = "select sum(weightTime) from FullBody";
+//  		  PreparedStatement pstmt = null;
+//  		  int i = 0;
+//  		  try {
+//  			  pstmt = conn.prepareStatement(sql);
+//  			  ResultSet rs = pstmt.executeQuery();
+//  			  if(rs.next()) {	
+//  				  i = rs.getInt("sum(weightTime)");
+//  			  }
+//  		  } catch (Exception e) {
+//  			  //System.out.println("전신운동 시간 호출 실패");
+//  		  }finally {
+//  			  try {
+//  				  if(pstmt != null && !pstmt.isClosed()) {
+//  					  pstmt.close();
+//  				  }
+//  			  } catch (Exception e2) {}
+//  		  }
+//  		  return i;
+//  	  }
+//  	  
+//  	  //상체운동 등록된 총 시간 호출
+//  	  public Integer UpperBody(int upperbody) {
+//  		  String sql = "select sum(weightTime) from Upperbody";
+//  		  PreparedStatement pstmt = null;
+//  		  int i = 0;
+//  		  try {
+//  			  pstmt = conn.prepareStatement(sql);
+//  			  ResultSet rs = pstmt.executeQuery();
+//  			  if(rs.next()) {	
+//  				  i = rs.getInt("sum(weightTime)");
+//  			  }
+//  		  } catch (Exception e) {
+//  			  //System.out.println("전신운동 시간 호출 실패");
+//  		  }finally {
+//  			  try {
+//  				  if(pstmt != null && !pstmt.isClosed()) {
+//  					  pstmt.close();
+//  				  }
+//  			  } catch (Exception e2) {}
+//  		  }
+//  		  return i;
+//  	  }
+//  	  
+//  	  //복근운동 등록된 총 시간 호출
+//  	  public Integer Abs(int abs) {
+//  		  String sql = "select sum(weightTime) from Abs";
+//  		  PreparedStatement pstmt = null;
+//  		  int i = 0;
+//  		  try {
+//  			  pstmt = conn.prepareStatement(sql);
+//  			  ResultSet rs = pstmt.executeQuery();
+//  			  if(rs.next()) {	
+//  				  i = rs.getInt("sum(weightTime)");
+//  			  }
+//  		  } catch (Exception e) {
+//  			  //System.out.println("전신운동 시간 호출 실패");
+//  		  }finally {
+//  			  try {
+//  				  if(pstmt != null && !pstmt.isClosed()) {
+//  					  pstmt.close();
+//  				  }
+//  			  } catch (Exception e2) {}
+//  		  }
+//  		  return i;
+//  	  }
+//  	  
+//  	  //하체운동 등록된 총 시간 호출
+//  	  public Integer Lowerbody(int lowerbody) {
+//  		  String sql = "select sum(weightTime) from Lowerbody";
+//  		  PreparedStatement pstmt = null;
+//  		  int i = 0;
+//  		  try {
+//  			  pstmt = conn.prepareStatement(sql);
+//  			  ResultSet rs = pstmt.executeQuery();
+//  			  if(rs.next()) {	
+//  				  i = rs.getInt("sum(weightTime)");
+//  			  }
+//  		  } catch (Exception e) {
+//  			  //System.out.println("전신운동 시간 호출 실패");
+//  		  }finally {
+//  			  try {
+//  				  if(pstmt != null && !pstmt.isClosed()) {
+//  					  pstmt.close();
+//  				  }
+//  			  } catch (Exception e2) {}
+//  		  }
+//  		  return i;
+//  	  }
+//      
+//  	  //전체 운동한 시간 호출	00:00:00
+//  	  public String Alltime() {
+//  		  Main_everydayRecord_controller mec = new Main_everydayRecord_controller();
+//  		  int second = (int)Math.round(mec.FullBody(1)+mec.UpperBody(1)+mec.Abs(1)+mec.Lowerbody(1)) % 60;
+//  		  int minute = (int)Math.round(mec.FullBody(1)+mec.UpperBody(1)+mec.Abs(1)+mec.Lowerbody(1)) / 60;
+//  		  int hour = (int)Math.round(mec.FullBody(1)+mec.UpperBody(1)+mec.Abs(1)+mec.Lowerbody(1)) / 60 / 60;
+//  		  String time = null;
+//  		  if(hour == 0) {
+//  			   time = String.format("%02d시간%02d분", minute, second);
+//  		  }else if(hour < 10) {
+//  			   time = String.format("%1d시간%02d분%02d초", hour, minute, second);
+//  		  }else if(hour < 100) {
+//  			   time = String.format("%2d시간%02d분%02초", hour, minute, second);
+//  		  }else if(hour < 1000) {
+//  			   time = String.format("%3d시간%02d분%02d초", hour, minute, second);
+//  		  }
+//  		  return time;
+//  	  }
+//
+//  	  //여기까지 추가
       
       
       
