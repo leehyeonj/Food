@@ -46,6 +46,7 @@ public class Routine_lowerbodyController extends Main_everydayRecord_controller 
 	      
 	       	 AnchorPane anchorPane = new AnchorPane();
 	         Label label = new Label(videoname);
+	         label.setStyle("-fx-font-family: 'SeoulNamsan EB';");
             AnchorPane.setLeftAnchor(label, 5.0);
             AnchorPane.setTopAnchor(label, 5.0);
          
@@ -133,6 +134,7 @@ public class Routine_lowerbodyController extends Main_everydayRecord_controller 
 					String videoname = routineDao.list.get(i).getVideoname();
 					AnchorPane anchorPane = new AnchorPane();
 					Label label = new Label(videoname);
+					 label.setStyle("-fx-font-family: 'SeoulNamsan EB';");
 				    AnchorPane.setLeftAnchor(label, 5.0);
 		            AnchorPane.setTopAnchor(label, 5.0);
 		            JFXButton button = new JFXButton("X");
