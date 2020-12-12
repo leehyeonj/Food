@@ -21,14 +21,40 @@
 .backcolor-yellow{
 	-fx-background-color: #ffeebb;
 }
+
+.backcolor-yellow2{
+	-fx-background-color: #FECC35;
+}
+
+.backcolor-pink{
+	-fx-background-color:#F8E9EE ;
+}
+
+.backcolor-pink2{
+	-fx-background-color:#D67E9B ;
+}
 .backcolor-skyblue{
 	-fx-background-color: #7FACD6  ;
+}
+.backcolor-green{
+	-fx-background-color: #C5E5D6 ;
+}
+
+.backcolor-green2{
+	-fx-background-color: #285942;
 }
 .backcolor-purple{
 	-fx-background-color: #BFB8DA ;
 }
 .backcolor-purple2{
 	-fx-background-color: #A5678E ;
+}
+.backcolor-purple_up{
+	-fx-background-color: #DCC9E9;
+}
+
+.backcolor-purple_up2{
+	-fx-background-color: #8B4BB6;
 }
 .backcolor-white{
 	-fx-background-color: #ffffff ;

@@ -33,22 +33,22 @@
       </AnchorPane>
       <VBox layoutY="46.0" prefHeight="859.0" prefWidth="1300.0">
          <children>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <Label fx:id="todayDate" layoutX="555.0" layoutY="60.0" text="2020.12.02">
-                     <styleClass>
-                        <String fx:value="textfill-white" />
-                        <String fx:value="fontsize25" />
-                        <String fx:value="dropshadow" />
-                     </styleClass></Label>
-                  <Label fx:id="todayDayOfWeek" layoutX="576.0" layoutY="100.0" text="TUESDAY">
-                     <styleClass>
-                        <String fx:value="dropshadow" />
-                        <String fx:value="textfill-white" />
-                        <String fx:value="fontsize25" />
-                     </styleClass></Label>
-               </children>
-            </AnchorPane>
+            <Pane prefHeight="55.0" prefWidth="1300.0" />
+            <Label fx:id="todayDate" alignment="CENTER" prefHeight="40.0" prefWidth="1300.0" text="2020.12.02">
+               <styleClass>
+                  <String fx:value="textfill-white" />
+                  <String fx:value="fontsize25" />
+                  <String fx:value="dropshadow" />
+               </styleClass>
+            </Label>
+            <Label fx:id="todayDayOfWeek" alignment="CENTER" prefHeight="40.0" prefWidth="1300.0" text="THURSDAY">
+               <styleClass>
+                  <String fx:value="dropshadow" />
+                  <String fx:value="textfill-white" />
+                  <String fx:value="fontsize25" />
+               </styleClass>
+            </Label>
+            <Pane prefHeight="70.0" prefWidth="1300.0" />
             <AnchorPane prefHeight="530.0" prefWidth="1300.0">
                <VBox.margin>
                   <Insets left="110.0" right="110.0" />

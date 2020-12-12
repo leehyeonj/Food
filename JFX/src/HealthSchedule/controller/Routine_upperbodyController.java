@@ -23,7 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Routine_lowerbodyController extends Main_everydayRecord_controller implements Initializable{
+public class Routine_upperbodyController extends Main_everydayRecord_controller implements Initializable{
 	@FXML private ImageView lowerImage;
 	@FXML private JFXTextField writeTextField;
     @FXML private JFXButton saveBtn;
@@ -51,12 +51,12 @@ public class Routine_lowerbodyController extends Main_everydayRecord_controller 
             AnchorPane.setTopAnchor(label, 5.0);
          
             JFXButton button = new JFXButton("X");
-            button.setStyle("-fx-background-color: #33539E; -fx-text-fill: white;");
+            button.setStyle("-fx-background-color: #8B4BB6; -fx-text-fill: white;");
             
             button.setOnAction(evt -> {
             	content.getChildren().remove(anchorPane); //해당 안커페인 삭제
 //            	RoutineDao routineDao = new RoutineDao();
-            	routineDao.deleteRoutine(everyday, "lowerbody", label.getText());
+            	routineDao.deleteRoutine(everyday, "upperbody", label.getText());
             });
             AnchorPane.setRightAnchor(button, 5.0);
             AnchorPane.setTopAnchor(button, 5.0);
@@ -64,7 +64,7 @@ public class Routine_lowerbodyController extends Main_everydayRecord_controller 
             anchorPane.getChildren().addAll(label, button);
             content.getChildren().add(anchorPane); 
 //            RoutineDao routineDao = new RoutineDao();
-            routineDao.saveRoutine(everyday, "lowerbody", videoname);
+            routineDao.saveRoutine(everyday, "upperbody", videoname);
             writeTextField.clear();
 		}
     	else {
@@ -122,7 +122,7 @@ public class Routine_lowerbodyController extends Main_everydayRecord_controller 
 		if (existRoutine) {
 			
 			ArrayList<Routines_lower> list = new ArrayList<>();
-			list = routineDao.viewDayRoutine(everyday,"lowerbody");
+			list = routineDao.viewDayRoutine(everyday,"upperbody");
 //			for (int i = 0; i < liststst.size(); i++) {
 //				System.out.println(liststst.get(i).getEveryday() + "  "  + liststst.get(i).getBodypart() + " " + liststst.get(i).getVideoname());
 //			}
@@ -139,7 +139,7 @@ public class Routine_lowerbodyController extends Main_everydayRecord_controller 
 				    AnchorPane.setLeftAnchor(label, 5.0);
 		            AnchorPane.setTopAnchor(label, 5.0);
 		            JFXButton button = new JFXButton("X");
-		            button.setStyle("-fx-background-color: #33539E; -fx-text-fill: white;");
+		            button.setStyle("-fx-background-color: #8B4BB6; -fx-text-fill: white;");
 		            
 		            button.setOnAction(evt -> {
 		            	content.getChildren().remove(anchorPane); //해당 안커페인 삭제

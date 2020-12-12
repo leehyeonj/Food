@@ -66,29 +66,6 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    @FXML private TextArea FullbodyText, UpperbodyText, AbsText, LowerbodyText;
    @FXML private Button Fullbodysave, Upperbodysave, Abssave, Lowerbodysave, piechart;
    
-//   //중섭
-//   private Connection conn;    //DB 커넥션(연결) 객체
-//   private static final String USERNAME = "root";   //DB 접속시 ID
-////   private static final String PASSWORD = "1234";	 //DB 접속시 패스워드
-////   private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//dbms
-//   
-//   
-//   //현주
-//   private static final String PASSWORD = "DOALd1120f1gG";	 //DB 접속시 패스워드
-//   private static String URL = "jdbc:mysql://localhost:3305/calendardb";	//dbms
-//   public Main_everydayRecord_controller() {
-//	  // connection객체를 생성해서 DB에 연결함.
-//	  try {
-//	  	  //동적 객체를 만들어줌 
-//	      Class.forName("com.mysql.jdbc.Driver"); 
-//	      conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-//	      //System.out.println("드라이버 로딩 성공!!");
-//	      
-//	  } catch (Exception e) {
-//	      //System.out.println("드라이버 로드 실패!!");
-//	  }
-//   }
-//   
    
    
    @Override
@@ -98,57 +75,60 @@ public class Main_everydayRecord_controller extends DayController implements Ini
         stageDragableMoveWindow();
         
      // 두번째 tab에 운동 페이지 불러오기
-//        try {
-//			
-//				FXMLLoader fxmlLoader = new FXMLLoader();
-//				fxmlLoader.setLocation(getClass().getResource("/HealthSchedule/resources/routine_lowerbody.fxml"));
-//				AnchorPane anchorPane = fxmlLoader.load();
-//				grid.add(anchorPane, 0, 0);
-//				gridpaneSet(anchorPane);
-//			
-//				FXMLLoader fxmlLoader2 = new FXMLLoader();
-//				fxmlLoader2.setLocation(getClass().getResource("/HealthSchedule/resources/routine_stretch.fxml"));
-//				AnchorPane anchorPane2 = fxmlLoader2.load();
-//				grid.add(anchorPane2, 0, 1);
-//				gridpaneSet(anchorPane2);
-//				
-//				FXMLLoader fxmlLoader3 = new FXMLLoader();
-//				fxmlLoader3.setLocation(getClass().getResource("/HealthSchedule/resources/routine_fullbody2.fxml"));
-//				AnchorPane anchorPane3 = fxmlLoader3.load();
-//				grid.add(anchorPane3, 0, 2);
-//				gridpaneSet(anchorPane3);
-//				
-//				FXMLLoader fxmlLoader4 = new FXMLLoader();
-//				fxmlLoader4.setLocation(getClass().getResource("/HealthSchedule/resources/routine_upperbody2.fxml"));
-//				AnchorPane anchorPane4 = fxmlLoader4.load();
-//				grid.add(anchorPane4, 0, 3);
-//				gridpaneSet(anchorPane4);
-//				
-//				FXMLLoader fxmlLoader5 = new FXMLLoader();
-//				fxmlLoader5.setLocation(getClass().getResource("/HealthSchedule/resources/routine_abs2.fxml"));
-//				AnchorPane anchorPane5 = fxmlLoader5.load();
-//				grid.add(anchorPane5, 0, 4);
-//				gridpaneSet(anchorPane5);
-//				
-//				
-//				
-//			
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
-        
-        for (int i = 0; i < 5; i++) {
-        	try {
-	        	FXMLLoader fxmlLoader = new FXMLLoader();
+        try {
+			
+				FXMLLoader fxmlLoader = new FXMLLoader();
 				fxmlLoader.setLocation(getClass().getResource("/HealthSchedule/resources/routine_lowerbody.fxml"));
 				AnchorPane anchorPane = fxmlLoader.load();
-				grid.add(anchorPane, 0, i);
+				grid.add(anchorPane, 0, 0);
 				gridpaneSet(anchorPane);
-        	}
-        	catch (Exception e) {
-				// TODO: handle exception
-			}
+//			
+				FXMLLoader fxmlLoader2 = new FXMLLoader();
+				fxmlLoader2.setLocation(getClass().getResource("/HealthSchedule/resources/routine_stretch.fxml"));
+				AnchorPane anchorPane2 = fxmlLoader2.load();
+				grid.add(anchorPane2, 0, 1);
+				gridpaneSet(anchorPane2);
+				
+				FXMLLoader fxmlLoader3 = new FXMLLoader();
+				fxmlLoader3.setLocation(getClass().getResource("/HealthSchedule/resources/routine_upperbody.fxml"));
+				AnchorPane anchorPane3 = fxmlLoader3.load();
+				grid.add(anchorPane3, 0, 2);
+				gridpaneSet(anchorPane3);
+				FXMLLoader fxmlLoader4 = new FXMLLoader();
+				fxmlLoader4.setLocation(getClass().getResource("/HealthSchedule/resources/routine_abs.fxml"));
+				AnchorPane anchorPane4 = fxmlLoader4.load();
+				grid.add(anchorPane4, 0, 3);
+				gridpaneSet(anchorPane4);
+				
+				FXMLLoader fxmlLoader5 = new FXMLLoader();
+				fxmlLoader5.setLocation(getClass().getResource("/HealthSchedule/resources/routine_fullbody.fxml"));
+				AnchorPane anchorPane5 = fxmlLoader5.load();
+				grid.add(anchorPane5, 0, 4);
+				gridpaneSet(anchorPane5);
+				
+				
+//				
+//			
+//				
+//				
+//				
+//			
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
+        
+//        for (int i = 0; i < 5; i++) {
+//        	try {
+//	        	FXMLLoader fxmlLoader = new FXMLLoader();
+//				fxmlLoader.setLocation(getClass().getResource("/HealthSchedule/resources/routine_lowerbody.fxml"));
+//				AnchorPane anchorPane = fxmlLoader.load();
+//				grid.add(anchorPane, 0, i);
+//				gridpaneSet(anchorPane);
+//        	}
+//        	catch (Exception e) {
+//				// TODO: handle exception
+//			}
+//		}
         
         
         ////////// 날짜 세팅 /////////////

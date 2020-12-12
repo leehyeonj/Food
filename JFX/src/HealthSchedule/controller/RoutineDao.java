@@ -128,15 +128,16 @@ public class RoutineDao {
    
    
    //저장되어있는 루틴을 보여주라
-   public ArrayList<Routines_lower> viewDayRoutine(String everyday) {
+   public ArrayList<Routines_lower> viewDayRoutine(String everyday, String bodypart) {
 	 
-       String sql = "select everyday, bodypart, videoname from everydayRoutine where everyday = ?";
+       String sql = "select everyday, bodypart, videoname from everydayRoutine where everyday = ? and bodypart =?";
        PreparedStatement pstmt = null;
        //결과 값을 담을 곳
       
        try {
            pstmt = conn.prepareStatement(sql);
            pstmt.setString(1, everyday);
+           pstmt.setString(2, bodypart);
            ResultSet rs = pstmt.executeQuery();
            
            //있으면

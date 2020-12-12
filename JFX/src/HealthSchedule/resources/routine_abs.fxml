@@ -9,23 +9,23 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="300.0" prefWidth="930.0" style="-fx-background-radius: 30;" styleClass="backcolor-yellow" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.Routine_stretchController">
+<AnchorPane prefHeight="300.0" prefWidth="930.0" style="-fx-background-radius: 30;" styleClass="backcolor-pink" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.Routine_absController">
    <children>
       <HBox prefHeight="300.0" prefWidth="930.0">
          <children>
-            <ImageView fx:id="lowerImage" fitHeight="208.0" fitWidth="221.0" onMouseClicked="#movePage" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="lowerImage" fitHeight="175.0" fitWidth="221.0" onMouseClicked="#movePage" pickOnBounds="true" preserveRatio="true">
                <HBox.margin>
                   <Insets left="20.0" top="50.0" />
                </HBox.margin>
                <image>
-                  <Image url="@images/stretch.jpg" />
+                  <Image url="@images/abs.jpg" />
                </image>
             </ImageView>
             <Pane prefHeight="200.0" prefWidth="83.0" />
             <VBox prefHeight="296.0" prefWidth="420.0">
                <children>
                   <Pane prefHeight="47.0" prefWidth="420.0" />
-                  <Label alignment="CENTER" prefHeight="69.0" prefWidth="374.0" text="스트레칭">
+                  <Label alignment="CENTER" prefHeight="69.0" prefWidth="374.0" text="복근 운동">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -44,14 +44,14 @@
                            <styleClass>
                               <String fx:value="backcolor-blue" />
                               <String fx:value="textfill-white" />
-                              <String fx:value="backcolor-yellow2" />
+                              <String fx:value="backcolor-pink2" />
                            </styleClass></JFXButton>
                         <JFXButton fx:id="timesave" buttonType="RAISED" onAction="#timesaveAction" prefHeight="28.0" prefWidth="86.0" ripplerFill="#e81919" text="time">
                           
                            <styleClass>
                               <String fx:value="backcolor-blue" />
                               <String fx:value="textfill-white" />
-                              <String fx:value="backcolor-yellow2" />
+                              <String fx:value="backcolor-pink2" />
                            </styleClass></JFXButton>
                      </children>
                   </HBox>
@@ -73,7 +73,7 @@
                   </ScrollPane>
                </children>
             </VBox>
-            <Label fx:id="timelabel" alignment="CENTER" prefHeight="305.0" prefWidth="200.0" text="00:00:00">
+            <Label fx:id="timelabel" alignment="CENTER" prefHeight="305.0" prefWidth="207.0" text="00:00:00">
                <font>
                   <Font size="25.0" />
                </font>
