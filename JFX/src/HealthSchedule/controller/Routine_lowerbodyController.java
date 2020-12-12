@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -36,6 +37,7 @@ public class Routine_lowerbodyController extends Main_everydayRecord_controller 
    Stage primaryStage;
    String time;
 
+   RoutineDao routineDao = new RoutineDao();
     @FXML
     public void saveAction(ActionEvent event) {
     	if (!writeTextField.getText().isEmpty()) {
@@ -43,34 +45,27 @@ public class Routine_lowerbodyController extends Main_everydayRecord_controller 
     		System.out.println("good");
 	      
 	       	 AnchorPane anchorPane = new AnchorPane();
-	       	 System.out.println("안커페인 만들었음");
-            
-            Label label = new Label(videoname);
-            System.out.println("라벨 만들었음");
+	         Label label = new Label(videoname);
             AnchorPane.setLeftAnchor(label, 5.0);
             AnchorPane.setTopAnchor(label, 5.0);
          
             JFXButton button = new JFXButton("X");
-            System.out.println("버튼 만들었음");
             button.setStyle("-fx-background-color: #33539E; -fx-text-fill: white;");
+            
             button.setOnAction(evt -> {
             	content.getChildren().remove(anchorPane); //해당 안커페인 삭제
-            	RoutineDao routineDao = new RoutineDao();
+//            	RoutineDao routineDao = new RoutineDao();
             	routineDao.deleteRoutine(everyday, "lowerbody", label.getText());
             });
             AnchorPane.setRightAnchor(button, 5.0);
             AnchorPane.setTopAnchor(button, 5.0);
             AnchorPane.setBottomAnchor(button, 5.0);
             anchorPane.getChildren().addAll(label, button);
-            System.out.println("추가했음 만들었음");
-            content.getChildren().add(anchorPane);
-            System.out.println("vbox에 생성됨 만들었음");
-            
-            RoutineDao routineDao = new RoutineDao();
+            content.getChildren().add(anchorPane); 
+//            RoutineDao routineDao = new RoutineDao();
             routineDao.saveRoutine(everyday, "lowerbody", videoname);
 		}
     	else {
-			System.out.println("입력아직 안했습니다.");
 			alarmText.setText("운동을 입력하지 않았습니다.");
 		}
     	
@@ -90,7 +85,6 @@ public class Routine_lowerbodyController extends Main_everydayRecord_controller 
 			}
 		}
     	else {
-			System.out.println("시간 입력 안했습니다.");
 			alarmText.setText("시간을 입력하지 않았습니다.");
 		}
     }
@@ -113,10 +107,53 @@ public class Routine_lowerbodyController extends Main_everydayRecord_controller 
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		//이미지뷰 툴팁
 		Tooltip.install(lowerImage, new Tooltip("클릭하여 유튜브 영상 보러 가기"));
+		//언제를 눌렀는지 출력해보자
 		System.out.println("routine컨트롤러: " + year + month+ dayOfMonth);
 		System.out.println(everyday);
+	
+		//그날에 저장된 데이터가 있냐
+		boolean existRoutine = routineDao.ifexistRoutine(everyday);
+		
+		//있으면 라벨을 원래부터 만들어라
+		if (existRoutine) {
+			
+			ArrayList<Routines_lower> list = new ArrayList<>();
+			list = routineDao.viewDayRoutine(everyday);
+//			for (int i = 0; i < liststst.size(); i++) {
+//				System.out.println(liststst.get(i).getEveryday() + "  "  + liststst.get(i).getBodypart() + " " + liststst.get(i).getVideoname());
+//			}
+//			 //저장되어있는 루틴을 list에 넣어서 가져와라
+	
+			for (int i = 0; i < list.size(); i++) {
+			
+				int bunho =i;
+				
+					String videoname = routineDao.list.get(i).getVideoname();
+					AnchorPane anchorPane = new AnchorPane();
+					Label label = new Label(videoname);
+				    AnchorPane.setLeftAnchor(label, 5.0);
+		            AnchorPane.setTopAnchor(label, 5.0);
+		            JFXButton button = new JFXButton("X");
+		            button.setStyle("-fx-background-color: #33539E; -fx-text-fill: white;");
+		            
+		            button.setOnAction(evt -> {
+		            	content.getChildren().remove(anchorPane); //해당 안커페인 삭제
+//		            	RoutineDao routineDao = new RoutineDao();
+		            	routineDao.deleteRoutine(everyday, routineDao.list.get(bunho).getBodypart(), routineDao.list.get(bunho).getVideoname());
+		            });
+		            AnchorPane.setRightAnchor(button, 5.0);
+		            AnchorPane.setTopAnchor(button, 5.0);
+		            AnchorPane.setBottomAnchor(button, 5.0);
+		            anchorPane.getChildren().addAll(label, button);
+		       
+		            content.getChildren().add(anchorPane);
+			}
+			
+		
+		}
+		
 		
 	}
 
