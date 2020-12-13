@@ -113,18 +113,9 @@ public class Main_everydayRecord_controller extends DayController implements Ini
             
         ////////// 날짜 세팅 /////////////
         setTodayDate(year, month, dayOfMonth);
-//        System.out.println("record: year" + year);
-//        System.out.println("record: month" + month);
-//        System.out.println("record: dayOfMonth" + dayOfMonth);
         todayDayOfWeek.setText(dayofWeek);
-//        System.out.println("record: dayofWeek " + dayofWeek);
-       
-//        totalTime 표시하기
-//        settotalTimeLabel();
-//        
-//        System.out.println("main: totalhour" + totalHour);
-//        System.out.println("main: totalhour" + totalMinute);
-//        System.out.println("main: totalhour" + totalSecond);
+
+        //총 시간 세팅
       if (routineDao.ifexistTime(everyday)) {
     	  settotalTimeLabel();
 	}
@@ -187,10 +178,12 @@ public class Main_everydayRecord_controller extends DayController implements Ini
         } catch (Exception e2) {}
    }
    
+   //오늘 날짜
    public void setTodayDate(String year, String month, String dayOfMonth) {
 	   todayDate.setText(year+"."+month+"."+dayOfMonth);
    }
    
+   //운동루틴 로더
    	public void gridpaneSet(AnchorPane anchorPane) {
 //   		if(column == 1) {
 //			column = 0;
