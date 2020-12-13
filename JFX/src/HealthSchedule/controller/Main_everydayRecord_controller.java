@@ -2,15 +2,14 @@ package HealthSchedule.controller;
 
 import java.io.File;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
+import com.mysql.jdbc.MiniAdmin;
 
+import HealthSchedule.model.Routines;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,11 +17,8 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -50,65 +46,182 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    @FXML private GridPane grid;
    static int column = 0;
    static int row = 0;
-   
+//   static String part; // 파트 이름
+   static List<String> partnames = new ArrayList<>();
    static int totalHour;
    static int totalMinute;
    static int totalSecond;
    @FXML private Label totalTime;//총 운동시간
    
    @FXML private JFXButton makeRoutine; //없앨거임
-   RoutineDao routineDao = new RoutineDao();
+//   RoutineDao routineDao = new RoutineDao();
   
+   private TotalListener totalListener;
+   private TotalTime totalbean;
    
-   
-   
+  static Routines routine;
    @FXML private JFXButton uploadBtn;//사진업로드
    @FXML private ImageView todayPhoto; //업로드 버튼 클릭 후 오늘사진 띄우는 이미지뷰
    
+   public static List<Routines> routineslist = new ArrayList<>();
+   RoutineDao routineDao = new RoutineDao();
+   
+   //총 운동시간에 계속 변하게 하기
+   private void setTotalworkoutTime(Routines routine) {
+	   routine = routineDao.selecTotalTime(everyday);
+	   System.out.println(everyday);
+	  totalHour = routine.getHour();
+	  totalMinute = routine.getMinute();
+	  totalSecond = routine.getSecond();
+	  String timelabel = timeview(totalHour, totalMinute, totalSecond);			  
+	  totalTime.setText(timelabel);
+   }
+   
+   //시간 정리
+   public String timeview(int hour, int minute, int second) {
+	   if (second>60) {
+		
+		minute += second/60;
+		second = second%60;
+	}
+	   if (minute>60) {
+		
+		hour += minute/60;
+		minute = minute%60;
+	   }
+	   String hourstr ="";
+	   if (hour<10) {
+		hourstr = "0"+ hour;
+		}else {
+			hourstr = hour+"";
+		}
+		   String minutestr ="";
+		   if (minute<10) {
+			   minutestr = "0"+ minute;
+		}else {
+			minutestr = minute+"";
+		}
+		   String secondstr ="";
+		   if (second<10) {
+			   secondstr = "0"+ second;
+		}else {
+			secondstr = second+"";
+		}
+		   return hourstr+":"+minutestr+":"+secondstr;
+   }
+   private List<Routines> getData(){
+	   List<Routines> routines = new ArrayList<>();
+	   
+	   
+	   routine = new Routines();
+	   routine.setName("하체운동");
+	   routine.setColor("EAF4FE");
+	   routine.setButtonColor("33539E");
+	   routine.setImgSrc("/HealthSchedule/resources/images/lowerbody.jpg");
+	   routines.add(routine);
+	   partnames.add(routine.getName());
+	   
+	   
+	   routine = new Routines();
+	   routine.setName("스트레칭");
+	   routine.setColor("ffeebb");
+	   routine.setButtonColor("FECC35");
+	   routine.setImgSrc("/HealthSchedule/resources/images/stretch.jpg");
+	   routines.add(routine);
+	   partnames.add(routine.getName());
+	  
+	
+	   
+	   routine = new Routines();
+	   routine.setName("복근운동");
+	   routine.setColor("F8E9EE");
+	   routine.setButtonColor("D67E9B");
+	   routine.setImgSrc("/HealthSchedule/resources/images/abs.jpg");
+	   routines.add(routine);
+	   partnames.add(routine.getName());
+	  
+	   
+	   routine = new Routines();
+	   routine.setName("상체운동");
+	   routine.setColor("DCC9E9");
+	   routine.setButtonColor("8B4BB6");
+	   routine.setImgSrc("/HealthSchedule/resources/images/upperbody.jpg");
+	   routines.add(routine);
+	   partnames.add(routine.getName());
+	  
+	   
+	   routine = new Routines();
+	   routine.setName("전신운동");
+	   routine.setColor("C5E5D6");
+	   routine.setButtonColor("285942");
+	   routine.setImgSrc("/HealthSchedule/resources/images/fullbody.jpg");
+	   routines.add(routine);
+	   partnames.add(routine.getName());
+	   
+	   
+	   
+	   return routines;
+   }
      
    
    @Override
    public void initialize(URL arg0, ResourceBundle arg1) {
-//	   System.out.println("maineverydayController initialize실행");
+	   System.out.println("maineverydayController initialize실행");
+	   
       //stage 조정
         stageDragableMoveWindow();
         
-     // 두번째 tab에 운동 페이지 불러오기
-        try {
+        routineslist.addAll(getData());
+        
+        if(routineslist.size()>0) {
+        totalListener = new TotalListener() {
 			
+			@Override
+			public void onClickListener(Routines routine) {
+				setTotalworkoutTime(routine);
+				
+				}
+			};
+        }
+        int column = 0;
+        int row =1;
+        
+        try {
+			for (int i = 0; i < routineslist.size(); i++) {
 				FXMLLoader fxmlLoader = new FXMLLoader();
 				fxmlLoader.setLocation(getClass().getResource("/HealthSchedule/resources/routine_lowerbody.fxml"));
 				AnchorPane anchorPane = fxmlLoader.load();
-				grid.add(anchorPane, 0, 0);
-				gridpaneSet(anchorPane);
-//			
-				FXMLLoader fxmlLoader2 = new FXMLLoader();
-				fxmlLoader2.setLocation(getClass().getResource("/HealthSchedule/resources/routine_stretch.fxml"));
-				AnchorPane anchorPane2 = fxmlLoader2.load();
-				grid.add(anchorPane2, 0, 1);
-				gridpaneSet(anchorPane2);
 				
-				FXMLLoader fxmlLoader3 = new FXMLLoader();
-				fxmlLoader3.setLocation(getClass().getResource("/HealthSchedule/resources/routine_upperbody.fxml"));
-				AnchorPane anchorPane3 = fxmlLoader3.load();
-				grid.add(anchorPane3, 0, 2);
-				gridpaneSet(anchorPane3);
-				FXMLLoader fxmlLoader4 = new FXMLLoader();
-				fxmlLoader4.setLocation(getClass().getResource("/HealthSchedule/resources/routine_abs.fxml"));
-				AnchorPane anchorPane4 = fxmlLoader4.load();
-				grid.add(anchorPane4, 0, 3);
-				gridpaneSet(anchorPane4);
+				RoutineController routineController = fxmlLoader.getController();
+				routineController.setData(routineslist.get(i), totalListener);
+				routineController.changeColor(routineslist.get(i).getColor());
+				routineController.changebtnColor(routineslist.get(i).getButtonColor());
+				routineController.setDatas();
+				routineController.setTimedata();
+//				System.out.println("main에서 total 시간" + totalHour);
+//				System.out.println("main에서 total 시간" + totalMinute);
+//				System.out.println("main에서 total 시간" + totalSecond);
+				if(column == 1) {
+					column = 0;
+					row ++;
+				}
 				
-				FXMLLoader fxmlLoader5 = new FXMLLoader();
-				fxmlLoader5.setLocation(getClass().getResource("/HealthSchedule/resources/routine_fullbody.fxml"));
-				AnchorPane anchorPane5 = fxmlLoader5.load();
-				grid.add(anchorPane5, 0, 4);
-				gridpaneSet(anchorPane5);
-				
+				 	grid.add(anchorPane, column++, row); //(child,column,row)
+	                //set grid width
+	                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+	                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+	                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+	                //set grid height
+	                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+	                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+	                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+	                GridPane.setMargin(anchorPane, new Insets(10));
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-        
 
             
         ////////// 날짜 세팅 /////////////
@@ -124,47 +237,13 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    }
    
    public void settotalTimeLabel() {
-	   
-	   ArrayList<TotalTime> totallist = routineDao.selecTotalTime(everyday);
-	   totalHour = totallist.get(0).getTotalTimehour();
-	   totalMinute = totallist.get(0).getTotalTimeminute();
-	   totalSecond = totallist.get(0).getTotalTimesecond();
-	   
-	  
-       if((totalSecond/60)>0) {
-       	totalMinute += totalSecond/60;
-       	totalSecond = totalSecond%60;
-       }
-       if ((totalMinute/60) >0) {
-			totalHour += totalMinute/60;
-			totalMinute = totalMinute%60;
-		}
-       String hour = "";
-       if (totalHour<10) {
-			hour = "0"+totalHour;
-		}
-       else {
-			hour = Integer.toString(totalHour);
-		}
-       String minute = "";
-       if (totalMinute<10) {
-       	minute = "0"+totalMinute;
-		}
-       else {
-       	minute = Integer.toString(totalMinute);
-		}
-       String second = "";
-       if (totalSecond<10) {
-       	second = "0"+totalSecond;
-		}
-       else {
-       	second = Integer.toString(totalSecond);
-		}
-       System.out.println("main: totalhour" + totalHour);
-       System.out.println("main: totalhour" + totalMinute);
-       System.out.println("main: totalhour" + totalSecond);
-       String totalTimess = hour+":"+minute+":" + second;
-       totalTime.setText(totalTimess);
+	   routine = routineDao.selecTotalTime(everyday);
+	   System.out.println(everyday);
+	  totalHour = routine.getHour();
+	  totalMinute = routine.getMinute();
+	  totalSecond = routine.getSecond();
+	  String timelabel = timeview(totalHour, totalMinute, totalSecond);		
+       totalTime.setText(timelabel);
    }
    
    //사진 비교 페이지
