@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -39,6 +40,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    @FXML private Label backLabel;
    @FXML private Label breakfast;
    
+   @FXML private JFXButton myphotos;
    
    @FXML private Label todayDate;//오늘 날짜
    @FXML private Label todayDayOfWeek;//오늘 요일
@@ -49,24 +51,21 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    static int column = 0;
    static int row = 0;
    
+   static int totalHour;
+   static int totalMinute;
+   static int totalSecond;
    @FXML private Label totalTime;//총 운동시간
    
    @FXML private JFXButton makeRoutine; //없앨거임
-   
-   
+   RoutineDao routineDao = new RoutineDao();
+  
    
    
    
    @FXML private JFXButton uploadBtn;//사진업로드
    @FXML private ImageView todayPhoto; //업로드 버튼 클릭 후 오늘사진 띄우는 이미지뷰
    
-   //중섭
-   @FXML private Label PieChart, WeightTime;	//부위별 운동비율차트, 운동시간
-   @FXML private TextField FullbodyTime, UpperbodyTime, AbsTime, LowerbodyTime;
-   @FXML private TextArea FullbodyText, UpperbodyText, AbsText, LowerbodyText;
-   @FXML private Button Fullbodysave, Upperbodysave, Abssave, Lowerbodysave, piechart;
-   
-   
+     
    
    @Override
    public void initialize(URL arg0, ResourceBundle arg1) {
@@ -106,31 +105,12 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 				grid.add(anchorPane5, 0, 4);
 				gridpaneSet(anchorPane5);
 				
-				
-//				
-//			
-//				
-//				
-//				
-//			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
         
-//        for (int i = 0; i < 5; i++) {
-//        	try {
-//	        	FXMLLoader fxmlLoader = new FXMLLoader();
-//				fxmlLoader.setLocation(getClass().getResource("/HealthSchedule/resources/routine_lowerbody.fxml"));
-//				AnchorPane anchorPane = fxmlLoader.load();
-//				grid.add(anchorPane, 0, i);
-//				gridpaneSet(anchorPane);
-//        	}
-//        	catch (Exception e) {
-//				// TODO: handle exception
-//			}
-//		}
-        
-        
+
+            
         ////////// 날짜 세팅 /////////////
         setTodayDate(year, month, dayOfMonth);
 //        System.out.println("record: year" + year);
@@ -138,8 +118,73 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 //        System.out.println("record: dayOfMonth" + dayOfMonth);
         todayDayOfWeek.setText(dayofWeek);
 //        System.out.println("record: dayofWeek " + dayofWeek);
-    
+       
+//        totalTime 표시하기
+//        settotalTimeLabel();
+//        
+//        System.out.println("main: totalhour" + totalHour);
+//        System.out.println("main: totalhour" + totalMinute);
+//        System.out.println("main: totalhour" + totalSecond);
+      if (routineDao.ifexistTime(everyday)) {
+    	  settotalTimeLabel();
+	}
+       
       
+   }
+   
+   public void settotalTimeLabel() {
+	   
+	   ArrayList<TotalTime> totallist = routineDao.selecTotalTime(everyday);
+	   totalHour = totallist.get(0).getTotalTimehour();
+	   totalMinute = totallist.get(0).getTotalTimeminute();
+	   totalSecond = totallist.get(0).getTotalTimesecond();
+	   
+	  
+       if((totalSecond/60)>0) {
+       	totalMinute += totalSecond/60;
+       	totalSecond = totalSecond%60;
+       }
+       if ((totalMinute/60) >0) {
+			totalHour += totalMinute/60;
+			totalMinute = totalMinute%60;
+		}
+       String hour = "";
+       if (totalHour<10) {
+			hour = "0"+totalHour;
+		}
+       else {
+			hour = Integer.toString(totalHour);
+		}
+       String minute = "";
+       if (totalMinute<10) {
+       	minute = "0"+totalMinute;
+		}
+       else {
+       	minute = Integer.toString(totalMinute);
+		}
+       String second = "";
+       if (totalSecond<10) {
+       	second = "0"+totalSecond;
+		}
+       else {
+       	second = Integer.toString(totalSecond);
+		}
+       System.out.println("main: totalhour" + totalHour);
+       System.out.println("main: totalhour" + totalMinute);
+       System.out.println("main: totalhour" + totalSecond);
+       String totalTimess = hour+":"+minute+":" + second;
+       totalTime.setText(totalTimess);
+   }
+   
+   //사진 비교 페이지
+   public void myphotospage(ActionEvent event) {
+ 	  try {
+           //뒤로 가기 버튼을 누르면 뒤로감
+           Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/photo.fxml"));
+           Scene scene = new Scene(checkOk);
+           Stage primaryStage= (Stage)makeRoutine.getScene().getWindow();
+           primaryStage.setScene(scene);
+        } catch (Exception e2) {}
    }
    
    public void setTodayDate(String year, String month, String dayOfMonth) {
@@ -258,325 +303,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       
       
       
-//      //사진가져오기 버튼
-//      public void actionPerformed(ActionEvent e){
-//          JFileChooser fileChooser = new JFileChooser();
-//          fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-//          FileNameExtensionFilter filter = new FileNameExtensionFilter("*.IMAGE", "jpg","gif","png", "jpeg");
-//          fileChooser.addChoosableFileFilter(filter);
-//          int result = fileChooser.showSaveDialog(null);
-//          if(result == JFileChooser.APPROVE_OPTION){
-//              File selectedFile = fileChooser.getSelectedFile();
-//              String path = selectedFile.getAbsolutePath();
-//              fileName = selectedFile.getName();
-//              url=path;
-//              urlToString=selectedFile.toURI().toString();
-//              label.setIcon(ResizeImage(path));
-//              s = path;
-//               }
-//          else if(result == JFileChooser.CANCEL_OPTION){
-//              System.out.println("No Data");
-//          }
-//      }
-//     });
-//      
-//      
-//      
-//      //사진저장 버튼
-//      public void savePhoto(ActionEvent e){
-//
-//    	SaveImg saveImg = new SaveImg();
-//
-//        String file = urlToString;
-//        String path = "C:\\HealthSchedule\\test\\src\\images";
-// 	   
-// 	   final String USERNAME = "root";   //DB 접속시 ID
-// 	   final String PASSWORD = "1234";	 //DB 접속시 패스워드
-// 	   final String URL = "jdbc:mysql://localhost:3306/iddb";
-// 	    
-// 	    try {
-//             System.out.println("생성자");
-//             Class.forName("com.mysql.jdbc.Driver"); 
-//             conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-//             System.out.println("드라이버 로딩 성공!!");
-//         } catch (Exception e2) {
-//             e2.printStackTrace();
-//             System.out.println("드라이버 로드 실패!!");
-//         }
-// 	   
-// 	    String sql = "insert into test values(?);";
-//     	PreparedStatement pstmt = null;
-//         try {
-//             pstmt = conn.prepareStatement(sql);
-//             String url = "C:\\HealthSchedule\\test\\src\\images\\" + fileName;
-//             pstmt.setString(1, url);
-//
-//             int result = pstmt.executeUpdate();
-//             if(result == 1) {
-//             	System.out.println("사진 추가 성공!");
-//             	try {
-//            			int result2 = saveImg.saveImgFromUrl(file, path);
-//            			if (result2 == 1) {
-//            				System.out.println("저장된경로 : " + saveImg.getPath());
-//            				System.out.println("저장된파일이름 : " + saveImg.getSavedFileName());
-//            			}
-//
-//            		} catch (IOException e6) {
-//            			e6.printStackTrace();
-//            		}
-//             }           
-//         } catch (SQLException e3) {            
-//         	System.out.println("사진 추가 실패!");
-//             e3.printStackTrace();
-//         } finally {
-//             try {
-//                 if (pstmt != null && !pstmt.isClosed())
-//                     pstmt.close();
-//             } catch (SQLException e4) {                
-//                 e4.printStackTrace();
-//             }
-//         }
-// 	  }
-   
-//  	  //중섭
-//      //piechart띄우기
-//      public void PieChartbtn(ActionEvent e){
-//		   try {
-//			   FXMLLoader members = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/piechart.fxml"));
-//			   Parent parent = (Parent)members.load();
-//			   Stage stage = new Stage();
-//			   stage.setScene(new Scene(parent));
-//			   stage.setTitle("부위별 운동 비율");
-//			   stage.show();
-//			 } catch (Exception e2) {}  
-//      }	//ShowChartbtn
-//      
-//      //전신운동데이터 저장
-//      public void Fullbodysavebtn(ActionEvent event) {
-//     		String sql = "insert into Fullbody values(?,?,?)";
-// 		    String text = FullbodyText.getText();
-// 		    int time = Integer.parseInt(FullbodyTime.getText());
-//       		PreparedStatement pstmt = null;
-//       		try {
-//       			pstmt = conn.prepareStatement(sql);
-//       			pstmt.setString(1, null);
-//       			pstmt.setString(2, text);
-//       			pstmt.setInt(3, time);
-//       			int result = pstmt.executeUpdate();
-//       			if(result==1) {
-//       				System.out.println("Fullbody데이터 삽입 성공!");
-//       			}
-//       		} catch (Exception e) {
-//       			System.out.println("Fullbody데이터 삽입 실패!");
-//       		}    finally {
-//       			try {
-//       				if(pstmt!=null && !pstmt.isClosed()) {
-//       					pstmt.close();
-//       				}
-//       			} catch (Exception e2) {}
-//       		}
-//       		Main_everydayRecord_controller mec = new Main_everydayRecord_controller();
-//       		WeightTime.setText(mec.Alltime());
-//      }
-//      
-//      //상체운동데이터 저장
-//      public void Upperbodysavebtn(ActionEvent event) {
-//     		String sql = "insert into Upperbody values(?,?,?)";
-// 		    String text = UpperbodyText.getText();
-// 		    int time = Integer.parseInt(UpperbodyTime.getText());
-//       		PreparedStatement pstmt = null;
-//       		try {
-//       			pstmt = conn.prepareStatement(sql);
-//       			pstmt.setString(1, null);
-//       			pstmt.setString(2, text);
-//       			pstmt.setInt(3, time);
-//       			int result = pstmt.executeUpdate();
-//       			if(result==1) {
-//       				System.out.println("Upperbody데이터 삽입 성공!");
-//       			}
-//       		} catch (Exception e) {
-//       			System.out.println("Upperbody데이터 삽입 실패!");
-//       		}    finally {
-//       			try {
-//       				if(pstmt!=null && !pstmt.isClosed()) {
-//       					pstmt.close();
-//       				}
-//       			} catch (Exception e2) {}
-//       		}
-//       		Main_everydayRecord_controller mec = new Main_everydayRecord_controller();
-//       		WeightTime.setText(mec.Alltime());
-//      }
-//      
-//      //복근운동데이터 저장
-//      public void Abssavebtn(ActionEvent event) {
-//     		String sql = "insert into Abs values(?,?,?)";
-// 		    String text = AbsText.getText();
-// 		    int time = Integer.parseInt(AbsTime.getText());
-//       		PreparedStatement pstmt = null;
-//       		try {
-//       			pstmt = conn.prepareStatement(sql);
-//       			pstmt.setString(1, null);
-//       			pstmt.setString(2, text);
-//       			pstmt.setInt(3, time);
-//       			int result = pstmt.executeUpdate();
-//       			if(result==1) {
-//       				System.out.println("Abs데이터 삽입 성공!");
-//       			}
-//       		} catch (Exception e) {
-//       			System.out.println("Abs데이터 삽입 실패!");
-//       		}    finally {
-//       			try {
-//       				if(pstmt!=null && !pstmt.isClosed()) {
-//       					pstmt.close();
-//       				}
-//       			} catch (Exception e2) {}
-//       		}
-//       		Main_everydayRecord_controller mec = new Main_everydayRecord_controller();
-//       		WeightTime.setText(mec.Alltime());
-//      }
-//      
-//      //하체운동데이터 저장
-//      public void Lowerbodysavebtn(ActionEvent event) {
-//     		String sql = "insert into Lowerbody values(?,?,?)";
-// 		    String text = AbsText.getText();
-// 		    int time = Integer.parseInt(AbsTime.getText());
-//       		PreparedStatement pstmt = null;
-//       		try {
-//       			pstmt = conn.prepareStatement(sql);
-//       			pstmt.setString(1, null);
-//       			pstmt.setString(2, text);
-//       			pstmt.setInt(3, time);
-//       			int result = pstmt.executeUpdate();
-//       			if(result==1) {
-//       				System.out.println("Lowerbody데이터 삽입 성공!");
-//       			}
-//       		} catch (Exception e) {
-//       			System.out.println("Lowerbody데이터 삽입 실패!");
-//       		}    finally {
-//       			try {
-//       				if(pstmt!=null && !pstmt.isClosed()) {
-//       					pstmt.close();
-//       				}
-//       			} catch (Exception e2) {}
-//       		}
-//       		Main_everydayRecord_controller mec = new Main_everydayRecord_controller();
-//       		WeightTime.setText(mec.Alltime());
-//      }
-//      
-//  	  //전신운동 등록된 총 시간 호출
-//  	  public Integer FullBody(int fullbody) {
-//  		  String sql = "select sum(weightTime) from FullBody";
-//  		  PreparedStatement pstmt = null;
-//  		  int i = 0;
-//  		  try {
-//  			  pstmt = conn.prepareStatement(sql);
-//  			  ResultSet rs = pstmt.executeQuery();
-//  			  if(rs.next()) {	
-//  				  i = rs.getInt("sum(weightTime)");
-//  			  }
-//  		  } catch (Exception e) {
-//  			  //System.out.println("전신운동 시간 호출 실패");
-//  		  }finally {
-//  			  try {
-//  				  if(pstmt != null && !pstmt.isClosed()) {
-//  					  pstmt.close();
-//  				  }
-//  			  } catch (Exception e2) {}
-//  		  }
-//  		  return i;
-//  	  }
-//  	  
-//  	  //상체운동 등록된 총 시간 호출
-//  	  public Integer UpperBody(int upperbody) {
-//  		  String sql = "select sum(weightTime) from Upperbody";
-//  		  PreparedStatement pstmt = null;
-//  		  int i = 0;
-//  		  try {
-//  			  pstmt = conn.prepareStatement(sql);
-//  			  ResultSet rs = pstmt.executeQuery();
-//  			  if(rs.next()) {	
-//  				  i = rs.getInt("sum(weightTime)");
-//  			  }
-//  		  } catch (Exception e) {
-//  			  //System.out.println("전신운동 시간 호출 실패");
-//  		  }finally {
-//  			  try {
-//  				  if(pstmt != null && !pstmt.isClosed()) {
-//  					  pstmt.close();
-//  				  }
-//  			  } catch (Exception e2) {}
-//  		  }
-//  		  return i;
-//  	  }
-//  	  
-//  	  //복근운동 등록된 총 시간 호출
-//  	  public Integer Abs(int abs) {
-//  		  String sql = "select sum(weightTime) from Abs";
-//  		  PreparedStatement pstmt = null;
-//  		  int i = 0;
-//  		  try {
-//  			  pstmt = conn.prepareStatement(sql);
-//  			  ResultSet rs = pstmt.executeQuery();
-//  			  if(rs.next()) {	
-//  				  i = rs.getInt("sum(weightTime)");
-//  			  }
-//  		  } catch (Exception e) {
-//  			  //System.out.println("전신운동 시간 호출 실패");
-//  		  }finally {
-//  			  try {
-//  				  if(pstmt != null && !pstmt.isClosed()) {
-//  					  pstmt.close();
-//  				  }
-//  			  } catch (Exception e2) {}
-//  		  }
-//  		  return i;
-//  	  }
-//  	  
-//  	  //하체운동 등록된 총 시간 호출
-//  	  public Integer Lowerbody(int lowerbody) {
-//  		  String sql = "select sum(weightTime) from Lowerbody";
-//  		  PreparedStatement pstmt = null;
-//  		  int i = 0;
-//  		  try {
-//  			  pstmt = conn.prepareStatement(sql);
-//  			  ResultSet rs = pstmt.executeQuery();
-//  			  if(rs.next()) {	
-//  				  i = rs.getInt("sum(weightTime)");
-//  			  }
-//  		  } catch (Exception e) {
-//  			  //System.out.println("전신운동 시간 호출 실패");
-//  		  }finally {
-//  			  try {
-//  				  if(pstmt != null && !pstmt.isClosed()) {
-//  					  pstmt.close();
-//  				  }
-//  			  } catch (Exception e2) {}
-//  		  }
-//  		  return i;
-//  	  }
-//      
-//  	  //전체 운동한 시간 호출	00:00:00
-//  	  public String Alltime() {
-//  		  Main_everydayRecord_controller mec = new Main_everydayRecord_controller();
-//  		  int second = (int)Math.round(mec.FullBody(1)+mec.UpperBody(1)+mec.Abs(1)+mec.Lowerbody(1)) % 60;
-//  		  int minute = (int)Math.round(mec.FullBody(1)+mec.UpperBody(1)+mec.Abs(1)+mec.Lowerbody(1)) / 60;
-//  		  int hour = (int)Math.round(mec.FullBody(1)+mec.UpperBody(1)+mec.Abs(1)+mec.Lowerbody(1)) / 60 / 60;
-//  		  String time = null;
-//  		  if(hour == 0) {
-//  			   time = String.format("%02d시간%02d분", minute, second);
-//  		  }else if(hour < 10) {
-//  			   time = String.format("%1d시간%02d분%02d초", hour, minute, second);
-//  		  }else if(hour < 100) {
-//  			   time = String.format("%2d시간%02d분%02초", hour, minute, second);
-//  		  }else if(hour < 1000) {
-//  			   time = String.format("%3d시간%02d분%02d초", hour, minute, second);
-//  		  }
-//  		  return time;
-//  	  }
-//
-//  	  //여기까지 추가
-      
-      
+//    
       
       
       

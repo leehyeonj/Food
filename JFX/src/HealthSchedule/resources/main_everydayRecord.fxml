@@ -343,7 +343,7 @@
                <children>
                   <JFXButton buttonType="RAISED" prefHeight="100.0" prefWidth="384.0" ripplerFill="#ff1515" text="메모" />
                   <JFXButton fx:id="makeRoutine" buttonType="RAISED" onAction="#makeRountinebtn" prefHeight="100.0" prefWidth="374.0" ripplerFill="#f82222" text="한달 차트 보기" />
-                  <JFXButton buttonType="RAISED" prefHeight="100.0" prefWidth="355.0" ripplerFill="#ff0606" text="내 사진 비교" />
+                  <JFXButton fx:id="myphotos" onAction="#myphotospage" buttonType="RAISED" prefHeight="100.0" prefWidth="355.0" ripplerFill="#ff0606" text="내 사진 비교" />
                </children>
             </HBox>
          </children>

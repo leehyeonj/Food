@@ -10,7 +10,8 @@ public class RoutineDao {
 	
 
 	ArrayList<Routines_lower> list = new ArrayList<>();
-	   
+	ArrayList<RoutineTime> timeList = new ArrayList<>();
+	ArrayList<TotalTime> totaltimeList = new ArrayList<>();   
 	   
 	private Connection conn;    //DB 커넥션(연결) 객체
     private static final String USERNAME = "root";   //DB 접속시 ID
@@ -65,7 +66,100 @@ public class RoutineDao {
        }
        
    }
+ //시간 저장
+   public void saveTime(String everyday, String part, int timehour , int timeminute, int timesecond) {
+	   //쿼리문 준비
+       String sql = "insert into workoutTime values(?,?,?,?,?)";
+       
+       PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           pstmt.setString(1, everyday);
+           pstmt.setString(2, part);
+           pstmt.setInt(3, timehour);
+           pstmt.setInt(4, timeminute);
+           pstmt.setInt(5, timesecond);
+           
+           int result = pstmt.executeUpdate();
+           if(result==1) {
+               System.out.println("타임데이터 삽입 성공!");
+               
+           }
+           
+       } catch (Exception e) {
+           System.out.println("타임데이터 삽입 실패!");
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+               }
+           } catch (Exception e2) {}
+       }
+       
+   }
+   //시간수정
+   public void updateTime(String everyday, String bodypart, int hour, int minute, int second) {
+       String sql = "update workoutTime set timehour =?, timeminute =?, timesecond=? where everyday=? and bodypart=? ";
+       PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           pstmt.setInt(1, hour);
+           pstmt.setInt(2,minute);
+           pstmt.setInt(3,second);
+           pstmt.setString(4, everyday);
+           pstmt.setString(5, bodypart);
+           pstmt.executeUpdate();
+           System.out.println("time 수정 완료");
+           
+       } catch (Exception e) {
+           System.out.println("update time예외 발생");
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+               }
+           } catch (Exception e2) {}
+       }
+   }
    
+   //총 시간 셀렉트
+   public ArrayList<TotalTime> selecTotalTime(String everyday) {
+		 
+       String sql = "select everyday, sum(timehour), sum(timeminute), sum(timesecond) from workoutTime group by everyday having everyday=?";
+       PreparedStatement pstmt = null;
+       //결과 값을 담을 곳
+      
+       try {
+           pstmt = conn.prepareStatement(sql);
+           pstmt.setString(1, everyday);
+           ResultSet rs = pstmt.executeQuery();
+           
+           //있으면
+           while(rs.next()) {
+        	   TotalTime totalTime = new TotalTime();
+        	   totalTime.setEveryday(rs.getString("everyday"));
+        	   totalTime.setTotalTimehour(rs.getInt("sum(timehour)"));
+        	   totalTime.setTotalTimeminute(rs.getInt("sum(timeminute)"));
+        	   totalTime.setTotalTimesecond(rs.getInt("sum(timesecond)"));
+
+        	   totaltimeList.add(totalTime);
+        	   System.out.println("토탈 메서드 성공");
+           	}
+           
+       } catch (Exception e) {
+           System.out.println("토탈메서드 예외발생");
+           
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+                  
+               }
+           } catch (Exception e2) { }
+       }
+       return totaltimeList;
+   }
+
 
    //루틴 삭제
    public boolean deleteRoutine(String everyday, String part, String videoname) {
@@ -98,7 +192,7 @@ public class RoutineDao {
        
   }
    
-   //그 날에 저장된 값이 있냐 없냐
+   //그 날에 저장된 루틴 값이 있냐 없냐
    public boolean ifexistRoutine(String everyday) {
 	   boolean result = false;
        String sql = "select * from everydayRoutine where everyday = ?";
@@ -106,6 +200,64 @@ public class RoutineDao {
        try {
            pstmt = conn.prepareStatement(sql);
            pstmt.setString(1, everyday);
+           ResultSet rs = pstmt.executeQuery();
+           if(rs.next()) {
+        	   result = true;
+        	  
+           }
+           
+       } catch (Exception e) {
+           System.out.println("select 메서드 예외발생");
+           
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+                  
+               }
+           } catch (Exception e2) { }
+       }
+	return result;
+   }
+   
+ //그 날에 저장된 시간 값이 있냐 없냐 + 파트
+   public boolean ifexistTime(String everyday, String bodypart) {
+	   boolean result = false;
+       String sql = "select * from workoutTime where everyday = ? and bodypart =?";
+       PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           pstmt.setString(1, everyday);
+           pstmt.setString(2, bodypart);
+           ResultSet rs = pstmt.executeQuery();
+           if(rs.next()) {
+        	   result = true;
+        	  
+           }
+           
+       } catch (Exception e) {
+           System.out.println("select 메서드 예외발생");
+           
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+                  
+               }
+           } catch (Exception e2) { }
+       }
+	return result;
+   }
+   
+ //그 날에 저장된 시간 값이 있냐 없냐
+   public boolean ifexistTime(String everyday) {
+	   boolean result = false;
+       String sql = "select * from workoutTime where everyday = ?";
+       PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           pstmt.setString(1, everyday);
+        
            ResultSet rs = pstmt.executeQuery();
            if(rs.next()) {
         	   result = true;
@@ -164,6 +316,46 @@ public class RoutineDao {
        return list;
    }
    
+   
+   //그날 저장된 시간을 보여줘라
+   public ArrayList<RoutineTime> viewDayTime(String everyday, String bodypart) {
+		 
+       String sql = "select everyday, bodypart, timehour, timeminute,timesecond from workoutTime where everyday = ? and bodypart =?";
+       PreparedStatement pstmt = null;
+       //결과 값을 담을 곳
+      
+       try {
+           pstmt = conn.prepareStatement(sql);
+           pstmt.setString(1, everyday);
+           pstmt.setString(2, bodypart);
+           ResultSet rs = pstmt.executeQuery();
+           
+           //있으면
+           while(rs.next()) {
+        	RoutineTime routineTime = new RoutineTime();
+       
+        	routineTime.setEverday(rs.getString("everyday")); 
+        	routineTime.setBodypart(rs.getString("bodypart")); 
+        	routineTime.setTimehour(rs.getInt("timehour")); 
+        	routineTime.setTimeminute(rs.getInt("timeminute")); 
+        	routineTime.setTimesecond(rs.getInt("timesecond")); 
+        	
+        	timeList.add(routineTime);
+           	}
+           
+       } catch (Exception e) {
+           System.out.println("timeselect 메서드 예외발생");
+           
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+                  
+               }
+           } catch (Exception e2) { }
+       }
+       return timeList;
+   }
    
    
 }
