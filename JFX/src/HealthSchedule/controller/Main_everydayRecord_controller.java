@@ -241,11 +241,23 @@ public class Main_everydayRecord_controller extends DayController implements Ini
     	  settotalTimeLabel();
 	}
       
-      if (photoDao.ifexistPhoto(everyday)) {
-		String photoinit =photoDao.selectPhoto(everyday);
-		todayPhoto.setImage(new Image(getClass().getResource(photoinit).toString()));
+//      if (photoDao.ifexistPhoto(everyday)) {
+//		String photoinit =photoDao.selectPhoto(everyday);
+//		todayPhoto.setImage(new Image(getClass().getResource(photoinit).toString()));
+//	}
+      try { 
+    	  if (photoDao.ifexistPhoto(everyday)) {
+    			String photoinit =photoDao.selectPhoto(everyday);
+    		  
+    			todayPhoto.setImage(new Image(getClass().getResource(photoinit).toString()));
+    		}
+    	       
+	      else {
+			
+		}
+      }catch (Exception e) {
+		System.out.println("init 실행 예외");
 	}
-       
       
    }
    //총 운동 시간 세팅
@@ -446,8 +458,8 @@ public class Main_everydayRecord_controller extends DayController implements Ini
               SaveImg saveImg = new SaveImg();
             
               String file = selectedFile.toURI().toString();
-
-              String path = "../FoodCalendarProject999999/src/images";
+             
+              String path = "../../Food/JFX/src/images";
               
             int result;
         	
