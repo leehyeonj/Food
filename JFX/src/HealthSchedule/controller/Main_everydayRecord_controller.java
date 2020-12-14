@@ -1,6 +1,10 @@
 package HealthSchedule.controller;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +36,14 @@ import net.halowd.saveImg.SaveImg;
 
 public class Main_everydayRecord_controller extends DayController implements Initializable{
 
+	  private TotalListener totalListener;
+	  static Routines routine;
+	  static List<String> partnames = new ArrayList<>();
+	  static int totalHour;
+	  static int totalMinute;
+	  static int totalSecond;
+	  
+	  ////////////////////////////////////
    @FXML private AnchorPane pane;
    @FXML private Label backLabel;
    @FXML private Label breakfast;
@@ -41,31 +53,24 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    @FXML private Label todayDate;//오늘 날짜
    @FXML private Label todayDayOfWeek;//오늘 요일
    
-   @FXML private ScrollPane scroll;
-//   @FXML private JFXScrollPane scroll;
+   ////////////////////////////////////
+   @FXML private ScrollPane scroll; //두번째 탭
    @FXML private GridPane grid;
    static int column = 0;
    static int row = 0;
-//   static String part; // 파트 이름
-   static List<String> partnames = new ArrayList<>();
-   static int totalHour;
-   static int totalMinute;
-   static int totalSecond;
    @FXML private Label totalTime;//총 운동시간
    
    @FXML private JFXButton makeRoutine; //없앨거임
 //   RoutineDao routineDao = new RoutineDao();
   
-   private TotalListener totalListener;
-   private TotalTime totalbean;
-   
-  static Routines routine;
+ 
+  ////////////////////////////////////세번쨰 탭///////////////////
    @FXML private JFXButton uploadBtn;//사진업로드
    @FXML private ImageView todayPhoto; //업로드 버튼 클릭 후 오늘사진 띄우는 이미지뷰
    
    public static List<Routines> routineslist = new ArrayList<>();
    RoutineDao routineDao = new RoutineDao();
-   
+   PhotoDao photoDao = new PhotoDao();
    //총 운동시간에 계속 변하게 하기
    private void setTotalworkoutTime(Routines routine) {
 	   routine = routineDao.selecTotalTime(everyday);
@@ -109,6 +114,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 		}
 		   return hourstr+":"+minutestr+":"+secondstr;
    }
+   //루틴 fxml에 데이터 넣기
    private List<Routines> getData(){
 	   List<Routines> routines = new ArrayList<>();
 	   
@@ -164,15 +170,17 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    }
      
    
+   ////////
    @Override
    public void initialize(URL arg0, ResourceBundle arg1) {
 	   System.out.println("maineverydayController initialize실행");
 	   
       //stage 조정
         stageDragableMoveWindow();
-        
+       //루틴 fxml에 데이터 넣기
         routineslist.addAll(getData());
         
+        //총 운동시간 리스너 설정
         if(routineslist.size()>0) {
         totalListener = new TotalListener() {
 			
@@ -185,7 +193,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
         }
         int column = 0;
         int row =1;
-        
+        //두번쨰 탭에 루틴 fxml 5개 불러옴
         try {
 			for (int i = 0; i < routineslist.size(); i++) {
 				FXMLLoader fxmlLoader = new FXMLLoader();
@@ -228,14 +236,19 @@ public class Main_everydayRecord_controller extends DayController implements Ini
         setTodayDate(year, month, dayOfMonth);
         todayDayOfWeek.setText(dayofWeek);
 
-        //총 시간 세팅
+        //////총 시간 세팅
       if (routineDao.ifexistTime(everyday)) {
     	  settotalTimeLabel();
+	}
+      
+      if (photoDao.ifexistPhoto(everyday)) {
+		String photoinit =photoDao.selectPhoto(everyday);
+		todayPhoto.setImage(new Image(getClass().getResource(photoinit).toString()));
 	}
        
       
    }
-   
+   //총 운동 시간 세팅
    public void settotalTimeLabel() {
 	   routine = routineDao.selecTotalTime(everyday);
 	   System.out.println(everyday);
@@ -282,7 +295,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 			GridPane.setMargin(anchorPane, new Insets(10));
    	}
 
-     //////////////////////////
+     //////////////////////////화면 조정//////////////////
       private double xOffset = 0;
       private double yOffset = 0;
       private Stage stage = null;
@@ -397,41 +410,69 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       /////////////////////////////////////////////////////////////////////////////////////
     //사진업로드 버튼
       public void uploadPhoto(ActionEvent event) {
-          try {
-            
-                FileChooser fc = new FileChooser();
-                  fc.setTitle("이미지 선택");
-                  fc.setInitialDirectory(new File("C:/"));
-                  ExtensionFilter imgType = new ExtensionFilter("image file", "*.jpg", "*.gif", "*.png");
-                  fc.getExtensionFilters().add(imgType);
-                  File selectedFile =  fc.showOpenDialog(null);
-                  
-                  if(selectedFile!=null) {
-                     //upload.setText(selectedFile.toURI().toString());
-                     SaveImg saveImg = new SaveImg();
-                   
-                     String file = selectedFile.toURI().toString();
-
-                     String path = "src/images";
-                     
-                   int result = saveImg.saveImgFromUrl(file, path);
-                   if (result == 1) {
-                      String savePath = saveImg.getPath();
-                      System.out.println("저장된경로 : " + savePath);
-                      String saveFileName = saveImg.getSavedFileName();
-                      System.out.println("저장된파일이름 : " + saveFileName);
-                      System.out.println((savePath+"/"+saveFileName));
-                      
-                      todayPhoto.setImage(new Image(getClass().getResource("../images/"+saveFileName).toString()));
+    	  
+    	 
+          // 사진 선택 창
+          FileChooser fc = new FileChooser();
+          fc.setTitle("이미지 선택");
+          fc.setInitialDirectory(new File("C:/")); // default 디렉토리 설정
+          // 선택한 파일 정보 추출
+          // 확장자 제한
+          ExtensionFilter imgType = new ExtensionFilter("image file", "*.jpg", "*.gif", "*.png");
+//        fc.getExtensionFilters().add(imgType);
+          ExtensionFilter txtType = new ExtensionFilter("text file", "*.txt", "*.doc");
+          fc.getExtensionFilters().addAll(imgType, txtType);
            
-                   
-                   }
-                  }
-                  
-                  
-             } catch (Exception e) {
-                e.printStackTrace();
-             }
+          File selectedFile =  fc.showOpenDialog(null); // showOpenDialog는 창을 띄우는데 어느 위치에 띄울건지 인자를 받고
+                                                                  // 그리고 선택한 파일의 경로값을 반환한다.
+          System.out.println(selectedFile);               // 선택한 경로가 출력된다.
+//           
+          // 파일을 InputStream으로 읽어옴
+          // 이미지 뷰에 표시함
+          try {
+              // 파일 읽어오기
+              FileInputStream fis = new FileInputStream(selectedFile);
+              BufferedInputStream bis = new BufferedInputStream(fis);
+              // 이미지 생성하기
+              Image img = new Image(bis);
+              // 이미지 띄우기
+              todayPhoto.setImage(img);
+          } catch (FileNotFoundException e) {
+              e.printStackTrace();
+          }
+          String fileurl = null;
+          if(selectedFile!=null) {
+           
+              SaveImg saveImg = new SaveImg();
+            
+              String file = selectedFile.toURI().toString();
+
+              String path = "../FoodCalendarProject999999/src/images";
+              
+            int result;
+        	
+			try {
+				result = saveImg.saveImgFromUrl(file, path);
+				if (result == 1) {
+		               System.out.println("저장된경로 : " + saveImg.getPath());
+		               System.out.println("저장된파일이름 : " + saveImg.getSavedFileName());
+		            }
+				fileurl = "../../images/"+saveImg.getSavedFileName();
+				System.out.println(fileurl);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            
+           }
+
+           if (!photoDao.ifexistPhoto(everyday)) {
+        	   photoDao.savePhoto(everyday, fileurl);
+		}else {
+			photoDao.updatePhoto(everyday, fileurl);
+		}
+          
+//          photoDao.selectPhoto(everyday, selectedFile);
 
       }
    
