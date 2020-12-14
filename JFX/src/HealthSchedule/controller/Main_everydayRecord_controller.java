@@ -488,4 +488,23 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 
       }
    
+      //메모페이지로 이동
+
+      public void memoBtn(ActionEvent event) {
+
+    	  FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/memo.fxml") );
+
+  			try {
+
+  		   AnchorPane PickPage = (AnchorPane) another.load();
+  		   // 다른창 띄우는 작업 .... 2
+  		   Scene anotherScene = new Scene( PickPage );
+  		   Stage stage = new  Stage();
+  		   stage.setScene(anotherScene);
+  		   stage.show();
+  		   // 다른창 띄우는 작업 .... 2 끝.
+
+  		} catch (IOException e) {} 
+
+      }
 }
