@@ -76,6 +76,9 @@
 .fontsize20{
 	-fx-font-size: 20pt;
 }
+.fontsize14{
+	-fx-font-size: 14pt;
+}
 .fontsize35{
 	-fx-font-size: 35pt;
 }
@@ -102,6 +105,9 @@
 }
 .textfill-blue{
 	-fx-text-fill: #33539E;	
+}
+.textfill-transparent{
+	-fx-text-fill: rgba(0,0,0,0);
 }
 .fontshadow{
 	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.7) , 5, 0 , 1 , 1);
@@ -167,4 +173,23 @@
 }
 #timesave:hover{
 	-fx-background-color: #C0DAFF ;
+}
+.date-picker > .text-field {
+    -fx-background-color: #ffe185;
+   
+}
+
+
+.date-picker:focused > .text-field,
+.date-picker > .text-field:focused {
+    -fx-background-color: white;
+ 
+}
+#uploadBtn:hover{
+	-fx-background-color:#F8E9EE ;
+}
+#memoButton:hover,#viewMonthlyChart:hover,#myphotos:hover{
+
+	 -fx-text-fill:white;
+	
 }

@@ -54,11 +54,11 @@
                   <Insets left="110.0" right="110.0" />
                </VBox.margin>
                <children>
-                  <JFXTabPane fx:id="todayDietAnchorpane" layoutY="-9.0" prefHeight="585.0" prefWidth="1080.0" styleClass="backcolor-transparent">
+                  <JFXTabPane layoutY="-9.0" prefHeight="585.0" prefWidth="1080.0" styleClass="backcolor-transparent">
                      <tabs>
                         <Tab>
                           <content>
-                            <AnchorPane fx:id="todayDietAnchorpane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
                                     <HBox prefHeight="439.0" prefWidth="1020.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
                                        <children>
@@ -297,38 +297,23 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fx:id="todayPhoto" fitHeight="360.0" fitWidth="344.0" layoutX="45.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" />
-                                    <JFXButton fx:id="uploadBtn" layoutX="170.0" layoutY="448.0" onAction="#uploadPhoto" text="사진 올리기" />
-                                    <HBox layoutX="491.0" layoutY="289.0" prefHeight="66.0" prefWidth="481.0">
+                                    <HBox prefHeight="548.0" prefWidth="1080.0">
                                        <children>
-                                          <Label prefHeight="67.0" prefWidth="141.0" text="현재 몸무게:" />
-                                          <Label alignment="CENTER" onMouseClicked="#currentWeight" prefHeight="67.0" prefWidth="206.0" styleClass="weight" text="100" />
-                                          <Label alignment="CENTER" prefHeight="67.0" prefWidth="206.0" text="KG" />
+                                          <VBox alignment="CENTER" prefHeight="548.0" prefWidth="555.0">
+                                             <children>
+                                                <ImageView fx:id="todayPhoto" fitHeight="418.0" fitWidth="410.0" pickOnBounds="true" preserveRatio="true" />
+                                                <Pane prefHeight="35.0" prefWidth="542.0" />
+                                                <JFXButton fx:id="uploadBtn" alignment="CENTER" buttonType="RAISED" onAction="#uploadPhoto" prefHeight="28.0" prefWidth="114.0" text="My image">
+                                                   <styleClass>
+                                                      <String fx:value="backcolor-blue" />
+                                                      <String fx:value="textfill-white" />
+                                                   </styleClass>
+                                                </JFXButton>
+                                             </children>
+                                          </VBox>
+                                          <VBox prefHeight="548.0" prefWidth="551.0" />
                                        </children>
                                     </HBox>
-                                    <HBox layoutX="491.0" layoutY="355.0" prefHeight="66.0" prefWidth="481.0">
-                                       <children>
-                                          <Label prefHeight="67.0" prefWidth="141.0" text="목표 몸무게:" />
-                                          <Label alignment="CENTER" onMouseClicked="#goalWeight" prefHeight="67.0" prefWidth="206.0" styleClass="weight" text="50" />
-                                          <Label alignment="CENTER" prefHeight="67.0" prefWidth="206.0" text="KG" />
-                                       </children>
-                                    </HBox>
-                                    <HBox layoutX="491.0" layoutY="415.0" prefHeight="66.0" prefWidth="481.0">
-                                       <children>
-                                          <Label prefHeight="66.0" prefWidth="190.0" text="목표 몸무게 까지" />
-                                          <Label alignment="CENTER" prefHeight="67.0" prefWidth="206.0" text="50" />
-                                          <Label alignment="CENTER" prefHeight="67.0" prefWidth="206.0" text="KG" />
-                                          <Label alignment="CENTER" prefHeight="67.0" prefWidth="206.0" text="남았습니다." />
-                                       </children>
-                                    </HBox>
-                                    <LineChart layoutX="472.0" layoutY="59.0" prefHeight="222.0" prefWidth="500.0">
-                                      <xAxis>
-                                        <CategoryAxis side="BOTTOM" />
-                                      </xAxis>
-                                      <yAxis>
-                                        <NumberAxis prefHeight="201.0" prefWidth="34.0" side="LEFT" />
-                                      </yAxis>
-                                    </LineChart>
                                  </children></AnchorPane>
                           </content>
                         </Tab>
@@ -336,14 +321,53 @@
                   </JFXTabPane>
                </children>
             </AnchorPane>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="86.0" prefWidth="994.0" style="-fx-border-color: white;">
                <VBox.margin>
                   <Insets left="110.0" right="110.0" top="20.0" />
                </VBox.margin>
                <children>
-                  <JFXButton buttonType="RAISED" prefHeight="100.0" prefWidth="384.0" ripplerFill="#ff1515" text="메모" />
-                  <JFXButton fx:id="makeRoutine" buttonType="RAISED" onAction="#makeRountinebtn" prefHeight="100.0" prefWidth="374.0" ripplerFill="#f82222" text="한달 차트 보기" />
-                  <JFXButton fx:id="myphotos" buttonType="RAISED" onAction="#myphotospage" prefHeight="100.0" prefWidth="355.0" ripplerFill="#ff0606" text="내 사진 비교" />
+                  <Pane prefHeight="77.0" prefWidth="97.0" />
+                  <JFXButton fx:id="memoButton" buttonType="RAISED" onAction="#memoBtn" prefHeight="77.0" prefWidth="346.0" ripplerFill="#ff0606" text="    오늘의 메모 작성하기">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/notebook2.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="textfill-transparent" />
+                        <String fx:value="fontSeoulNamsan" />
+                        <String fx:value="fontsize14" />
+                     </styleClass></JFXButton>
+                  <JFXButton fx:id="myphotos" buttonType="RAISED" onAction="#comparePhotos" prefHeight="77.0" prefWidth="346.0" ripplerFill="#ff0606" text="        사진 비교하기">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/photo.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="textfill-transparent" />
+                        <String fx:value="fontSeoulNamsan" />
+                        <String fx:value="fontsize14" />
+                     </styleClass></JFXButton>
+                  <JFXButton fx:id="viewMonthlyChart" buttonType="RAISED" prefHeight="77.0" prefWidth="346.0" ripplerFill="#ff0606" text="     한 달 운동 차트 보기">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/piechart.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="textfill-transparent" />
+                        <String fx:value="fontSeoulNamsan" />
+                        <String fx:value="fontsize14" />
+                     </styleClass>
+                  </JFXButton>
+                  <Pane prefHeight="77.0" prefWidth="61.0" />
                </children>
             </HBox>
          </children>

@@ -23,6 +23,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -32,6 +33,7 @@ import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import net.halowd.saveImg.SaveImg;
 
 public class Main_everydayRecord_controller extends DayController implements Initializable{
@@ -45,10 +47,10 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 	  
 	  ////////////////////////////////////
    @FXML private AnchorPane pane;
-   @FXML private Label backLabel;
-   @FXML private Label breakfast;
+   @FXML private Label backLabel;//뒤로 가기 버튼
+   @FXML private JFXButton memoButton;//메모버튼
    
-   @FXML private JFXButton myphotos;
+   @FXML private JFXButton myphotos;//사진 비교 페이지로 가는 버튼
    
    @FXML private Label todayDate;//오늘 날짜
    @FXML private Label todayDayOfWeek;//오늘 요일
@@ -60,7 +62,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    static int row = 0;
    @FXML private Label totalTime;//총 운동시간
    
-   @FXML private JFXButton makeRoutine; //없앨거임
+   @FXML private JFXButton viewMonthlyChart; //한달 차트 보기 버튼
 //   RoutineDao routineDao = new RoutineDao();
   
  
@@ -174,6 +176,8 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    @Override
    public void initialize(URL arg0, ResourceBundle arg1) {
 	   System.out.println("maineverydayController initialize실행");
+//	   Tooltip.install(memoButton, new Tooltip("오늘의 메모 작성하기"));
+//	   Tooltip.install(viewMonthlyChart, new Tooltip("한달 운동 차트 보러가기"));
 	   
       //stage 조정
         stageDragableMoveWindow();
@@ -271,16 +275,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
        totalTime.setText(timelabel);
    }
    
-   //사진 비교 페이지
-   public void myphotospage(ActionEvent event) {
- 	  try {
-           //뒤로 가기 버튼을 누르면 뒤로감
-           Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/photo.fxml"));
-           Scene scene = new Scene(checkOk);
-           Stage primaryStage= (Stage)makeRoutine.getScene().getWindow();
-           primaryStage.setScene(scene);
-        } catch (Exception e2) {}
-   }
+   
    
    //오늘 날짜
    public void setTodayDate(String year, String month, String dayOfMonth) {
@@ -366,37 +361,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       }
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-      @FXML
-      private void pageMove(MouseEvent event) {
-         try {
-            //음식 이름을 클릭하면 넘어간다.
-            Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/food_breakfast.fxml"));
-            Scene scene = new Scene(checkOk);
-            Stage primaryStage= (Stage)breakfast.getScene().getWindow();
-            primaryStage.setScene(scene);
-         } catch (Exception e2) {}
-      }
-      
-      @FXML
-      private void currentWeight(MouseEvent event) {
-         try {
-            //현재 몸무게를 클릭하면 넘어간다.
-            Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/chart_mainpage.fxml"));
-            Scene scene = new Scene(checkOk);
-            Stage primaryStage= (Stage)breakfast.getScene().getWindow();
-            primaryStage.setScene(scene);
-         } catch (Exception e2) {}
-      }
-      @FXML
-      private void goalWeight(MouseEvent event) {
-         try {
-            //목표 몸무게를 클릭하면 넘어간다.
-            Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/chart_mainpage.fxml"));
-            Scene scene = new Scene(checkOk);
-            Stage primaryStage= (Stage)breakfast.getScene().getWindow();
-            primaryStage.setScene(scene);
-         } catch (Exception e2) {}
-      }
+    
       
       
       
@@ -406,13 +371,13 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       
     
       
-      //운동루틴 만들기버튼
+      //한달 차트 보기 버튼
       public void makeRountinebtn(ActionEvent event) {
     	  try {
               //뒤로 가기 버튼을 누르면 뒤로감
               Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/makeRoutine.fxml"));
               Scene scene = new Scene(checkOk);
-              Stage primaryStage= (Stage)makeRoutine.getScene().getWindow();
+              Stage primaryStage= (Stage)viewMonthlyChart.getScene().getWindow();
               primaryStage.setScene(scene);
            } catch (Exception e2) {}
       }
@@ -501,10 +466,33 @@ public class Main_everydayRecord_controller extends DayController implements Ini
   		   Scene anotherScene = new Scene( PickPage );
   		   Stage stage = new  Stage();
   		   stage.setScene(anotherScene);
+  		 stage.initStyle(StageStyle.UNDECORATED);
   		   stage.show();
   		   // 다른창 띄우는 작업 .... 2 끝.
 
   		} catch (IOException e) {} 
 
       }
+      
+      //사진 비교 페이지
+      public void comparePhotos(ActionEvent event) {
+
+    	  FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/DatePicker.fxml") );
+
+  			try {
+
+  		   AnchorPane PickPage = (AnchorPane) another.load();
+  		   // 다른창 띄우는 작업 .... 2
+  		   Scene anotherScene = new Scene( PickPage );
+  		   Stage stage = new  Stage();
+  		   stage.setScene(anotherScene);
+  		   stage.initStyle(StageStyle.UNDECORATED);
+  		   stage.show();
+  		   // 다른창 띄우는 작업 .... 2 끝.
+
+  		} catch (IOException e) {} 
+
+      }
+      
+      
 }

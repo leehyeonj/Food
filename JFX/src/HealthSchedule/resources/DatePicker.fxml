@@ -6,10 +6,46 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="HealthSchedule.controller.DatePickerController">
+<AnchorPane fx:id="pane" prefHeight="800.0" prefWidth="1000.0" styleClass="backcolor-yellow" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.DatePickerController">
    <children>
-      <DatePicker fx:id="datePicker" layoutX="222.0" layoutY="44.0" />
-      <ImageView fx:id="imageView" fitHeight="563.0" fitWidth="400.0" layoutX="110.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true" />
+      <VBox prefHeight="800.0" prefWidth="1000.0">
+         <children>
+            <AnchorPane prefHeight="39.0" prefWidth="1156.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="967.0" layoutY="4.0" onMouseClicked="#actionCloseWindow" prefHeight="32.0" prefWidth="23.0" text="X" />
+                  <Label alignment="CENTER" layoutX="938.0" layoutY="4.0" onMouseClicked="#actionMinWindow" prefHeight="32.0" prefWidth="23.0" text="-" />
+               </children>
+            </AnchorPane>
+            <Pane prefHeight="55.0" prefWidth="1000.0" />
+            <HBox prefHeight="700.0" prefWidth="1000.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="670.0" prefWidth="512.0">
+                     <children>
+                        <DatePicker fx:id="datePicker" />
+                        <Pane prefHeight="26.0" prefWidth="500.0" />
+                        <Label fx:id="alarmText" alignment="CENTER" prefHeight="18.0" prefWidth="519.0" text=" ">
+                           <styleClass>
+                              <String fx:value="textfill-blue" />
+                              <String fx:value="fontSeoulNamsan" />
+                           </styleClass></Label>
+                        <ImageView fx:id="imageView" fitHeight="563.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="700.0" prefWidth="512.0">
+                     <children>
+                        <DatePicker fx:id="datePicker1" />
+                        <Pane prefHeight="26.0" prefWidth="500.0" />
+                        <Label fx:id="alarmText1" alignment="CENTER" prefHeight="18.0" prefWidth="519.0" text=" ">
+                           <styleClass>
+                              <String fx:value="textfill-blue" />
+                              <String fx:value="fontSeoulNamsan" />
+                           </styleClass></Label>
+                        <ImageView fx:id="imageView1" fitHeight="563.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

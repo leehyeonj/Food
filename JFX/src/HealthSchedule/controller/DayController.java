@@ -47,9 +47,6 @@ public class DayController extends MainController   implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-//		System.out.println("dayController initialize실행");
-		System.out.println("dayController initialize실행");
-//		memodao.ifexistMemo(everyday);
 		Tooltip tooltip = new Tooltip("메모 추가하기");
 		lblDay.setTooltip(tooltip);
 	}

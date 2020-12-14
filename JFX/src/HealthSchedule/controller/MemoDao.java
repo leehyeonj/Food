@@ -13,11 +13,11 @@ public class MemoDao {
 	private Connection conn;    //DB 커넥션(연결) 객
     private static final String USERNAME = "root";   //DB 접속시 ID
     //현주
-    //private static final String PASSWORD = "DOALd1120f1gG";	 //DB 접속시 패스워드
-    //private static String URL = "jdbc:mysql://localhost:3305/calendardb";	//dbms
+    private static final String PASSWORD = "DOALd1120f1gG";	 //DB 접속시 패스워드
+    private static String URL = "jdbc:mysql://localhost:3305/calendardb";	//dbms
     //상아 , 중섭
-    private static final String PASSWORD = "1234";	 //DB 접속시 패스워드
-    private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//dbms
+//    private static final String PASSWORD = "1234";	 //DB 접속시 패스워드
+//    private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//dbms
 
    public MemoDao() {
 
@@ -124,6 +124,29 @@ public class MemoDao {
            } catch (Exception e2) { }
        }
        return memo;
+   }
+   
+   public void updateMemo(String everyday, String title, String content) {
+       String sql = "update memo set title=?, content=? where everyday=? ";
+       PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           pstmt.setString(1, title);
+           pstmt.setString(2,content);
+           pstmt.setString(3,everyday);
+        
+           pstmt.executeUpdate();
+           System.out.println("메모수정 완료");
+           
+       } catch (Exception e) {
+           System.out.println("메모예외 발생");
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+               }
+           } catch (Exception e2) {}
+       }
    }
 
 }
