@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<<<<<<< HEAD
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -11,5 +12,45 @@
       <TextField fx:id="title" layoutX="24.0" layoutY="21.0" prefHeight="38.0" prefWidth="235.0" />
       <Button fx:id="save" onAction="#saveAction" layoutX="152.0" layoutY="452.0" mnemonicParsing="false" text="저장" />
       <Button fx:id="close" onAction="#closeAction" layoutX="272.0" layoutY="452.0" mnemonicParsing="false" text="닫기" />
+=======
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="pane" prefHeight="500.0" prefWidth="500.0" styleClass="backcolor-yellow" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.MemoController">
+   <children>
+      <AnchorPane prefHeight="39.0" prefWidth="500.0">
+         <children>
+            <Label alignment="CENTER" layoutX="464.0" layoutY="4.0" onMouseClicked="#actionCloseWindow" prefHeight="32.0" prefWidth="23.0" text="X" />
+            <Label alignment="CENTER" layoutX="441.0" layoutY="4.0" onMouseClicked="#actionMinWindow" prefHeight="32.0" prefWidth="23.0" text="-" />
+         </children>
+      </AnchorPane>
+      <VBox alignment="CENTER" layoutY="33.0" prefHeight="467.0" prefWidth="500.0">
+         <children>
+            <JFXTextArea fx:id="title" focusColor="#755703" labelFloat="true" prefHeight="38.0" prefWidth="20.0" promptText="제목을 입력하세요" styleClass="fontSeoulNamsan">
+               <VBox.margin>
+                  <Insets left="30.0" right="30.0" />
+               </VBox.margin>
+            </JFXTextArea>
+            <Label fx:id="alarmLabel" alignment="CENTER" prefHeight="38.0" prefWidth="500.0" styleClass="fontSeoulNamsan" text=" " />
+            <TextField fx:id="content" alignment="TOP_LEFT" prefHeight="324.0" prefWidth="500.0" promptText="내용을 입력하세요" styleClass="fontSeoulNamsan">
+               <VBox.margin>
+                  <Insets left="30.0" right="30.0" />
+               </VBox.margin>
+            </TextField>
+            <Pane prefHeight="11.0" prefWidth="500.0" />
+            <JFXButton fx:id="save" alignment="CENTER" buttonType="RAISED" onAction="#saveAction" text="저장">
+               <styleClass>
+                  <String fx:value="backcolor-yellow2" />
+                  <String fx:value="fontSeoulNamsan" />
+                  <String fx:value="textfill-white" />
+               </styleClass>
+            </JFXButton>
+         </children>
+      </VBox>
+>>>>>>> branch 'master' of https://github.com/leehyeonj/Food.git
    </children>
 </AnchorPane>
