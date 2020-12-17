@@ -34,7 +34,7 @@ public class RoutineDao {
            
        } catch (Exception e) {
            e.printStackTrace();
-           System.out.println("드라이버 로드 실패!!");
+           System.out.println("루틴 드라이버 로드 실패!!");
        }
        
    }

@@ -185,7 +185,6 @@ public class Main_everydayRecord_controller extends DayController implements Ini
         routineslist.addAll(getData());
         
         //총 운동시간 리스너 설정
-        if(routineslist.size()>0) {
         totalListener = new TotalListener() {
 			
 			@Override
@@ -194,7 +193,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 				
 				}
 			};
-        }
+        
         int column = 0;
         int row =1;
         //두번쨰 탭에 루틴 fxml 5개 불러옴
@@ -451,20 +450,6 @@ public class Main_everydayRecord_controller extends DayController implements Ini
           
 //          photoDao.selectPhoto(everyday, selectedFile);
 
-      }
-      
-      //메모페이지로 이동
-      public void memoBtn(ActionEvent event) {
-    	  FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/memo.fxml") );
-  			try {
-  		   AnchorPane PickPage = (AnchorPane) another.load();
-  		   // 다른창 띄우는 작업 .... 2
-  		   Scene anotherScene = new Scene( PickPage );
-  		   Stage stage = new  Stage();
-  		   stage.setScene(anotherScene);
-  		   stage.show();
-  		   // 다른창 띄우는 작업 .... 2 끝.
-  		} catch (IOException e) {} 
       }
    
       //메모페이지로 이동
