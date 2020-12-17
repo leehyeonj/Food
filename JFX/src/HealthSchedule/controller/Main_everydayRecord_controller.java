@@ -495,7 +495,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       }
       
       
-      
+      //라벨을 누르면 테이블뷰 페이지로 넘어감
       @FXML
       public void addFoodTable(MouseEvent mouseevent) {
     	  FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/FoodTableview.fxml") );

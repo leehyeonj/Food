@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="pane" prefHeight="300.0" prefWidth="500.0" styleClass="backcolor-yellow" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.ResetController">
+   <children>
+      <Label layoutX="191.0" layoutY="83.0" styleClass="fontSeoulNamsan" text="탈퇴하시겠습니까?" />
+      <HBox layoutX="178.0" layoutY="194.0" prefHeight="28.0" prefWidth="144.0">
+         <children>
+            <JFXButton buttonType="RAISED" onAction="#yesWithdraw" prefHeight="28.0" prefWidth="82.0" text="  네  ">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <styleClass>
+                  <String fx:value="backcolor-skyblue" />
+                  <String fx:value="textfill-white" />
+               </styleClass>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#noWithdraw" prefHeight="28.0" prefWidth="82.0" text="아니오">
+               <styleClass>
+                  <String fx:value="backcolor-skyblue" />
+                  <String fx:value="textfill-white" />
+               </styleClass>
+            </JFXButton>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

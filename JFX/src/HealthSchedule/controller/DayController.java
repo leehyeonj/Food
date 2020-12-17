@@ -124,7 +124,7 @@ public class DayController extends MainController   implements Initializable{
 	public void setDayLabel(LocalDate date) {
 		this.date = date;
 		lblDay.setText(String.valueOf(date.getDayOfMonth()));
-//		RoutineDao routineDao = new RoutineDao();
+		RoutineDao routineDao = new RoutineDao();
 		//운동 시간뜨기		
 		 Calendar date1 = Calendar.getInstance();
 		 date1.set(date.getYear(), date.getMonthValue(),date.getDayOfMonth());
