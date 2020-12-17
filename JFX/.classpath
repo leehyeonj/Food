@@ -3,9 +3,9 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/s/Desktop/jfoenix-8.0.7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/s/Desktop/mail-1.4.7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/s/Desktop/mysql-connector-java-5.1.47.jar"/>
-	<classpathentry kind="lib" path="C:/Users/s/Desktop/saveImg.jar"/>
+	<classpathentry kind="lib" path="D:/jfoenix-8.0.10.jar"/>
+	<classpathentry kind="lib" path="D:/mail-1.4.7.jar"/>
+	<classpathentry kind="lib" path="D:/mysql-connector-java-5.1.49.jar"/>
+	<classpathentry kind="lib" path="D:/saveImg.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -31,7 +31,7 @@ import javafx.stage.Stage;
 public class MainController implements Initializable{
 	@FXML
 	private AnchorPane pane;
-	  
+	  RoutineDao routineDao = new RoutineDao();
 	   @FXML private Button food;	//식단관리버튼
 	   @FXML private Button chart;	//체중관리버튼
 	   @FXML private Button HT;		//홈트영상버튼

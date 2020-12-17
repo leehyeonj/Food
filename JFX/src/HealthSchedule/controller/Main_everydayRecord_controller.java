@@ -49,6 +49,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    @FXML private AnchorPane pane;
    @FXML private Label backLabel;//뒤로 가기 버튼
    @FXML private JFXButton memoButton;//메모버튼
+   @FXML private Label breakfastlbl;//뒤로 가기 버튼
    
    @FXML private JFXButton myphotos;//사진 비교 페이지로 가는 버튼
    
@@ -493,5 +494,25 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 
       }
       
+      
+      
+      @FXML
+      public void addFoodTable(MouseEvent mouseevent) {
+    	  FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/FoodTableview.fxml") );
+
+			try {
+
+		   AnchorPane PickPage = (AnchorPane) another.load();
+		   // 다른창 띄우는 작업 .... 2
+		   Scene anotherScene = new Scene( PickPage );
+		   Stage stage = new  Stage();
+		   stage.setScene(anotherScene);
+//		   stage.initStyle(StageStyle.UNDECORATED);
+		   stage.show();
+		   // 다른창 띄우는 작업 .... 2 끝.
+
+		} catch (IOException e) {} 
+
+      }
       
 }

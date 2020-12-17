@@ -42,6 +42,8 @@ public class FoodTableviewController implements Initializable {
     public String foodname1;
     public String foodunit1;
     public String cal1;
+//    FoodListDao FoodListDao = new FoodListDao();
+//    FoodListDao.add();
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -108,91 +110,32 @@ public class FoodTableviewController implements Initializable {
 		tableview1.setItems(sortedData);
     }
 
-    //검색
-//	public void handleBtnSelect(ActionEvent e) {
-//
-//    	FilteredList<ListDao> filteredData = new FilteredList<>(productList, p -> true);
-//		
-//    	
-//    	searchtext.textProperty().addListener((observable, oldValue, newValue) -> {
-//			filteredData.setPredicate(person -> {
-//				// If filter text is empty, display all persons.
-//				if (newValue == null || newValue.isEmpty()) {
-//					return true;
-//				}
-//				
-//				// Compare first name and last name of every person with filter text.
-//				String lowerCaseFilter = newValue.toLowerCase();
-//				
-//				if (person.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-//					return true; // 음식이름검색필터
-//				} else if (person.getUnit().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-//					return true;	//음식단위검색필터
-//				} else if (person.getCal().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-//					return true;	//칼로리검색필터
-//				}
-//				return false; // Does not match.
-//			});
-//		});
-//    	
-//		// 3. Wrap the FilteredList in a SortedList. 
-//		SortedList<ListDao> sortedData = new SortedList<>(filteredData);
-//		
-//		// 4. Bind the SortedList comparator to the TableView comparator.
-//		sortedData.comparatorProperty().bind(tableview1.comparatorProperty());
-//		
-//		// 5. Add sorted (and filtered) data to the table.
-//		tableview1.setItems(sortedData);
-//
-//	}
-	
-	//목록조회
-//	private void searchbtn(ActionEvent e) {
-//		System.out.println("목록조회시작");
-//		Connection conn;
-//		try {
-//			conn = ListDao.connect();
-//		
-//			ResultSet rs = conn.createStatement().executeQuery("select * from Food");
-//			System.out.println("음식목록db테이블지정완료");
-//			while(rs.next()) {
-//				productList.add(new ListDao(rs.getString("foodname"), rs.getString("foodunit"), rs.getString("cal")));		
-//			}
-//		} catch (SQLException e1) {
-//			Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, e1);
-//			System.out.println("호출실패");
-//			e1.printStackTrace();
-//		}
-//		foodname.setCellValueFactory(new PropertyValueFactory<>("name"));
-//		foodunit.setCellValueFactory(new PropertyValueFactory<>("unit"));
-//		cal.setCellValueFactory(new PropertyValueFactory<>("cal"));
-//		tableview1.setItems(productList);
-//	}
+ 
 	
 	//선택된 항목 tableview2에 추가
     public void pluslistbtn(ActionEvent event) {
-    	FoodListDao ld = new FoodListDao();
-    	Connection conn;
-		String name = foodname1;
-		String unit = foodunit1;
-		String C = cal1;
-		//System.out.println(name + " " + unit + " " + C);	//선택한 row가 제대로 들어왔는지 확인하기위함
-		try {		
-			conn = ld.saveContent(name, unit, C);
-			ResultSet rs = conn.createStatement().executeQuery("select * from Foodtest");
-			System.out.println("식사db테이블지정완료");
-			while(rs.next()) {
-				pluslist.add(new FoodListDao(rs.getString("foodname"), rs.getString("foodunit"), rs.getString("cal")));
-			}
-		} catch (SQLException e1) {
-			Logger.getLogger(FoodTableviewController.class.getName()).log(Level.SEVERE, null, e1);
-			System.out.println("호출실패");
-			e1.printStackTrace();
-		}    	
+//    	FoodListDao ld = new FoodListDao();
+//    	Connection conn;
+//		String name = foodname1;
+//		String unit = foodunit1;
+//		String C = cal1;
+//		//System.out.println(name + " " + unit + " " + C);	//선택한 row가 제대로 들어왔는지 확인하기위함
+//		try {		
+//			conn = ld.saveContent(name, unit, C);
+//			ResultSet rs = conn.createStatement().executeQuery("select * from Foodtest");
+//			System.out.println("식사db테이블지정완료");
+//			while(rs.next()) {
+//				pluslist.add(new FoodListDao(rs.getString("foodname"), rs.getString("foodunit"), rs.getString("cal")));
+//			}
+//		} catch (SQLException e1) {
+//			Logger.getLogger(FoodTableviewController.class.getName()).log(Level.SEVERE, null, e1);
+//			System.out.println("호출실패");
+//			e1.printStackTrace();
+//		}    	
 		//위의 코드를 두고 아래의 코드를 주석처리하지 않으면 두개씩 출력하게 된다
 		//순서: db에 있는 foodtest테이블에 추가된 값 저장->foodtest테이블지정하여 값호출->pluslist에 값 저장->setitems로 tableview2의 각 칼럼에 저장 및 출력
 		//만약 목록추가를 먼저 한 후 저장버튼액션을 따로 두어 db에 저장하는 순서를 뒤로 미루고 싶다면 아래의 코드를 활성화시키고 위에 있는 코드들을 주석처리한 후 저장버튼액션에서 db에 저장하면 된다
-//    	pluslist.add(new ListDao(foodname1, foodunit1, cal1));
+    	pluslist.add(new FoodListDao(foodname1, foodunit1, cal1));
 
     	tableview1_foodname.setCellValueFactory(new PropertyValueFactory<>("name"));
     	tableview1_foodunit.setCellValueFactory(new PropertyValueFactory<>("unit"));
