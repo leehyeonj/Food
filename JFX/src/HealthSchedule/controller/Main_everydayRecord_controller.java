@@ -531,6 +531,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 
       }
       
+      ///////////////////////////////////////////////////////////////////////////
       @FXML private JFXTextField weight;
   	@FXML private JFXButton saveWeight;
       @FXML private JFXTextField goalweight;

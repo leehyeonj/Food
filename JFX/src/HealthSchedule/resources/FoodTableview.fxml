@@ -7,7 +7,7 @@
 <?import javafx.collections.*?>
 
 <AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" 
-			fx:controller="listtest.FoodTableviewController">
+			fx:controller="HealthSchedule.controller.FoodTableviewController">
    <children>
       <Button fx:id="plusList" layoutX="299.0" layoutY="124.0" onAction="#pluslistbtn" prefHeight="23.0" prefWidth="83.0" text="목록 추가" />
       <Button layoutX="138.0" layoutY="14.0" text="검색" />
