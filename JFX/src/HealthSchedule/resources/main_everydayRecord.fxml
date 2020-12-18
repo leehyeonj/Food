@@ -326,6 +326,7 @@
                                                    </children>
                                                 </HBox>
                                                 <HBox prefHeight="51.0" prefWidth="538.0">
+                                                <HBox prefHeight="51.0" prefWidth="538.0">
                                                    <children>
                                                       <JFXTextField fx:id="goalweight" labelFloat="true" prefHeight="28.0" prefWidth="384.0" promptText="목표 몸무게" />
                                                       <JFXButton fx:id="savegoalWeightBtn" alignment="CENTER" buttonType="RAISED" onAction="#savegoalWeight" prefHeight="28.0" prefWidth="114.0" text="저장">
@@ -336,6 +337,24 @@
                                                       </JFXButton>
                                                    </children>
                                                 </HBox>
+                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                   <children>
+                                                      <AnchorPane prefHeight="338.0" prefWidth="566.0">
+                                                         <children>
+                                                            <ImageView fitHeight="394.0" fitWidth="367.0" layoutX="-9.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@images/weight-scale.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                            <JFXButton fx:id="saveWeightBtn" alignment="CENTER" buttonType="RAISED" layoutX="383.0" layoutY="22.0" onAction="#saveWeight" prefHeight="28.0" prefWidth="114.0" text="저장">
+                                                               <styleClass>
+                                                                  <String fx:value="backcolor-blue" />
+                                                                  <String fx:value="textfill-white" />
+                                                               </styleClass>
+                                                            </JFXButton>
+                                                            <JFXTextField fx:id="weight" labelFloat="true" layoutX="138.0" layoutY="72.0" prefHeight="28.0" prefWidth="73.0" promptText="현재 몸무게" />
+                                                         </children>
+                                                      </AnchorPane>                                                                                                
                                              </children>
                                           </VBox>
                                        </children>
