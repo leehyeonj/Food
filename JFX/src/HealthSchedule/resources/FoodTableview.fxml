@@ -7,10 +7,12 @@
 <?import javafx.collections.*?>
 
 <AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" 
-			fx:controller="HealthSchedule.controller.FoodTableviewController">
+			fx:controller="listtest.FoodTableviewController">
    <children>
-      <Button fx:id="plusList" layoutX="299.0" layoutY="131.0" mnemonicParsing="false" onAction="#pluslistbtn" prefHeight="23.0" prefWidth="83.0" text="목록 추가" />
-      <Button fx:id="search" layoutX="138.0" layoutY="14.0" mnemonicParsing="false" text="검색" />
+      <Button fx:id="plusList" layoutX="299.0" layoutY="124.0" onAction="#pluslistbtn" prefHeight="23.0" prefWidth="83.0" text="목록 추가" />
+      <Button layoutX="138.0" layoutY="14.0" text="검색" />
+      <Button fx:id="exit" layoutX="320.0" layoutY="263.0" onAction="#exitbtn" text="확인" />
+      <Button fx:id="delete" layoutX="138.0" layoutY="37.0" onAction="#deletebtn" text="삭제" />
       <TextField fx:id="searchtext" layoutY="14.0" />
       <TableView fx:id="tableview1" layoutX="192.0" layoutY="14.0" prefHeight="102.0" prefWidth="296.0">
         <columns>
@@ -19,13 +21,12 @@
             <TableColumn fx:id="cal" prefWidth="90.0" text="칼로리" />
         </columns>
       </TableView>
-      <TableView fx:id="tableview2" layoutX="192.0" layoutY="169.0" prefHeight="102.0" prefWidth="296.0">
+      <TableView fx:id="tableview2" layoutX="192.0" layoutY="155.0" prefHeight="102.0" prefWidth="296.0">
          <columns>
             <TableColumn fx:id="tableview1_foodname" prefWidth="99.0" text="음식이름" />
             <TableColumn fx:id="tableview1_foodunit" prefWidth="106.0" text="단위" />
             <TableColumn fx:id="tableview1_cal" prefWidth="90.0" text="칼로리" />
          </columns>
       </TableView>
-      <Button fx:id="search1" layoutX="138.0" layoutY="37.0" mnemonicParsing="false" text="조회" />
    </children>
 </AnchorPane>

@@ -23,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
  
 public class FoodTableviewController implements Initializable {
  
@@ -37,21 +38,16 @@ public class FoodTableviewController implements Initializable {
 	@FXML
 	private TableColumn<FoodListDao, String> tableview1_foodname, tableview1_foodunit, tableview1_cal;	//테이블뷰2 칼럼명
     @FXML private TextField searchtext;	//검색창
-    @FXML private Button search, search1, plusList;	//검색버튼,조회버튼,추가버튼
+    @FXML private Button exit, plusList, delete;	//저장버튼,추가버튼,취소버튼
 
     //칼럼row저장을 위한 변수
     public String foodname1;
     public String foodunit1;
     public String cal1;
-//    FoodListDao FoodListDao = new FoodListDao();
-//    FoodListDao.add();
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    	productList.clear();
-//    	search.setOnAction(e -> handleBtnSelect(e));	//조회 후 검색, 혹은 검색하여 바로 조회하려고 하니 되지 않는다
-//    	search1.setOnAction(e -> searchbtn(e));
-
+  	
     	//추가기능. 테이블뷰 row선택. 칼럼값 저장
     	tableview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<FoodListDao>() {
 			@Override
@@ -63,7 +59,17 @@ public class FoodTableviewController implements Initializable {
 				}
 			}
 		});
-    	
+    	//테이블뷰2 선택한 row를 삭제하기 위해 칼럼값을 저장
+    	tableview2.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<FoodListDao>() {
+			@Override
+			public void changed(ObservableValue<? extends FoodListDao> observable, FoodListDao oldValue, FoodListDao newValue) {	
+				if(newValue!=null) {
+					foodname1 = newValue.getName();
+					foodunit1 = newValue.getUnit();
+					cal1 = newValue.getCal();
+				}
+			}
+		});
     	//tabeview1에 곧바로 목록출력
 		Connection conn;
 		try {
@@ -82,7 +88,6 @@ public class FoodTableviewController implements Initializable {
 		foodname.setCellValueFactory(new PropertyValueFactory<>("name"));
 		foodunit.setCellValueFactory(new PropertyValueFactory<>("unit"));
 		cal.setCellValueFactory(new PropertyValueFactory<>("cal"));
-    	
     	//검색기능
     	FilteredList<FoodListDao> filteredData = new FilteredList<>(productList, p -> true);	
     	searchtext.textProperty().addListener((observable, oldValue, newValue) -> {	//우리가 필요한 것은 검색뿐이기에 newValue만 사용하게 된다
@@ -110,37 +115,54 @@ public class FoodTableviewController implements Initializable {
 		//음식 전체목록 tableview1에 출력
 		tableview1.setItems(sortedData);
     }
-
- 
-	
+	//삭제기능
+	public void deletebtn(ActionEvent e) {
+    	FoodListDao ld = new FoodListDao();
+		String name = foodname1;
+		String unit = foodunit1;
+		String C = cal1;
+		//System.out.println(name + " " + unit + " " + C);	//선택한 row가 제대로 들어왔는지 확인하기위함
+		try {		
+			ld.deleteFood(name, unit, C);
+			
+		} catch (SQLException e1) {
+			Logger.getLogger(FoodTableviewController.class.getName()).log(Level.SEVERE, null, e1);
+			System.out.println("호출실패");
+			e1.printStackTrace();
+		} 
+		//tableview2에서 선택row삭제
+		tableview2.getItems().removeAll(tableview2.getSelectionModel().getSelectedItem());	
+	}	
 	//선택된 항목 tableview2에 추가
     public void pluslistbtn(ActionEvent event) {
-//    	FoodListDao ld = new FoodListDao();
-//    	Connection conn;
-//		String name = foodname1;
-//		String unit = foodunit1;
-//		String C = cal1;
-//		//System.out.println(name + " " + unit + " " + C);	//선택한 row가 제대로 들어왔는지 확인하기위함
-//		try {		
-//			conn = ld.saveContent(name, unit, C);
-//			ResultSet rs = conn.createStatement().executeQuery("select * from Foodtest");
-//			System.out.println("식사db테이블지정완료");
-//			while(rs.next()) {
-//				pluslist.add(new FoodListDao(rs.getString("foodname"), rs.getString("foodunit"), rs.getString("cal")));
-//			}
-//		} catch (SQLException e1) {
-//			Logger.getLogger(FoodTableviewController.class.getName()).log(Level.SEVERE, null, e1);
-//			System.out.println("호출실패");
-//			e1.printStackTrace();
-//		}    	
-		//위의 코드를 두고 아래의 코드를 주석처리하지 않으면 두개씩 출력하게 된다
-		//순서: db에 있는 foodtest테이블에 추가된 값 저장->foodtest테이블지정하여 값호출->pluslist에 값 저장->setitems로 tableview2의 각 칼럼에 저장 및 출력
-		//만약 목록추가를 먼저 한 후 저장버튼액션을 따로 두어 db에 저장하는 순서를 뒤로 미루고 싶다면 아래의 코드를 활성화시키고 위에 있는 코드들을 주석처리한 후 저장버튼액션에서 db에 저장하면 된다
-    	pluslist.add(new FoodListDao(foodname1, foodunit1, cal1));
-
+    	pluslist.clear();	//시작할때 목록한번 제거(중복출력을 막아준다). 제일 위에 둘것!
+    	FoodListDao ld = new FoodListDao();
+    	Connection conn;
+		String name = foodname1;
+		String unit = foodunit1;
+		String C = cal1;
+//		System.out.println(name + " " + unit + " " + C);	//선택한 row가 제대로 들어왔는지 확인하기위함
+		try {		
+			conn = ld.saveContent(name, unit, C);
+			ResultSet rs = conn.createStatement().executeQuery("select * from Foodtest");
+			System.out.println("식사db테이블지정완료");
+			while(rs.next()) {
+				pluslist.add(new FoodListDao(rs.getString("foodname"), rs.getString("foodunit"), rs.getString("cal")));
+			}
+		} catch (SQLException e1) {
+			Logger.getLogger(FoodTableviewController.class.getName()).log(Level.SEVERE, null, e1);
+			System.out.println("호출실패");
+			e1.printStackTrace();
+		}
+		//끌어온 칼럼값
     	tableview1_foodname.setCellValueFactory(new PropertyValueFactory<>("name"));
     	tableview1_foodunit.setCellValueFactory(new PropertyValueFactory<>("unit"));
     	tableview1_cal.setCellValueFactory(new PropertyValueFactory<>("cal"));
     	tableview2.setItems(pluslist);
     }
+    //종료(확인버튼)
+    public void exitbtn(ActionEvent event) {
+    	Stage stage = (Stage) exit.getScene().getWindow();
+    	stage.close();
+    }  
 }

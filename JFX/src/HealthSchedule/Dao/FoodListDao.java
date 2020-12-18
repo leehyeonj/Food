@@ -21,12 +21,12 @@ public class FoodListDao {
 	private static Connection conn;    //DB 커넥션(연결) 객체
     private static final String USERNAME = "root";   //DB 접속시 ID
     //현주
-    private static final String PASSWORD = "DOALd1120f1gG";	 //DB 접속시 패스워드
-    private static String URL = "jdbc:mysql://localhost:3305/calendardb";	//dbms
+//    private static final String PASSWORD = "DOALd1120f1gG";	 //DB 접속시 패스워드
+//    private static String URL = "jdbc:mysql://localhost:3305/calendardb";	//dbms
     
     //상아 , 중섭
-//    private static final String PASSWORD = "1234";	 //DB 접속시 패스워드
-//    private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//dbms
+    private static final String PASSWORD = "1234";	 //DB 접속시 패스워드
+    private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//dbms
     
    public FoodListDao() {
 	   try {
@@ -66,6 +66,7 @@ public class FoodListDao {
            pstmt.setString(2, foodunit);
            pstmt.setString(3, cal);
            int result = pstmt.executeUpdate();
+           
            if(result==1) {
                System.out.println("식사데이터 삽입 성공!");
            }
@@ -81,6 +82,28 @@ public class FoodListDao {
        conn = DriverManager.getConnection(URL,USERNAME,PASSWORD);
        return conn;
    }
+   
+   //삭제하는 메서드
+   public Connection deleteFood(String foodname, String foodunit, String cal)throws SQLException  {
+
+	   String sql = "delete from Foodtest where foodname =? and foodunit =? and cal =?";
+	   PreparedStatement pstmt = null;
+		try {
+			  pstmt = conn.prepareStatement(sql);
+	          pstmt.setString(1, foodname);
+	          pstmt.setString(2, foodunit);
+	          pstmt.setString(3, cal);
+	          int result = pstmt.executeUpdate();
+	           if(result==1) {
+	               System.out.println("식사데이터 삭제 성공!");
+	           }
+	       }  catch (Exception e) {
+	           System.out.println("식사데이터 삭제 실패!");
+	       }
+	   conn = DriverManager.getConnection(URL,USERNAME,PASSWORD);
+	   return conn;  
+  }
+   
    	//getter,setter
 	public String getName() {
 		return name;
