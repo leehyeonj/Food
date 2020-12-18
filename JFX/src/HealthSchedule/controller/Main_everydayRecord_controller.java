@@ -11,11 +11,13 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import com.mysql.jdbc.MiniAdmin;
 
 import HealthSchedule.Dao.PhotoDao;
 import HealthSchedule.Dao.RoutineDao;
 import HealthSchedule.model.Routines;
+import HealthSchedule.model.Weight;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -264,6 +266,18 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       }catch (Exception e) {
 		System.out.println("init 실행 예외");
 	}
+      
+      if (weightdao.ifexistWeight(everyday)) {
+			Weight weights = weightdao.viewWeight(everyday);
+			int weightinit = weights.getWeight();
+			weight.setText(weightinit + "");
+		} 
+		
+		if (weightdao.ifexistgoalWeight(everyday)) {
+			Weight weights = weightdao.viewgoalWeight(everyday);
+			int goalweightinit = weights.getWeight();			
+			goalweight.setText(goalweightinit + "");
+		} 
       
    }
    //총 운동 시간 세팅
@@ -516,5 +530,58 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 		} catch (IOException e) {} 
 
       }
+      
+      @FXML private JFXTextField weight;
+  	@FXML private JFXButton saveWeight;
+      @FXML private JFXTextField goalweight;
+      @FXML private JFXButton savegoalWeightBtn;
+  	
+  	
+  	//String weight; //몸무게 저장한거
+  	
+  	WeightDao weightdao = new WeightDao();
+  	
+  	
+
+  	
+  	public void saveWeight(ActionEvent event) {
+
+  		if(!weight.getText().isEmpty()) {
+  	
+  				String saveWeight = weight.getText();			
+  				
+  				if (!weightdao.ifexistWeight(everyday)) {
+  					weightdao.saveWeight(everyday, Integer.parseInt(saveWeight));				
+  	
+  				}else {
+  					weightdao.updateWeight(everyday, Integer.parseInt(saveWeight));
+  					
+  				}				
+  	
+  		}else {
+  			System.out.println("몸무게를 입력하지 않았습니다.");
+  		}
+  				
+  	}	
+  	
+  	public void savegoalWeight(ActionEvent event) {
+
+  		if(!weight.getText().isEmpty()) {
+  	
+  				String savegoalWeight = goalweight.getText();			
+  				
+  				if (!weightdao.ifexistgoalWeight(everyday)) {
+  					weightdao.savegoalWeight(everyday, Integer.parseInt(savegoalWeight));				
+  	
+  				}else {
+  					weightdao.updategoalWeight(everyday, Integer.parseInt(savegoalWeight));
+  					
+  				}				
+  	
+  		}else {
+  			System.out.println("몸무게를 입력하지 않았습니다.");
+  		}
+  				
+  	}
       
 }

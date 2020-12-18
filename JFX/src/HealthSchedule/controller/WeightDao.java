@@ -15,11 +15,11 @@ public class WeightDao {
 	private Connection conn;    //DB 커넥션(연결) 객체
     private static final String USERNAME = "root";   //DB 접속시 ID
     //현주
-//    private static final String PASSWORD = "DOALd1120f1gG";	 //DB 접속시 패스워드
-//    private static String URL = "jdbc:mysql://localhost:3305/calendardb";	//dbms
+    private static final String PASSWORD = "DOALd1120f1gG";	 //DB 접속시 패스워드
+    private static String URL = "jdbc:mysql://localhost:3305/calendardb";	//dbms
     //상아 , 중섭
-    private static final String PASSWORD = "1234";	 //DB 접속시 패스워드
-    private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//dbms
+//    private static final String PASSWORD = "1234";	 //DB 접속시 패스워드
+//    private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//dbms
 
     public WeightDao() {
     
