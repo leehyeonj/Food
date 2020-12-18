@@ -13,6 +13,8 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.mysql.jdbc.MiniAdmin;
 
+import HealthSchedule.Dao.PhotoDao;
+import HealthSchedule.Dao.RoutineDao;
 import HealthSchedule.model.Routines;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

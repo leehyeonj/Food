@@ -1,4 +1,4 @@
-package HealthSchedule.controller;
+package HealthSchedule.Dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

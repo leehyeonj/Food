@@ -1,4 +1,4 @@
-package HealthSchedule.controller;
+package HealthSchedule.Dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,6 +14,13 @@ public class DrawerDao {
 //    private static final String PASSWORD = "1234";	 //DB 접속시 패스워드
 //    private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//dbms
 
+    
+    public boolean resetAccount = false;
+    public boolean reset1 = false;
+    public boolean reset2 = false;
+    public boolean reset3 = false;
+    public boolean reset4 = false;
+    
    public DrawerDao() {
 
 	   try {
@@ -28,46 +35,22 @@ public class DrawerDao {
        }
    }
    
-   public void reset() {
-		System.out.println("데이터를 리셋합니다.");
+   public void reset1() {
+		
   	  //쿼리문 준비
 	   String sql = "delete from workoutTime";
-	  String sql2 = "delete from everydayRoutine";
-	 
-	  String sql3 = "delete from dailphoto";
-	  String sql4 = "delete from memo";
+
 	
 	   
 	   PreparedStatement pstmt = null;
-	   PreparedStatement pstmt2 = null;
-	   PreparedStatement pstmt3= null;
-	   PreparedStatement pstmt4 = null;
-	   
-	   
+  
 
       try {
           pstmt = conn.prepareStatement(sql);
           int result = pstmt.executeUpdate();
           if(result==1) {
               System.out.println("리셋 성공");
-
-          }
-          pstmt2 = conn.prepareStatement(sql2);
-          result = pstmt2.executeUpdate();
-          if(result==1) {
-              System.out.println("리셋 성공");
-
-          }
-          pstmt3 = conn.prepareStatement(sql3);
-          result = pstmt3.executeUpdate();
-          if(result==1) {
-              System.out.println("리셋 성공");
-
-          }
-          pstmt4 = conn.prepareStatement(sql4);
-          result = pstmt4.executeUpdate();
-          if(result==1) {
-              System.out.println("리셋 성공");
+              reset1 = true;
 
           }
 
@@ -83,6 +66,77 @@ public class DrawerDao {
       }
    }
    
+   public void reset2() {
+	
+	  String sql = "delete from everydayRoutine";
+	   PreparedStatement pstmt = null;
+     try {
+         pstmt = conn.prepareStatement(sql);
+         int result = pstmt.executeUpdate();
+         if(result==1) {
+             System.out.println("리셋 성공");
+             reset2 = true;
+         }
+      
+     } catch (Exception e) {
+
+         System.out.println("리셋 실패");
+     }    finally {
+         try {
+             if(pstmt!=null && !pstmt.isClosed()) {
+                 pstmt.close();
+             }
+         } catch (Exception e2) {}
+     }
+  }
+   
+   public void reset3() {
+		
+		  String sql = "delete from dailphoto";
+		   PreparedStatement pstmt = null;
+	     try {
+	         pstmt = conn.prepareStatement(sql);
+	         int result = pstmt.executeUpdate();
+	         if(result==1) {
+	             System.out.println("리셋 성공");
+	             reset3 = true;
+	         }
+	      
+	     } catch (Exception e) {
+
+	         System.out.println("리셋 실패");
+	     }    finally {
+	         try {
+	             if(pstmt!=null && !pstmt.isClosed()) {
+	                 pstmt.close();
+	             }
+	         } catch (Exception e2) {}
+	     }
+	  }
+   
+   public void reset4() {
+		
+		  String sql = "delete from memo";
+		   PreparedStatement pstmt = null;
+	     try {
+	         pstmt = conn.prepareStatement(sql);
+	         int result = pstmt.executeUpdate();
+	         if(result==1) {
+	             System.out.println("리셋 성공");
+	             reset4 = true;
+	         }
+	      
+	     } catch (Exception e) {
+
+	         System.out.println("리셋 실패");
+	     }    finally {
+	         try {
+	             if(pstmt!=null && !pstmt.isClosed()) {
+	                 pstmt.close();
+	             }
+	         } catch (Exception e2) {}
+	     }
+	  }
    public void resetAccount() {
 		
  	  //쿼리문 준비
@@ -96,6 +150,7 @@ public class DrawerDao {
          int result = pstmt.executeUpdate();
          if(result==1) {
              System.out.println("계정 삭제 성공");
+             resetAccount = true;
 
          }
         

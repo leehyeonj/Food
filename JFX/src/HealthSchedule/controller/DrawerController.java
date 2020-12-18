@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class DrawerController implements Initializable{
 
@@ -26,7 +27,7 @@ public class DrawerController implements Initializable{
 		   Scene anotherScene = new Scene( PickPage );
 		   Stage stage = new  Stage();
 		   stage.setScene(anotherScene);
-//		   stage.initStyle(StageStyle.UNDECORATED);
+		   stage.initStyle(StageStyle.UNDECORATED);
 		   stage.show();
 		   // 다른창 띄우는 작업 .... 2 끝.
 
@@ -44,7 +45,7 @@ public class DrawerController implements Initializable{
 		   Scene anotherScene = new Scene( PickPage );
 		   Stage stage = new  Stage();
 		   stage.setScene(anotherScene);
-//		   stage.initStyle(StageStyle.UNDECORATED);
+		   stage.initStyle(StageStyle.UNDECORATED);
 		   stage.show();
 		   // 다른창 띄우는 작업 .... 2 끝.
 

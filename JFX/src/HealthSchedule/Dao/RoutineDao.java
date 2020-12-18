@@ -1,4 +1,4 @@
-package HealthSchedule.controller;
+package HealthSchedule.Dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import HealthSchedule.controller.RoutineTime;
+import HealthSchedule.controller.Routines_lower;
+import HealthSchedule.controller.TotalTime;
 import HealthSchedule.model.Routines;
 
 public class RoutineDao {

@@ -3,68 +3,37 @@ package HealthSchedule.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
-
-import HealthSchedule.Dao.MemoDao;
-import HealthSchedule.model.Memo;
+import HealthSchedule.Dao.DrawerDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
- 
-
-public class MemoController extends Main_everydayRecord_controller implements Initializable{
-	@FXML private Label alarmLabel;
-    @FXML private JFXButton save;
-    @FXML private JFXTextArea title;
-    @FXML private TextField content;
+public class WithdrawController implements Initializable{
+//탈퇴
     @FXML private AnchorPane pane;
-
-	MemoDao memodao = new MemoDao();
-
-    
-
-	@Override
-
-	public void initialize(URL location, ResourceBundle resources) {
-		stageDragableMoveWindow();
-		Memo memo = memodao.viewMemo(everyday);
-		String titleinit = memo.getTitle();
-		String contentinit = memo.getContent();
-		title.setText(titleinit);
-		content.setText(contentinit);
-	}
-
+    @FXML private Label alarmText;
+  
 	
-	public void saveAction(ActionEvent event) {
 
-			if(!title.getText().isEmpty()) {
-		
-					String saveTitle = title.getText();
-					String saveContent = content.getText();
-					
-					if (!memodao.ifexistMemo(everyday)) {
-						memodao.saveContent(everyday, saveTitle, saveContent);
-						alarmLabel.setText("메모가 저장되었습니다.");
-		
-					}else {
-						memodao.updateMemo(everyday, saveTitle, saveContent);
-						alarmLabel.setText("메모가 저장되었습니다.");
-					}
-					
-		
-			}else {
-				alarmLabel.setText("제목을 입력하지 않았습니다.");
-			}
-	}	
-	  //////////////////////////
-	   private double xOffset = 0;
+    @FXML
+    public void yesWithdraw(ActionEvent event) {
+    	DrawerDao drawerDao = new DrawerDao();
+    	drawerDao.resetAccount();
+    	if (drawerDao.resetAccount) {
+			alarmText.setText("계정이 성공적으로 삭제되었습니다.");
+		}
+    }
+
+    @FXML
+    public void noWithdraw(ActionEvent event) {
+    	stage.close();
+    }
+    
+    	private double xOffset = 0;
 	   private double yOffset = 0;
 	   private Stage stage = null;
 
@@ -94,7 +63,7 @@ public class MemoController extends Main_everydayRecord_controller implements In
 		   stage.setOpacity(1.0f);
 		   });
 	   }
-
+	   
 	   //화면 숨기기
 	   @FXML
 	   private void actionMinWindow(MouseEvent event) {
@@ -110,5 +79,9 @@ public class MemoController extends Main_everydayRecord_controller implements In
 	    stage.close();
 	   }
 
-
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		stageDragableMoveWindow();
+		
+	}
 }

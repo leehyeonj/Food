@@ -7,20 +7,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="pane" prefHeight="300.0" prefWidth="500.0" styleClass="backcolor-yellow" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.ResetController">
+<AnchorPane fx:id="pane" prefHeight="300.0" prefWidth="500.0" styleClass="backcolor-yellow" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.WithdrawController">
    <children>
       <Label layoutX="191.0" layoutY="83.0" styleClass="fontSeoulNamsan" text="탈퇴하시겠습니까?" />
       <HBox layoutX="178.0" layoutY="194.0" prefHeight="28.0" prefWidth="144.0">
          <children>
             <JFXButton buttonType="RAISED" onAction="#yesWithdraw" prefHeight="28.0" prefWidth="82.0" text="  네  ">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
+               
                <styleClass>
                   <String fx:value="backcolor-skyblue" />
                   <String fx:value="textfill-white" />
                </styleClass>
             </JFXButton>
+            <Pane prefHeight="200.0" prefWidth="20.0" />
             <JFXButton buttonType="RAISED" onAction="#noWithdraw" prefHeight="28.0" prefWidth="82.0" text="아니오">
                <styleClass>
                   <String fx:value="backcolor-skyblue" />
@@ -29,5 +28,17 @@
             </JFXButton>
          </children>
       </HBox>
+      <AnchorPane prefHeight="39.0" prefWidth="500.0">
+         <children>
+            <Label alignment="CENTER" layoutX="464.0" layoutY="4.0" onMouseClicked="#actionCloseWindow" prefHeight="32.0" prefWidth="23.0" text="X" />
+            <Label alignment="CENTER" layoutX="441.0" layoutY="4.0" onMouseClicked="#actionMinWindow" prefHeight="32.0" prefWidth="23.0" text="-" />
+         </children>
+      </AnchorPane>
+      <Label fx:id="alarmText" alignment="CENTER" layoutX="1.0" layoutY="150.0" prefHeight="18.0" prefWidth="500.0" text=" ">
+         <styleClass>
+            <String fx:value="fontSeoulNamsan" />
+            <String fx:value="textfill-blue" />
+         </styleClass>
+      </Label>
    </children>
 </AnchorPane>

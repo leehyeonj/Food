@@ -7,10 +7,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="pane2" prefHeight="300.0" prefWidth="500.0" styleClass="backcolor-pastelblue" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.ResetController">
+<AnchorPane fx:id="pane" prefHeight="300.0" prefWidth="500.0" styleClass="backcolor-pastelblue" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.ResetController">
    <children>
-      <Label layoutX="142.0" layoutY="113.0" styleClass="fontSeoulNamsan" text="모든 데이터를 초기화 하겠습니까?" />
-      <HBox layoutX="163.0" layoutY="170.0" prefHeight="32.0" prefWidth="174.0">
+      <Label layoutX="147.0" layoutY="81.0" styleClass="fontSeoulNamsan" text="모든 데이터를 초기화 하겠습니까?" />
+      <HBox layoutX="166.0" layoutY="203.0" prefHeight="32.0" prefWidth="174.0">
          <children>
             <JFXButton buttonType="RAISED" onAction="#yesReset" prefHeight="28.0" prefWidth="82.0" styleClass="backcolor-skyblue" text="  네  ">
                <HBox.margin>
@@ -20,5 +20,17 @@
             <JFXButton buttonType="RAISED" onAction="#NoReset" prefWidth="82.0" styleClass="backcolor-skyblue" text="아니오" />
          </children>
       </HBox>
+      <AnchorPane layoutX="5.0" prefHeight="39.0" prefWidth="500.0">
+         <children>
+            <Label alignment="CENTER" layoutX="464.0" layoutY="4.0" onMouseClicked="#actionCloseWindow" prefHeight="32.0" prefWidth="23.0" text="X" />
+            <Label alignment="CENTER" layoutX="441.0" layoutY="4.0" onMouseClicked="#actionMinWindow" prefHeight="32.0" prefWidth="23.0" text="-" />
+         </children>
+      </AnchorPane>
+      <Label fx:id="alarmText" alignment="CENTER" layoutX="11.0" layoutY="160.0" prefHeight="18.0" prefWidth="500.0" text=" ">
+         <styleClass>
+            <String fx:value="fontSeoulNamsan" />
+            <String fx:value="textfill-blue" />
+         </styleClass>
+      </Label>
    </children>
 </AnchorPane>
