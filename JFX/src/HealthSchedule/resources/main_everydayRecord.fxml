@@ -69,7 +69,7 @@
                                                       <Insets left="10.0" right="10.0" top="80.0" />
                                                    </StackPane.margin>
                                                    <children>
-                                                      <Label fx:id="breakfastlbl" alignment="CENTER" onMouseClicked="#addFoodTable" prefHeight="46.0" prefWidth="226.0" text="breakfast">
+                                                      <Label fx:id="breakfastlbl" alignment="CENTER" onMouseClicked="#foodbreakfast" prefHeight="46.0" prefWidth="226.0" text="breakfast">
                                                          <VBox.margin>
                                                             <Insets top="20.0" />
                                                          </VBox.margin>
@@ -110,7 +110,7 @@
                                              <children>
                                                 <VBox opacity="0.96" prefHeight="341.0" prefWidth="246.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                                                    <children>
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="lunch">
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="lunch" onMouseClicked="#foodlunch">
                                                          <VBox.margin>
                                                             <Insets top="20.0" />
                                                          </VBox.margin>
@@ -151,7 +151,7 @@
                                              <children>
                                                 <VBox opacity="0.96" prefHeight="341.0" prefWidth="246.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                                                    <children>
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="snack">
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="snack" onMouseClicked="#foodsnack">
                                                          <VBox.margin>
                                                             <Insets top="20.0" />
                                                          </VBox.margin>
@@ -192,7 +192,7 @@
                                              <children>
                                                 <VBox opacity="0.96" prefHeight="341.0" prefWidth="246.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                                                    <children>
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="dinner">
+                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="dinner" onMouseClicked="#fooddinner">
                                                          <VBox.margin>
                                                             <Insets top="20.0" />
                                                          </VBox.margin>

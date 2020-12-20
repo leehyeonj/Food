@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="pane" prefHeight="250.0" prefWidth="600.0" styleClass="backcolor-yellow" stylesheets="@../css/main.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+ fx:controller="HealthSchedule.controller.AddFoodToTableController">
+   <children>
+      <AnchorPane prefHeight="39.0" prefWidth="700.0">
+         <children>
+            <Label alignment="CENTER" layoutX="663.0" layoutY="4.0" onMouseClicked="#actionCloseWindow" prefHeight="32.0" prefWidth="23.0" text="X" />
+            <Label alignment="CENTER" layoutX="640.0" layoutY="4.0" onMouseClicked="#actionMinWindow" prefHeight="32.0" prefWidth="23.0" text="-" />
+         </children>
+      </AnchorPane>
+      <HBox layoutX="67.0" layoutY="125.0" prefHeight="32.0" prefWidth="578.0">
+         <children>
+            <TextField fx:id="foodName" prefHeight="28.0" prefWidth="211.0" promptText="음식 이름" styleClass="fontSeoulNamsan" />
+            <TextField fx:id="foodUnit" promptText="단위" styleClass="fontSeoulNamsan" />
+            <TextField fx:id="foodKcal" prefHeight="28.0" prefWidth="204.0" promptText="칼로리" styleClass="fontSeoulNamsan" />
+         </children>
+      </HBox>
+      <JFXButton fx:id="savebtn" buttonType="RAISED" layoutX="326.0" layoutY="198.0" onAction="#save" styleClass="backcolor-purple_up" text="저장" />
+      <Label layoutX="67.0" layoutY="72.0" text="직접 저장하기">
+         <styleClass>
+            <String fx:value="fontSeoulNamsan" />
+            <String fx:value="fontsize20" />
+         </styleClass>
+      </Label>
+      <Label fx:id="alarmText" alignment="CENTER" layoutX="6.0" layoutY="168.0" prefWidth="700.0" text=" ">
+         <styleClass>
+            <String fx:value="textfill-blue" />
+            <String fx:value="fontSeoulNamsan" />
+         </styleClass>
+      </Label>
+   </children>
+</AnchorPane>

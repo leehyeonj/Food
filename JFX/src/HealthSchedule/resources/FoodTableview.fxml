@@ -1,32 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.collections.*?>
 
-<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" 
-			fx:controller="HealthSchedule.controller.FoodTableviewController">
+<AnchorPane fx:id="pane" prefHeight="500.0" prefWidth="700.0" styleClass="backcolor-yellow" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.FoodTableviewController">
    <children>
-      <Button fx:id="plusList" layoutX="299.0" layoutY="124.0" onAction="#pluslistbtn" prefHeight="23.0" prefWidth="83.0" text="목록 추가" />
-      <Button layoutX="138.0" layoutY="14.0" text="검색" />
-      <Button fx:id="exit" layoutX="320.0" layoutY="263.0" onAction="#exitbtn" text="확인" />
-      <Button fx:id="delete" layoutX="138.0" layoutY="37.0" onAction="#deletebtn" text="삭제" />
-      <TextField fx:id="searchtext" layoutY="14.0" />
-      <TableView fx:id="tableview1" layoutX="192.0" layoutY="14.0" prefHeight="102.0" prefWidth="296.0">
+      <TextField fx:id="searchtext" layoutX="28.0" layoutY="65.0" promptText="검색" styleClass="fontSeoulNamsan" />
+      <TableView fx:id="tableview1" layoutX="211.0" layoutY="65.0" prefHeight="175.0" prefWidth="448.0">
         <columns>
-          <TableColumn fx:id="foodname" prefWidth="99.0" text="음식이름" />
-          <TableColumn fx:id="foodunit" prefWidth="106.0" text="단위" />
-            <TableColumn fx:id="cal" prefWidth="90.0" text="칼로리" />
+          <TableColumn fx:id="foodname" prefWidth="138.0" text="음식이름" />
+          <TableColumn fx:id="foodunit" prefWidth="151.0" text="단위" />
+            <TableColumn fx:id="cal" prefWidth="158.0" text="칼로리" />
         </columns>
       </TableView>
-      <TableView fx:id="tableview2" layoutX="192.0" layoutY="155.0" prefHeight="102.0" prefWidth="296.0">
+      <TableView fx:id="tableview2" layoutX="210.0" layoutY="287.0" prefHeight="141.0" prefWidth="448.0">
          <columns>
-            <TableColumn fx:id="tableview1_foodname" prefWidth="99.0" text="음식이름" />
-            <TableColumn fx:id="tableview1_foodunit" prefWidth="106.0" text="단위" />
-            <TableColumn fx:id="tableview1_cal" prefWidth="90.0" text="칼로리" />
+            <TableColumn fx:id="tableview1_foodname" prefWidth="145.0" text="음식이름" />
+            <TableColumn fx:id="tableview1_foodunit" prefWidth="151.0" text="단위" />
+            <TableColumn fx:id="tableview1_cal" prefWidth="151.0" text="칼로리" />
          </columns>
       </TableView>
+      <AnchorPane prefHeight="39.0" prefWidth="700.0">
+         <children>
+            <Label alignment="CENTER" layoutX="663.0" layoutY="4.0" onMouseClicked="#actionCloseWindow" prefHeight="32.0" prefWidth="23.0" text="X" />
+            <Label alignment="CENTER" layoutX="640.0" layoutY="4.0" onMouseClicked="#actionMinWindow" prefHeight="32.0" prefWidth="23.0" text="-" />
+         </children>
+      </AnchorPane>
+      <JFXButton fx:id="plusFood" buttonType="RAISED" layoutX="36.0" layoutY="413.0" onAction="#plusFoodbtn" text="+">
+         <styleClass>
+            <String fx:value="backcolor-purple_up" />
+            <String fx:value="radius100" />
+            <String fx:value="fontsize20" />
+         </styleClass>
+      </JFXButton>
+      <JFXButton fx:id="plusList" buttonType="RAISED" layoutX="394.0" layoutY="250.0" onAction="#pluslistbtn" text="목록 추가">
+         <styleClass>
+            <String fx:value="backcolor-purple_up" />
+            <String fx:value="fontSeoulNamsan" />
+         </styleClass></JFXButton>
+      <JFXButton fx:id="exit" buttonType="RAISED" layoutX="386.0" layoutY="449.0" onAction="#exitbtn" text="확인">
+         <styleClass>
+            <String fx:value="backcolor-purple_up" />
+            <String fx:value="fontSeoulNamsan" />
+         </styleClass></JFXButton>
+      <JFXButton fx:id="delete" buttonType="RAISED" layoutX="451.0" layoutY="449.0" onAction="#deletebtn" text="삭제">
+         <styleClass>
+            <String fx:value="backcolor-purple_up" />
+            <String fx:value="fontSeoulNamsan" />
+         </styleClass></JFXButton>
    </children>
 </AnchorPane>

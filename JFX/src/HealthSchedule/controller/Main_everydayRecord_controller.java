@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import com.mysql.jdbc.MiniAdmin;
 
 import HealthSchedule.Dao.PhotoDao;
 import HealthSchedule.Dao.RoutineDao;
@@ -27,13 +26,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -59,7 +58,9 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    
    @FXML private Label todayDate;//오늘 날짜
    @FXML private Label todayDayOfWeek;//오늘 요일
-   
+   /////////////////////////////////////첫번째 탭
+   public static String eatTime; //식사시간
+//   @FXML  private VBox breakfastDiet;
    ////////////////////////////////////
    @FXML private ScrollPane scroll; //두번째 탭
    @FXML private GridPane grid;
@@ -511,9 +512,10 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       }
       
       
-      //라벨을 누르면 테이블뷰 페이지로 넘어감
+      //아침 라벨을 누르면 테이블뷰 페이지로 넘어감
       @FXML
-      public void addFoodTable(MouseEvent mouseevent) {
+      public void foodbreakfast(MouseEvent mouseevent) {
+    	  eatTime = "breakfast";
     	  FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/FoodTableview.fxml") );
 
 			try {
@@ -523,7 +525,67 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 		   Scene anotherScene = new Scene( PickPage );
 		   Stage stage = new  Stage();
 		   stage.setScene(anotherScene);
-//		   stage.initStyle(StageStyle.UNDECORATED);
+		   stage.initStyle(StageStyle.UNDECORATED);
+		   stage.show();
+		   // 다른창 띄우는 작업 .... 2 끝.
+
+		} catch (IOException e) {} 
+
+      }
+      
+      @FXML
+      public void foodlunch(MouseEvent mouseevent) {
+    	  eatTime = "lunch";
+    	  FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/FoodTableview.fxml") );
+
+			try {
+
+		   AnchorPane PickPage = (AnchorPane) another.load();
+		   // 다른창 띄우는 작업 .... 2
+		   Scene anotherScene = new Scene( PickPage );
+		   Stage stage = new  Stage();
+		   stage.setScene(anotherScene);
+		   stage.initStyle(StageStyle.UNDECORATED);
+		   stage.show();
+		   // 다른창 띄우는 작업 .... 2 끝.
+
+		} catch (IOException e) {} 
+
+      }
+      
+      @FXML
+      public void foodsnack(MouseEvent mouseevent) {
+    	  eatTime = "snack";
+    	  FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/FoodTableview.fxml") );
+
+			try {
+
+		   AnchorPane PickPage = (AnchorPane) another.load();
+		   // 다른창 띄우는 작업 .... 2
+		   Scene anotherScene = new Scene( PickPage );
+		   Stage stage = new  Stage();
+		   stage.setScene(anotherScene);
+		   stage.initStyle(StageStyle.UNDECORATED);
+		   stage.show();
+		   // 다른창 띄우는 작업 .... 2 끝.
+
+		} catch (IOException e) {} 
+
+      }
+      
+      @FXML
+      public void fooddinner(MouseEvent mouseevent) {
+    	  eatTime = "dinner";
+    	  FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/FoodTableview.fxml") );
+
+			try {
+
+		   AnchorPane PickPage = (AnchorPane) another.load();
+		   // 다른창 띄우는 작업 .... 2
+		   Scene anotherScene = new Scene( PickPage );
+		   Stage stage = new  Stage();
+		   stage.setScene(anotherScene);
+		   stage.initStyle(StageStyle.UNDECORATED);
 		   stage.show();
 		   // 다른창 띄우는 작업 .... 2 끝.
 
@@ -533,7 +595,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       
       ///////////////////////////////////////////////////////////////////////////
       @FXML private JFXTextField weight;
-  	@FXML private JFXButton saveWeight;
+  	  @FXML private JFXButton saveWeight;
       @FXML private JFXTextField goalweight;
       @FXML private JFXButton savegoalWeightBtn;
   	

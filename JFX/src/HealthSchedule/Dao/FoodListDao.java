@@ -3,34 +3,40 @@ package HealthSchedule.Dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import HealthSchedule.model.FoodTable;
+import HealthSchedule.model.Foodlist;
+import HealthSchedule.model.Routines;
 
 
 public class FoodListDao {
-	
-	String name, Unit, cal;
-	
-	public FoodListDao(String foodname, String foodunit, String cal) {
-		super();
-		this.name = foodname;
-		this.Unit = foodunit;
-		this.cal = cal;
-	}
+   
+   String name, Unit, cal;
+   
+   public FoodListDao(String foodname, String foodunit, String cal) {
+      super();
+      this.name = foodname;
+      this.Unit = foodunit;
+      this.cal = cal;
+   }
 
-	public boolean loginsuccess;
-	private static Connection conn;    //DB 커넥션(연결) 객체
+   public boolean loginsuccess;
+   private static Connection conn;    //DB 커넥션(연결) 객체
     private static final String USERNAME = "root";   //DB 접속시 ID
     //현주
-    private static final String PASSWORD = "DOALd1120f1gG";	 //DB 접속시 패스워드
-    private static String URL = "jdbc:mysql://localhost:3305/calendardb";	//dbms
+    private static final String PASSWORD = "DOALd1120f1gG";    //DB 접속시 패스워드
+    private static String URL = "jdbc:mysql://localhost:3305/calendardb";   //dbms
     
     //상아 , 중섭
-//    private static final String PASSWORD = "1234";	 //DB 접속시 패스워드
-//    private static String URL = "jdbc:mysql://localhost:3306/calendardb";	//dbms
+//    private static final String PASSWORD = "1234";    //DB 접속시 패스워드
+//    private static String URL = "jdbc:mysql://localhost:3306/calendardb";   //dbms
     
    public FoodListDao() {
-	   try {
-		   //동적 객체를 만들어줌 
+      try {
+         //동적 객체를 만들어줌 
            Class.forName("com.mysql.jdbc.Driver"); 
            conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
            System.out.println("드라이버 로딩 성공!!");   
@@ -42,29 +48,88 @@ public class FoodListDao {
    
    //db연결
    public static Connection connect() throws SQLException{
-	   try {
-		   Class.forName("com.mysql.jdbc.Driver"); 
-	       conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-	       System.out.println("음식 드라이버 로딩 성공!!");
-	        
-	   } catch (Exception e) {
-	       e.printStackTrace();
-	       System.out.println("드라이버 로드 실패!!");
-	   }
+      try {
+         Class.forName("com.mysql.jdbc.Driver"); 
+          conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+          System.out.println("음식 드라이버 로딩 성공!!");
+           
+      } catch (Exception e) {
+          e.printStackTrace();
+          System.out.println("드라이버 로드 실패!!");
+      }
        conn = DriverManager.getConnection(URL,USERNAME,PASSWORD);
        return conn;
    }
    
    //추가한 항목을 db에 저장하는 메서드
-   public Connection saveContent(String foodname, String foodunit, String cal)throws SQLException {
-	   //쿼리문 준비	//음식이름,단위,칼로리(날짜추가필요)
-	   String sql = "insert into Foodtest values(?,?,?)";
-	   PreparedStatement pstmt = null;
+//   public Connection saveContent(String foodname, String foodunit, String cal)throws SQLException {
+//      //쿼리문 준비   //음식이름,단위,칼로리(날짜추가필요)
+//      String sql = "insert into Foodtest values(?,?,?)";
+//      PreparedStatement pstmt = null;
+//       try {
+//           pstmt = conn.prepareStatement(sql);
+//           pstmt.setString(1, foodname);
+//           pstmt.setString(2, foodunit);
+//           pstmt.setString(3, cal);
+//           int result = pstmt.executeUpdate();
+//           
+//           if(result==1) {
+//               System.out.println("식사데이터 삽입 성공!");
+//           }
+//       } catch (Exception e) {
+//           System.out.println("식사데이터 삽입 실패!");
+//       }    finally {
+//           try {
+//               if(pstmt!=null && !pstmt.isClosed()) {
+//                   pstmt.close();
+//               }
+//           } catch (Exception e2) {}
+//       }
+//       conn = DriverManager.getConnection(URL,USERNAME,PASSWORD);
+//       return conn;
+//   }
+   
+   //목록 저장
+   public void saveFoodToTable(String foodname, String foodunit, String cal) {
+	   
+	   //쿼리문 준비
+       String sql = "insert into Food values(?,?,?)";
+       
+       PreparedStatement pstmt = null;
        try {
            pstmt = conn.prepareStatement(sql);
            pstmt.setString(1, foodname);
            pstmt.setString(2, foodunit);
            pstmt.setString(3, cal);
+          
+           int result = pstmt.executeUpdate();
+           if(result==1) {
+               System.out.println("음식데이터 삽입 성공!");
+               
+           }
+           
+       } catch (Exception e) {
+           System.out.println("음식데이터 삽입 실패!");
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+               }
+           } catch (Exception e2) {}
+       }
+       
+   }
+   public Connection saveContent(String everyday, String eattime, String foodname, String foodunit, String cal)throws SQLException {
+      //쿼리문 준비 //음식이름,단위,칼로리(날짜추가필요)
+      String sql = "insert into Foodtest values(?,?,?,?,?)";
+      PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           pstmt.setString(1, everyday);  
+           pstmt.setString(2, eattime);
+           pstmt.setString(3, foodname);
+           pstmt.setString(4, foodunit);
+           pstmt.setString(5, cal);
            int result = pstmt.executeUpdate();
            
            if(result==1) {
@@ -80,31 +145,106 @@ public class FoodListDao {
            } catch (Exception e2) {}
        }
        conn = DriverManager.getConnection(URL,USERNAME,PASSWORD);
-       return conn;
+     return conn;
+
    }
+   
+   public Foodlist selectfood(String everyday, String eattime) {
+      Foodlist foodlist = new Foodlist();
+       String sql = "select foodname, foodunit, cal from foodtest where everyday = ? and eattime = ?";
+       PreparedStatement pstmt = null;
+       //결과 값을 담을 곳
+      
+       try {
+           pstmt = conn.prepareStatement(sql);
+           pstmt.setString(1, everyday);
+           pstmt.setString(2, eattime);
+           ResultSet rs = pstmt.executeQuery();
+           
+           //있으면
+          if(rs.next()) {
+             foodlist.setEveryday(everyday);
+             foodlist.setEattime(eattime);
+             foodlist.setFoodname(rs.getString("foodname"));
+             foodlist.setFoodunit(rs.getString("foodunit"));
+             foodlist.setCal(rs.getString("cal"));
+              
+
+              System.out.println("토탈 메서드 성공");
+              }
+           
+       } catch (Exception e) {
+           System.out.println("토탈메서드 예외발생");
+           
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+                  
+               }
+           } catch (Exception e2) { }
+       }
+       return foodlist;
+   }
+   
+   ArrayList<FoodTable> foodtablelist = new ArrayList<>();
+   public ArrayList<FoodTable> selectfood() {
+	    
+	       String sql = "select * from Food";
+	       PreparedStatement pstmt = null;
+	       //결과 값을 담을 곳
+	      
+	       try {
+	           pstmt = conn.prepareStatement(sql);
+	       
+	           ResultSet rs = pstmt.executeQuery();
+	           
+	           //있으면
+	          while(rs.next()) {
+	        		FoodTable foodtable = new FoodTable();
+	        		foodtable.setFoodname(rs.getString("foodname"));
+	        		foodtable.setFoodunit(rs.getString("foodunit"));
+	        		foodtable.setCal(rs.getString("cal"));
+	        		foodtablelist.add(foodtable);
+
+	              System.out.println("select food 메서드 성공");
+	              }
+	           
+	       } catch (Exception e) {
+	           System.out.println("select food 예외발생");
+	           
+	       }    finally {
+	           try {
+	               if(pstmt!=null && !pstmt.isClosed()) {
+	                   pstmt.close();
+	                  
+	               }
+	           } catch (Exception e2) { }
+	       }
+	       return foodtablelist;
+	   }
    
    //삭제하는 메서드
    public Connection deleteFood(String foodname, String foodunit, String cal)throws SQLException  {
 
-	   String sql = "delete from Foodtest where foodname =? and foodunit =? and cal =?";
-	   PreparedStatement pstmt = null;
-		try {
-			  pstmt = conn.prepareStatement(sql);
-	          pstmt.setString(1, foodname);
-	          pstmt.setString(2, foodunit);
-	          pstmt.setString(3, cal);
-	          int result = pstmt.executeUpdate();
-	           if(result==1) {
-	               System.out.println("식사데이터 삭제 성공!");
-	           }
-	       }  catch (Exception e) {
-	           System.out.println("식사데이터 삭제 실패!");
-	       }
-	   conn = DriverManager.getConnection(URL,USERNAME,PASSWORD);
-	   return conn;  
+      String sql = "delete from Foodtest where foodname =? and foodunit =? and cal =?";
+      PreparedStatement pstmt = null;
+      try {
+           pstmt = conn.prepareStatement(sql);
+             pstmt.setString(1, foodname);
+             pstmt.setString(2, foodunit);
+             pstmt.setString(3, cal);
+             int result = pstmt.executeUpdate();
+              if(result==1) {
+                  System.out.println("식사데이터 삭제 성공!");
+              }
+          }  catch (Exception e) {
+              System.out.println("식사데이터 삭제 실패!");
+          }
+      conn = DriverManager.getConnection(URL,USERNAME,PASSWORD);
+      return conn;  
   }
-   
-   	//getter,setter
+	//getter,setter
 	public String getName() {
 		return name;
 	}
@@ -123,4 +263,5 @@ public class FoodListDao {
 	public void setCal(String cal) {
 		this.cal = cal;
 	}
+  
 }
