@@ -51,7 +51,7 @@ public class FoodTableviewController extends Main_everydayRecord_controller impl
    @FXML
    private TableColumn<FoodListDao, String> tableview1_foodname, tableview1_foodunit, tableview1_cal;   //테이블뷰2 칼럼명
     @FXML private TextField searchtext;   //검색창
-    @FXML private JFXButton exit, plusList, delete;   //저장버튼,추가버튼,취소버튼
+    @FXML private JFXButton exit, plusList, delete, listrefresh;   //저장버튼,추가버튼,취소버튼
 
     @FXML
     private JFXButton plusFood;
@@ -138,6 +138,12 @@ public class FoodTableviewController extends Main_everydayRecord_controller impl
         //음식 전체목록 tableview1에 출력
         tableview1.setItems(sortedData);
     }
+    //목록갱신
+    public void refreshtable() {
+    	tableview1.refresh();
+    	viewtable1();
+    }
+    
    //삭제기능
    public void deletebtn(ActionEvent e) {
        FoodListDao ld = new FoodListDao();
