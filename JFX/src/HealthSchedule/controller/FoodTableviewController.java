@@ -93,6 +93,7 @@ public class FoodTableviewController extends Main_everydayRecord_controller impl
     
     public void viewtable1() {
         //tabeview1에 곧바로 목록출력
+    	productList.clear();
         Connection conn;
         try {
            conn = FoodListDao.connect();
