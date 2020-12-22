@@ -227,7 +227,7 @@
                         <String fx:value="fontSeoulNamsan" />
                         <String fx:value="fontsize14" />
                      </styleClass></JFXButton>
-                  <JFXButton fx:id="viewMonthlyChart" buttonType="RAISED" prefHeight="77.0" prefWidth="346.0" ripplerFill="#ff0606" text="     한 달 운동 차트 보기">
+                  <JFXButton fx:id="viewMonthlyChart" buttonType="RAISED" onAction="#makeRountinebtn" prefHeight="77.0" prefWidth="346.0" ripplerFill="#ff0606" text="     한 달 운동 차트 보기">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                            <image>

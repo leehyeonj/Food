@@ -487,13 +487,17 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       
       //한달 차트 보기 버튼
       public void makeRountinebtn(ActionEvent event) {
-    	  try {
-              //뒤로 가기 버튼을 누르면 뒤로감
-              Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/makeRoutine.fxml"));
-              Scene scene = new Scene(checkOk);
-              Stage primaryStage= (Stage)viewMonthlyChart.getScene().getWindow();
-              primaryStage.setScene(scene);
-           } catch (Exception e2) {}
+    	  FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/piechartDay.fxml") );
+			try {
+				AnchorPane PickPage = (AnchorPane) another.load();
+		  		// 다른창 띄우는 작업 .... 2
+		  		Scene anotherScene = new Scene( PickPage );
+		  		Stage stage = new  Stage();
+		  		stage.setScene(anotherScene);
+		  		stage.initStyle(StageStyle.UNDECORATED);
+		  		stage.show();
+		  		// 다른창 띄우는 작업 .... 2 끝.
+			} catch (IOException e) {} 
       }
       
       
