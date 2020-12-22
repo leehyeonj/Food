@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import HealthSchedule.controller.Routines_lower;
 import HealthSchedule.model.FoodTable;
 import HealthSchedule.model.Foodlist;
 import HealthSchedule.model.Routines;
@@ -151,7 +152,7 @@ public class FoodListDao {
    
    public Foodlist selectfood(String everyday, String eattime) {
       Foodlist foodlist = new Foodlist();
-       String sql = "select foodname, foodunit, cal from foodtest where everyday = ? and eattime = ?";
+       String sql = "select foodname, foodunit, cal from Foodtest where everyday = ? and eattime = ?";
        PreparedStatement pstmt = null;
        //결과 값을 담을 곳
       
@@ -170,11 +171,11 @@ public class FoodListDao {
              foodlist.setCal(rs.getString("cal"));
               
 
-              System.out.println("토탈 메서드 성공");
+              System.out.println("select food 메서드 성공");
               }
            
        } catch (Exception e) {
-           System.out.println("토탈메서드 예외발생");
+           System.out.println("select food 예외 ");
            
        }    finally {
            try {
@@ -224,6 +225,75 @@ public class FoodListDao {
 	       return foodtablelist;
 	   }
    
+ //그 날에 저장된 음식 값이 있냐 없냐
+   public boolean ifexistFood(String everyday, String eattime) {
+	   boolean result = false;
+       String sql = "select * from Foodtest where everyday = ? and eattime =?";
+       PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           pstmt.setString(1, everyday);
+           pstmt.setString(2, eattime);
+           ResultSet rs = pstmt.executeQuery();
+           if(rs.next()) {
+        	   result = true;
+        	  
+           }
+           
+       } catch (Exception e) {
+           System.out.println("select 메서드 예외발생");
+           
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+                  
+               }
+           } catch (Exception e2) { }
+       }
+	return result;
+   }
+   
+   
+   //저장되어있는 음식을 보여달라
+  
+   public ArrayList<Foodlist> viewDayFood(String everyday, String eattime) {
+	   ArrayList<Foodlist> foodlistlist = new ArrayList<>();
+       String sql = "select everyday,eattime,foodname,foodunit,cal from Foodtest where everyday = ? and eattime =?";
+       PreparedStatement pstmt = null;
+       //결과 값을 담을 곳
+      
+       try {
+           pstmt = conn.prepareStatement(sql);
+           pstmt.setString(1, everyday);
+           pstmt.setString(2, eattime);
+           ResultSet rs = pstmt.executeQuery();
+           
+           //있으면
+           while(rs.next()) {
+        	Foodlist foodlist = new Foodlist();
+       
+        	foodlist.setEveryday(rs.getString("everyday")); 
+        	foodlist.setEattime(rs.getString("eattime"));
+        	foodlist.setFoodname(rs.getString("foodname"));
+        	foodlist.setFoodunit(rs.getString("foodunit"));
+        	foodlist.setCal(rs.getString("cal"));
+        	foodlistlist.add(foodlist);
+           	}
+           
+       } catch (Exception e) {
+           System.out.println("select 메서드 예외발생");
+           
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+                  
+               }
+           } catch (Exception e2) { }
+       }
+       return foodlistlist;
+   }
    //삭제하는 메서드
    public Connection deleteFood(String foodname, String foodunit, String cal)throws SQLException  {
 

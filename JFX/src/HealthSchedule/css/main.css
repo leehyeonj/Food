@@ -2,6 +2,7 @@
 #scroll{
 	   -fx-background-color: rgba(0,0,0,0);
 }
+
 .gradient-main{
 	-fx-background-color: linear-gradient(to right , #7FACD6 , #BFB8DA);
 }

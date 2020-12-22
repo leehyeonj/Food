@@ -226,11 +226,7 @@ public class RoutineController extends Main_everydayRecord_controller implements
 	    			else {//그날 저장된 값이 있으면 수정
 						routineDao.updateTime(everyday, partname.getText(), hour, minute, second);
 					}
-//	    			RoutineTime routineTime =routineDao.viewDayTime(everyday, partname.getText());
-////	    			routine.setTime(timelabel.getText());
-//	    			routine.setHour(routineTime.getTimehour());
-//	    			routine.setMinute(routineTime.getTimeminute());
-//	    			routine.setSecond(routineTime.getTimesecond());
+
 	    			totalListener.onClickListener(routine);
 	    			
 				}

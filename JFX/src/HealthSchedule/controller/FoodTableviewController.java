@@ -31,17 +31,20 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
  
-public class FoodTableviewController extends Main_everydayRecord_controller implements Initializable {
+public class FoodTableviewController extends FoodController implements Initializable {
  
     private ObservableList<FoodListDao> productList = FXCollections.observableArrayList();   //음식전체끌어오는 ObservableList
     private ObservableList<FoodListDao> pluslist = FXCollections.observableArrayList();   //선택해서 테이블뷰2에 넣어야되는 ObservableList
-    
-//    FoodTableListener foodTableListener;
+    ArrayList<Foodlist> foodlistlist = new ArrayList<>();
+    FoodTableListener foodTableListener;
+    Foodlist foodlist;
 //    FoodListDao foodlistdao= new FoodListDao();
    @FXML
    private TableView<FoodListDao> tableview1,tableview2;   //조회테이블뷰, 추가테이블뷰
@@ -63,6 +66,8 @@ public class FoodTableviewController extends Main_everydayRecord_controller impl
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     	stageDragableMoveWindow();
+    	
+    	
        //추가기능. 테이블뷰 row선택. 칼럼값 저장
        tableview1.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<FoodListDao>() {
          @Override
@@ -154,8 +159,10 @@ public class FoodTableviewController extends Main_everydayRecord_controller impl
       //System.out.println(name + " " + unit + " " + C);   //선택한 row가 제대로 들어왔는지 확인하기위함
       try {      
          ld.deleteFood(name, unit, C);
-         
-      } catch (SQLException e1) { System.out.println("음식 삭제 실패");  } 
+//         foodlistlist = foodListDao.viewDayFood(everyday, eatTime);
+//         foodTableListener.onClickListener(foodlistlist);
+      } catch (SQLException e1) { System.out.println("음식 삭제 실패");  
+      e1.printStackTrace();} 
       //tableview2에서 선택row삭제
       tableview2.getItems().removeAll(tableview2.getSelectionModel().getSelectedItem());   
    }   
@@ -176,8 +183,12 @@ public class FoodTableviewController extends Main_everydayRecord_controller impl
           while(rs.next()) {
              pluslist.add(new FoodListDao(rs.getString("foodname"), rs.getString("foodunit"), rs.getString("cal")));
           }
+//          foodlistlist = foodListDao.viewDayFood(everyday, eatTime);
+//        foodTableListener.onClickListener(foodlistlist);
+          
        } catch (SQLException e1) {
     	  System.out.println("식사 데이터 삽입 실패");
+    	  e1.printStackTrace();
        }
 
        //끌어온 칼럼값
@@ -192,10 +203,18 @@ public class FoodTableviewController extends Main_everydayRecord_controller impl
      }
     //종료(확인버튼)
     public void exitbtn(ActionEvent event) {
+    	try {
+    		System.out.println(everyday+"////////////");
+    		System.out.println(eatTime+"//////////////");
+//        foodlistlist = foodListDao.viewDayFood(everyday, eatTime);
+//        foodTableListener.onClickListener(foodlistlist);
+    	}catch (Exception e) {
+			e.printStackTrace();
+		}
        Stage stage = (Stage) exit.getScene().getWindow();
        stage.close();
     }  
-    
+  
 
     @FXML
     public void plusFoodbtn(ActionEvent event) {

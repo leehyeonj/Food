@@ -60,177 +60,6 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <HBox prefHeight="439.0" prefWidth="1020.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
-                                       <children>
-                                          <StackPane prefHeight="439.0" prefWidth="275.0" styleClass="dropshadow2">
-                                             <children>
-                                                <VBox opacity="0.96" prefHeight="341.0" prefWidth="246.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                                                   <StackPane.margin>
-                                                      <Insets left="10.0" right="10.0" top="80.0" />
-                                                   </StackPane.margin>
-                                                   <children>
-                                                      <Label fx:id="breakfastlbl" alignment="CENTER" onMouseClicked="#foodbreakfast" prefHeight="46.0" prefWidth="226.0" text="breakfast">
-                                                         <VBox.margin>
-                                                            <Insets top="20.0" />
-                                                         </VBox.margin>
-                                                         <styleClass>
-                                                            <String fx:value="fontsize13" />
-                                                            <String fx:value="textfill-blue" />
-                                                            <String fx:value="fontshadow" />
-                                                            <String fx:value="fontTypoHongikingan" />
-                                                         </styleClass>
-                                                      </Label>
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <HBox prefHeight="46.0" prefWidth="235.0">
-                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="303.0" text="300" />
-                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="Kcal" />
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                </VBox>
-                                                <ImageView fitHeight="111.0" fitWidth="120.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
-                                                   <image>
-                                                      <Image url="@images/free-icon-breakfast-2612118.png" />
-                                                   </image>
-                                                   <StackPane.margin>
-                                                      <Insets />
-                                                   </StackPane.margin>
-                                                </ImageView>
-                                             </children>
-                                             <effect>
-                                                <InnerShadow choke="0.04" color="#bcb0b0" height="27.14" radius="17.68" width="45.58" />
-                                             </effect>
-                                          </StackPane>
-                                          <StackPane prefHeight="439.0" prefWidth="275.0" styleClass="dropshadow2">
-                                             <children>
-                                                <VBox opacity="0.96" prefHeight="341.0" prefWidth="246.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                                                   <children>
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="lunch" onMouseClicked="#foodlunch">
-                                                         <VBox.margin>
-                                                            <Insets top="20.0" />
-                                                         </VBox.margin>
-                                                         <styleClass>
-                                                            <String fx:value="fontsize13" />
-                                                            <String fx:value="textfill-blue" />
-                                                            <String fx:value="fontshadow" />
-                                                            <String fx:value="fontTypoHongikingan" />
-                                                         </styleClass>
-                                                      </Label>
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <HBox prefHeight="46.0" prefWidth="235.0">
-                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="303.0" text="300" />
-                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="Kcal" />
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                   <StackPane.margin>
-                                                      <Insets left="10.0" right="10.0" top="80.0" />
-                                                   </StackPane.margin>
-                                                </VBox>
-                                                <ImageView fitHeight="111.0" fitWidth="120.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
-                                                   <image>
-                                                      <Image url="@images/free-icon-vegan-food-894889.png" />
-                                                   </image>
-                                                   <StackPane.margin>
-                                                      <Insets />
-                                                   </StackPane.margin>
-                                                </ImageView>
-                                             </children>
-                                          </StackPane>
-                                          <StackPane prefHeight="439.0" prefWidth="275.0" styleClass="dropshadow2">
-                                             <children>
-                                                <VBox opacity="0.96" prefHeight="341.0" prefWidth="246.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                                                   <children>
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="snack" onMouseClicked="#foodsnack">
-                                                         <VBox.margin>
-                                                            <Insets top="20.0" />
-                                                         </VBox.margin>
-                                                         <styleClass>
-                                                            <String fx:value="fontsize13" />
-                                                            <String fx:value="textfill-blue" />
-                                                            <String fx:value="fontshadow" />
-                                                            <String fx:value="fontTypoHongikingan" />
-                                                         </styleClass>
-                                                      </Label>
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <HBox prefHeight="46.0" prefWidth="235.0">
-                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="303.0" text="300" />
-                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="Kcal" />
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                   <StackPane.margin>
-                                                      <Insets left="10.0" right="10.0" top="80.0" />
-                                                   </StackPane.margin>
-                                                </VBox>
-                                                <ImageView fitHeight="111.0" fitWidth="120.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
-                                                   <image>
-                                                      <Image url="@images/free-icon-biscuit-2612109.png" />
-                                                   </image>
-                                                   <StackPane.margin>
-                                                      <Insets />
-                                                   </StackPane.margin>
-                                                </ImageView>
-                                             </children>
-                                          </StackPane>
-                                          <StackPane prefHeight="439.0" prefWidth="275.0" styleClass="dropshadow2">
-                                             <children>
-                                                <VBox opacity="0.96" prefHeight="341.0" prefWidth="246.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                                                   <children>
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="dinner" onMouseClicked="#fooddinner">
-                                                         <VBox.margin>
-                                                            <Insets top="20.0" />
-                                                         </VBox.margin>
-                                                         <styleClass>
-                                                            <String fx:value="fontsize13" />
-                                                            <String fx:value="textfill-blue" />
-                                                            <String fx:value="fontshadow" />
-                                                            <String fx:value="fontTypoHongikingan" />
-                                                         </styleClass>
-                                                      </Label>
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" styleClass="fooddiet" text="+" />
-                                                      <HBox prefHeight="46.0" prefWidth="235.0">
-                                                         <children>
-                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="303.0" text="300" />
-                                                            <Label alignment="CENTER" prefHeight="46.0" prefWidth="226.0" text="Kcal" />
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                   <StackPane.margin>
-                                                      <Insets left="10.0" right="10.0" top="80.0" />
-                                                   </StackPane.margin>
-                                                </VBox>
-                                                <ImageView fitHeight="111.0" fitWidth="120.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
-                                                   <image>
-                                                      <Image url="@images/free-icon-vegan-food-894901.png" />
-                                                   </image>
-                                                   <StackPane.margin>
-                                                      <Insets />
-                                                   </StackPane.margin>
-                                                </ImageView>
-                                             </children>
-                                          </StackPane>
-                                       </children>
-                                    </HBox>
                                     <HBox layoutX="314.0" layoutY="482.0" prefHeight="53.0" prefWidth="453.0">
                                        <children>
                                           <Label alignment="CENTER" prefHeight="56.0" prefWidth="142.0" styleClass="todaykcal" text="총 칼로리">
@@ -250,6 +79,15 @@
                                           </Label>
                                        </children>
                                     </HBox>
+                                    <ScrollPane fx:id="scroll" prefHeight="465.0" prefWidth="1086.0">
+                                       <content>
+                                          <GridPane fx:id="foodGrid" prefHeight="0.0" prefWidth="0.0">
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                       </content>
+                                    </ScrollPane>
                                  </children></AnchorPane>
                           </content>
                         </Tab>

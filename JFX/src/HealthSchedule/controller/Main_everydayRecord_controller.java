@@ -13,8 +13,11 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
+import HealthSchedule.Dao.FoodListDao;
 import HealthSchedule.Dao.PhotoDao;
 import HealthSchedule.Dao.RoutineDao;
+import HealthSchedule.model.Food;
+import HealthSchedule.model.Foodlist;
 import HealthSchedule.model.Routines;
 import HealthSchedule.model.Weight;
 import javafx.event.ActionEvent;
@@ -32,7 +35,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -42,6 +44,15 @@ import net.halowd.saveImg.SaveImg;
 public class Main_everydayRecord_controller extends DayController implements Initializable{
 
 	  private TotalListener totalListener;
+	  private FoodTableListener foodtablelistener;
+	  Foodlist foodlist;
+	  FoodListDao foodlistdao = new FoodListDao();
+	
+	    
+//	    @FXML private ScrollPane foodScroll; 
+	    @FXML private GridPane foodGrid;
+	  
+	  //////////////////////////////
 	  static Routines routine;
 	  static List<String> partnames = new ArrayList<>();
 	  static int totalHour;
@@ -49,6 +60,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 	  static int totalSecond;
 	  
 	  ////////////////////////////////////
+	  public static List<Food> foodListlist = new ArrayList<>();
    @FXML private AnchorPane pane;
    @FXML private Label backLabel;//뒤로 가기 버튼
    @FXML private JFXButton memoButton;//메모버튼
@@ -90,6 +102,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 	  totalTime.setText(timelabel);
    }
    
+
    //시간 정리
    public String timeview(int hour, int minute, int second) {
 	   if (second>60) {
@@ -176,17 +189,101 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 	   
 	   return routines;
    }
+   
+   //루틴 fxml에 데이터 넣기
+   Food food;
+   private List<Food> getFoodData(){
+	   List<Food> foods = new ArrayList<>();
+	   
+	   
+	   food = new Food();
+	  food.setEattime("breakfast");
+	  food.setImgSrc("/HealthSchedule/resources/images/free-icon-breakfast-2612118.png");
+	  foods.add(food);
+	  
+	  
+	   food = new Food();
+	  food.setEattime("lunch");
+	  food.setImgSrc("/HealthSchedule/resources/images/free-icon-vegan-food-894889.png");
+	  foods.add(food);
+	  
+	  
+	   food = new Food();
+	  food.setEattime("snack");
+	  food.setImgSrc("/HealthSchedule/resources/images/free-icon-biscuit-2612109.png");
+	  foods.add(food);
+	  
+	  
+	   food = new Food();
+	  food.setEattime("dinner");
+	  food.setImgSrc("/HealthSchedule/resources/images/free-icon-vegan-food-894901.png");
+	  foods.add(food);
+	
+	  return foods;
+   }
      
+  
+
    
    ////////
    @Override
    public void initialize(URL arg0, ResourceBundle arg1) {
 	   System.out.println("maineverydayController initialize실행");
-//	   Tooltip.install(memoButton, new Tooltip("오늘의 메모 작성하기"));
-//	   Tooltip.install(viewMonthlyChart, new Tooltip("한달 운동 차트 보러가기"));
-	   
+
       //stage 조정
         stageDragableMoveWindow();
+        
+        //food부분에 fxml로드하기
+        foodListlist.addAll(getFoodData());
+        
+//        foodtablelistener = new FoodTableListener() {
+//			
+//			@Override
+//			public void onClickListener(Food food) {
+//				
+//				
+//			}
+//		};
+		
+        
+    
+        	  int column1 = 0;
+              int row1 = 1;
+              try {
+                  for (int i = 0; i < 4; i++) {
+                      FXMLLoader fxmlLoader = new FXMLLoader();
+                      fxmlLoader.setLocation(getClass().getResource("/HealthSchedule/resources/foodTime.fxml"));
+                      AnchorPane anchorPane = fxmlLoader.load();
+                      FoodController foodController = fxmlLoader.getController();
+                      foodController.setData(foodListlist.get(i), foodtablelistener);
+                      foodController.setFoodData();
+                   
+
+                      if (column1 == 4) {
+                          column1 = 0;
+                          row1++;
+                      }
+
+                      foodGrid.add(anchorPane, column1++, row1); //(child,column,row)
+                      //set grid width
+                      foodGrid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                      foodGrid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                      foodGrid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                      //set grid height
+                      foodGrid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                      foodGrid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                      foodGrid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                      GridPane.setMargin(anchorPane, new Insets(10));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        
+
+       
+        //////////////////////////////////////////////////////////////////////
        //루틴 fxml에 데이터 넣기
         routineslist.addAll(getData());
         
@@ -511,87 +608,14 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 
       }
       
+      ////////////////////////////
+      public void setDataLabel(Foodlist foodlist, FoodTableListener foodTableListener) {
+          this.foodlist = foodlist;
+          this.foodtablelistener= foodTableListener;
+         Label label = new Label(foodlist.getFoodname());
+       }
       
-      //아침 라벨을 누르면 테이블뷰 페이지로 넘어감
-      @FXML
-      public void foodbreakfast(MouseEvent mouseevent) {
-    	  eatTime = "breakfast";
-    	  FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/FoodTableview.fxml") );
-
-			try {
-
-		   AnchorPane PickPage = (AnchorPane) another.load();
-		   // 다른창 띄우는 작업 .... 2
-		   Scene anotherScene = new Scene( PickPage );
-		   Stage stage = new  Stage();
-		   stage.setScene(anotherScene);
-		   stage.initStyle(StageStyle.UNDECORATED);
-		   stage.show();
-		   // 다른창 띄우는 작업 .... 2 끝.
-
-		} catch (IOException e) {} 
-
-      }
       
-      @FXML
-      public void foodlunch(MouseEvent mouseevent) {
-    	  eatTime = "lunch";
-    	  FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/FoodTableview.fxml") );
-
-			try {
-
-		   AnchorPane PickPage = (AnchorPane) another.load();
-		   // 다른창 띄우는 작업 .... 2
-		   Scene anotherScene = new Scene( PickPage );
-		   Stage stage = new  Stage();
-		   stage.setScene(anotherScene);
-		   stage.initStyle(StageStyle.UNDECORATED);
-		   stage.show();
-		   // 다른창 띄우는 작업 .... 2 끝.
-
-		} catch (IOException e) {} 
-
-      }
-      
-      @FXML
-      public void foodsnack(MouseEvent mouseevent) {
-    	  eatTime = "snack";
-    	  FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/FoodTableview.fxml") );
-
-			try {
-
-		   AnchorPane PickPage = (AnchorPane) another.load();
-		   // 다른창 띄우는 작업 .... 2
-		   Scene anotherScene = new Scene( PickPage );
-		   Stage stage = new  Stage();
-		   stage.setScene(anotherScene);
-		   stage.initStyle(StageStyle.UNDECORATED);
-		   stage.show();
-		   // 다른창 띄우는 작업 .... 2 끝.
-
-		} catch (IOException e) {} 
-
-      }
-      
-      @FXML
-      public void fooddinner(MouseEvent mouseevent) {
-    	  eatTime = "dinner";
-    	  FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/FoodTableview.fxml") );
-
-			try {
-
-		   AnchorPane PickPage = (AnchorPane) another.load();
-		   // 다른창 띄우는 작업 .... 2
-		   Scene anotherScene = new Scene( PickPage );
-		   Stage stage = new  Stage();
-		   stage.setScene(anotherScene);
-		   stage.initStyle(StageStyle.UNDECORATED);
-		   stage.show();
-		   // 다른창 띄우는 작업 .... 2 끝.
-
-		} catch (IOException e) {} 
-
-      }
       
       ///////////////////////////////////////////////////////////////////////////
       @FXML private JFXTextField weight;

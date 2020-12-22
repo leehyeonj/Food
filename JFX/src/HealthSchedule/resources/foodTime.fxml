@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="420.0" prefWidth="245.0" styleClass="backcolor-transparent" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.FoodController">
+   <children>
+      <StackPane prefHeight="420.0" prefWidth="245.0" styleClass="dropshadow">
+         <children>
+            <AnchorPane prefHeight="366.0" prefWidth="255.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+               <StackPane.margin>
+                  <Insets left="10.0" right="10.0" top="80.0" />
+               </StackPane.margin>
+               <children>
+                  <VBox fx:id="content" alignment="TOP_CENTER" layoutX="15.0" layoutY="63.0" prefHeight="214.0" prefWidth="197.0" />
+               </children>
+            </AnchorPane>
+            <ImageView fx:id="foodImage" fitHeight="111.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
+               <image>
+                  <Image url="@images/free-icon-breakfast-2612118.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="eattimeLbl" alignment="TOP_CENTER" onMouseClicked="#moveToTable" text="breakfast">
+               <styleClass>
+                  <String fx:value="textfill-blue" />
+                  <String fx:value="dropshadow" />
+                  <String fx:value="fontsize13" />
+               </styleClass>
+               <StackPane.margin>
+                  <Insets bottom="180.0" />
+               </StackPane.margin>
+            </Label>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
