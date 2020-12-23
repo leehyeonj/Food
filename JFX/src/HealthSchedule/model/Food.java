@@ -8,8 +8,15 @@ public class Food {
 	 String foodname;
 	 String foodunit;
 	 String cal;
+	 public int totalKcal;
 	 
-	 public String getFoodunit() {
+	 public int getTotalKcal() {
+		return totalKcal;
+	}
+	public void setTotalKcal(int totalKcal) {
+		this.totalKcal = totalKcal;
+	}
+	public String getFoodunit() {
 		return foodunit;
 	}
 	public void setFoodunit(String foodunit) {

@@ -23,7 +23,7 @@
 						</image>
                   </ImageView>
                  
-                  <Label fx:id="dayKcal" alignment="CENTER" prefHeight="29.0" prefWidth="67.0" text="3000" />
+                  <Label fx:id="dayKcal" alignment="CENTER" prefHeight="29.0" prefWidth="67.0" text="-" />
                   <Label prefHeight="29.0" prefWidth="37.0" text="Kcal">
                      <font>
                         <Font size="11.0" />
@@ -48,7 +48,7 @@
 					<Image url="@images/weighing-machine.png" />
 						</image>
                   </ImageView>
-                  <Label fx:id="dayWeight" alignment="CENTER" prefHeight="29.0" prefWidth="67.0" text="50.0" />
+                  <Label fx:id="dayWeight" alignment="CENTER" prefHeight="29.0" prefWidth="67.0" text="00.0" />
                   <Label prefHeight="29.0" prefWidth="37.0" text="Kg">
                      <font>
                         <Font size="11.0" />

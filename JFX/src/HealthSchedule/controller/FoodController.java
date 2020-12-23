@@ -8,6 +8,10 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 
 import HealthSchedule.Dao.FoodListDao;
+import HealthSchedule.Interface.ControllerSettable;
+import HealthSchedule.Interface.ControllerSettable2;
+import HealthSchedule.Interface.ControllerSettable3;
+import HealthSchedule.Interface.FoodTableListener;
 import HealthSchedule.model.Food;
 import HealthSchedule.model.Foodlist;
 import javafx.fxml.FXML;
@@ -23,40 +27,29 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class FoodController extends Main_everydayRecord_controller implements Initializable {
+public class FoodController extends Main_everydayRecord_controller implements Initializable, ControllerSettable2 {
 
 	
 	  @FXML private ImageView foodImage;
 	  @FXML private VBox content;
 	  @FXML private Label eattimeLbl;
-//    @FXML private Label breakfastlbl;
-//    @FXML private VBox breakfastVbox;
-//    @FXML private Label breakfastkcal;
-//    @FXML private ImageView foodImage;
+	  @FXML private Label eatTimeTotalKcal;
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		System.out.println("foodController 이니셜 라이즈 실행");
 		
-		try {
-		foodTableListener = new FoodTableListener() {
-			
-			@Override
-			public void onClickListener(ArrayList<Foodlist> foodlistlist) {
-				setFoodData(foodlistlist);
-				
-			}
-		};
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
 		
 	}
 
-    private Food  food;
-    private FoodTableListener foodTableListener;
+     Food  food;
+     FoodTableListener foodTableListener;
     FoodListDao foodListDao = new FoodListDao();
+    Main_everydayRecord_controller main_everydayRecord_controller;
+    DayController dayController;
     
     ArrayList<Foodlist> foodlistlist = new ArrayList<>();
+    //처음 시작할때 실행됨
   public void setFoodData() {
 	  
 	   if (foodlistdao.ifexistFood(everyday, eatTime)) {
@@ -66,44 +59,58 @@ public class FoodController extends Main_everydayRecord_controller implements In
 				  String labeltext = foodlistlist.get(i).getFoodname() + " / " + foodlistlist.get(i).getFoodunit() +" / "
 						  + foodlistlist.get(i).getCal();
 					Label label = new Label(labeltext);
+					 label.setStyle("-fx-font-family: 'SeoulNamsan EB';");
 					content.getChildren().add(label);
-//					try {
-//						sum +=Integer.parseInt(foodlistlist.get(i).getCal());
-//					} catch (Exception e) {}
+					try {
+						sum +=Integer.parseInt(foodlistlist.get(i).getCal());
+					} catch (Exception e) {}
 			}
-//			  dinnerkcal.setText(sum+"");
+			  eatTimeTotalKcal.setText(sum+"");
 		  }
   }
   
+  //tableview에서 저장 눌렀을 경우 실행됨
   public void setFoodData(ArrayList<Foodlist> foodlistlist) {
-	  foodlistlist = foodlistdao.viewDayFood(everyday, eatTime);
+	  
 	  content.getChildren().clear();
 	  int sum = 0;
 	  for (int i = 0; i < foodlistlist.size(); i++) {
 		  String labeltext = foodlistlist.get(i).getFoodname() + " / " + foodlistlist.get(i).getFoodunit() +" / "
 				  + foodlistlist.get(i).getCal();
 			Label label = new Label(labeltext);
+			 label.setStyle("-fx-font-family: 'SeoulNamsan EB';");
 			content.getChildren().add(label);
-//			try {
-//				sum +=Integer.parseInt(foodlistlist.get(i).getCal());
-//			} catch (Exception e) {}
-	}
+			try {
+				sum +=Integer.parseInt(foodlistlist.get(i).getCal());
+				
+			} catch (Exception e) {}
+	}eatTimeTotalKcal.setText(sum+"");
   }
    
-  
  
-    
+   
+  	
+ 
     	// foodTableView 페이지로 넘어간다.
     public void moveToTable(MouseEvent event) {
 		    	eatTime = food.getEattime();
+		    	
 			  FXMLLoader another = new FXMLLoader(getClass().getResource("/HealthSchedule/resources/FoodTableview.fxml") );
-		
+			 
+			  
 				try {
 		
 			   AnchorPane PickPage = (AnchorPane) another.load();
 			   // 다른창 띄우는 작업 .... 2
 			   Scene anotherScene = new Scene( PickPage );
 			   Stage stage = new  Stage();
+			   
+			   ControllerSettable con = another.getController();
+			   con.setController(this);
+			   ControllerSettable2 con2 = another.getController();
+			   con2.setController2(main_everydayRecord_controller);
+			 
+			   
 			   stage.setScene(anotherScene);
 			   stage.initStyle(StageStyle.UNDECORATED);
 			   stage.show();
@@ -112,6 +119,19 @@ public class FoodController extends Main_everydayRecord_controller implements In
 			} catch (IOException e) {} 
     }
     
+    
+    
+    //food fxml 에 데이터 set
+    public void setData(Food food) {
+    	System.out.println("fooddata setdata 실행");
+    	eatTime = food.getEattime();
+    	this.food = food;
+    	
+    	eattimeLbl.setText(food.getEattime());
+    	Image image = new Image(getClass().getResourceAsStream(food.getImgSrc()));
+    	foodImage.setImage(image);
+    	
+    }
     
     //food fxml 에 데이터 set
     public void setData(Food food, FoodTableListener foodTableListener) {
@@ -124,4 +144,12 @@ public class FoodController extends Main_everydayRecord_controller implements In
     	foodImage.setImage(image);
     	
     }
+
+	@Override
+	public void setController2(Initializable controller) {
+		main_everydayRecord_controller =(Main_everydayRecord_controller)controller;
+		
+	}
+	
+   
 }

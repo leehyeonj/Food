@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 
 import HealthSchedule.Dao.FoodListDao;
+import HealthSchedule.Interface.FoodTableListener;
 import HealthSchedule.model.FoodTable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

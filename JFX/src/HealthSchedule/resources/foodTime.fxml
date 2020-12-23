@@ -17,6 +17,12 @@
                </StackPane.margin>
                <children>
                   <VBox fx:id="content" alignment="TOP_CENTER" layoutX="15.0" layoutY="63.0" prefHeight="214.0" prefWidth="197.0" />
+                  <HBox layoutX="14.0" layoutY="289.0" prefHeight="38.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="eatTimeTotalKcal" alignment="CENTER" prefHeight="38.0" prefWidth="163.0" styleClass="fontsize13" text=" " />
+                        <Label alignment="CENTER" prefHeight="47.0" prefWidth="119.0" styleClass="fontsize13" text="Kcal" />
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
             <ImageView fx:id="foodImage" fitHeight="111.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">

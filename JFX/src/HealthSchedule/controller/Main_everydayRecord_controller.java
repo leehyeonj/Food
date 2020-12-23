@@ -16,6 +16,12 @@ import com.jfoenix.controls.JFXTextField;
 import HealthSchedule.Dao.FoodListDao;
 import HealthSchedule.Dao.PhotoDao;
 import HealthSchedule.Dao.RoutineDao;
+import HealthSchedule.Dao.WeightDao;
+import HealthSchedule.Interface.ControllerSettable;
+import HealthSchedule.Interface.ControllerSettable2;
+import HealthSchedule.Interface.ControllerSettable3;
+import HealthSchedule.Interface.FoodTableListener;
+import HealthSchedule.Interface.TotalListener;
 import HealthSchedule.model.Food;
 import HealthSchedule.model.Foodlist;
 import HealthSchedule.model.Routines;
@@ -29,6 +35,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -45,9 +52,10 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 
 	  private TotalListener totalListener;
 	  private FoodTableListener foodtablelistener;
+	  DayController dayController;
 	  Foodlist foodlist;
 	  FoodListDao foodlistdao = new FoodListDao();
-	
+	   @FXML private Label main_totalKcal;
 	    
 //	    @FXML private ScrollPane foodScroll; 
 	    @FXML private GridPane foodGrid;
@@ -92,7 +100,8 @@ public class Main_everydayRecord_controller extends DayController implements Ini
    RoutineDao routineDao = new RoutineDao();
    PhotoDao photoDao = new PhotoDao();
    //총 운동시간에 계속 변하게 하기
-   private void setTotalworkoutTime(Routines routine) {
+  static String timelabel_main; //총 운동시간라벨
+   public void setTotalworkoutTime(Routines routine) {
 	   routine = routineDao.selecTotalTime(everyday);
 	   System.out.println(everyday);
 	  totalHour = routine.getHour();
@@ -100,8 +109,21 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 	  totalSecond = routine.getSecond();
 	  String timelabel = timeview(totalHour, totalMinute, totalSecond);			  
 	  totalTime.setText(timelabel);
+	  timelabel_main= timelabel;
    }
    
+   public void setTotalKcal(Food food) {
+	   food = foodlistdao.selecTotalKcal(everyday);
+	   main_totalKcal.setText(food.totalKcal+"");
+   }
+   
+   public void setTotalKcal2(Food food) {
+	   main_totalKcal.setText(food.totalKcal+"");
+   }
+   public void setTotalKcal() {
+	   food = foodlistdao.selecTotalKcal(everyday);
+	   main_totalKcal.setText(food.totalKcal+"");
+   }
 
    //시간 정리
    public String timeview(int hour, int minute, int second) {
@@ -236,14 +258,14 @@ public class Main_everydayRecord_controller extends DayController implements Ini
         //food부분에 fxml로드하기
         foodListlist.addAll(getFoodData());
         
-//        foodtablelistener = new FoodTableListener() {
-//			
-//			@Override
-//			public void onClickListener(Food food) {
-//				
-//				
-//			}
-//		};
+        foodtablelistener = new FoodTableListener() {
+			
+			@Override
+			public void onClickListener(Food food) {
+				setTotalKcal(food);
+				
+			}
+		};
 		
         
     
@@ -257,7 +279,10 @@ public class Main_everydayRecord_controller extends DayController implements Ini
                       FoodController foodController = fxmlLoader.getController();
                       foodController.setData(foodListlist.get(i), foodtablelistener);
                       foodController.setFoodData();
-                   
+                      
+                      ControllerSettable2 con2 = fxmlLoader.getController();
+                      con2.setController2(this);
+                     
 
                       if (column1 == 4) {
                           column1 = 0;
@@ -281,7 +306,9 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 			e.printStackTrace();
 		}
         
-
+      if (foodlistdao.ifexistFood(everyday)) {
+    	 setTotalKcal();
+	}
        
         //////////////////////////////////////////////////////////////////////
        //루틴 fxml에 데이터 넣기
@@ -308,10 +335,14 @@ public class Main_everydayRecord_controller extends DayController implements Ini
 				
 				RoutineController routineController = fxmlLoader.getController();
 				routineController.setData(routineslist.get(i), totalListener);
+//				routineController.setData(routineslist.get(i));
 				routineController.changeColor(routineslist.get(i).getColor());
 				routineController.changebtnColor(routineslist.get(i).getButtonColor());
 				routineController.setDatas();
 				routineController.setTimedata();
+				
+				ControllerSettable con =fxmlLoader.getController();
+				con.setController(this);
 //				System.out.println("main에서 total 시간" + totalHour);
 //				System.out.println("main에서 total 시간" + totalMinute);
 //				System.out.println("main에서 total 시간" + totalSecond);
@@ -367,13 +398,13 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       
       if (weightdao.ifexistWeight(everyday)) {
 			Weight weights = weightdao.viewWeight(everyday);
-			int weightinit = weights.getWeight();
+			double weightinit = weights.getWeight();
 			weight.setText(weightinit + "");
 		} 
 		
 		if (weightdao.ifexistgoalWeight(everyday)) {
 			Weight weights = weightdao.viewgoalWeight(everyday);
-			int goalweightinit = weights.getWeight();			
+			double goalweightinit = weights.getWeight();			
 			goalweight.setText(goalweightinit + "");
 		} 
       
@@ -467,6 +498,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       private void actionBackWindow(MouseEvent event) {
          try {
             //뒤로 가기 버튼을 누르면 뒤로감
+        	
             Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/main.fxml"));
             Scene scene = new Scene(checkOk);
             Stage primaryStage= (Stage)backLabel.getScene().getWindow();
@@ -624,7 +656,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
       ///////////////////////////////////////////////////////////////////////////
       @FXML private JFXTextField weight;
   	  @FXML private JFXButton saveWeight;
-      @FXML private JFXTextField goalweight;
+      @FXML private TextField goalweight;
       @FXML private JFXButton savegoalWeightBtn;
   	
   	
@@ -657,7 +689,7 @@ public class Main_everydayRecord_controller extends DayController implements Ini
   	
   	public void savegoalWeight(ActionEvent event) {
 
-  		if(!weight.getText().isEmpty()) {
+  		if(!goalweight.getText().isEmpty()) {
   	
   				String savegoalWeight = goalweight.getText();			
   				
@@ -670,9 +702,13 @@ public class Main_everydayRecord_controller extends DayController implements Ini
   				}				
   	
   		}else {
-  			System.out.println("몸무게를 입력하지 않았습니다.");
+  			System.out.println("목표 몸무게를 입력하지 않았습니다.");
   		}
   				
   	}
+
+  	
+
+	
       
 }

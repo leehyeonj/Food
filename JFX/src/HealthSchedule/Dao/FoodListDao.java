@@ -7,10 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import HealthSchedule.controller.Routines_lower;
+import HealthSchedule.model.Food;
 import HealthSchedule.model.FoodTable;
 import HealthSchedule.model.Foodlist;
-import HealthSchedule.model.Routines;
 
 
 public class FoodListDao {
@@ -40,10 +39,10 @@ public class FoodListDao {
          //동적 객체를 만들어줌 
            Class.forName("com.mysql.jdbc.Driver"); 
            conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-           System.out.println("드라이버 로딩 성공!!");   
+           System.out.println("푸드 드라이버 로딩 성공!!");   
        } catch (Exception e) {
            e.printStackTrace();
-           System.out.println("드라이버 로드 실패!!");
+           System.out.println("푸드 드라이버 로드 실패!!");
        } 
    }
    
@@ -254,6 +253,35 @@ public class FoodListDao {
 	return result;
    }
    
+ //그 날에 저장된 음식 값이 있냐 없냐
+   public boolean ifexistFood(String everyday) {
+	   boolean result = false;
+       String sql = "select * from Foodtest where everyday = ?";
+       PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           pstmt.setString(1, everyday);
+         
+           ResultSet rs = pstmt.executeQuery();
+           if(rs.next()) {
+        	   result = true;
+        	  
+           }
+           
+       } catch (Exception e) {
+           System.out.println("select 메서드 예외발생");
+           
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+                  
+               }
+           } catch (Exception e2) { }
+       }
+	return result;
+   }
+   
    
    //저장되어있는 음식을 보여달라
   
@@ -333,5 +361,41 @@ public class FoodListDao {
 	public void setCal(String cal) {
 		this.cal = cal;
 	}
+	
+	 //총 칼로리 셀렉트
+	   public Food selecTotalKcal(String everyday) {
+		   Food total= new Food();
+	       String sql = "select everyday, cal from Foodtest where everyday=?";
+	       PreparedStatement pstmt = null;
+	       //결과 값을 담을 곳
+	      
+	       try {
+	           pstmt = conn.prepareStatement(sql);
+	           pstmt.setString(1, everyday);
+	           ResultSet rs = pstmt.executeQuery();
+	           
+	           //있으면
+	          while(rs.next()) {
+	        	   
+	        	  total.setEveryday(rs.getString("everyday"));
+	        	  total.setCal(rs.getString("cal"));
+	        	  total.totalKcal += Integer.parseInt(total.getCal());
+
+	        	   System.out.println("토탈 메서드 성공");
+	           	}
+	           
+	       } catch (Exception e) {
+	           System.out.println("토탈메서드 예외발생");
+	           
+	       }    finally {
+	           try {
+	               if(pstmt!=null && !pstmt.isClosed()) {
+	                   pstmt.close();
+	                  
+	               }
+	           } catch (Exception e2) { }
+	       }
+	       return total;
+	   }
   
 }

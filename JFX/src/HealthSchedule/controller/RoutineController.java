@@ -15,6 +15,8 @@ import com.jfoenix.controls.JFXTextField;
 import com.sun.mail.handlers.image_gif;
 
 import HealthSchedule.Dao.RoutineDao;
+import HealthSchedule.Interface.ControllerSettable;
+import HealthSchedule.Interface.TotalListener;
 import HealthSchedule.model.Routines;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,7 +29,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
-public class RoutineController extends Main_everydayRecord_controller implements Initializable{
+public class RoutineController extends Main_everydayRecord_controller implements Initializable, ControllerSettable{
 		private Routines routine;
 		@FXML   private AnchorPane pane;//전체 안커페인
 	    @FXML  private Label partname; //무슨 파트인지 라벨로 표시
@@ -228,6 +230,9 @@ public class RoutineController extends Main_everydayRecord_controller implements
 					}
 
 	    			totalListener.onClickListener(routine);
+//	    			maineveryrecord.setTotalworkoutTime(routine);
+//	    			dayController.setWorkoutTimeLabel(timelabel_main);
+	    			
 	    			
 				}
 	    		else {
@@ -247,4 +252,22 @@ public class RoutineController extends Main_everydayRecord_controller implements
 	    	partImage.setImage(image);
 	    	
 	    }
+	    
+	    public void setData(Routines routines) {
+	    	this.routine = routines;
+	    	
+	    	partname.setText(routines.getName());
+	    	Image image = new Image(getClass().getResourceAsStream(routines.getImgSrc()));
+	    	partImage.setImage(image);
+	    	
+	    }
+	    Main_everydayRecord_controller maineveryrecord = new Main_everydayRecord_controller();
+		@Override
+		public void setController(Initializable controller) {
+			maineveryrecord = (Main_everydayRecord_controller) controller;
+			
+		}
+		
+		
+	
 }

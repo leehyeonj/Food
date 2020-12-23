@@ -15,6 +15,7 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
 
+import HealthSchedule.Dao.MainDao;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -27,8 +28,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-//평소에 하던 것처럼 Initializable를 상속받지 않는다
+
 public class MainController implements Initializable{
+
+	public MainDao mainDao  = new MainDao();
 	@FXML
 	private AnchorPane pane;
 //	  RoutineDao routineDao = new RoutineDao();
@@ -73,8 +76,8 @@ public class MainController implements Initializable{
 	   
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
-//			System.out.println("mainController initialize실행");
-//			  
+			System.out.println("mainController initialize실행");
+			 
 //			
 //			System.out.println("settoday호출");
 			//stage 조정

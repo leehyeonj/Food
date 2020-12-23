@@ -67,7 +67,7 @@
                                                 <Font size="25.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="CENTER" prefHeight="53.0" prefWidth="204.0" styleClass="todaykcal" text="3000">
+                                          <Label fx:id="main_totalKcal" alignment="CENTER" prefHeight="53.0" prefWidth="204.0" styleClass="todaykcal" text=" ">
                                              <font>
                                                 <Font size="25.0" />
                                              </font>
@@ -149,13 +149,25 @@
                                                 </JFXButton>
                                              </children>
                                           </VBox>
-                                          <VBox prefHeight="548.0" prefWidth="551.0">
+                                          <VBox alignment="CENTER" prefHeight="548.0" prefWidth="551.0">
                                              <children>
-                                                <Pane prefHeight="92.0" prefWidth="538.0" />
-                                                <HBox prefHeight="51.0" prefWidth="538.0">
+                                                <Pane prefHeight="35.0" prefWidth="538.0" />
+                                                <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="538.0">
                                                    <children>
- 													  <JFXTextField fx:id="goalweight" labelFloat="true" prefHeight="28.0" prefWidth="384.0" promptText="목표 몸무게" />
-                                                      <JFXButton fx:id="savegoalWeightBtn" alignment="CENTER" buttonType="RAISED" onAction="#savegoalWeight" prefHeight="28.0" prefWidth="114.0" text="저장">
+                                                      <Label alignment="CENTER" prefHeight="34.0" prefWidth="181.0" text="목표 몸무게">
+                                                         <styleClass>
+                                                            <String fx:value="fontsize13" />
+                                                            <String fx:value="fontSeoulNamsan" />
+                                                         </styleClass>
+                                                      </Label>
+                                                      <TextField fx:id="goalweight" alignment="CENTER" prefHeight="37.0" prefWidth="162.0">
+                                                         <styleClass>
+                                                            <String fx:value="fontSeoulNamsan" />
+                                                            <String fx:value="fontsize14" />
+                                                         </styleClass>
+                                                      </TextField>
+                                                      <Pane prefHeight="51.0" prefWidth="48.0" />
+                                                      <JFXButton fx:id="savegoalWeightBtn" alignment="CENTER" buttonType="RAISED" onAction="#savegoalWeight" prefHeight="28.0" prefWidth="57.0" text="저장">
                                                          <styleClass>
                                                             <String fx:value="backcolor-blue" />
                                                             <String fx:value="textfill-white" />
@@ -163,26 +175,28 @@
                                                       </JFXButton>
                                                    </children>
                                                 </HBox>
-                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                <Pane prefHeight="35.0" prefWidth="538.0" />
+                                                <AnchorPane prefHeight="367.0" prefWidth="362.0">
                                                    <children>
-                                                      <AnchorPane prefHeight="338.0" prefWidth="566.0">
-                                                         <children>
-                                                            <ImageView fitHeight="394.0" fitWidth="367.0" layoutX="-9.0" pickOnBounds="true" preserveRatio="true">
-                                                               <image>
-                                                                  <Image url="@images/weight-scale.png" />
-                                                               </image>
-                                                            </ImageView>
-                                                            <JFXButton fx:id="saveWeightBtn" alignment="CENTER" buttonType="RAISED" layoutX="383.0" layoutY="22.0" onAction="#saveWeight" prefHeight="28.0" prefWidth="114.0" text="저장">
-                                                               <styleClass>
-                                                                  <String fx:value="backcolor-blue" />
-                                                                  <String fx:value="textfill-white" />
-                                                               </styleClass>
-                                                            </JFXButton>
-                                                            <JFXTextField fx:id="weight" labelFloat="true" layoutX="138.0" layoutY="72.0" prefHeight="28.0" prefWidth="73.0" promptText="현재 몸무게" />
-                                                         </children>
-                                                      </AnchorPane>
+                                                      <ImageView fitHeight="394.0" fitWidth="367.0" layoutX="-9.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@images/weight-scale.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <JFXButton fx:id="saveWeightBtn" alignment="CENTER" buttonType="RAISED" layoutX="149.0" layoutY="300.0" onAction="#saveWeight" prefHeight="28.0" prefWidth="52.0" text="저장">
+                                                         <styleClass>
+                                                            <String fx:value="backcolor-blue" />
+                                                            <String fx:value="fontSeoulNamsan" />
+                                                            <String fx:value="textfill-white" />
+                                                         </styleClass>
+                                                      </JFXButton>
+                                                      <JFXTextField fx:id="weight" alignment="CENTER" labelFloat="true" layoutX="138.0" layoutY="72.0" prefHeight="28.0" prefWidth="73.0" styleClass="fontsize14" />
+                                                      <Label layoutX="122.0" layoutY="47.0" styleClass="fontSeoulNamsan" text="현재 몸무게 입력" />
                                                    </children>
-                                                </VBox>
+                                                   <VBox.margin>
+                                                      <Insets left="100.0" right="100.0" />
+                                                   </VBox.margin>
+                                                </AnchorPane>
                                                
                                              </children>
                                           </VBox>

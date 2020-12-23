@@ -1,4 +1,4 @@
-package HealthSchedule.controller;
+package HealthSchedule.Dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -37,7 +37,7 @@ public class WeightDao {
     }
     
     //몸무게 저장
-    public void saveWeight(String everyday, int weight) {
+    public void saveWeight(String everyday, double weight) {
     	
        //쿼리문 준비
  	   String sql = "insert into weight values(?,?)";
@@ -47,7 +47,7 @@ public class WeightDao {
         try {
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, everyday);
-            pstmt.setInt(2, weight);      
+            pstmt.setDouble(2, weight);      
 
             int result = pstmt.executeUpdate();
             if(result==1) {
@@ -68,7 +68,7 @@ public class WeightDao {
     }
     
     //목표몸무게 저장
-    public void savegoalWeight(String everyday, int goalweight) {
+    public void savegoalWeight(String everyday, double goalweight) {
     	
        //쿼리문 준비
  	   String sql = "insert into goalweight values(?,?)";
@@ -78,7 +78,7 @@ public class WeightDao {
         try {
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, everyday);
-            pstmt.setInt(2, goalweight);      
+            pstmt.setDouble(2, goalweight);      
 
             int result = pstmt.executeUpdate();
             if(result==1) {
@@ -166,7 +166,7 @@ public class WeightDao {
             //있으면
             while(rs.next()) {	
             weight.setEveryday(rs.getString("everyday")); 
-            weight.setWeight(rs.getInt("weight")); 
+            weight.setWeight(rs.getDouble("weight")); 
             }
 
         } catch (Exception e) {
@@ -199,7 +199,7 @@ public class WeightDao {
             //있으면
             while(rs.next()) {	
             goalweight.setEveryday(rs.getString("everyday")); 
-            goalweight.setWeight(rs.getInt("goalweight")); 
+            goalweight.setWeight(rs.getDouble("weight")); 
             }
 
         } catch (Exception e) {
@@ -216,12 +216,12 @@ public class WeightDao {
     }    
     
     //몸무게 수정하기
-    public void updateWeight(String everyday, int weight) {
+    public void updateWeight(String everyday, double weight) {
         String sql = "update weight set weight=? where everyday=? ";
         PreparedStatement pstmt = null;
         try {
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, weight);
+            pstmt.setDouble(1, weight);
             pstmt.setString(2, everyday);
          
             pstmt.executeUpdate();
@@ -239,12 +239,12 @@ public class WeightDao {
     }    
     
   //목표몸무게 수정하기
-    public void updategoalWeight(String everyday, int goalweight) {
+    public void updategoalWeight(String everyday, double goalweight) {
         String sql = "update goalweight set goalweight=? where everyday=? ";
         PreparedStatement pstmt = null;
         try {
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, goalweight);
+            pstmt.setDouble(1, goalweight);
             pstmt.setString(2, everyday);
          
             pstmt.executeUpdate();

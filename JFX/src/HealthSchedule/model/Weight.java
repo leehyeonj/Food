@@ -3,7 +3,7 @@ package HealthSchedule.model;
 public class Weight {
 
 	private String everyday;
-	private int weight;
+	private double weight;
 	
 	public String getEveryday() {
 		return everyday;
@@ -11,10 +11,10 @@ public class Weight {
 	public void setEveryday(String everyday) {
 		this.everyday = everyday;
 	}
-	public int getWeight() {
+	public double getWeight() {
 		return weight;
 	}
-	public void setWeight(int weight) {
+	public void setWeight(double weight) {
 		this.weight = weight;
 	}
 	

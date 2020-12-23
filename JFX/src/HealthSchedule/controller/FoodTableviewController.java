@@ -3,6 +3,7 @@ package HealthSchedule.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,7 +14,11 @@ import java.util.logging.Logger;
 import com.jfoenix.controls.JFXButton;
 
 import HealthSchedule.Dao.FoodListDao;
-import HealthSchedule.model.FoodTable;
+import HealthSchedule.Interface.ControllerSettable;
+import HealthSchedule.Interface.ControllerSettable2;
+import HealthSchedule.Interface.ControllerSettable3;
+import HealthSchedule.Interface.FoodTableListener;
+import HealthSchedule.model.Food;
 import HealthSchedule.model.Foodlist;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -26,25 +31,28 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
  
-public class FoodTableviewController extends FoodController implements Initializable {
+public class FoodTableviewController extends FoodController implements Initializable, ControllerSettable, ControllerSettable2{
  
+	
+	Food foodfood;
     private ObservableList<FoodListDao> productList = FXCollections.observableArrayList();   //음식전체끌어오는 ObservableList
     private ObservableList<FoodListDao> pluslist = FXCollections.observableArrayList();   //선택해서 테이블뷰2에 넣어야되는 ObservableList
     ArrayList<Foodlist> foodlistlist = new ArrayList<>();
     FoodTableListener foodTableListener;
     Foodlist foodlist;
+    FoodController foodController;
+    Main_everydayRecord_controller main_everydayRecord_controller;
+    DayController dayController;
 //    FoodListDao foodlistdao= new FoodListDao();
    @FXML
    private TableView<FoodListDao> tableview1,tableview2;   //조회테이블뷰, 추가테이블뷰
@@ -178,8 +186,16 @@ public class FoodTableviewController extends FoodController implements Initializ
 ////       System.out.println(name + " " + unit + " " + C);   //선택한 row가 제대로 들어왔는지 확인하기위함
        try {      
           conn = ld.saveContent(everyday, eatTime, name, unit, C);
-          ResultSet rs = conn.createStatement().executeQuery("select * from Foodtest");
-          System.out.println("식사db테이블지정완료");
+          PreparedStatement pstmt = null;
+          String sql = "select * from Foodtest where everyday =? and eattime=?";
+          //결과 값을 담을 곳
+     
+              pstmt = conn.prepareStatement(sql);
+              pstmt.setString(1, everyday);
+              pstmt.setString(2, eatTime);
+              ResultSet rs = pstmt.executeQuery();
+         
+          System.out.println("식사db테이블저장 완료");
           while(rs.next()) {
              pluslist.add(new FoodListDao(rs.getString("foodname"), rs.getString("foodunit"), rs.getString("cal")));
           }
@@ -201,20 +217,29 @@ public class FoodTableviewController extends FoodController implements Initializ
 //     	foodListDao.saveContent(everyday, "launch", name, unit, C);
      	
      }
+    
     //종료(확인버튼)
     public void exitbtn(ActionEvent event) {
     	try {
     		System.out.println(everyday+"////////////");
     		System.out.println(eatTime+"//////////////");
-//        foodlistlist = foodListDao.viewDayFood(everyday, eatTime);
-//        foodTableListener.onClickListener(foodlistlist);
+    		foodlistlist = foodListDao.viewDayFood(everyday, eatTime);
+    		foodfood = foodListDao.selecTotalKcal(everyday);
+//    		foodController.setFoodData(foodlistlist);
     	}catch (Exception e) {
 			e.printStackTrace();
 		}
+    	foodController.setFoodData(foodlistlist);
+    	main_everydayRecord_controller.setTotalKcal2(foodfood);
+//    	dayController.setDayKcal(foodfood);
        Stage stage = (Stage) exit.getScene().getWindow();
        stage.close();
     }  
   
+    public void setinit(Food food, FoodTableListener foodTableListener) {
+    	this.food = super.food;
+    	this.foodTableListener = super.foodTableListener;
+    }
 
     @FXML
     public void plusFoodbtn(ActionEvent event) {
@@ -281,4 +306,17 @@ public class FoodTableviewController extends FoodController implements Initializ
 		private void actionCloseWindow(MouseEvent event) {
 			stage.close();
 		}
+
+		@Override
+		public void setController(Initializable controller) {
+			foodController = (FoodController)controller;
+		}
+		
+		@Override
+		public void setController2(Initializable controller) {
+			main_everydayRecord_controller = (Main_everydayRecord_controller)controller;
+		}
+		
+
+		
 }

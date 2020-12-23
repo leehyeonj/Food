@@ -1,21 +1,23 @@
 package HealthSchedule.controller;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
-import HealthSchedule.Dao.MemoDao;
-import HealthSchedule.Dao.RoutineDao;
+import HealthSchedule.Interface.ControllerSettable3;
+import HealthSchedule.Interface.TotalListener;
 import HealthSchedule.Main.AppMain;
+import HealthSchedule.model.Food;
 import HealthSchedule.model.Routines;
+import HealthSchedule.model.Weight;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
@@ -23,6 +25,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class DayController extends MainController   implements Initializable{
 	@FXML private Label lblDay;		//일(day)
@@ -32,6 +35,7 @@ public class DayController extends MainController   implements Initializable{
     @FXML private Label dayWorkoutTime;
     @FXML private Label dayKcal;
     TotalListener totalListener;
+    
 	
 	static String dayOfMonth; //날짜 며칠인지
 	 static final String[] DAY_OF_WEEK = {"", "SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"};
@@ -56,12 +60,17 @@ public class DayController extends MainController   implements Initializable{
 		this.root = root;
 	}
 	
-	MemoDao memodao = new MemoDao();
 	
+	public void setDayKcal(Food food) {
+		dayKcal.setText(food.totalKcal+"");
+	}
 	
-	
+	public void setWorkoutTimeLabel(String timelabel) {
+		dayWorkoutTime.setText(timelabel);
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+//		System.out.println("dayController init 실행");
 		//날짜 마다 메모 툴팁
 		Tooltip tooltip = new Tooltip(); //툴팁객체 생성
 			
@@ -82,8 +91,8 @@ public class DayController extends MainController   implements Initializable{
 					//메모 데이터의 날짜를 date.format에 맞게 정의
 					everyday = year + month + dayOfMonth;
 					
-					memodao.tooltipMemo(everyday);
-					tooltip.setText(memodao.tooltipMemo(everyday));
+					mainDao.tooltipMemo(everyday);
+					tooltip.setText(mainDao.tooltipMemo(everyday));
 					lblDay.setTooltip(tooltip);
 					
 				}
@@ -124,9 +133,11 @@ public class DayController extends MainController   implements Initializable{
 	   }
 	 
 	public void setDayLabel(LocalDate date) {
+//		System.out.println("daycontroller setdaylabel 실행");
 		this.date = date;
 		lblDay.setText(String.valueOf(date.getDayOfMonth()));
-		RoutineDao routineDao = new RoutineDao();
+//		RoutineDao routineDao = new RoutineDao();
+		
 		//운동 시간뜨기		
 		 Calendar date1 = Calendar.getInstance();
 		 date1.set(date.getYear(), date.getMonthValue(),date.getDayOfMonth());
@@ -138,13 +149,13 @@ public class DayController extends MainController   implements Initializable{
 			dayOfMonth = date.getDayOfMonth()+"";
 		}
 		everyday = year+month+dayOfMonth;
-		if (routineDao.ifexistTime(everyday)) {
-			Routines temp = routineDao.selecTotalTime(everyday);
+		if (mainDao.ifexistTime(everyday)) {
+			Routines temp = mainDao.selecTotalTime(everyday);
 			String str =timeview(temp.getHour(), temp.getMinute(), temp.getSecond());
 			dayWorkoutTime.setText(str);
 			
 		}  
-		
+//		
 	        totalListener = new TotalListener() {
 				
 				@Override
@@ -153,12 +164,20 @@ public class DayController extends MainController   implements Initializable{
 					
 					}
 				};
+				
+		if(mainDao.ifexistFood(everyday)) {
+			Food food = mainDao.selecTotalKcal(everyday);
+			dayKcal.setText(food.totalKcal+"");
+		}
 	        
-		
+		if(mainDao.ifexistWeight(everyday)) {
+			Weight weight = mainDao.viewWeight(everyday);
+			dayWeight.setText(weight.getWeight()+"");
+		}
 		
 	}
 	   private void setTotalworkoutTime(Routines routine) {
-		   RoutineDao routineDao = new RoutineDao();
+		
 			//운동 시간뜨기
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd");
 			
@@ -172,8 +191,8 @@ public class DayController extends MainController   implements Initializable{
 				dayOfMonth = date.getDayOfMonth()+"";
 			}
 			everyday = year+month+dayOfMonth;
-			if (routineDao.ifexistTime(everyday)) {
-				Routines temp = routineDao.selecTotalTime(everyday);
+			if (mainDao.ifexistTime(everyday)) {
+				Routines temp = mainDao.selecTotalTime(everyday);
 				dayWorkoutTime.setText(temp.getHour() + ":" + temp.getMinute() + ":" + temp.getSecond());
 				
 			}  
@@ -207,14 +226,21 @@ public class DayController extends MainController   implements Initializable{
 			dayofWeek = DAY_OF_WEEK[date1.get(Calendar.DAY_OF_WEEK)];
 			everyday = year + month + dayOfMonth;
 		 
-//		 String pageDay= everyday;
 			try {
-				//달력중 한 날짜를 클릭하면 main_everydayRecord페이지로 넘어감
-				Parent checkOk = FXMLLoader.load(getClass().getResource("/HealthSchedule/resources/main_everydayRecord.fxml"));
-				Scene scene = new Scene(checkOk);
-				Stage primaryStage= (Stage)calendarDay.getScene().getWindow();
-				primaryStage.setScene(scene);
-				System.out.println("페이지 클릭"+ everyday);
+				 FXMLLoader fxmlLoader = new FXMLLoader();
+		           fxmlLoader.setLocation(getClass().getResource("/HealthSchedule/resources/main_everydayRecord.fxml"));
+		           AnchorPane anchorPane = fxmlLoader.load();
+				   Scene anotherScene = new Scene( anchorPane );
+				   Stage stage = (Stage)calendarDay.getScene().getWindow();
+				   
+				
+				   
+				   stage.setScene(anotherScene);
+				   stage.initStyle(StageStyle.UNDECORATED);
+				   stage.show();
+				   // 다른창 띄우는 작업 .... 2 끝.
+			
+			
 				
 			} catch (Exception e2) {}
 	   }

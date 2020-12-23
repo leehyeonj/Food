@@ -24,11 +24,11 @@ public class SignupDao {
        	//동적 객체를 만들어줌 
            Class.forName("com.mysql.jdbc.Driver"); 
            conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-          System.out.println("드라이버 로딩 성공!!");
+          System.out.println("회원가입 드라이버 로딩 성공!!");
            
        } catch (Exception e) {
            e.printStackTrace();
-           System.out.println("드라이버 로드 실패!!");
+           System.out.println("회원가입 드라이버 로드 실패!!");
        }
        
    }

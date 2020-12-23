@@ -1,4 +1,4 @@
-package HealthSchedule.controller;
+package HealthSchedule.Interface;
 
 import HealthSchedule.model.Routines;
 
