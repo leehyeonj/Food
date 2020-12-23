@@ -199,7 +199,7 @@ public class WeightDao {
             //¿÷¿∏∏È
             while(rs.next()) {	
             goalweight.setEveryday(rs.getString("everyday")); 
-            goalweight.setWeight(rs.getDouble("weight")); 
+            goalweight.setWeight(rs.getDouble("goalweight")); 
             }
 
         } catch (Exception e) {
