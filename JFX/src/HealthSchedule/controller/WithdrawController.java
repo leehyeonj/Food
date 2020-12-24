@@ -1,7 +1,11 @@
 package HealthSchedule.controller;
 
+
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXButton;
+import javafx.application.Platform;
 
 import HealthSchedule.Dao.DrawerDao;
 import javafx.event.ActionEvent;
@@ -16,16 +20,61 @@ public class WithdrawController implements Initializable{
 //탈퇴
     @FXML private AnchorPane pane;
     @FXML private Label alarmText;
-  
+    @FXML private JFXButton	yesbtn;
 	
 
-    @FXML
+  
     public void yesWithdraw(ActionEvent event) {
-    	DrawerDao drawerDao = new DrawerDao();
-    	drawerDao.resetAccount();
-    	if (drawerDao.resetAccount) {
-			alarmText.setText("계정이 성공적으로 삭제되었습니다.");
-		}
+    	
+    	
+    			DrawerDao drawerDao = new DrawerDao();
+	    		if (drawerDao.ifexistaccount()) {
+	    			drawerDao.resetAccount();
+				}
+	    		if (drawerDao.ifexistFood()) {
+	    			drawerDao.resetFood();
+				}
+	    		if (drawerDao.ifexistFoodtest()) {
+	    			drawerDao.resetFoodtest();
+				}
+	    		if (drawerDao.ifexistRoutine()) {
+	    			drawerDao.resetRoutine();
+	            	
+				}
+	    		if (drawerDao.ifexistMemo()) {
+	    			drawerDao.resetMemo();
+				}
+	    		if (drawerDao.ifexistPhoto()) {
+	    			drawerDao.resetPhoto();
+				}
+	    		if (drawerDao.ifexistWeight()) {
+	    			drawerDao.resetWeight();
+				}
+	    		if (drawerDao.ifexistgoalWeight()) {
+	    			drawerDao.resetGoalWeight();
+				}
+	    		if (drawerDao.ifexistTime()) {
+	    			drawerDao.resetWorkoutTime();
+				}
+	    		
+	        	if(drawerDao.resetAccount) {
+	        		alarmText.setText("계정이 성공적으로 삭제되었습니다. 다시 시작합니다.");
+	        	}
+				
+	        
+	            Thread thread = new Thread() {
+	                @Override
+	                public void run() {
+	                	
+	                        try { Thread.sleep(1000); } catch (InterruptedException e) {}
+	                        System.exit(0);
+	                }
+	            };
+	            thread.setDaemon(true);
+	            thread.start();
+
+	            
+	  
     }
 
     @FXML

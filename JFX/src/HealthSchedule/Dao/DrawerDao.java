@@ -3,6 +3,7 @@ package HealthSchedule.Dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class DrawerDao {
 	private Connection conn;    //DB 커넥션(연결) 객
@@ -16,11 +17,14 @@ public class DrawerDao {
 
     
     public boolean resetAccount = false;
-    public boolean reset1 = false;
-    public boolean reset2 = false;
-    public boolean reset3 = false;
-    public boolean reset4 = false;
-    
+    public boolean resetTime = false;
+    public boolean resetRoutine = false;
+    public boolean resetPhoto = false;
+    public boolean resetMemo = false;
+    public boolean resetFood = false;
+    public boolean resetFoodTest = false;
+    public boolean resetWeight = false;
+    public boolean resetgoalWeight = false;
    public DrawerDao() {
 
 	   try {
@@ -35,7 +39,252 @@ public class DrawerDao {
        }
    }
    
-   public void reset1() {
+ //그 날에 저장된 루틴 값이 있냐 없냐
+   public boolean ifexistRoutine() {
+	   boolean result = false;
+       String sql = "select * from everydayRoutine";
+       PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           ResultSet rs = pstmt.executeQuery();
+           if(rs.next()) {
+        	   result = true;
+        	  
+           }
+           
+       } catch (Exception e) {
+           System.out.println("select 메서드 예외발생");
+           
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+                  
+               }
+           } catch (Exception e2) { }
+       }
+	return result;
+   }
+ //그 날에 저장된 푸드 값이 있냐 없냐
+   public boolean ifexistFood() {
+	   boolean result = false;
+       String sql = "select * from Food";
+       PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           ResultSet rs = pstmt.executeQuery();
+           if(rs.next()) {
+        	   result = true;
+        	  
+           }
+           
+       } catch (Exception e) {
+           System.out.println("select 메서드 예외발생");
+           
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+                  
+               }
+           } catch (Exception e2) { }
+       }
+	return result;
+   }
+   
+ //그 날에 저장된 푸드저장 값이 있냐 없냐
+   public boolean ifexistFoodtest() {
+	   boolean result = false;
+       String sql = "select * from Foodtest";
+       PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           ResultSet rs = pstmt.executeQuery();
+           if(rs.next()) {
+        	   result = true;
+        	  
+           }
+           
+       } catch (Exception e) {
+           System.out.println("select 메서드 예외발생");
+           
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+                  
+               }
+           } catch (Exception e2) { }
+       }
+	return result;
+   }
+   
+ //그 날에 저장된 메모 값이 있냐 없냐
+   public boolean ifexistMemo() {
+	   boolean result = false;
+       String sql = "select * from memo";
+       PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           ResultSet rs = pstmt.executeQuery();
+           if(rs.next()) {
+        	   result = true;
+        	  
+           }
+           
+       } catch (Exception e) {
+           System.out.println("select 메서드 예외발생");
+           
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+                  
+               }
+           } catch (Exception e2) { }
+       }
+	return result;
+   }
+   
+   //그 날에 저장된 사진 값이 있냐 없냐
+   public boolean ifexistPhoto() {
+	   boolean result = false;
+       String sql = "select * from dailphoto";
+       PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           ResultSet rs = pstmt.executeQuery();
+           if(rs.next()) {
+        	   result = true;
+        	  
+           }
+           
+       } catch (Exception e) {
+           System.out.println("select 메서드 예외발생");
+           
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+                  
+               }
+           } catch (Exception e2) { }
+       }
+	return result;
+   }
+   
+   //그 날에 저장된 몸무게 값이 있냐 없냐
+   public boolean ifexistWeight() {
+	   boolean result = false;
+       String sql = "select * from weight";
+       PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           ResultSet rs = pstmt.executeQuery();
+           if(rs.next()) {
+        	   result = true;
+        	  
+           }
+           
+       } catch (Exception e) {
+           System.out.println("select 메서드 예외발생");
+           
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+                  
+               }
+           } catch (Exception e2) { }
+       }
+	return result;
+   }
+   
+ //그 날에 저장된 몸무게 값이 있냐 없냐
+   public boolean ifexistgoalWeight() {
+	   boolean result = false;
+       String sql = "select * from goalweight";
+       PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           ResultSet rs = pstmt.executeQuery();
+           if(rs.next()) {
+        	   result = true;
+        	  
+           }
+           
+       } catch (Exception e) {
+           System.out.println("select 메서드 예외발생");
+           
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+                  
+               }
+           } catch (Exception e2) { }
+       }
+	return result;
+   }
+   
+   
+ //그 날에 저장된 시간 값이 있냐 없냐
+   public boolean ifexistTime() {
+	   boolean result = false;
+       String sql = "select * from workoutTime";
+       PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           ResultSet rs = pstmt.executeQuery();
+           if(rs.next()) {
+        	   result = true;
+        	  
+           }
+           
+       } catch (Exception e) {
+           System.out.println("select 메서드 예외발생");
+           
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+                  
+               }
+           } catch (Exception e2) { }
+       }
+	return result;
+   }
+   
+ //그 날에 저장된 시간 값이 있냐 없냐
+   public boolean ifexistaccount() {
+	   boolean result = false;
+       String sql = "select * from calendar";
+       PreparedStatement pstmt = null;
+       try {
+           pstmt = conn.prepareStatement(sql);
+           ResultSet rs = pstmt.executeQuery();
+           if(rs.next()) {
+        	   result = true;
+        	  
+           }
+           
+       } catch (Exception e) {
+           System.out.println("select 메서드 예외발생");
+           
+       }    finally {
+           try {
+               if(pstmt!=null && !pstmt.isClosed()) {
+                   pstmt.close();
+                  
+               }
+           } catch (Exception e2) { }
+       }
+	return result;
+   }
+   
+   
+   
+   public void resetWorkoutTime() {
 		
   	  //쿼리문 준비
 	   String sql = "delete from workoutTime";
@@ -50,7 +299,7 @@ public class DrawerDao {
           int result = pstmt.executeUpdate();
           if(result==1) {
               System.out.println("리셋 성공");
-              reset1 = true;
+              resetTime = true;
 
           }
 
@@ -66,7 +315,7 @@ public class DrawerDao {
       }
    }
    
-   public void reset2() {
+   public void resetRoutine() {
 	
 	  String sql = "delete from everydayRoutine";
 	   PreparedStatement pstmt = null;
@@ -75,7 +324,7 @@ public class DrawerDao {
          int result = pstmt.executeUpdate();
          if(result==1) {
              System.out.println("리셋 성공");
-             reset2 = true;
+             resetRoutine = true;
          }
       
      } catch (Exception e) {
@@ -90,7 +339,7 @@ public class DrawerDao {
      }
   }
    
-   public void reset3() {
+   public void resetPhoto() {
 		
 		  String sql = "delete from dailphoto";
 		   PreparedStatement pstmt = null;
@@ -99,7 +348,7 @@ public class DrawerDao {
 	         int result = pstmt.executeUpdate();
 	         if(result==1) {
 	             System.out.println("리셋 성공");
-	             reset3 = true;
+	             resetPhoto = true;
 	         }
 	      
 	     } catch (Exception e) {
@@ -114,7 +363,7 @@ public class DrawerDao {
 	     }
 	  }
    
-   public void reset4() {
+   public void resetMemo() {
 		
 		  String sql = "delete from memo";
 		   PreparedStatement pstmt = null;
@@ -123,7 +372,7 @@ public class DrawerDao {
 	         int result = pstmt.executeUpdate();
 	         if(result==1) {
 	             System.out.println("리셋 성공");
-	             reset4 = true;
+	             resetMemo = true;
 	         }
 	      
 	     } catch (Exception e) {
@@ -137,6 +386,68 @@ public class DrawerDao {
 	         } catch (Exception e2) {}
 	     }
 	  }
+   
+   public void resetFood() {
+		
+	  	  //쿼리문 준비
+		   String sql = "delete from Food";
+
+		
+		   
+		   PreparedStatement pstmt = null;
+	  
+
+	      try {
+	          pstmt = conn.prepareStatement(sql);
+	          int result = pstmt.executeUpdate();
+	          if(result==1) {
+	              System.out.println("리셋 성공");
+	              resetFood = true;
+
+	          }
+
+	      } catch (Exception e) {
+
+	          System.out.println("리셋 실패");
+	      }    finally {
+	          try {
+	              if(pstmt!=null && !pstmt.isClosed()) {
+	                  pstmt.close();
+	              }
+	          } catch (Exception e2) {}
+	      }
+	   }
+   
+   public void resetFoodtest() {
+		
+	  	  //쿼리문 준비
+		   String sql = "delete from Foodtest";
+
+		
+		   
+		   PreparedStatement pstmt = null;
+	  
+
+	      try {
+	          pstmt = conn.prepareStatement(sql);
+	          int result = pstmt.executeUpdate();
+	          if(result==1) {
+	              System.out.println("리셋 성공");
+	              resetFoodTest = true;
+
+	          }
+
+	      } catch (Exception e) {
+
+	          System.out.println("리셋 실패");
+	      }    finally {
+	          try {
+	              if(pstmt!=null && !pstmt.isClosed()) {
+	                  pstmt.close();
+	              }
+	          } catch (Exception e2) {}
+	      }
+	   }
    public void resetAccount() {
 		
  	  //쿼리문 준비
@@ -166,4 +477,64 @@ public class DrawerDao {
          } catch (Exception e2) {}
      }
   }
+   
+   public void resetWeight() {
+		
+	 	  //쿼리문 준비
+		   String sql = "delete from weight";
+		 
+		   PreparedStatement pstmt = null;
+		 
+
+	     try {
+	         pstmt = conn.prepareStatement(sql);
+	         int result = pstmt.executeUpdate();
+	         if(result==1) {
+	             System.out.println("리셋 성공");
+	             resetWeight = true;
+
+	         }
+	        
+
+	     } catch (Exception e) {
+
+	         System.out.println("리셋  실패");
+	     }    finally {
+	         try {
+	             if(pstmt!=null && !pstmt.isClosed()) {
+	                 pstmt.close();
+	             }
+	         } catch (Exception e2) {}
+	     }
+	  }
+   
+   public void resetGoalWeight() {
+		
+	 	  //쿼리문 준비
+		   String sql = "delete from goalweight";
+		 
+		   PreparedStatement pstmt = null;
+		 
+
+	     try {
+	         pstmt = conn.prepareStatement(sql);
+	         int result = pstmt.executeUpdate();
+	         if(result==1) {
+	             System.out.println("리셋 성공");
+	             resetgoalWeight = true;
+
+	         }
+	        
+
+	     } catch (Exception e) {
+
+	         System.out.println("리셋  실패");
+	     }    finally {
+	         try {
+	             if(pstmt!=null && !pstmt.isClosed()) {
+	                 pstmt.close();
+	             }
+	         } catch (Exception e2) {}
+	     }
+	  }
 }

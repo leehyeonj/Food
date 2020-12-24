@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
@@ -8,18 +9,16 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="pane" prefHeight="550.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
-			fx:controller="HealthSchedule.controller.PiechartDayController">
+<AnchorPane fx:id="pane" prefHeight="550.0" prefWidth="600.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthSchedule.controller.PiechartDayController">
    <children>
-      <PieChart fx:id="pieChart" layoutX="50.0" layoutY="43.0" title="등록한 운동시간" />
-      <Button fx:id="monthchart" layoutX="260.0" layoutY="513.0" mnemonicParsing="false" onAction="#MonthChartbtn" text="Load Chart" />
+      <PieChart fx:id="pieChart" layoutX="50.0" layoutY="43.0" styleClass="fontSeoulNamsan" title="등록한 운동시간" />
       <HBox layoutX="50.0" layoutY="443.0" prefHeight="60.0" prefWidth="500.0">
          <children>
-            <Label fx:id="full" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="100.0" text="전신" textAlignment="CENTER" textOverrun="CLIP" />
-            <Label fx:id="upper" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="100.0" text="상체" textAlignment="CENTER" textOverrun="CLIP" />
-            <Label fx:id="abs" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="100.0" text="복근" textAlignment="CENTER" textOverrun="CLIP" />
-            <Label fx:id="lower" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="100.0" text="하체" textAlignment="CENTER" textOverrun="CLIP" />
-            <Label fx:id="stretching" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="100.0" text="스트레칭" textAlignment="CENTER" textOverrun="CLIP" />
+            <Label fx:id="full" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="100.0" styleClass="fontSeoulNamsan" text="전신" textAlignment="CENTER" textOverrun="CLIP" />
+            <Label fx:id="upper" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="100.0" styleClass="fontSeoulNamsan" text="상체" textAlignment="CENTER" textOverrun="CLIP" />
+            <Label fx:id="abs" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="100.0" styleClass="fontSeoulNamsan" text="복근" textAlignment="CENTER" textOverrun="CLIP" />
+            <Label fx:id="lower" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="100.0" styleClass="fontSeoulNamsan" text="하체" textAlignment="CENTER" textOverrun="CLIP" />
+            <Label fx:id="stretching" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="100.0" styleClass="fontSeoulNamsan" text="스트레칭" textAlignment="CENTER" textOverrun="CLIP" />
          </children>
       </HBox>
       <AnchorPane layoutX="10.0" layoutY="3.0" prefHeight="23.0" prefWidth="584.0">
@@ -28,5 +27,12 @@
             <Label alignment="CENTER" layoutX="538.0" layoutY="2.0" onMouseClicked="#actionMinWindow" prefHeight="32.0" prefWidth="23.0" text="-" />
          </children>
       </AnchorPane>
+      <JFXButton fx:id="monthchart" buttonType="RAISED" layoutX="260.0" layoutY="503.0" onAction="#MonthChartbtn" text="한 달 차트">
+         <styleClass>
+            <String fx:value="fontSeoulNamsan" />
+            <String fx:value="backcolor-blue" />
+            <String fx:value="textfill-white" />
+         </styleClass>
+      </JFXButton>
    </children>
 </AnchorPane>

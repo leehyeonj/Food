@@ -3,6 +3,8 @@ package HealthSchedule.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
+
 import HealthSchedule.Dao.PieChartDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,7 +28,7 @@ public class PiechartDayController extends DayController implements Initializabl
 	@FXML AnchorPane pane;
     @FXML PieChart pieChart;
     @FXML Label full, upper, abs, lower, stretching;	//체중별라벨(본 시간)
-    @FXML Button monthchart;	//한달차트
+    @FXML JFXButton monthchart;	//한달차트
     
     PieChartDao piechartdao = new PieChartDao();
 

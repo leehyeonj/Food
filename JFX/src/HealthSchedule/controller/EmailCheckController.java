@@ -34,6 +34,8 @@ public class EmailCheckController extends SignUpController implements Initializa
 	    		codeTextField.setText("인증 완료");
 //	    		Stage pop = (Stage)closebtn.getScene().getWindow();
 //	    		pop.close();
+	    		
+	    		
 	    	}
 	    	if (!check) {
 	    		System.out.println("인증 실패");

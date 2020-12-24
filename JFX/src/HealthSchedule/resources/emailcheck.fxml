@@ -30,7 +30,11 @@
             <HBox prefHeight="48.0" prefWidth="370.0">
                <children>
                   <Pane prefHeight="48.0" prefWidth="104.0" />
-                  <JFXTextField fx:id="codeTextField" focusColor="WHITE" labelFloat="true" prefHeight="48.0" prefWidth="227.0" promptText="인증번호" styleClass="textfill-white" unFocusColor="#e16565" />
+                  <JFXTextField fx:id="codeTextField" focusColor="WHITE" labelFloat="true" prefHeight="48.0" prefWidth="227.0" promptText="인증번호" unFocusColor="#e16565">
+                     <styleClass>
+                        <String fx:value="textfill-white" />
+                        <String fx:value="fontSeoulNamsan" />
+                     </styleClass></JFXTextField>
                   <Pane prefHeight="48.0" prefWidth="72.0" />
                   <JFXButton fx:id="okbtn" onAction="#checkok" prefHeight="48.0" prefWidth="95.0" text="확인">
                      <styleClass>

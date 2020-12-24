@@ -12,7 +12,7 @@
       <Label layoutX="191.0" layoutY="83.0" styleClass="fontSeoulNamsan" text="탈퇴하시겠습니까?" />
       <HBox layoutX="178.0" layoutY="194.0" prefHeight="28.0" prefWidth="144.0">
          <children>
-            <JFXButton buttonType="RAISED" onAction="#yesWithdraw" prefHeight="28.0" prefWidth="82.0" text="  네  ">
+            <JFXButton fx:id="yesbtn" buttonType="RAISED" onAction="#yesWithdraw" prefHeight="28.0" prefWidth="82.0" text="  네  ">
                
                <styleClass>
                   <String fx:value="backcolor-skyblue" />
