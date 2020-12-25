@@ -9,6 +9,7 @@
 
 ## 주요 기능
 ### 1. 캘린더
+![image](https://user-images.githubusercontent.com/70359952/103137177-0390d300-470a-11eb-88bb-e66759a9ec06.png)
 ### 2. 하루섭취량 기록
 ### 3. 운동 기록
 * 자신만의 운동루틴 생성
